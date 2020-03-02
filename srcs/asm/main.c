@@ -1,4 +1,4 @@
-#include "../includes/com.h"
+#include "com.h"
 
 int		valid_filename(char *filename)
 {
@@ -15,8 +15,8 @@ int	parse_file(int fd_s)
 {
 	char	*buf;
 
-	ft_memset(g_name, '\0', 128);
-	ft_memset(g_comment, '\0', 2048);
+	//ft_memset(g_name, '\0', 128);
+	//ft_memset(g_comment, '\0', 2048);
 
 	g_snum = 0;
 	while(get_next_line(fd_s, &buf) > 0)//!!!!СОХРАНЯТЬ NEWLINE!!!!
@@ -24,7 +24,7 @@ int	parse_file(int fd_s)
 		printf("get_%s\n", buf);
 		parse_str(&buf); //get token
 		g_snum++;
-		free(buf);
+		//free(buf);
 	}
 	free(buf);
 	return(1);
@@ -43,13 +43,12 @@ int		data_malloc()
 	}
 	g_data->head = (t_header*)malloc(sizeof(t_header));
 	//g_data->head->prog_name[129] = '\0';
-
-	//ft_memset(g_data.head.comment, '\0', COMMENT_LENGTH + 1);
+        ft_memset(g_data->head->prog_name, '\0', PROG_NAME_LENGTH+1);
+	ft_memset(g_data->head->comment, '\0', COMMENT_LENGTH + 1);
 	g_data->name_f = 0;
 	g_data->namelen = 0;
 	g_data->comm_f = 0;
 	g_data->commlen = 0;
-
 	g_data->tkn_lst = g_tkn_first;
 	//g_data->head = g_head;
 

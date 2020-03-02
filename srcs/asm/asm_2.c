@@ -1,4 +1,4 @@
-#include "../includes/com.h"
+#include "com.h"
 /*void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 {
 	int			move;
@@ -102,6 +102,6 @@ void	add_lbl(char *s, const int size)
 		error();
 	ft_strncpy(g_label_last->label, s, size);
 
-	printf("label_last->label= %s\nlabel_last->offset = %ld\n",
-	 g_label_last->label, g_label_last->offset);
+	/*printf("label_last->label= %s\nlabel_last->offset = %ld\n",
+	 g_label_last->label, g_label_last->offset);*/
 }

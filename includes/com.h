@@ -5,7 +5,7 @@
 # define TRUE 1
 # define FALSE 0
 
-# include "../libft/includes/libft.h"
+# include "libft/libft.h"
 
 //# include "op.h"
 //# include "asm.h"
@@ -136,8 +136,8 @@ struct				s_data
 	t_token			*tkn_lst;
 	int				fd_s;
 	int				fd_cor;
-	t_1b			name_f;
-	t_1b			comm_f;
+	t_4b			name_f;
+	t_4b			comm_f;
 	unsigned long	namelen;
 	unsigned long	commlen;
 	u_int64_t		exec_bytes;
@@ -351,8 +351,8 @@ char			*skip_comment(char *s);
 void			solve_res(char *s, char **s_op, int a);
 void			search_op(char *s);
 
-void			save_head(char *p, t_4b type_h, t_4b flg, unsigned long len );
-char			*init_headdata(char *p, t_4b flg);
+void			save_head(char *p, t_4b type_h, t_4b *flg, unsigned long *len );
+char			*init_headdata(char *p, t_4b *flg);
 void			add_header(char *s);
 
 void			parse_str(char **buf);
@@ -372,7 +372,7 @@ char		g_name[128];
 char		g_comment[2048];
 size_t		g_snum;
 t_data		*g_data;
-t_header	*g_head;
+//t_header	*g_head;
 
 t_token		*g_tkn_first;
 t_token		*g_tkn_last;
