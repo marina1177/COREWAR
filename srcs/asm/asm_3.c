@@ -1,38 +1,109 @@
 #include "com.h"
 
+
+int valid_label(char *s)
+{
+  int lbllen;
+
+  lbllen = 0;
+  while (is_lblchar(s[lbllen]))
+  {
+    printf("lblchar_%c\n",s[lbllen]);
+    lbllen++;
+  }
+  if(lbllen == ft_strlen(s))
+    return(1);
+  return(0);
+
+}
+
+int   valid_args_type(int indx)
+{
+  char *p;
+  int i;
+  int len;
+
+  i = 0;
+
+  p = (g_tkn_last->op_args)[indx];
+  len = ft_strlen(p);
+  if (is_reg(p))
+  {
+    g_tkn_last->args_type[i] = T_REG;
+  }
+  if(*p == DIRECT_CHAR)//'%'
+  {
+    p++;
+    len--;
+    if(*(p + 1) == LABEL_CHAR && valid_label(p + 2))//":"
+    {
+      g_tkn_last->args_type[i] = T_DIR_LAB;
+    }
+    else
+    {
+      if (*p == '+')
+      {
+        printf("")
+      }
+
+
+
+    }
+
+  }
+
+}
+
+void  parse_args_type()
+{
+  int i = 0;
+
+  g_tkn_last->num_byte_op = 2;//код операции + код типов аргументов
+  if (g_tkn_last->op->args_types_code == FALSE)
+  {
+    g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
+    return ;
+  }
+  while ((g_tkn_last->op_args)[i] != NULL)
+  {
+    if (i > 3)
+    {
+      printf("so many arguments for operation\n");
+      error();
+    }
+    printf("op_args[%d] = %s\n", i, (g_tkn_last->op_args)[i]);
+    if(!valid_args_type(i))
+    {
+      printf("--args type error\n");
+      error();
+    }
+    i++;
+  }
+
+
+
+}
+
 void	parse_op(char *op)
 {
 	char	**lex;
 
+
+
 	printf("args_op =%s\n",op);
 	lex = ft_strsplit(op,  SEPARATOR_CHAR);
-	if (lex ==NULL)
+	if (lex == NULL)
 	{
 		printf("split error-\n");
 		error();
 	}
-	int i = 0;
-	while (lex[i] != NULL)
-	{
-		printf("lex[%d] = %s\n", i, lex[i]);
-		i++;
-	}
+
+	g_tkn_last->op_args = lex;
+	parse_args_type();
 	printf("---------------%s_\n",(g_op_tab[1]).name);
 }
 
-int		is_lblchar(char c)
-{
-  char	*ptr;
 
-  ptr = LABEL_CHARS;
-  while(*ptr != '\0')
-  {
-    if (*ptr == c)
-      return (1);
-    ptr++;
-  }
-  return (0);
-}
 
 void	solve_res(char *s, char **s_op, int a)
 {
