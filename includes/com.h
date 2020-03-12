@@ -82,6 +82,16 @@ typedef unsigned long	t_8b;
 **
 */
 
+# define EOC	"\033[0m"
+# define RED	"\033[1;31m"
+# define YELLOW	"\033[1;33m"
+# define WHITE	"\033[1;37m"
+# define BLACK	"\033[0;30m"
+# define GREEN	"\033[0;32m"
+# define BLUE	"\033[0;34m"
+# define PURPUL	"\033[0;35m"
+# define CYAN	"\033[0;36m"
+
 //typedef char	t_arg_type;
 
 #define T_REG					1
@@ -321,6 +331,22 @@ static t_op			g_op_tab[16] = {
 /*   asm.h                                              :+:      :+:    :+:   */
 /* ************************************************************************** */
 
+
+/*
+** supfun.c.c
+*/
+void			print_bits(size_t size, void *ptr, char space);
+char			*skip_space(char *s);
+char			*skip_comment(char *s);
+
+/*
+** translate.c
+*/
+void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+t_token			*print_champion_info();
+void			print_instruction(t_token **op, u_int32_t *cursor, u_int8_t type);
+void			translate(void);
+
 /*
 ** free_data.c
 */
@@ -370,11 +396,6 @@ t_token			*join_token( int indx_op);
 int				add_token(char *s, int size, t_2b token_type, int indx_op);
 void			add_lbl(char *s, const int size);
 
-/*
-** asm_1.c
-*/
-char			*skip_space(char *s);
-char			*skip_comment(char *s);
 
 
 

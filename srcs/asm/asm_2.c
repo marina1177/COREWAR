@@ -24,7 +24,7 @@ t_token	*new_token()
 			+ g_tkn_last->num_byte_op;
 	}
 	g_data->exec_bytes += g_tkn_last->num_byte_op;
-	printf("EXEC_BYTES = %d\n", g_data->exec_bytes);
+	printf("EXEC_BYTES = %ld\n", g_data->exec_bytes);
 	g_tkn_last = new;
 
 	/*t_token		*tmp = g_tkn_first;

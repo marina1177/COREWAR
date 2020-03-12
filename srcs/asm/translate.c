@@ -7,9 +7,12 @@ void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 
 	buf = dir_size;
 	move = 0;
+	u_int8_t tmp;
 	while (dir_size)
 	{
-		g_buf[*place + dir_size - 1] = (u_int8_t)((dec >> move) & 0xFF);
+		tmp = (u_int8_t)((dec >> move) & 0xFF);
+		printf("hex = %c = %d\n", tmp, (int)tmp);
+		g_buf[*place + dir_size - 1] = tmp;
 		move += 8;
 		dir_size--;
 	}
@@ -25,7 +28,7 @@ t_token		*print_champion_info()
 		ft_strlen( g_data->head->prog_name));
 }
 
-void	print_instruction(t_token **op, u_int32_t *cursor, u_int8_t type)
+void	print_args(t_token **op, u_int32_t *cursor, u_int8_t type)
 {
 	u_int8_t n_arg;
 	u_int8_t d_size;
@@ -37,21 +40,53 @@ void	print_instruction(t_token **op, u_int32_t *cursor, u_int8_t type)
 	*op = (*op)->prev;
 	while (n_arg--)
 	{
-		while ((*op)->type == SEPARATOR)
-			*op = (*op)->prev;
 		d_size = g_op_tab[type].t_dir_size;
 		if ((*op)->type == REGISTER)
 			int_to_hex(ft_atoi_cor((*op)->content + 1, 1), 1, cursor);
+
 		else if ((*op)->type == DIRECT)
 			int_to_hex(ft_atoi_cor((*op)->content, d_size), d_size, cursor);
 		else if ((*op)->type == INDIRECT)
 			int_to_hex(ft_atoi_cor((*op)->content, IND_SIZE), IND_SIZE, cursor);
+
 		else if ((*op)->type == DIRECT_LABEL)
 			int_to_hex(process_label((*op)->bytes, *op), d_size, cursor);
 		else if ((*op)->type == INDIRECT_LABEL)
 			int_to_hex(process_label((*op)->bytes, *op), IND_SIZE, cursor);
 		*op = (*op)->prev;
 	}
+}
+
+void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
+{
+	u_int8_t	byte;
+	int			i;
+	t_2b		type;
+
+	if (!tkn->op->arg_types_code)
+		return ;
+	byte = 0;
+	i = 0;
+	while ((type = tkn->args_type[i]))
+	{
+		if (type & REGISTER)
+		{
+			byte ^= 1 << ((2 * i) + 1);
+		}
+		else if ((type & DIRECT) || (type & DIRECT_LABEL))
+		{
+			byte ^= 1 << ((2 * i));
+		}
+		else if ((type & INDIRECT) || (type & IND_LABEL))
+		{
+			byte ^= 1 << ((2 * i));
+			byte ^= 1 << ((2 * i) + 1);
+		}
+		printf("byte__");print_bits(1, &byte, 0);printf("\n");
+		i++;
+	}
+	int_to_hex((int32_t)byte, 1, cursor);
+
 }
 
 void	translate(void)
@@ -69,7 +104,9 @@ void	translate(void)
 	tmp = g_tkn_first;
 	while (tmp != g_tkn_last)
 	{
-		print_instruction(&tmp, &cursor, tmp->op->);
+		print_args_types_code(tmp, &cursor);
+		//fill_args()
+		print_args(&tmp, &cursor, tmp->op->);
 		tmp = tmp->next;
 	}
 }
