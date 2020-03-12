@@ -5,7 +5,9 @@
 # define TRUE 1
 # define FALSE 0
 
-# include "libft/libft.h"
+# include "../libft/includes/libft.h"
+//# include "asm_op.h"
+# include "asm_error.h"
 
 //# include "op.h"
 //# include "asm.h"
@@ -73,6 +75,9 @@ typedef unsigned long	t_8b;
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
+# define EXEC_START (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4)
+# define FULL_SIZE (EXEC_START + CHAMP_MAX_SIZE)
+
 /*
 **
 */
@@ -84,6 +89,20 @@ typedef unsigned long	t_8b;
 #define T_IND					4
 #define T_LAB					8
 
+
+# define REGISTER		(t_2b)0b100000000000
+# define DIRECT			(t_2b)0b010000000000
+# define DIRECT_LABEL	(t_2b)0b001000000000
+# define INDIRECT		(t_2b)0b000100000000
+# define INDIRECT_LABEL	(t_2b)0b000010000000
+# define COMMAND		(t_2b)0b000001000000
+# define STRING			(t_2b)0b000000100000
+# define LABEL			(t_2b)0b000000010000
+# define INSTRUCTION	(t_2b)0b000000001000
+# define SEPARATOR		(t_2b)0b000000000100
+# define NEW_LINE		(t_2b)0b000000000010
+# define END			(t_2b)0b000000000001
+
 /*
 **
 */
@@ -91,6 +110,8 @@ typedef unsigned long	t_8b;
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
+
+
 
 
 typedef struct		s_header t_header;
@@ -120,7 +141,7 @@ struct				s_token
 	//char			*label;
 	t_op			*op;//fill in join_token
 	char			**op_args;
-	int				args_type[4];//fill in parse_op
+	t_2b			args_type[3];//fill in parse_op
 	int				status;//-1_-2_0_1
 	int				offset;//относит начала exec code
 	int				num_byte_op;//fill in parse_op
@@ -132,8 +153,10 @@ struct				s_token
 typedef struct s_data	t_data;
 struct				s_data
 {
+	t_op			*g_op_tab;
+	char			*filename;
 	t_header		*head;
-	t_token			*tkn_lst;
+	//t_token			*tkn_lst;
 	int				fd_s;
 	int				fd_cor;
 	t_4b			name_f;
@@ -298,44 +321,49 @@ static t_op			g_op_tab[16] = {
 /*   asm.h                                              :+:      :+:    :+:   */
 /* ************************************************************************** */
 
-
-
-
-# define REGISTER		(t_2b)0b100000000000
-# define DIRECT			(t_2b)0b010000000000
-# define DIRECT_LABEL	(t_2b)0b001000000000
-# define INDIRECT		(t_2b)0b000100000000
-# define INDIRECT_LABEL	(t_2b)0b000010000000
-# define COMMAND		(t_2b)0b000001000000
-# define STRING			(t_2b)0b000000100000
-# define LABEL			(t_2b)0b000000010000
-# define INSTRUCTION	(t_2b)0b000000001000
-# define SEPARATOR		(t_2b)0b000000000100
-# define NEW_LINE		(t_2b)0b000000000010
-# define END			(t_2b)0b000000000001
-
-
-
-
+/*
+** free_data.c
+*/
+char			*freesplit();
+void			free_token();
+void			free_label();
+void			free_data(void);
 
 /*
 ** error.c
 */
+void			print_error(char *message);
+void			error_line(char *event, char *line, int x);
+void			error_event(char *event);
+
 void			error(void);
-void			syntax_err(int token);
 
 
 /*
-** twrite_bytes.c
+** is_type.c
 */
-void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+int				is_reg(char *line);
+int				is_direct(char *line);
+int				is_dir_label(char *line);
+int				is_indirect(char *line);
+int				is_ind_label(char *line);
 
+//void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+/*
+** asm_3.c
+*/
+void			parse_args_type();
+void			parse_op(char *op);
+int				is_lblchar(char c);
+void			solve_res(char *s, char **s_op, int a);
+int				check_same_name(char *s, char **s_op, int a);
+void			search_op(char *s);
 
 /*
 ** asm_2.c
 */
 void			need_address_label(t_token *new);
-void			parse_op(char *op);
+
 
 t_token			*new_token();
 t_token			*join_token( int indx_op);
@@ -348,8 +376,7 @@ void			add_lbl(char *s, const int size);
 char			*skip_space(char *s);
 char			*skip_comment(char *s);
 
-void			solve_res(char *s, char **s_op, int a);
-void			search_op(char *s);
+
 
 void			save_head(char *p, t_4b type_h, t_4b *flg, unsigned long *len );
 char			*init_headdata(char *p, t_4b *flg);
@@ -360,17 +387,18 @@ void			parse_str(char **buf);
 /*
 ** main.c
 */
-int					valid_filename(char *filename);
-int					parse_file(int fd_s);
-int					data_malloc();
-void				read_file(char *filename);
+void				valid_filename(char *filename);
+void				parse_file(int fd_s);
+void				data_init();
+void				read_file(char *filename, int flag);
 
 void				error(void);
 
 
 char		g_name[128];
 char		g_comment[2048];
-size_t		g_snum;
+size_t		g_snum;//num line
+size_t		g_rnum;//x
 t_data		*g_data;
 //t_header	*g_head;
 
@@ -380,6 +408,8 @@ t_token		*g_tkn_last;
 t_lbl_lst	*g_label_first;
 t_lbl_lst	*g_label_last;
 u_int64_t	g_offset;//отн начала файла
+char		*g_buf;
+
 
 
 #endif

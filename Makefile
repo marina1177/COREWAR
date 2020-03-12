@@ -2,7 +2,7 @@
 ASM_NAME = asm
 VM_NAME = corewar
 
-CC = gcc
+CC = clang
 FLAGS = -Wall -Wextra -Werror
 
 ################# LIB #################
@@ -29,7 +29,12 @@ SRC_ASM_LIST =	main.c \
 				error.c \
 				asm_1.c \
 				asm_2.c \
-				asm_3.c
+				asm_3.c \
+				supfun.c \
+				free_data.c \
+				args_type.c \
+				translate.c \
+				is_type.c
 
 SRC_ASM = $(addprefix $(SRC_ASM_DIR), $(SRC_ASM_LIST))
 
