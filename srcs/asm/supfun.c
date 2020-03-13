@@ -26,6 +26,33 @@ void    print_bits(size_t size, void *ptr, char space)
     ft_putchar('\n');
 }
 
+int32_t		ft_atoi_cor(const char *str, u_int8_t size)
+{
+	int				neg;
+	int				i;
+	int64_t			num;
+
+	i = 0;
+	neg = 0;
+	num = 0;
+	while ((str[i]))
+		i++;
+	if (str[i] == '-')
+		neg = 1;
+	if ((str[i] == '-') || (str[i] == '+'))
+		i++;
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		num *= 10;
+		num += ((int)str[i] - 48);
+		i++;
+	}
+	num = (neg == 1 ? -num : num);
+	size == 1 ? (num = (u_int8_t)num) : 1;
+	size == 2 ? (num = (int16_t)num) : 1;
+	size == 4 ? (num = (int32_t)num) : 1;
+	return (num);
+}
 
 char *skip_space(char *s)
 {

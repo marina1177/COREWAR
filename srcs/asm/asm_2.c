@@ -15,16 +15,19 @@ t_token	*new_token()
 		g_tkn_first = new;
 		g_tkn_last = g_tkn_first;
 		new->offset = 0;
+		new->num_byte_op = 0;
 	}
 	else
 	{
 		g_tkn_last->next = new;
 		new->prev = g_tkn_last;
+		new->num_byte_op = 0;
 		new->offset = g_tkn_last->offset
 			+ g_tkn_last->num_byte_op;
 	}
+	//printf("BEFORE_EXEC_BYTES = %llu\n", g_data->exec_bytes);
 	g_data->exec_bytes += g_tkn_last->num_byte_op;
-	printf("EXEC_BYTES = %ld\n", g_data->exec_bytes);
+	printf("EXEC_BYTES = %llu\n", g_data->exec_bytes);
 	g_tkn_last = new;
 
 	/*t_token		*tmp = g_tkn_first;

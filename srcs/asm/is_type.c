@@ -16,7 +16,11 @@ int	is_reg(char *line)
 		{
 			if (k > 16)
 				printf("warning: num of reg more 16!\n");
-			return (1);
+			else if (k == 0)
+			{
+				printf("warning: num of reg is 0!\n");
+			}
+			return(1);
 		}
 
 	}
@@ -38,6 +42,8 @@ int	is_direct(char *line)
 		if (line[1] == '+')
 		{
 			printf("error - '+' after DIRECT_CHAR\n");
+			printf("Lexical error at [5:9]");
+			
 			error();
 		}
 		len = ft_strlen(&(line[i]));
@@ -95,5 +101,4 @@ int	is_ind_label(char *line)
 			return(1);
 	}
 	return (0);
-//	printf("---------------%s_\n",(g_op_tab[1]).name);
 }

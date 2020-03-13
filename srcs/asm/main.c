@@ -49,6 +49,7 @@ void	data_init()
 	g_data->namelen = 0;
 	g_data->comm_f = 0;
 	g_data->commlen = 0;
+	g_data->exec_bytes = 0;
 }
 
 void		compilation(void)

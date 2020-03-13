@@ -86,6 +86,5 @@ void		parse_str(char **buf)
 	}
 	else
 		return ;
-	//printf("---------------%s\n",(g_op_tab[1]).name);
 
 }

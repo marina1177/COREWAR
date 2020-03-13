@@ -336,6 +336,7 @@ static t_op			g_op_tab[16] = {
 ** supfun.c.c
 */
 void			print_bits(size_t size, void *ptr, char space);
+int32_t			ft_atoi_cor(const char *str, u_int8_t size);
 char			*skip_space(char *s);
 char			*skip_comment(char *s);
 
@@ -343,7 +344,7 @@ char			*skip_comment(char *s);
 ** translate.c
 */
 void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
-t_token			*print_champion_info();
+void			print_champion_info();
 void			print_instruction(t_token **op, u_int32_t *cursor, u_int8_t type);
 void			translate(void);
 
