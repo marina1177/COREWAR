@@ -65,26 +65,4 @@ void	add_header(char *s)
 	printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
 }
 
-void		parse_str(char **buf)
-{
-	char	*pnt;
 
-	pnt = skip_comment(*buf);
-	g_rnum = 0;
-	if (*pnt != '\0')
-	{
-		if (*pnt == '.' || g_data->name_f == 1 || g_data->comm_f == 1)
-		{
-			add_header(pnt);
-		}
-		else
-		{
-			pnt = skip_space(*buf);
-			g_rnum += (pnt - *buf);
-			search_op(pnt);
-		}
-	}
-	else
-		return ;
-
-}

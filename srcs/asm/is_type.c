@@ -4,27 +4,28 @@ int	is_reg(char *line)
 {
 	int	i;
 	int	k;
-	int	len;
+	int len;
 
 	i = 0;
-	if (line[i++] == 'r')
+	len = ft_strlen(line);
+	if ((2 == len || len == 3) && line[i++] == 'r')
 	{
-		len = ft_strlen(&(line[i]));
 		while (ft_isdigit(line[i]) && i < len)
 			i++;
-		if(i == (len) && (k = ft_atoi(&line[1]) > 0))
+		//return (i == len && ft_atoi(&line[1]) > 0);
+		if(i == (len) && (k = ft_atoi(&line[1]) >= 0))
 		{
 			if (k > 16)
 				printf("warning: num of reg more 16!\n");
 			else if (k == 0)
 			{
-				printf("warning: num of reg is 0!\n");
+				error_event(ERR_ZERO_REG );
 			}
-			return(1);
+			return(TRUE);
 		}
-
 	}
-	return (0);
+	//printf("Syntax error at token [TOKEN][%d:009] INSTRUCTION \"%s\"", g_snum, line);
+	return (FALSE);
 }
 
 int	is_direct(char *line)
@@ -43,7 +44,7 @@ int	is_direct(char *line)
 		{
 			printf("error - '+' after DIRECT_CHAR\n");
 			printf("Lexical error at [5:9]");
-			
+
 			error();
 		}
 		len = ft_strlen(&(line[i]));

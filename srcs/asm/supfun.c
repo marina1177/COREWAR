@@ -26,6 +26,19 @@ void    print_bits(size_t size, void *ptr, char space)
     ft_putchar('\n');
 }
 
+/*dst = 0;
+    i = -1;
+    while (++i < 2)
+    {
+        if (i + start < MEM_SIZE)
+            position = i + start;
+        else
+            position = i + start - MEM_SIZE;
+        dst = dst << 8;
+        dst += (short)arena[position];
+    }
+    return ((int)dst);*/
+
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {
 	int				neg;
@@ -41,16 +54,19 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 		neg = 1;
 	if ((str[i] == '-') || (str[i] == '+'))
 		i++;
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num *= 10;
 		num += ((int)str[i] - 48);
+		//printf("num = %lld\n",num);
 		i++;
 	}
 	num = (neg == 1 ? -num : num);
+	//printf("%s_atoi_%lld\n", str,num);
 	size == 1 ? (num = (u_int8_t)num) : 1;
 	size == 2 ? (num = (int16_t)num) : 1;
 	size == 4 ? (num = (int32_t)num) : 1;
+	printf("ret_atoi_%lld\n", num);
 	return (num);
 }
 

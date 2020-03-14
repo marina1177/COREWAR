@@ -10,27 +10,6 @@ void	valid_filename(char *filename)
 		error_event(ERR_FNAME);
 }
 
-void	parse_file(int fd_s)
-{
-	char	*buf;
-	int		size;
-
-	g_snum = 0;
-	while ((size = get_next_line(fd_s, &buf)) > 0)//!!!!СОХРАНЯТЬ NEWLINE!!!!
-	{
-		printf("get_%s\n", buf);
-		parse_str(&buf);
-		g_snum++;
-		printf("NUM_STR = %ld\n", g_snum);
-		ft_strdel(&buf);
-	}
-	if (size == -1)
-		error_event(ERR_READING);
-
-	//validation();
-
-}
-
 void	data_init()
 {
 	g_tkn_last = NULL;
@@ -84,8 +63,6 @@ void	read_file(char *filename, int flag)
 
 int		main(int ac, char **av)
 {
-//	printf("-------main-----%s_\n", (g_op_tab[1]).name);
-
 	if (ac == 2)
 		read_file(av[1], 0);
 	else if (ac == 3 && !ft_strcmp(av[2], "-test"))

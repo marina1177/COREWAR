@@ -1,10 +1,72 @@
 #include "../../includes/com.h"
 
+int check_reg(int i)
+{
+	if (is_reg(g_tkn_last->op_args[i])
+			&& g_tkn_last->op->args_types[i] & T_REG)
+	{
+		g_tkn_last->args_type[i] = REGISTER;
+		g_tkn_last->num_byte_op += 1;
+
+		printf("REGISTER\nnumbyte_%d\n",
+			g_tkn_last->num_byte_op);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int check_dir(int i)
+{
+	if(is_direct(g_tkn_last->op_args[i])
+			&& g_tkn_last->op->args_types[i] & T_DIR)
+	{
+		g_tkn_last->args_type[i] = DIRECT;
+		g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
+
+		printf("DIRECT\nnumbyte_%d\n",g_tkn_last->num_byte_op);
+		return (TRUE);
+	}
+	else if(is_dir_label(g_tkn_last->op_args[i])
+			&& g_tkn_last->op->args_types[i] & T_DIR)
+	{
+		g_tkn_last->args_type[i] = DIRECT_LABEL;
+		g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
+
+		printf("DIRECT_LABEL\nnumbyte_%d\n",
+		g_tkn_last->num_byte_op);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+int check_ind(int i)
+{
+	if(is_indirect(g_tkn_last->op_args[i])
+			&& g_tkn_last->op->args_types[i] & T_IND)
+	{
+		g_tkn_last->args_type[i] = INDIRECT;
+		g_tkn_last->num_byte_op += IND_CODE;
+
+		printf("INDIRECT\nnumbyte_%d\n", g_tkn_last->num_byte_op);
+		return (TRUE);
+	}
+	else if(is_ind_label(g_tkn_last->op_args[i])
+		&& g_tkn_last->op->args_types[i] & T_IND)
+	{
+		g_tkn_last->args_type[i] = INDIRECT_LABEL;
+		g_tkn_last->num_byte_op += IND_CODE;
+
+		printf("INDIRECT_LABEL\nnumbyte_%d\n", g_tkn_last->num_byte_op);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 void	parse_args_type()
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	printf("----IS_TYPE-----\n");
 
 	g_tkn_last->num_byte_op = 1;
@@ -12,61 +74,22 @@ void	parse_args_type()
 		g_tkn_last->num_byte_op += 1;
 	printf("0_numbyte_%d\n",
 			g_tkn_last->num_byte_op);
-	while (g_tkn_last->op_args[i] != NULL)
+	while (g_tkn_last->op_args[++i] != NULL)
 	{
 		printf("lex[%d] = %s - ", i, g_tkn_last->op_args[i]);
-		if (is_reg(g_tkn_last->op_args[i])
-			&& g_tkn_last->op->args_types[i] & T_REG)
-		{
-			g_tkn_last->args_type[i] = REGISTER;
-			g_tkn_last->num_byte_op += REG_CODE;
 
-			printf("REGISTER\nnumbyte_%d\n",
-			g_tkn_last->num_byte_op);
-		}
-		else if(is_direct(g_tkn_last->op_args[i])
-			&& g_tkn_last->op->args_types[i] & T_DIR)
-		{
-			g_tkn_last->args_type[i] = DIRECT;
-			g_tkn_last->num_byte_op += DIR_CODE;
-
-			printf("DIRECT\nnumbyte_%d\n",
-			g_tkn_last->num_byte_op);
-		}
-		else if(is_dir_label(g_tkn_last->op_args[i])
-			&& g_tkn_last->op->args_types[i] & T_DIR)
-		{
-			g_tkn_last->args_type[i] = DIRECT_LABEL;
-			g_tkn_last->num_byte_op += DIR_CODE;
-
-			printf("DIRECT_LABEL\nnumbyte_%d\n",
-			g_tkn_last->num_byte_op);
-		}
-		else if(is_indirect(g_tkn_last->op_args[i])
-			&& g_tkn_last->op->args_types[i] & T_IND)
-		{
-			g_tkn_last->args_type[i] = INDIRECT;
-			g_tkn_last->num_byte_op += IND_CODE;
-
-			printf("INDIRECT\nnumbyte_%d\n",
-			g_tkn_last->num_byte_op);
-		}
-		else if(is_ind_label(g_tkn_last->op_args[i])
-			&& g_tkn_last->op->args_types[i] & T_IND)
-		{
-			g_tkn_last->args_type[i] = INDIRECT_LABEL;
-			g_tkn_last->num_byte_op += IND_CODE;
-
-			printf("INDIRECT_LABEL\nnumbyte_%d\n",
-			g_tkn_last->num_byte_op);
-		}
+		if(check_reg(i))
+			continue ;
+		else if(check_dir(i))
+			continue ;
+		else if(check_ind(i))
+			continue ;
 		else
 		{
+			//printf("Syntax error at token [TOKEN][%d:009] INSTRUCTION \"%s\"", g_snum, g_tkn_last->op_args[i]);
 			error_event(ERR_ARGTP);
-			/*printf("argument type error\n");
-			error();*/
 		}
-		i++;
+		//i++;
 	}
 	printf("tkn_offset = %d\ntkn_numbyte = %d\n", g_tkn_last->offset,
 			g_tkn_last->num_byte_op);

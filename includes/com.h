@@ -149,6 +149,8 @@ typedef struct s_token	t_token;
 struct				s_token
 {
 	//char			*label;
+	u_int16_t		st_x;
+	u_int16_t		arg_x[3];
 	t_op			*op;//fill in join_token
 	char			**op_args;
 	t_2b			args_type[3];//fill in parse_op

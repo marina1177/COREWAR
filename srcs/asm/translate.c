@@ -5,14 +5,14 @@ void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 	int			move;
 	int			buf;
 
-	printf(">>_int_to_hex_>>\n");
+	printf(">>_int_to_hex_>> __%d\n", dec);
 	buf = dir_size;
 	move = 0;
 	u_int8_t tmp;
 	while (dir_size)
 	{
 		tmp = (u_int8_t)((dec >> move) & 0xFF);
-		printf("hex = %c = %d = 0x%x\n", tmp, (int)tmp, tmp);
+		//printf("hex = %c = %d = 0x%x\n", tmp, (int)tmp, tmp);
 		g_buf[*place + dir_size - 1] = tmp;
 		move += 8;
 		dir_size--;
@@ -44,7 +44,7 @@ void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
 	byte = 0;
 	i = 0;
 	k = (tkn)->op->args_num;
-	while ((type = tkn->args_type[i]) && k >= 0)
+	while ((type = tkn->args_type[i]) && k > 0)
 	{
 		if (type & REGISTER)
 		{
@@ -59,7 +59,7 @@ void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
 			byte ^= 1 << ((2 * k));
 			byte ^= 1 << ((2 * k) + 1);
 		}
-		printf("byte__:\n");print_bits(1, &byte, 0);printf("\n");
+		printf("byte__:\n");print_bits(1, &byte, 0);//printf("\n");
 		printf("hex_byte = 0x%x\n", byte);
 		i++;
 		k--;
@@ -75,7 +75,7 @@ int32_t	process_label(t_token **tkn, char *label)
 	tmp = g_label_first;
 	while (tmp)
 	{
-		if (!(ft_strcmp(label, tmp->label)))
+		if ((ft_strcmp(label, tmp->label)))
 			break ;
 		tmp = tmp->next;
 	}
@@ -83,7 +83,6 @@ int32_t	process_label(t_token **tkn, char *label)
 	{
 		printf("ERR_LABEL_EX!! -- <<add token x/y>>\n");
 		error();
-		//error_token(ERR_LABEL_EX, label);
 	}
 	off = tmp->offset - ((*tkn)->offset);
 	return (off);
@@ -101,16 +100,25 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 	{
 		d_size = (*tkn)->op->t_dir_size;
 		if ((*tkn)->args_type[i] == REGISTER)
+		{
+			printf("reg = %s\n", (*tkn)->op_args[i] + 1);
 			int_to_hex(ft_atoi_cor((*tkn)->op_args[i] + 1, 1), 1, cursor);//+ 'r'
 
-		else if ((*tkn)->args_type[i] == DIRECT)
-			int_to_hex(ft_atoi_cor((*tkn)->op_args[i] + 1, d_size), d_size, cursor);//+ '%'
+		}
 
+		else if ((*tkn)->args_type[i] == DIRECT)
+		{
+			printf("dir = %s\n", (*tkn)->op_args[i]);
+			int_to_hex(ft_atoi_cor((*tkn)->op_args[i] + 1, d_size), d_size, cursor);//+ '%'
+		}
 		else if ((*tkn)->args_type[i] == INDIRECT)
 			int_to_hex(ft_atoi_cor((*tkn)->op_args[i], IND_SIZE), IND_SIZE, cursor);
 
 		else if ((*tkn)->args_type[i] == DIRECT_LABEL)
+		{
+			printf("dir_lbl = %d\n", process_label(tkn, (*tkn)->op_args[i]));
 			int_to_hex(process_label(tkn, (*tkn)->op_args[i]), d_size, cursor);
+		}
 
 		else if ((*tkn)->args_type[i] == INDIRECT_LABEL)
 			int_to_hex(process_label(tkn, (*tkn)->op_args[i]), IND_SIZE, cursor);
@@ -130,7 +138,7 @@ void	translate(void)
 	print_champion_info();
 
 	cursor = 4 + PROG_NAME_LENGTH + 4;
-	printf("exec_bytes(%llu):", g_data->exec_bytes);
+	printf("exec_bytes(%llu):\n", g_data->exec_bytes);
 	int_to_hex(g_data->exec_bytes, 4, &cursor);
 	cursor = EXEC_START;
 	printf("EXEC_START\n");
@@ -152,10 +160,13 @@ void	translate(void)
 		}
 		printf("code operation(%d):\n", tmp->op->code);
 		int_to_hex(tmp->op->code, 1, &cursor);
+
 		printf("args_types_code:\n");
 		print_args_types_code(tmp, &cursor);
-		printf("args:\n");
+
+		printf("************ARGS*************:\n");
 		print_args(&tmp, &cursor);
+		printf("*****************************:\n");
 		tmp = tmp->next;
 	}
 }

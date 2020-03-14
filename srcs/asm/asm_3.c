@@ -37,6 +37,7 @@ void	solve_res(char *s, char **s_op, int a)
 
   	printf("##########SOLVE_RES##############\n");
 	printf("s =%s_\n",s);
+
 	if(a != -1)
 	{
 		op = s_op[a];
@@ -47,7 +48,7 @@ void	solve_res(char *s, char **s_op, int a)
 		lbllen = 0;
 		while (is_lblchar(s[lbllen]))
 			lbllen++;
-		if (s[lbllen] == ':')
+		if (s[lbllen] == ':' && lbllen != 0)
 			add_token(&(s[0]), lbllen, LABEL, -1);
 		else
 		{
@@ -55,7 +56,7 @@ void	solve_res(char *s, char **s_op, int a)
 			error_line(ERR_GET_TEXT, &(s[lbllen]), lbllen);
 		}
 		pnt = skip_space(&(s[lbllen + 1]));
-
+		g_rnum += (pnt - s);
 		if (pnt == op)
 		{
 			add_token(op, 0, INSTRUCTION, a);
