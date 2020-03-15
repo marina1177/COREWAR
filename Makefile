@@ -27,13 +27,14 @@ OBJ_DIR = obj/
 SRC_ASM_DIR = ./srcs/asm/
 SRC_ASM_LIST =	main.c \
 				error.c \
-				asm_1.c \
+				add_heder.c \
 				asm_2.c \
 				asm_3.c \
 				supfun.c \
 				free_data.c \
 				args_type.c \
-				translate.c \
+				translate.c\
+				parse_file.c \
 				is_type.c
 
 SRC_ASM = $(addprefix $(SRC_ASM_DIR), $(SRC_ASM_LIST))
