@@ -66,7 +66,7 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	size == 1 ? (num = (u_int8_t)num) : 1;
 	size == 2 ? (num = (int16_t)num) : 1;
 	size == 4 ? (num = (int32_t)num) : 1;
-	printf("ret_atoi_%lld\n", num);
+	printf("ret_atoi_%ld\n", num);
 	return (num);
 }
 

@@ -138,7 +138,7 @@ void	translate(void)
 	print_champion_info();
 
 	cursor = 4 + PROG_NAME_LENGTH + 4;
-	printf("exec_bytes(%llu):\n", g_data->exec_bytes);
+	printf("exec_bytes(%lu):\n", g_data->exec_bytes);
 	int_to_hex(g_data->exec_bytes, 4, &cursor);
 	cursor = EXEC_START;
 	printf("EXEC_START\n");

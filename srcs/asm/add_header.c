@@ -2,6 +2,13 @@
 
 void	save_head(char *p, t_4b type_h, t_4b *flg, unsigned long *len )
 {
+	if (*p == '\0')
+	{
+		if (type_h == 0)
+			g_data->head->prog_name[*len] = '\n';
+		else if (type_h == 1)
+			g_data->head->comment[*len] = '\n';
+	}
 	while (*p != '\"' && *p != '\0')
 	{
 		if ((type_h == 0 && *len > 128))
