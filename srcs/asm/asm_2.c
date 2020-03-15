@@ -122,7 +122,7 @@ void	add_lbl(char *s, const int size)
 		error_event(ERR_ALLOC);
 	ft_strncpy(g_label_last->label, s, size);
 	check_dup_label();
-	/*printf("label_last->label= %s\nlabel_last->offset = %ld\n",
-	 g_label_last->label, g_label_last->offset);*/
+	printf("label_last->label= %s\nlabel_last->offset = %d\n",
+	 g_label_last->label, g_label_last->offset);
 
 }

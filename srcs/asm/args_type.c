@@ -89,12 +89,12 @@ void	parse_args_type()
 
 		if(check_reg(i))
 		{
-			printf("is_reg_%s\n",g_tkn_last->op_args[i]);
+			//printf("is_reg_%s\n",g_tkn_last->op_args[i]);
 			continue ;
 		}
 		else if(check_dir(i))
 		{
-			printf("is_dir_%s\n",g_tkn_last->op_args[i]);
+			//printf("is_dir_%s\n",g_tkn_last->op_args[i]);
 			continue ;
 		}
 		else if(check_ind(i))
