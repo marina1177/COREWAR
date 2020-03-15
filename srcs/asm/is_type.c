@@ -64,6 +64,7 @@ int	is_dir_label(char *line)
 	i = 0;
 	if (line[i++] == DIRECT_CHAR && line[i++] == LABEL_CHAR)
 	{
+		printf("dir_label_%s\n",&(line[i]));
 		len = ft_strlen(&(line[i]));
 		while (is_lblchar(line[i]) && i < len)
 			i++;

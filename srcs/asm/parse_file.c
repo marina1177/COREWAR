@@ -24,29 +24,6 @@ void		parse_str(char **buf)
 		return ;
 }
 
-static char	*find_newline(char *s)
-{
-	if (s)
-		while (*s)
-			if (*s++ == '\n')
-				return (s - 1);
-	return (NULL);
-}
-
-char		*read_input(int fd)
-{
-	static char	*tail = NULL;
-	char		*newline;
-
-	while (1)
-	{
-		if ((newline = find_newline(tail)))
-			return (get_new_line(&tail, newline));
-		else if (!(tail = read_more(tail, fd)))
-			return (NULL);
-	}
-}
-
 void	parse_file(int fd_s)
 {
 	char	*buf;
@@ -54,7 +31,7 @@ void	parse_file(int fd_s)
 
 	g_snum = 0;
 
-	while ((size = get_next_line(fd_s, &buf)) > 0)//!!!!СОХРАНЯТЬ NEWLINE!!!!
+	while ((size = get_next_line(fd_s, &buf)) > 0)
 	{
 		printf("get_%s\n", buf);
 		parse_str(&buf);
