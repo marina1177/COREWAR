@@ -6,7 +6,7 @@
 /*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/14 18:35:11 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/03/14 20:39:17 by sscottie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,25 @@ int		check_name(char *name)
 		return (1);
 }
 
+int		check_magic(unsigned char *magic)
+{
+	if (magic[0] == 0x0 && magic[1] == 0xea && magic[2] == 0x83 && magic[3] == 0xf3)
+		return (0);
+	return (1);
+}
+
 t_cw	*arg_analize(char **av)
 {
 	t_cw	*cw;
 	int		i;
 	int		order;
+	int		fd;
 
-	i = 0;
+	unsigned char buf[4];
+	
+	i = 1;
 	order = 0;
+	fd = 0;
 	if (!(cw = (t_cw *)malloc(sizeof(t_cw))))
 		return (NULL);
 	while (av[i])
@@ -58,8 +69,25 @@ t_cw	*arg_analize(char **av)
 		{
 			if (check_name(av[i]) == 0)
 			{
-				write(1, "worked\n", 7);
-
+				fd = open(av[i], O_RDONLY);
+				ft_printf("fd = %d\n", fd);
+				if (fd == -1)
+                	perror("open failed on input file");
+				else
+				{
+					int t = 0;
+					while (read(fd, &buf[t], 1) && t < MAGIC_LEN)
+					{
+						ft_printf("%02x ", buf[t]);
+						t++;
+					}
+					write(1, "\n", 1);
+					if (check_magic(buf))
+						return (NULL);
+					ft_printf("MAGIC GOOD\n");
+					close(fd);
+				}
+				
 			}
 		} 
 		i++;
@@ -67,7 +95,7 @@ t_cw	*arg_analize(char **av)
 	return (cw);
 }
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_cw	*cw;
 
