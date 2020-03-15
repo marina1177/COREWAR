@@ -169,4 +169,7 @@ void	translate(void)
 		printf("*****************************:\n");
 		tmp = tmp->next;
 	}
+	size_t size = EXEC_START + g_data->exec_bytes;
+	//print_bits(size,(void *)g_buf, 1);
+	print_memory((void *)g_buf, size);
 }

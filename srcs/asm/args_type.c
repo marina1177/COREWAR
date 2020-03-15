@@ -2,7 +2,10 @@
 
 int check_reg(int i)
 {
-	if (is_reg(g_tkn_last->op_args[i])
+	char *line;
+
+	line = skip_space(g_tkn_last->op_args[i]);
+	if (is_reg(line)
 			&& g_tkn_last->op->args_types[i] & T_REG)
 	{
 		g_tkn_last->args_type[i] = REGISTER;
@@ -17,7 +20,10 @@ int check_reg(int i)
 
 int check_dir(int i)
 {
-	if(is_direct(g_tkn_last->op_args[i])
+	char *line;
+
+	line = skip_space(g_tkn_last->op_args[i]);
+	if(is_direct(line)
 			&& g_tkn_last->op->args_types[i] & T_DIR)
 	{
 		g_tkn_last->args_type[i] = DIRECT;
@@ -26,7 +32,7 @@ int check_dir(int i)
 		printf("DIRECT\nnumbyte_%d\n",g_tkn_last->num_byte_op);
 		return (TRUE);
 	}
-	else if(is_dir_label(g_tkn_last->op_args[i])
+	else if(is_dir_label(line)
 			&& g_tkn_last->op->args_types[i] & T_DIR)
 	{
 		g_tkn_last->args_type[i] = DIRECT_LABEL;
@@ -41,7 +47,10 @@ int check_dir(int i)
 
 int check_ind(int i)
 {
-	if(is_indirect(g_tkn_last->op_args[i])
+	char *line;
+
+	line = skip_space(g_tkn_last->op_args[i]);
+	if(is_indirect(line)
 			&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args_type[i] = INDIRECT;
@@ -50,7 +59,7 @@ int check_ind(int i)
 		printf("INDIRECT\nnumbyte_%d\n", g_tkn_last->num_byte_op);
 		return (TRUE);
 	}
-	else if(is_ind_label(g_tkn_last->op_args[i])
+	else if(is_ind_label(line)
 		&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args_type[i] = INDIRECT_LABEL;
@@ -79,9 +88,15 @@ void	parse_args_type()
 		printf("lex[%d] = %s - ", i, g_tkn_last->op_args[i]);
 
 		if(check_reg(i))
+		{
+			printf("is_reg_%s\n",g_tkn_last->op_args[i]);
 			continue ;
+		}
 		else if(check_dir(i))
+		{
+			printf("is_dir_%s\n",g_tkn_last->op_args[i]);
 			continue ;
+		}
 		else if(check_ind(i))
 			continue ;
 		else
