@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/14 20:39:17 by sscottie         ###   ########.fr       */
+/*   Updated: 2020/03/15 18:04:44 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../includes/vm.h"
 
-void	print_usage(void)
+int		print_usage(void)
 {
 	ft_printf("\033[0;32musage:\nflags: etc\n\033[0m");
+	exit(0);
+	return (1);
 }
 
 int		check_name(char *name)
@@ -28,25 +30,14 @@ int		check_name(char *name)
 		return (1);
 }
 
-int		check_magic(unsigned char *magic)
-{
-	if (magic[0] == 0x0 && magic[1] == 0xea && magic[2] == 0x83 && magic[3] == 0xf3)
-		return (0);
-	return (1);
-}
-
 t_cw	*arg_analize(char **av)
 {
 	t_cw	*cw;
 	int		i;
 	int		order;
-	int		fd;
 
-	unsigned char buf[4];
-	
-	i = 1;
+	i = 0;
 	order = 0;
-	fd = 0;
 	if (!(cw = (t_cw *)malloc(sizeof(t_cw))))
 		return (NULL);
 	while (av[i])
@@ -69,25 +60,8 @@ t_cw	*arg_analize(char **av)
 		{
 			if (check_name(av[i]) == 0)
 			{
-				fd = open(av[i], O_RDONLY);
-				ft_printf("fd = %d\n", fd);
-				if (fd == -1)
-                	perror("open failed on input file");
-				else
-				{
-					int t = 0;
-					while (read(fd, &buf[t], 1) && t < MAGIC_LEN)
-					{
-						ft_printf("%02x ", buf[t]);
-						t++;
-					}
-					write(1, "\n", 1);
-					if (check_magic(buf))
-						return (NULL);
-					ft_printf("MAGIC GOOD\n");
-					close(fd);
-				}
-				
+				write(1, "worked\n", 7);
+
 			}
 		} 
 		i++;
@@ -95,18 +69,63 @@ t_cw	*arg_analize(char **av)
 	return (cw);
 }
 
-int		main(int ac, char **av)
+void	parse_flag_n(t_cw *cw, char *arg)
+{
+	
+	
+	
+}
+
+static int		check_option_n(char *s_nplayer, t_cwoptions *cwoptions,
+	t_player *players)
+{
+	int		player_n;
+
+	if (!ft_isint(s_nplayer))
+		ret_error("Error: failed value for option -n\n", -1);
+	player_n = ft_atoi(s_nplayer);
+	if (player_n < 1 || player_n > cwoptions->q_players)
+		ret_file_error("Error: failed a number of the player for option -n: ",
+		s_nplayer, " is less than 1 or more than max quantity of players\n",
+		-1);
+	if (players[player_n - 1].id != 0)
+		ret_file_error("Error: a number of the player #", s_nplayer,
+		" is busy\n", -1);
+	return (player_n);
+}
+
+
+
+
+void	parse_args(t_cw *cw, int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	while (++i < ac)
+	{
+		if (!ft_strcmp(av[i], "-n"))
+		{
+			parse_flag_n(cw, av[i + 1]);
+			i++;
+		}
+		else if (!ft_strcmp(av[i], "-dump"))
+			parse_flag_dump(i + 1, ac, av, cw);	
+		else
+			parse_players(cw, av[i]);
+		i++;
+	}
+}
+
+int     main(int ac, char **av)
 {
 	t_cw	*cw;
 
-	if (ac == 1)
+	ac < 2 ? print_usage() : 0;	
+	if (is_valid_args(ac, av))
 	{
-		print_usage();
-		return (0);
-	}
-	else
-	{
-		cw = arg_analize(av);
+		cw = t_cw_create();
+		parse_args(cw, ac, av);
 	}
 	return (0);
 }
