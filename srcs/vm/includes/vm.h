@@ -2,7 +2,9 @@
 # define VM_H
 
 # include "op.h"
-# include "ft_printf.h"
+# include "../libft/includes/ft_printf.h"
+# include <fcntl.h>
+
 
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
@@ -175,20 +177,13 @@
 // 	}
 // };
 
-typedef	struct	s_cw
-{
-
-	t_player		**champs;
-
-}				t_cw;
-
 typedef	struct			s_player
 {
 	int					num;
 	char				*name;
 	char				*comment;
-	int					exec_size;
-	char				*exec;
+	int					code_size;
+	char				*code;
 }						t_player;
 
 
@@ -234,32 +229,42 @@ typedef struct			s_vm
  вот что я предлагаю
  */
 
+typedef	struct			s_player
+{
+	int					num;
+	char				*name;
+	char				*comment;
+	int					code_size;
+	char				*code;
+	struct s_player		*next;
+}						t_player;
+
 typedef struct 		s_players
 {
-	int				size; 				// кол-во игроков
-	struct s_player	**players_arr; 		//массив указателей на игроков
+	int				qty;				// кол-во игроков	 			
+	struct s_player	*first_player; 		//массив указателей на игроков
 	struct s_player *last_alive;		// последний живой игрок
 	size_t			lives_num;          // число жизней, относится к игрокам
-}					t_players
+}					t_players;
 
 typedef struct 			s_carriages
 {
 	struct s_carriage	*carriage;
 	int					carriage_num;
-}						t_carriages
+}						t_carriages;
 
-typedef struct 			s_modes
+typedef struct 			s_mods
 {
 	/* 
 	 здесь все показатели по модам вывода
 	 */
-	ssize_t				dump_cycle;				// modes
-	int					dump_print_mode;		// modes
-	ssize_t				show_cycle;				// modes
-	int					show_print_mode;		// modes
-	t_bool				display_aff;			// modes
-	int					log;					// modes
-}						t_modes
+	ssize_t				dump_cycle;				// mods
+	int					dump_print_mode;		// mods
+	ssize_t				show_cycle;				// mods
+	int					show_print_mode;		// mods
+	bool				display_aff;			// mods
+	int					log;					// mods
+}						t_mods;
 
 typedef struct			s_vm_info
 {
@@ -269,20 +274,37 @@ typedef struct			s_vm_info
 	ssize_t				cycles_to_die;			// vm
 	ssize_t				cycles_after_check;		// vm
 	size_t				checks_num;				// vm
-}						t_vm_info
+}						t_vm_info;
 
+typedef struct			s_vs
+{
+	
+}						t_vs;
 
 //вм структура будет выглядеть вот так
 
 typedef struct			s_vm
 {
-	struct s_vm_info	*vm_info;
+	struct s_data		*data;
 	struct s_players	*players;
-	struct s_cursors	*cursors;	
+	struct s_carriages	*carr;	
 	struct s_vs			*vs;					
-	struct s_modes		*modes;	
+	struct s_mods		*mods;	
 }						t_vm;
 
+/*
+** t_players functions
+*/
+t_players *t_players_new(void);
+t_player *t_players_add_new_player(t_players *players, int number, t_vm *vm);
 
-//Итог: скрыли все кишки, упростили структуры по 15 элементов. 
-// структура данных для игроков/кареток (массивы/списки) обсуждаема.
+/*
+** t_players functions
+*/
+t_player *t_player_create(int number, t_vm *vm);
+
+/*
+** errors handling
+*/
+int		handle_error(char *s);
+int		handle_error_vm(char *error_message, t_vm *vm);

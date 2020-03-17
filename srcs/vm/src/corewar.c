@@ -12,120 +12,63 @@
 
 #include "../includes/vm.h"
 
-int		print_usage(void)
+static int	is_number_unique(t_vm *vm, int number)
 {
-	ft_printf("\033[0;32musage:\nflags: etc\n\033[0m");
-	exit(0);
-	return (1);
-}
+	t_player *temp;
 
-int		check_name(char *name)
-{
-	int i;
-
-	i = ft_strlen(name) - 1;
-	if (name[i] == 'r' && name[i - 1] == 'o' && name[i - 2] == 'c' && name[i - 3] == '.')
-		return (0);
-	else
-		return (1);
-}
-
-t_cw	*arg_analize(char **av)
-{
-	t_cw	*cw;
-	int		i;
-	int		order;
-
-	i = 0;
-	order = 0;
-	if (!(cw = (t_cw *)malloc(sizeof(t_cw))))
-		return (NULL);
-	while (av[i])
+	temp = vm->players->first_player;
+	while (temp)
 	{
-		if (av[i][0] == '-')
-		{
-			if (ft_strcmp(av[i], "-n") == 0 && av[i + 1])
-			{
-				if (ft_atoi(av[i + 1]) >= 1 && ft_atoi(av[i + 1]) <= MAX_PLAYERS && av[i + 2])
-				{
-					if (check_name(av[i + 2]) == 0)
-					{
-						write(1, "worked\n", 6);
-						
-					}
-				}
-			}
-		}
-		else
-		{
-			if (check_name(av[i]) == 0)
-			{
-				write(1, "worked\n", 7);
-
-			}
-		} 
-		i++;
+		if (temp->num == number)
+			handle_error_vm("Ambiguous player number for %s", vm);
+		temp = temp->next;
 	}
-	return (cw);
 }
 
-void	parse_flag_n(t_cw *cw, char *arg)
+static int	is_valid_flag_n(t_vm *vm, char *num)
 {
-	
-	
-	
+	int	number;
+
+	if (!is_integer(num))
+		handle_error(sprintf("number after -n (%s) is not integer"));
+	number = ft_atoi(num);
+	if (number < 1 || number > MAX_PLAYERS)
+		handle_error(sprintf("-n argument (%s) must be in range \
+							 [1, MAX_PLAYERS] (op.h defined value)"));
+	!is_number_unique ? 1 : 0;	
+	return (number);
 }
 
-static int		check_option_n(char *s_nplayer, t_cwoptions *cwoptions,
-	t_player *players)
-{
-	int		player_n;
-
-	if (!ft_isint(s_nplayer))
-		ret_error("Error: failed value for option -n\n", -1);
-	player_n = ft_atoi(s_nplayer);
-	if (player_n < 1 || player_n > cwoptions->q_players)
-		ret_file_error("Error: failed a number of the player for option -n: ",
-		s_nplayer, " is less than 1 or more than max quantity of players\n",
-		-1);
-	if (players[player_n - 1].id != 0)
-		ret_file_error("Error: a number of the player #", s_nplayer,
-		" is busy\n", -1);
-	return (player_n);
-}
-
-
-
-
-void	parse_args(t_cw *cw, int ac, char **av)
+void	parse_args(t_vm *vm, int ac, char **av)
 {
 	int	i;
+	int number;
 
 	i = 0;
 	while (++i < ac)
 	{
 		if (!ft_strcmp(av[i], "-n"))
 		{
-			parse_flag_n(cw, av[i + 1]);
+			number = is_valid_flag_n(vm, av[++i]);
+			if (is_valid_player(vm, av[++i]))
+				t_players_add_new_player(vm->players, number, vm);
 			i++;
 		}
-		else if (!ft_strcmp(av[i], "-dump"))
-			parse_flag_dump(i + 1, ac, av, cw);	
+		else if (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-d"))
+			parse_flag_dump(i + 1, ac, av, vm);	
 		else
-			parse_players(cw, av[i]);
+			parse_player(vm, av[i]);
 		i++;
 	}
 }
 
 int     main(int ac, char **av)
 {
-	t_cw	*cw;
+	t_vm	*vm;
 
 	ac < 2 ? print_usage() : 0;	
-	if (is_valid_args(ac, av))
-	{
-		cw = t_cw_create();
-		parse_args(cw, ac, av);
-	}
+	vm = t_vm_create();
+	parse_args(vm, ac, av);
+	
 	return (0);
 }

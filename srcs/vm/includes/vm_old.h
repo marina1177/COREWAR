@@ -199,12 +199,12 @@ typedef	struct			s_carriage
 	struct s_carriage	*next;
 	struct s_carriage	*prev;
 }						t_carriage;
-typedef	struct	s_cw
+typedef	struct	s_vm
 {
 	t_carriage		*cart;
 	t_player		*champs;
 
-}				t_cw;
+}				t_vm;
 
 
 

@@ -1,17 +1,16 @@
 #include "../includes/vm.h"
 
-
-
-static int	is_valid_flag_n(char *num)
+static int	is_integer(char *s)
 {
-	int	number;
+	size_t	len;
+	int		n;
 
-	if (!is_integer(num))
-		handle_error(sprintf("number after -n (%s) is not integer"));
-	number = ft_atoi(num);
-	if (number < 1 || number > MAX_PLAYERS)
-		handle_error(sprintf("-n argument (%s) must be between \
-							 1 and MAX_PLAYERS (op.h defined value)"));	
+	n = ft_atoi(s);
+	len = ft_strlen(s);
+	if ((s[0] != '-' && !ft_isdigit(s[0])) || (int)len != ft_ilen(n))
+		return (0);
+	if (s[0] == '-' && len == 1)
+		return (0);
 	return (1);
 }
 
@@ -24,25 +23,21 @@ static int	is_valid_flag_dump(char *num)
 		handle_error(sprintf("number after -n (%s) is not integer"));
 	number = ft_atoi(num);
 	if (number < 0)
-		handle_error(sprintf("-dump argument (%s) must be numeric"));
+		handle_error(sprintf("-dump argument (%s) must be equal or more tham 0"));
 	return (1);
 }
 
-static int	is_valid_player(char *player)
+static int is_valid_op_h_constants(void)
 {
-	char *s;
-	int		fd;
-
-	if ((fd = open(player, O_RDONLY)) == -1)
-		handle_error(sprintf("unable to open file %s"));
+	//check all op_h constants
 	return (1);
 }
 
-int		is_valid_args(int ac, char **av)
+int		is_valid_input(int ac, char **av)
 {
 	int	i;
 
-	i = 1;
+	i = 1;		
 	while (i < ac)
 	{
 		if (!ft_strcmp(av[i], "-n"))

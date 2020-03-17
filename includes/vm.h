@@ -175,12 +175,12 @@ static t_op			g_op_tab[16] = {
 };
 
 
-typedef	struct	s_cw
+typedef	struct	s_vm
 {
 
 	t_player		**champs;
 
-}				t_cw;
+}				t_vm;
 
 typedef	struct			s_player
 {
