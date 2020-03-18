@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-static int	t_players_get_next_number(t_players *players)
+int	t_players_get_next_number(t_players *players)
 {
 	t_player	*temp;
 	int			i;
@@ -92,9 +92,12 @@ t_players *t_players_new(void)
 	t_players	*new;
 
 	new = (t_players *)malloc(sizeof(t_players));
-	new->qty = 0;
-	new->first_player = NULL;
-	new->last_alive = NULL;
-	new->lives_num = -1;
+	if (new)
+	{
+		new->qty = 0;
+		new->first_player = NULL;
+		new->last_alive = NULL;
+		new->lives_num = -1;
+	}
 	return (new);
 }

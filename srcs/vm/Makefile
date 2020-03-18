@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
 
 # COLORS
 
@@ -20,51 +19,83 @@ RED_B = \033[1;31m
 BLUE = \033[1;34m
 RESET = \033[0m
 
-NAME 		= corewar
-CFLAGS		= -Wall -Wextra -Werror
-INC			= -I include
-FT_PF 		= ./lib/ft_printf/
-SRC_DIR		= ./src/
-OBJ_DIR 	= ./temp/
-PF_A		= ./lib/ft_printf/libftprintf.a
-HEADER		= vm.h
-PF_H		= ft_printf.h
-PF_INC		= -I ./lib/ft_printf/include
+ALL_C_ASM = asm.c add_args_code.c add_null_octets.c add_str_to_byte_code.c add_cec.c case_of_error.c \
+		check_args.c check_name.c convert_labels_to_numbers.c convert_operations_to_byte_code.c \
+		create_file.c do_parse.c encrypt_line.c fill_by_zeroes.c get_args.c initialize.c print_func.c \
+		read_line.c read_operation.c wrong_end_of_line.c free_struct.c init_operations.c only_spaces.c add_arg.c op.c \
+		check_name_and_comment.c getter.c have_end_quote.c put_after_quote.c read_.c
 
-SRC_VM_C		= corewar.c \
+ALL_C_CW = main.c \
+			handle_error.c \
+			input_validation.c \
+			is_valid_player.c \
+			main.c \
+			t_carriage.c \
+			t_carriages.c \
+			t_mods.c \
+			t_player.c \
+			t_players.c \
+			t_vm.c \
+			t_vm_info.c \
+			t_vs.c
 
-SRC_VM	= $(addprefix $(SRC_DIR), $(SRC_VM_C))
-OBJ_VM	= $(addprefix $(OBJ_DIR), $(patsubst %.c, %.o, $(SRC_VM_C)))
+SRCDIR_ASM = ./srcs_asm
+OBJDIR_ASM = ./objs_asm
 
-all: $(NAME) 
+SRCDIR_CW = .
+OBJDIR_CW = ./objs_vm
 
-$(NAME):: pf
-$(NAME):: $(SRC_VM) $(OBJ_DIR) $(OBJ_VM) 
-	@echo "$(BLUE)corewar:   $(GREEN)Compiling$(RESET)"
-	@gcc $(CFLAGS) $(OBJ_VM) -o $(NAME) $(INC) $(PF_INC) $(PF_A)
-	@echo "$(BLUE)corewar:   $(GREEN)corewar has been created$(RESET)"
+ALL_OBJ_ASM = $(ALL_C_ASM:%.c=%.o)
+OBJS_ASM = $(addprefix $(OBJDIR_ASM)/, $(ALL_OBJ_ASM))
 
+ALL_OBJ_CW = $(ALL_C_CW:%.c=%.o)
+OBJS_CW = $(addprefix $(OBJDIR_CW)/, $(ALL_OBJ_CW))
+NAME_ASM = asm
+NAME_CW = corewar
 
-$(OBJ_DIR): 
-	@mkdir -p $(OBJ_DIR)
-	@gcc $(CFLAGS) -c $(SRC_VM) -o $(OBJ_VM) $(INC) $(PF_INC)
+INCLUDES_ASM = ./includes/op.h ./includes/asm.h
+INCLUDES_DIR = ../../includes/
+INCLUDES_CW = $(INCLUDES_DIR)op.h $(INCLUDES_DIR)vm.h $(INCLUDES_DIR)vm_error.h
 
-# $(OBJ_DIR)%.o: %.c $(HEADER)
-# 	gcc $(CFLAGS) -c $(SRC_LS) -o $(OBJ_LS) $(INC) $(PF_INC)
+COMP_LIB = make -C ../../libft_clala/
 
-pf: 
-	@echo "$(BLUE)ft_printf: $(GREEN)Compiling $(RESET)"	
-	@make -C ./lib/ft_printf/
+FLAGS = -Wall -Wextra -Werror
+
+LIBFT = ../../libft_clala/libft.a
+
+all: lib $(NAME_CW)
+
+$(NAME_ASM): ./ft_printf/libft/libft.a $(OBJS_ASM)
+	gcc $(FLAGS) $(OBJS_ASM) -L./ft_printf/libft -lft -o $@
+
+$(OBJDIR_ASM):
+	/bin/mkdir -p $(OBJDIR_ASM)
+
+$(OBJDIR_ASM)/%.o: $(SRCDIR_ASM)/%.c $(INCLUDES_ASM) | $(OBJDIR_ASM)
+	gcc $(FLAGS) -I./includes -I./ft_printf/libft/includes -c $< -o $@
+
+$(NAME_CW): $(LIBFT) $(OBJS_CW)
+	gcc $(FLAGS) $(OBJS_CW) -L ../../libft -lft -o $@
+
+$(OBJDIR_CW):
+	/bin/mkdir -p $(OBJDIR_CW)
+
+$(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
+	gcc $(FLAGS) -I../../includes -I../../libft/includes -c $< -o $@
+
+lib:
+	make -C ../../libft_clala/
 
 clean:
-	@make -C ./lib/ft_printf clean
-	@echo "$(RED_B)corewar:   $(RED)object files have been deleted$(RESET)"
-	@rm -rf $(OBJ_DIR)
+	@/bin/rm -rf $(OBJDIR_ASM) $(OBJDIR_CW)
+	@$(COMP_LIB) clean
+	@$(COMP_PRINTF) clean
 
-fclean:
-	@rm -rf $(OBJ_DIR)
-	@rm -rf $(NAME)
-	@make -C ./lib/ft_printf fclean
-	@echo "$(RED_B)corewar:  $(RED) corewar have been deleted$(RESET)" 
+fclean: clean
+	@/bin/rm -rf $(NAME_ASM) $(NAME_CW)
+	@$(COMP_LIB) fclean
+	@$(COMP_PRINTF) fclean
 
 re: fclean all
+
+.PHONY: lib clean fclean all re ft_printf

@@ -12,22 +12,15 @@
 
 #include "../../includes/vm.h"
 
-static int	is_valid_op_h(void)
+t_vs *t_vs_new(void)
 {
-	return (1);
-}
+	t_vs	*new;
 
-static t_vm *t_vm_new(void)
-{
-	t_vm	*vm;
+	if ((new = (t_vs *)malloc(sizeof(t_vs))))
+	{
 
-	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error("Malloc error") : 0;	
-	!(vm->data = t_vm_info_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->players = t_players_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->carr = t_carriages_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->mods = (t_mods *)malloc(sizeof(t_mods))) ? handle_error_vm("Malloc error", vm) : 0;
-	return	(vm);
+	}
+	return (new);
 }
 
 t_vm *t_vm_create(void)

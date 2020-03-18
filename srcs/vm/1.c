@@ -2,8 +2,23 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../includes/op.h"
+//# include "../../includes/op.h"
+# include "../../includes/vm.h"
 
+
+int main()
+{
+	t_dlist *carriages =  t_dlist_new();
+	t_carriage *carr1 = t_carriage_new(1);
+	t_carriage *carr2 = t_carriage_new(2);
+	t_dlist_append(carriages, t_dlist_node_new(carr1));
+	t_dlist_append(carriages, t_dlist_node_new(&carr2));
+	
+	printf("%d\n", ((t_carriage *)(carriages->head->data))->num);
+	return (0);
+}
+
+/*
 int main(int ac, char **av)
 {
 	int a;
@@ -20,3 +35,4 @@ int main(int ac, char **av)
 	printf("%d", a == COREWAR_EXEC_MAGIC);
 	return (0);
 }
+*/

@@ -1,10 +1,13 @@
 #ifndef VM_H
 # define VM_H
 
-# include "op.h"
-# include "../libft/includes/ft_printf.h"
 # include <fcntl.h>
-
+# include <stdbool.h>
+# include <string.h>
+# include <stdlib.h>
+# include "op.h"
+# include "../libft_clala/includes/ft_printf.h"
+# include "../libft_clala/includes/libft.h"
 
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
@@ -177,27 +180,14 @@
 // 	}
 // };
 
-typedef	struct			s_player
+
+/*
+typedef struct 			s_carriages
 {
-	int					num;
-	char				*name;
-	char				*comment;
-	int					code_size;
-	char				*code;
-}						t_player;
-
-
-typedef	struct			s_carriage
-{
-	int					num_of_carriage;
-	int					carry;
-	int					regs[REG_NUMBER];
-
-	struct s_carriage	*next;
-	struct s_carriage	*prev;
-}						t_carriage;
-#endif
-
+	struct s_carriage	*carr;
+	int					qty;
+}						t_carriages;
+*/
 
 /*
 //структура бражника (для сравнения)
@@ -229,12 +219,15 @@ typedef struct			s_vm
  вот что я предлагаю
  */
 
+
+
+
 typedef	struct			s_player
 {
 	int					num;
 	char				*name;
 	char				*comment;
-	int					code_size;
+	unsigned int		code_size;
 	char				*code;
 	struct s_player		*next;
 }						t_player;
@@ -247,17 +240,8 @@ typedef struct 		s_players
 	size_t			lives_num;          // число жизней, относится к игрокам
 }					t_players;
 
-typedef struct 			s_carriages
-{
-	struct s_carriage	*carriage;
-	int					carriage_num;
-}						t_carriages;
-
 typedef struct 			s_mods
-{
-	/* 
-	 здесь все показатели по модам вывода
-	 */
+{	
 	ssize_t				dump_cycle;				// mods
 	int					dump_print_mode;		// mods
 	ssize_t				show_cycle;				// mods
@@ -267,8 +251,7 @@ typedef struct 			s_mods
 }						t_mods;
 
 typedef struct			s_vm_info
-{
-	//данные арены и работы вм
+{	
 	uint8_t				arena[MEM_SIZE];
 	ssize_t				cycles;					// vm	
 	ssize_t				cycles_to_die;			// vm
@@ -281,16 +264,30 @@ typedef struct			s_vs
 	
 }						t_vs;
 
-//вм структура будет выглядеть вот так
-
 typedef struct			s_vm
 {
-	struct s_data		*data;
+	struct s_vm_info	*data;
 	struct s_players	*players;
 	struct s_carriages	*carr;	
 	struct s_vs			*vs;					
 	struct s_mods		*mods;	
 }						t_vm;
+
+typedef struct			s_carriage
+{
+	struct s_carriage	*next;
+	struct s_carriage	*prev;
+	int					num;
+	int					carry;
+	int					regs[REG_NUMBER];
+}						t_carriage;
+
+typedef struct			s_carriages
+{
+	struct s_carriage	*head;
+	struct s_carriage	*tail;
+	int					size;
+}						t_carriages;
 
 /*
 ** t_players functions
@@ -301,10 +298,38 @@ t_player *t_players_add_new_player(t_players *players, int number, t_vm *vm);
 /*
 ** t_players functions
 */
-t_player *t_player_create(int number, t_vm *vm);
+t_player			*t_player_create(int number, t_vm *vm);
 
 /*
 ** errors handling
 */
-int		handle_error(char *s);
-int		handle_error_vm(char *error_message, t_vm *vm);
+int					handle_error(char *s);
+int					handle_error_vm(char *error_message, t_vm *vm);
+
+/*
+** t_vm_info
+*/
+t_vm_info			*t_vm_info_new(void);
+
+/*
+** t_carriage and t_carriages
+*/
+t_carriage			*t_carriage_new(int num);
+t_carriage			*t_carriages_insert_after(t_carriages *list,
+							t_carriage *node, t_carriage *new);
+t_carriage			*t_carriages_insert_before(t_carriages *list,
+							t_carriage *node, t_carriage *new);
+t_carriage			*t_carriages_push(t_carriages *list, t_carriage *new);
+t_carriage			*t_carriages_append(t_carriages *list, t_carriage *new);
+t_carriages			*t_carriages_new();
+t_carriage			*t_carriages_pop(t_carriages *list, t_carriage *node);
+t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node);
+
+/*
+** Validation
+*/
+int	is_valid_player(char *arg, t_vm *vm, t_player *player);
+int	is_integer(char *s);
+
+
+#endif

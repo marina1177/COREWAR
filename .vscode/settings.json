@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"limits": "c"
+		"limits": "c",
+		"vm.h": "c",
+		"op.h": "c"
 	}
 }

@@ -23,20 +23,27 @@ static int	is_number_unique(t_vm *vm, int number)
 			handle_error_vm("Ambiguous player number for %s", vm);
 		temp = temp->next;
 	}
+	return (1);
 }
 
 static int	is_valid_flag_n(t_vm *vm, char *num)
 {
-	int	number;
+	int		number;
+	char	*s;
 
 	if (!is_integer(num))
-		handle_error(sprintf("number after -n (%s) is not integer"));
+		handle_error_vm(ft_asprintf(&s, "number after -n (%s) is not integer", num), vm);
 	number = ft_atoi(num);
 	if (number < 1 || number > MAX_PLAYERS)
-		handle_error(sprintf("-n argument (%s) must be in range \
-							 [1, MAX_PLAYERS] (op.h defined value)"));
+		handle_error_vm(ft_asprintf(&s, "-n argument (%s) must be in range \
+							 [1, MAX_PLAYERS] (op.h defined value)", num), vm);
 	!is_number_unique ? 1 : 0;	
 	return (number);
+}
+
+static int	parse_flag_dump(t_vm *vm, char *num)
+{
+	return 1;
 }
 
 void	parse_args(t_vm *vm, int ac, char **av)
@@ -50,14 +57,14 @@ void	parse_args(t_vm *vm, int ac, char **av)
 		if (!ft_strcmp(av[i], "-n"))
 		{
 			number = is_valid_flag_n(vm, av[++i]);
-			if (is_valid_player(vm, av[++i]))
-				t_players_add_new_player(vm->players, number, vm);
+			is_valid_player(vm, av[++i],
+			t_players_add_new_player(vm->players, number, vm));				
 		}
 		else if (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-d"))
-			parse_flag_dump(i + 1, ac, av, vm);
+			parse_flag_dump(vm, av[i + 1]);
 		else
-			parse_player(vm, av[i]);
-		i++;
+			is_valid_player(vm, av[i],
+			t_players_add_new_player(vm->players, 0, vm));
 	}
 }
 

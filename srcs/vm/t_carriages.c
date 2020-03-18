@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist.c                                            :+:      :+:    :+:   */
+/*   t_carriages.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dlist.h"
+#include "../../includes/vm.h"
 
-t_dlist			*t_dlist_new(void)
+t_carriages			*t_carriages_new(void)
 {
-	t_dlist		*new;
+	t_carriages		*new;
 
-	new = (t_dlist *)malloc(sizeof(t_dlist));
+	new = (t_carriages *)malloc(sizeof(t_carriages));
 	new->size = 0;
 	new->head = NULL;
 	new->tail = NULL;
 	return (new);
 }
 
-t_dlist_node	*t_dlist_pop(t_dlist *list, t_dlist_node *node)
+t_carriage	*t_carriages_pop(t_carriages *list, t_carriage *node)
 {
 	if (!node->prev)
 		list->head = node->next;
@@ -43,9 +43,9 @@ t_dlist_node	*t_dlist_pop(t_dlist *list, t_dlist_node *node)
 	return (node);
 }
 
-t_dlist			*t_dlist_remove_node(t_dlist *list, t_dlist_node *node)
+t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node)
 {
-	t_dlist_pop(list, node);
+	t_carriages_pop(list, node);
 	free(node);
 	return (list);
 }

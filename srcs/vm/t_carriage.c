@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_node.c                                       :+:      :+:    :+:   */
+/*   t_carriage.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dlist.h"
+#include "../../includes/vm.h"
 
-t_dlist_node		*t_dlist_node_new(void *data)
+t_carriage		*t_carriage_new(int num)
 {
-	t_dlist_node	*new;
+	t_carriage	*new;
 
-	new = (t_dlist_node *)malloc(sizeof(t_dlist_node));
-	new->data = data;
+	new = (t_carriage *)malloc(sizeof(t_carriage));
+	new->num = num;
 	new->prev = NULL;
 	new->next = NULL;
-	new->data_size = 0;
+	new->carry = 0;
 	return (new);
 }
 
@@ -28,8 +28,8 @@ t_dlist_node		*t_dlist_node_new(void *data)
 ** Add new node and set it to go the given pointer
 */
 
-t_dlist_node		*t_dlist_insert_after(t_dlist *list,
-t_dlist_node *node, t_dlist_node *new)
+t_carriage		*t_carriages_insert_after(t_carriages *list,
+t_carriage *node, t_carriage *new)
 {
 	new->prev = node;
 	if (!node->next)
@@ -44,8 +44,8 @@ t_dlist_node *node, t_dlist_node *new)
 	return (new);
 }
 
-t_dlist_node		*t_dlist_insert_before(t_dlist *list,
-t_dlist_node *node, t_dlist_node *new)
+t_carriage		*t_carriages_insert_before(t_carriages *list,
+t_carriage *node, t_carriage *new)
 {
 	new->next = node;
 	if (!node->prev)
@@ -63,8 +63,7 @@ t_dlist_node *node, t_dlist_node *new)
 /*
 ** add to the front of list
 */
-
-t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
+t_carriage		*t_carriages_push(t_carriages *list, t_carriage *new)
 {
 	if (!list->head)
 	{
@@ -73,16 +72,16 @@ t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
 	}
 	else
 	{
-		t_dlist_insert_before(list, list->head, new);
+		t_carriages_insert_before(list, list->head, new);
 	}
 	return (new);
 }
 
-t_dlist_node		*t_dlist_append(t_dlist *list, t_dlist_node *new)
+t_carriage		*t_carriages_append(t_carriages *list, t_carriage *new)
 {
 	if (!list->tail)
-		t_dlist_push(list, new);
+		t_carriages_push(list, new);
 	else
-		t_dlist_insert_after(list, list->tail, new);
+		t_carriages_insert_after(list, list->tail, new);
 	return (new);
 }
