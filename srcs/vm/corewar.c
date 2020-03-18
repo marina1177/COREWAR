@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 static int	is_number_unique(t_vm *vm, int number)
 {

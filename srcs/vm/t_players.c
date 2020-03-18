@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 static int	t_players_get_next_number(t_players *players)
 {

@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 void	t_player_delete(t_player *prev, t_player *curr)
 {

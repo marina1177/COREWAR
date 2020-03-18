@@ -1,4 +1,4 @@
-#include "../includes/vm.h"
+#include "../../includes/vm.h"
 
 static int	is_integer(char *s)
 {
