@@ -52,10 +52,9 @@ void	parse_args(t_vm *vm, int ac, char **av)
 			number = is_valid_flag_n(vm, av[++i]);
 			if (is_valid_player(vm, av[++i]))
 				t_players_add_new_player(vm->players, number, vm);
-			i++;
 		}
 		else if (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-d"))
-			parse_flag_dump(i + 1, ac, av, vm);	
+			parse_flag_dump(i + 1, ac, av, vm);
 		else
 			parse_player(vm, av[i]);
 		i++;
