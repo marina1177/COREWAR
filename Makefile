@@ -106,11 +106,9 @@ clean:
 
 fclean: clean
 	#@$(MAKE) -sC $(LIB_DIR) fclean
-	@rm -f $(ASM_NAME)
-	@echo "$(ASM_NAME): $(RED)$(ASM_NAME) binary was deleted$(RESET)"
+	#@rm -f $(ASM_NAME)
+	#@echo "$(ASM_NAME): $(RED)$(ASM_NAME) binary was deleted$(RESET)"
 	@rm -f $(VM_NAME)
 	@echo "$(VM_NAME): $(RED)$(VM_NAME) binary was deleted$(RESET)"
 
 re: fclean all
-
-
