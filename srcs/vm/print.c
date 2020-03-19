@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_debug.c                                      :+:      :+:    :+:   */
+/*   t_vs.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,21 +12,51 @@
 
 #include "../../includes/vm.h"
 
-void	print_t_player(t_player *player)
+void		print_intro(t_players *players)
 {
-	ft_printf("Player num %-4d, ", player->num);
-	ft_printf("name %-15s\n", player->name);	
-}
-
-void	print_t_players(t_players *players)
-{	
+	int			i;
 	t_player	*temp;
 
-	temp = players->first_player;
-	ft_printf("Players qty %-4d\n", players->qty);
-	while (temp)
+	i = -1;
+	ft_printf("Introducing contestants...\n");
+	while (++i < players->qty)
 	{
-		print_t_player(temp);
-		temp = temp->next;
+		temp = players->first_player;
+		while (temp)
+		{
+			if (temp->num == i + 1)
+				ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+						temp->code_size, temp->name, temp->comment);
+			temp = temp->next;
+		}
+	}
+}
+
+void	print_last_alive(t_vm *vm)
+{
+	t_player *last;
+
+	last = vm->players->last_alive;
+	ft_printf("Contestant %d, \"%s\", has won !\n",
+				last->num, last->name);
+}
+
+void		print_dump(uint8_t *arena, int print_mode)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%.4p : ", i);
+		j = 0;
+		while (j < print_mode)
+		{
+			ft_printf("%.2x ", arena[i + j]);
+			j++;
+		}
+		ft_printf("\n");
+		i += print_mode;
 	}
 }

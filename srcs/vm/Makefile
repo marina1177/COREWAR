@@ -37,7 +37,9 @@ ALL_C_CW = main.c \
 			t_vm.c \
 			t_vm_info.c \
 			t_vs.c \
-			print_debug.c
+			print_debug.c \
+			parse_args.c \
+			print.c
 
 SRCDIR_ASM = ./srcs_asm
 OBJDIR_ASM = ./objs_asm

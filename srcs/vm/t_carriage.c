@@ -20,7 +20,7 @@ t_carriage		*t_carriage_new(int num)
 	new->num = num;
 	new->prev = NULL;
 	new->next = NULL;
-	new->carry = 0;
+	new->carry = false;
 	return (new);
 }
 

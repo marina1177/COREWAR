@@ -122,4 +122,5 @@ void handle_players(t_vm *vm, t_players *players)
 			handle_error_str_arg(ERR_INV_P_NUM, temp->name, vm);
 		temp = temp->next;
 	}
+	vm->players->last_alive = players->first_player;
 }
