@@ -1,14 +1,26 @@
 #ifndef VM_ERROR_H
 # define VM_ERROR_H
 
+# define ERR_NOINT "number after -n (%s) is not integer"
+# define ERR_N_FLAG "-n argument (%s) must be in range [1 : MAX_PLAYERS]"
+# define ERR_D_FLAG "dump argument (%s) must be in range [0 : INT_MAX]"
+# define ERR_N_DUPL "Ambiguous player number: %d"
+# define ERR_MAX_PLAYERS "Too many players: number must be in range [1 : %d]"
+# define ERR_INV_P_NUM "Player`s %s number out of order"
+//
 # define ERR_NOFILE "./corewar recieves wrong number of arguments."
-# define ERR_FNAME "Given file has wrong name format."
-# define ERR_FOPEN "Can\'t open file."
-# define ERR_READING "Can\'t read file."
+# define ERR_FNAME "File %s doesn`t contain '.cor' extension"
+# define ERR_FOPEN "Can\'t open file %s."
+# define ERR_READING "Can\'t read file %s."
+# define ERR_MAGIC "Invalid magic code in file %s"
 # define ERR_ALLOC "Can\'t allocate memory."
+# define ERR_CHNAME_LEN "Champion\'s name is too large."
+# define ERR_CH_FSIZE "Champion\'s file %s is too short"
+# define ERR_NO_NULL "Invalid NULL separator in %s"
+
 # define ERR_GET_TEXT "Can\'t read token."
 # define ERR_LABEL_DUB "One label name were used multiple times."
-# define ERR_CHNAME_LEN "Champion\'s name is too large."
+
 # define ERR_NO_CHNAME "Champion\'s name doesn't exist."
 # define ERR_CHCOMM_LEN "Champion\'s comment is too large."
 # define ERR_NO_CHCOMM "Champion\'s comment doesn't exist."
@@ -27,8 +39,5 @@
 # define ERR_LABEL_EX "This label doesn\'t exist."
 # define ERR_ZERO_REG "Register r0 (r00) is used, but it doesn\'t exist."
 # define ERR_BIGEX "Executable code has size bigger than a limit."
-# define ERR_CRFHEX "Can\'t create machine-code file."
-# define ERR_WRFHEX "Can\'t write to machine-code file."
-# define ERR_STR_STOP "Can\'t find ending of the string."
 
 # endif

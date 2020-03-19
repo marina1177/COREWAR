@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_vm.c                                             :+:      :+:    :+:   */
+/*   t_mods.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../includes/vm.h"
 
-t_vs *t_mods_new(void)
+t_mods *t_mods_new(void)
 {
 	t_mods	*new;
 
@@ -28,18 +28,13 @@ t_vs *t_mods_new(void)
 	return (new);
 }
 
-t_vm *t_vm_create(void)
+t_mods *t_mods_create(t_vm *vm)
 {
-	t_vm	*new;
-	int		i;
+	t_mods	*new;
 
-	i = -1;
-	new = NULL;
-	if (is_valid_op_h())
-	{
-		new = t_vm_new();
-		
-	}
+	new = t_mods_new();
+	if (!new)
+		handle_error_vm(ERR_ALLOC, vm);
 	return (new);
 }
 

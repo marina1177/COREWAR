@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_vs.c                                             :+:      :+:    :+:   */
+/*   print_debug.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,27 +12,21 @@
 
 #include "../../includes/vm.h"
 
-static t_vs	*t_vs_new(void)
+void	print_t_player(t_player *player)
 {
-	t_vs	*new;
-
-	if ((new = (t_vs *)malloc(sizeof(t_vs))))
-	{
-
-	}
-	return (new);
+	ft_printf("Player num %-4d, ", player->num);
+	ft_printf("name %-15s\n", player->name);
 }
 
-t_vs		*t_vs_create(t_vm *vm)
-{
-	t_vs	*new;
+void	print_t_players(t_players *players)
+{	
+	t_player	*temp;
 
-	new = NULL;
-	if (!vm->vs)
-	{	
-		new = t_vs_new();
-		if (!new)
-			handle_error_vm(ERR_ALLOC, vm);
+	temp = players->first_player;
+	ft_printf("Players qty %-4d\n", players->qty);
+	while (temp)
+	{
+		print_t_player(temp);
+		temp = temp->next;
 	}
-	return (vm->vs ? vm->vs : new);
 }

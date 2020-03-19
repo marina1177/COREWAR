@@ -33,14 +33,11 @@ static t_vm *t_vm_new(void)
 t_vm *t_vm_create(void)
 {
 	t_vm	*new;
-	int		i;
 
-	i = -1;
 	new = NULL;
 	if (is_valid_op_h())
 	{
-		new = t_vm_new();
-		
+		new = t_vm_new();		
 	}
 	return (new);
 }

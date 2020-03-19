@@ -5,7 +5,42 @@
 //# include "../../includes/op.h"
 # include "../../includes/vm.h"
 
+static void		t_players_sort_desc(t_players *players)
+{
+	t_player	*curr;
+	t_player	*prev;
 
+	while (!t_players_is_sorted_desc(players) && (curr = players->first_player))
+	{
+		print_t_players(players);
+		prev = players->first_player;
+		while (curr->next)
+		{
+			if (curr->next->num > curr->num  && curr == players->first_player)
+				{
+					players->first_player = curr->next;
+					curr->next = curr->next->next;
+					players->first_player->next = curr;
+					continue ;
+				}
+			else if (curr->next->num > curr->num)
+			{
+				prev->next = curr->next;
+				curr->next = curr->next->next;			
+				curr->next->next = curr;			
+			}
+			prev = curr;
+			curr = curr->next;
+		}
+	}
+}
+
+int main(void)
+{
+		
+}
+
+/*
 int main()
 {
 	t_dlist *carriages =  t_dlist_new();
@@ -17,7 +52,7 @@ int main()
 	printf("%d\n", ((t_carriage *)(carriages->head->data))->num);
 	return (0);
 }
-
+*/
 /*
 int main(int ac, char **av)
 {

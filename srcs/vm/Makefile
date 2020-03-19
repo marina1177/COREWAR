@@ -28,8 +28,7 @@ ALL_C_ASM = asm.c add_args_code.c add_null_octets.c add_str_to_byte_code.c add_c
 ALL_C_CW = main.c \
 			handle_error.c \
 			input_validation.c \
-			is_valid_player.c \
-			main.c \
+			parse_player.c \
 			t_carriage.c \
 			t_carriages.c \
 			t_mods.c \
@@ -37,7 +36,8 @@ ALL_C_CW = main.c \
 			t_players.c \
 			t_vm.c \
 			t_vm_info.c \
-			t_vs.c
+			t_vs.c \
+			print_debug.c
 
 SRCDIR_ASM = ./srcs_asm
 OBJDIR_ASM = ./objs_asm
@@ -75,13 +75,13 @@ $(OBJDIR_ASM)/%.o: $(SRCDIR_ASM)/%.c $(INCLUDES_ASM) | $(OBJDIR_ASM)
 	gcc $(FLAGS) -I./includes -I./ft_printf/libft/includes -c $< -o $@
 
 $(NAME_CW): $(LIBFT) $(OBJS_CW)
-	gcc $(FLAGS) $(OBJS_CW) -L ../../libft -lft -o $@
+	gcc $(FLAGS) $(OBJS_CW) -L ../../libft_clala -lft -o $@
 
 $(OBJDIR_CW):
 	/bin/mkdir -p $(OBJDIR_CW)
 
 $(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
-	gcc $(FLAGS) -I../../includes -I../../libft/includes -c $< -o $@
+	gcc $(FLAGS) -I../../includes -I../../libft_clala/includes -c $< -o $@
 
 lib:
 	make -C ../../libft_clala/
