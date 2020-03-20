@@ -12,15 +12,17 @@
 
 #include "../../includes/vm.h"
 
-t_carriage		*t_carriage_new(int num)
+t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 {
 	t_carriage	*new;
 
 	new = (t_carriage *)malloc(sizeof(t_carriage));
-	new->num = num;
+	new->num = carr->nums + 1;
 	new->prev = NULL;
 	new->next = NULL;
 	new->carry = false;
+	new->pos = pos;
+	new->op_code = 0;
 	return (new);
 }
 
@@ -40,7 +42,8 @@ t_carriage *node, t_carriage *new)
 		node->next->prev = new;
 	}
 	node->next = new;
-	list->size++;
+	list->qty++;
+	list->nums++;
 	return (new);
 }
 
@@ -56,32 +59,23 @@ t_carriage *node, t_carriage *new)
 		node->prev->next = new;
 	}
 	node->prev = new;
-	list->size++;
+	list->qty++;
+	list->nums++;
 	return (new);
 }
 
-/*
-** add to the front of list
-*/
-t_carriage		*t_carriages_push(t_carriages *list, t_carriage *new)
+t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src)
 {
-	if (!list->head)
-	{
-		list->head = new;
-		list->tail = new;
-	}
-	else
-	{
-		t_carriages_insert_before(list, list->head, new);
-	}
-	return (new);
-}
+	t_carriage	*copy;
+	int			i;
 
-t_carriage		*t_carriages_append(t_carriages *list, t_carriage *new)
-{
-	if (!list->tail)
-		t_carriages_push(list, new);
-	else
-		t_carriages_insert_after(list, list->tail, new);
-	return (new);
+	copy = t_carriage_new(carr, src->pos);
+	copy->carry = src->carry;
+	copy->op_code = src->op_code;
+	copy->pos = src->pos;
+	copy->live_cycle = src->live_cycle;
+	i = -1;
+	while (++i < 16)
+		copy->regs[i] = src->regs[i];
+	return (copy);
 }

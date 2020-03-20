@@ -28,7 +28,7 @@ static int	is_valid_flag_n(t_vm *vm, char *num)
 	return (number);
 }
 
-static int	parse_flag_dump(t_vm *vm, char *num)
+static int	parse_flag_dump(t_vm *vm, char *arg, char *num)
 {
 	int		number;
 
@@ -37,7 +37,7 @@ static int	parse_flag_dump(t_vm *vm, char *num)
 	number = ft_atoi(num);
 	if (number < 0)
 		handle_error_str_arg(ERR_D_FLAG, num, vm);
-	vm->mods->dump_print_mode = 1;
+	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 64 : 32;
 	vm->mods->dump_cycle = number;
 	return (1);
 }
@@ -58,7 +58,7 @@ void	parse_args(t_vm *vm, int ac, char **av)
 			
 		}
 		else if (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-d"))
-			parse_flag_dump(vm, av[i + 1]);
+			parse_flag_dump(vm, av[i], av[i + 1]);
 		else if (!ft_strcmp(av[i], "-v"))
 			vm->vs = t_vs_create(vm);
 		else

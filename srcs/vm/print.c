@@ -12,7 +12,7 @@
 
 #include "../../includes/vm.h"
 
-void		print_intro(t_players *players)
+void		print_introduction(t_players *players)
 {
 	int			i;
 	t_player	*temp;
@@ -25,11 +25,21 @@ void		print_intro(t_players *players)
 		while (temp)
 		{
 			if (temp->num == i + 1)
-				ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
-						temp->code_size, temp->name, temp->comment);
+				ft_printf("* Player %d, weighting %d bytes, \"%s\" (\"%s\") !\n",
+						temp->num, temp->code_size, temp->name, temp->comment);
 			temp = temp->next;
 		}
 	}
+}
+
+void		print_final_result(t_vm *vm)
+{
+	t_player *winner;
+
+	winner = vm->players->first_player;
+	ft_printf("Contestant %d, \"%s\", has won !\n",
+		winner->num, winner->name);
+	exit(0);
 }
 
 void	print_last_alive(t_vm *vm)
@@ -41,22 +51,26 @@ void	print_last_alive(t_vm *vm)
 				last->num, last->name);
 }
 
-void		print_dump(uint8_t *arena, int print_mode)
+int		print_dump(t_vm *vm)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	uint8_t	arena;
+	int		dump_size;
 
+	arena = vm->data->arena;
+	dump_size = vm->mods->dump_size;
 	i = 0;
 	while (i < MEM_SIZE)
 	{
 		ft_printf("%.4p : ", i);
 		j = 0;
-		while (j < print_mode)
+		while (j < dump_size)
 		{
 			ft_printf("%.2x ", arena[i + j]);
 			j++;
 		}
 		ft_printf("\n");
-		i += print_mode;
+		i += dump_size;
 	}
 }

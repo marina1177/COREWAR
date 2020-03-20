@@ -18,8 +18,8 @@ t_mods *t_mods_new(void)
 
 	if ((new = (t_mods *)malloc(sizeof(t_mods))))
 	{
-		new->dump_cycle = 0;
-		new->dump_print_mode = 0;
+		new->dump_cycle = -1;
+		new->dump_size = 0;
 		new->show_cycle = 0;
 		new->show_print_mode = 0;
 		new->display_aff = false;

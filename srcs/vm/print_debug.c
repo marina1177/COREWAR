@@ -30,3 +30,20 @@ void	print_t_players(t_players *players)
 		temp = temp->next;
 	}
 }
+
+void	print_t_carriage(t_carriage *carriage)
+{
+	ft_printf("Number %-4d, position %-8d\n", carriage->num, carriage->pos);
+}
+
+void	print_t_carriages(t_carriages *carriages)
+{
+	t_carriage *carr;
+
+	carr = carriages->head;
+	while (carr)
+	{
+		print_t_carriage(carr);
+		carr = carr->next;
+	}
+}

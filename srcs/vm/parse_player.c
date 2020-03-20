@@ -77,6 +77,8 @@ int	parse_player(t_vm *vm, char *arg, t_player *player)
 							CH_NAME_SIZE);
 	get_integer(fd, arg, vm) ? handle_error_str_arg(ERR_NO_NULL, arg, vm) : 0;
 	player->code_size = get_integer(fd, arg, vm);
+	if (player->code_size > CHAMP_MAX_SIZE)
+		handle_error_str_arg(ERR_BIGEX, arg, vm);
 	player->comment = terminated(valid_read(fd, arg, CH_COMM_SIZE, vm),
 								CH_COMM_SIZE);
 	get_integer(fd, arg, vm) ? handle_error_str_arg(ERR_NO_NULL, arg, vm) : 0;

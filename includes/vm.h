@@ -183,14 +183,6 @@
 
 
 /*
-typedef struct 			s_carriages
-{
-	struct s_carriage	*carr;
-	int					qty;
-}						t_carriages;
-*/
-
-/*
 //структура бражника (для сравнения)
 
 typedef struct			s_vm
@@ -244,7 +236,7 @@ typedef struct 		s_players
 typedef struct 			s_mods
 {	
 	ssize_t				dump_cycle;				// mods
-	int					dump_print_mode;		// mods
+	int					dump_size;		// mods
 	ssize_t				show_cycle;				// mods
 	int					show_print_mode;		// mods
 	bool				display_aff;			// mods
@@ -277,17 +269,21 @@ typedef struct			s_vm
 typedef struct			s_carriage
 {
 	struct s_carriage	*next;
-	struct s_carriage	*prev;
+	struct s_carriage	*prev;		
 	int					num;
 	int					carry;
 	int					regs[REG_NUMBER];
+	int					pos;
+	int					op_code;
+	int					live_cycle;
 }						t_carriage;
 
 typedef struct			s_carriages
 {
 	struct s_carriage	*head;
 	struct s_carriage	*tail;
-	int					size;
+	int					qty;
+	int					nums;
 }						t_carriages;
 
 /*
@@ -319,7 +315,7 @@ t_vm_info			*t_vm_info_new(void);
 /*
 ** t_carriage and t_carriages
 */
-t_carriage			*t_carriage_new(int num);
+t_carriage			*t_carriage_new(t_carriages *carr, int pos);
 t_carriage			*t_carriages_insert_after(t_carriages *list,
 							t_carriage *node, t_carriage *new);
 t_carriage			*t_carriages_insert_before(t_carriages *list,
@@ -329,10 +325,12 @@ t_carriage			*t_carriages_append(t_carriages *list, t_carriage *new);
 t_carriages			*t_carriages_new();
 t_carriage			*t_carriages_pop(t_carriages *list, t_carriage *node);
 t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node);
+int					*get_nums(t_carriages *carrs);
 
 /*
 ** Validation
 */
+void	parse_args(t_vm *vm, int ac, char **av);
 int	parse_player(t_vm *vm, char *arg, t_player *player);
 int	is_integer(char *s);
 
@@ -347,6 +345,11 @@ t_vs		*t_vs_create(t_vm *vm);
 */
 void print_t_player(t_player *player);
 void print_t_players(t_players *players);
-
+void	print_t_carriage(t_carriage *carriage);
+void	print_t_carriages(t_carriages *carriages);
+void		print_introduction(t_players *players);
+void	print_last_alive(t_vm *vm);
+int		print_dump(t_vm *vm);
+void		print_final_result(t_vm *vm);
 
 #endif
