@@ -22,7 +22,9 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 	new->next = NULL;
 	new->carry = false;
 	new->pos = pos;
-	new->op_code = 0;
+	new->opcode = 0;
+	new->cycles_countdown = -2;
+	new->last_cycle_alive = 0;
 	return (new);
 }
 
@@ -71,7 +73,7 @@ t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src)
 
 	copy = t_carriage_new(carr, src->pos);
 	copy->carry = src->carry;
-	copy->op_code = src->op_code;
+	copy->opcode = src->opcode;
 	copy->pos = src->pos;
 	copy->live_cycle = src->live_cycle;
 	i = -1;

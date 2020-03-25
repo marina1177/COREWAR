@@ -39,8 +39,15 @@ ALL_C_CW = main.c \
 			t_vs.c \
 			print_debug.c \
 			parse_args.c \
-			print.c
-
+			print.c \
+			handle_carriages.c \
+			SUBS_bitwise.c \
+			SUBS_operations_1.c \
+			SUBS_operations_2.c \
+			SUBS_operations_3.c \
+			SUBS_operations_4.c \
+			SUBS_args.c
+			
 SRCDIR_ASM = ./srcs_asm
 OBJDIR_ASM = ./objs_asm
 

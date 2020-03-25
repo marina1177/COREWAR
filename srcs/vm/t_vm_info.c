@@ -11,6 +11,7 @@ t_vm_info *t_vm_info_new(void)
 		new->cycles_to_die = 0;
 		new->checks_num = 0;
 		new->cycles_after_check = 0;
+		new->checks_counter = 0;
 	}
 	return (new);
 }
