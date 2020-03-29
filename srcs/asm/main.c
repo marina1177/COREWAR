@@ -1,12 +1,17 @@
 #include "../../includes/com.h"
 
-void	valid_filename(char *filename)
+void	valid_filename(char *fname)
 {
-	char	*ext;
+	int			i;
 
-	printf("filename = %s\n", filename);
-	ext = ft_memchr(filename, '.', ft_strlen(filename));
-	if (ft_strcmp(ext + 1, "s"))
+	printf("filename = %s\n", fname);
+	i = 0;
+	while (fname[i])
+		i++;
+	while (fname[--i])
+		if (fname[i] == '.')
+			break ;
+	if (ft_strcmp(&fname[i], ".s"))
 		error_event(ERR_FNAME);
 }
 

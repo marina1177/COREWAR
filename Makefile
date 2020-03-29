@@ -27,7 +27,6 @@ OBJ_DIR = obj/
 SRC_ASM_DIR = ./srcs/asm/
 SRC_ASM_LIST =	main.c \
 				error.c \
-				asm_3.c \
 				supfun.c \
 				supfun_2.c \
 				free_data.c \

@@ -167,9 +167,6 @@ struct				s_token
 	t_2b			new_line;
 	t_op			*op;
 	t_opargs		*args[3];
-	//char			**op_args;
-	//t_2b			args_type[3];
-	//int32_t			status;//-1_-2_0_1
 	int32_t			offset;//относит начала exec code
 	int32_t			num_byte_op;//fill in parse_op
 
@@ -185,7 +182,6 @@ struct				s_data
 	t_op			*g_op_tab;
 	char			*filename;
 	t_header		*head;
-	//t_token			*tkn_lst;
 	int				fd_s;
 	//int				fd_cor;
 	t_4b			name_f;
@@ -468,7 +464,7 @@ int			get_line(const int fd, char **row);
 /*
 ** main.c
 */
-void				valid_filename(char *filename);
+void				valid_filename(char *fname);
 void				data_init();
 void				read_file(char *filename, int flag);
 
