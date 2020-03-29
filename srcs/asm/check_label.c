@@ -2,7 +2,7 @@
 
 void	check_new_line(char *line, int f)
 {
-	printf("check_new_line_|%s|\n", &(line[g_data->x]));
+	//printf("check_new_line_|%s|\n", &(line[g_data->x]));
 	if (line[g_data->x] == '\n')
 	{
 		if(f == 2)
@@ -30,7 +30,7 @@ void	check_new_line(char *line, int f)
 void	check_dup_label()
 {
 	t_lbl_lst *tmp;
-//	printf("_check dup label_\n");
+	
 	tmp = g_label_first;
 	if(g_label_first != g_label_last)
 	{

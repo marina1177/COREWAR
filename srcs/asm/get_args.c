@@ -53,9 +53,8 @@ void			get_args(char *line)
 	size_t		cw;
 
 	i = 0;
-	printf("get_args_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
+	//printf("get_args_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	cw = count_word(&(line[g_data->x]), SEPARATOR_CHAR);
-	printf("count_word = %zu..vs..argsnum[%d]= %u\n", cw, g_tkn_last->op->code, g_tkn_last->op->args_num);
 	if (cw != g_tkn_last->op->args_num)
 		error_event(ERR_OP);
 
@@ -65,10 +64,9 @@ void			get_args(char *line)
 		if ((g_tkn_last->args[i] = parse_parameter(line)))
 		{
 			parse_args_type(i, line);
-			printf("tkn_offset = %d\ntkn_numbyte = %d\n", g_tkn_last->offset,
-			g_tkn_last->num_byte_op);
+			/*printf("tkn_offset = %d\ntkn_numbyte = %d\n", g_tkn_last->offset,
+			g_tkn_last->num_byte_op);*/
 			skip_to_separator(line);
-			//printf("skip_to_separator_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 			skip_space(line);
 			if (line[g_data->x]
 				&& (line[g_data->x++] != SEPARATOR_CHAR || i == cw - 1))

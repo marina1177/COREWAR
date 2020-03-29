@@ -1,56 +1,55 @@
 #include "../../includes/com.h"
 
-void    bits_to_str(size_t size, void *ptr, char space)
+void	bits_to_str(size_t size, void *ptr, char space)
 {
-    unsigned char    *b;
-    unsigned char    byte;
-    int                i;
-    int                j;
+	unsigned char	*b;
+	unsigned char	byte;
+	int				i;
+	int				j;
 
-    b = (unsigned char*)ptr;
-    i = size - 1;
-    j = 7;
-    while (i >= 0)
-    {
-        while (j >= 0)
-        {
-            byte = (b[i] >> j) & 1;
-            ft_putchar(byte + '0');
-            j--;
-        }
-        if (space == 1)
-            ft_putchar(' ');
-        j = 7;
-        i--;
-    }
-    ft_putchar('\n');
+	b = (unsigned char*)ptr;
+	i = size - 1;
+	j = 7;
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			byte = (b[i] >> j) & 1;
+			ft_putchar(byte + '0');
+			j--;
+		}
+		if (space == 1)
+			ft_putchar(' ');
+		j = 7;
+		i--;
+	}
+	ft_putchar('\n');
 }
 
 
-void    print_bits(size_t size, void *ptr, char space)
+void		print_bits(size_t size, void *ptr, char space)
 {
-    unsigned char    *b;
-    unsigned char    byte;
-    int                i;
-    int                j;
-
-    b = (unsigned char*)ptr;
-    i = size - 1;
-    j = 7;
-    while (i >= 0)
-    {
-        while (j >= 0)
-        {
-            byte = (b[i] >> j) & 1;
-            ft_putchar(byte + '0');
-            j--;
-        }
-        if (space == 1)
-            ft_putchar(' ');
-        j = 7;
-        i--;
-    }
-    ft_putchar('\n');
+	unsigned char	*b;
+	unsigned char	byte;
+	int				i;
+	int				j;
+	b = (unsigned char*)ptr;
+	i = size - 1;
+	j = 7;
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			byte = (b[i] >> j) & 1;
+			ft_putchar(byte + '0');
+			j--;
+		}
+		if (space == 1)
+			ft_putchar(' ');
+		j = 7;
+		i--;
+	}
+	ft_putchar('\n');
 }
 
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
@@ -72,15 +71,12 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	{
 		num *= 10;
 		num += ((int)str[i] - 48);
-		printf("num = %lld\n",num);
 		i++;
 	}
 	num = (neg == 1 ? -num : num);
-	printf("%s_atoi_%lld\n", str,num);
 	size == 1 ? (num = (u_int8_t)num) : 1;
 	size == 2 ? (num = (int16_t)num) : 1;
 	size == 4 ? (num = (int32_t)num) : 1;
-	printf("ret_atoi_%lld\n", num);
 	return (num);
 }
 

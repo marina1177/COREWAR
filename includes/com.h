@@ -177,8 +177,8 @@ struct				s_token
 typedef struct s_data	t_data;
 struct				s_data
 {
-	int					x;
-	int					y;
+	int				x;
+	int				y;
 	t_op			*g_op_tab;
 	char			*filename;
 	t_header		*head;
@@ -188,7 +188,7 @@ struct				s_data
 	t_4b			comm_f;
 	unsigned long	namelen;
 	unsigned long	commlen;
-	int64_t		exec_bytes;
+	int64_t			exec_bytes;
 };
 
 typedef struct s_lbl_lst	t_lbl_lst;
@@ -431,7 +431,7 @@ int				check_same_name(char *s, char **s_op, int a);
 void			parse_op(char *line);
 int				search_op(char *line);
 t_token			*new_token();
-void			add_token(char *line,  int indx_op);
+void			add_token(int indx_op);
 void			check_op(char *line);
 
 /*
@@ -466,7 +466,7 @@ int			get_line(const int fd, char **row);
 */
 void				valid_filename(char *fname);
 void				data_init();
-void				read_file(char *filename, int flag);
+void				read_file(char *filename);
 
 void				error(void);
 
