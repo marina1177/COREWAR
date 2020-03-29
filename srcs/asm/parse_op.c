@@ -55,7 +55,7 @@ t_token	*new_token()
 	}
 	//printf("BEFORE_EXEC_BYTES = %llu\n", g_data->exec_bytes);
 	g_data->exec_bytes += g_tkn_last->num_byte_op;
-	printf("EXEC_BYTES = %lu\n", g_data->exec_bytes);
+	printf("EXEC_BYTES = %lld\n", g_data->exec_bytes);
 	g_tkn_last = new;
 
 	t_token		*tmp = g_tkn_first;

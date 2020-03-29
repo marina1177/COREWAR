@@ -39,7 +39,7 @@ void	data_init()
 void		compilation(void)
 {
 	 g_data->exec_bytes = g_tkn_last->offset + g_tkn_last->num_byte_op;
-	printf("EXEC_CODE_SIZE = %lu = %lx\n",g_data->exec_bytes, g_data->exec_bytes);
+	printf("EXEC_CODE_SIZE = %lld = %llx\n",g_data->exec_bytes, g_data->exec_bytes);
 	if (!(g_buf = (char*)malloc(sizeof(char) * (EXEC_START + g_data->exec_bytes))))
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);
