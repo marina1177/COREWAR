@@ -1,17 +1,17 @@
 
 #include "../../includes/com.h"
 
-char			*freesplit()
+char			*freesplit(t_token	*tmp)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (g_tkn_last->op_args[i] != NULL)
+	while (i < (tmp)->op->args_num)
 	{
-		free(g_tkn_last->op_args[i]);
-		i++;
+		free(tmp->args[i]->arg);
+		free(tmp->args[i]);
+		++i;
 	}
-	free(g_tkn_last->op_args);//???
 	return (NULL);
 }
 
@@ -25,8 +25,7 @@ void	free_token()
 	{
 		tmp = g_tkn_first;
 		g_tkn_first = (g_tkn_first)->next;
-		if (tmp->op_args)
-			freesplit();
+		freesplit(tmp);
 		free(tmp);
 	}
 }

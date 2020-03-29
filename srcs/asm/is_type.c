@@ -1,20 +1,23 @@
 #include "../../includes/com.h"
 
-int	is_reg(char *line)
+int	is_reg(char *line, int len)
 {
 	int	i;
 	int	k;
-	int len;
 
 	i = 0;
-	len = ft_strlen(line);
-	if ((2 == len || len == 3) && line[i++] == 'r')
+
+	if ((len == 2 || len == 3) && line[i++] == 'r')
 	{
+		printf("isreg_%s_len = %d_\n", line, len);
 		while (ft_isdigit(line[i]) && i < len)
 			i++;
-		//return (i == len && ft_atoi(&line[1]) > 0);
+		//printf("i=%d\n", i);
+		k = ft_atoi(&line[1]);
+		//printf("k_atoi = %d\n", k);
 		if(i == (len) && (k = ft_atoi(&line[1]) >= 0))
 		{
+			printf("k_atoi = %d\n",k);
 			if (k > 16)
 				printf("warning: num of reg more 16!\n");
 			else if (k == 0)
@@ -28,14 +31,14 @@ int	is_reg(char *line)
 	return (FALSE);
 }
 
-int	is_direct(char *line)
+int	is_direct(char *line, int len)
 {
 	int	i;
-	int	len;
 
 	i = 0;
 	if (line[i++] == DIRECT_CHAR)
 	{
+		printf("dir_%s__len = %d\n",&(line[i]), len);
 		if (line[1] == '-')
 		{
 			i++;
@@ -47,25 +50,23 @@ int	is_direct(char *line)
 
 			error();
 		}
-		len = ft_strlen(&(line[i]));
 		while (ft_isdigit(line[i]) && i < len)
 			i++;
+		//printf("i = %d\n",i);
 		if(i == (len))
 			return(1);
 	}
 	return (0);
 }
 
-int	is_dir_label(char *line)
+int	is_dir_label(char *line, int len)
 {
 	int	i;
-	int	len;
 
 	i = 0;
 	if (line[i++] == DIRECT_CHAR && line[i++] == LABEL_CHAR)
 	{
 		printf("dir_label_%s\n",&(line[i]));
-		len = ft_strlen(&(line[i]));
 		while (is_lblchar(line[i]) && i < len)
 			i++;
 		if(i == (len))
@@ -74,13 +75,12 @@ int	is_dir_label(char *line)
 	return (0);
 }
 
-int	is_indirect(char *line)
+int	is_indirect(char *line, int len)
 {
 	int	i;
-	int	len;
 
 	i = 0;
-	len = ft_strlen(line);
+	printf("is_indirect_%s\n",&(line[i]));
 	while (ft_isdigit(line[i]) && i < len)
 		i++;
 	if(i == (len))
@@ -88,15 +88,14 @@ int	is_indirect(char *line)
 	return(0);
 }
 
-int	is_ind_label(char *line)
+int	is_ind_label(char *line, int len)
 {
 	int	i;
-	int	len;
 
 	i = 0;
 	if (line[i++] == LABEL_CHAR)
 	{
-		len = ft_strlen(&(line[i]));
+		printf("ind_label_%s\n",&(line[i]));
 		while (is_lblchar(line[i]) && i < len)
 			i++;
 		if(i == (len))

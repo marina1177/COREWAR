@@ -39,7 +39,7 @@ void		compilation(void)
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);
 	translate();
-	//write_to_file();
+	write_to_file();
 }
 
 
@@ -56,7 +56,6 @@ void	read_file(char *filename, int flag)
 	g_data->filename = filename;
 	g_data->fd_s = fd_s;
 	parse_file(fd_s);
-
 	close(fd_s);
 	compilation();
 	free_data();

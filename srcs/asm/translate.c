@@ -44,7 +44,7 @@ void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
 	byte = 0;
 	i = 0;
 	k = 3;
-	while ((type = tkn->args_type[i]) && i < (tkn)->op->args_num)
+	while (i < (tkn)->op->args_num && (type = tkn->args[i]->argtype))
 	{
 		if (type & REGISTER)
 		{
@@ -75,7 +75,6 @@ int32_t	process_label(t_token **tkn, char *label)
 	t_lbl_lst	*tmp;
 
 	tmp = g_label_first;
-	label = skip_space(label);
 	label += 2;
 	while (tmp)
 	{
@@ -102,36 +101,34 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 	char		*line;
 
 	printf("print_args\n");
-
 	i = 0;
 	while (i < (*tkn)->op->args_num)
 	{
 		d_size = (*tkn)->op->t_dir_size;
-		line = skip_space((*tkn)->op_args[i]);
-		printf("line = |%s|", line);
+		line = (*tkn)->args[i]->arg;
 
-		if ((*tkn)->args_type[i] == REGISTER)
+		if ((*tkn)->args[i]->argtype == REGISTER)
 		{
-			//printf("reg = %s\n", (*tkn)->op_args[i] + 1);
+			printf("reg = |%s|\n", (*tkn)->args[i]->arg + 1);
 			int_to_hex(ft_atoi_cor(line + 1, 1), 1, cursor);//+ 'r'
 
 		}
 
-		else if ((*tkn)->args_type[i] == DIRECT)
+		else if ((*tkn)->args[i]->argtype == DIRECT)
 		{
 			printf("dir = !%s!\n", line);
 			int_to_hex(ft_atoi_cor(line + 1, d_size), d_size, cursor);//+ '%'
 		}
-		else if ((*tkn)->args_type[i] == INDIRECT)
+		else if ((*tkn)->args[i]->argtype == INDIRECT)
 			int_to_hex(ft_atoi_cor(line, IND_SIZE), IND_SIZE, cursor);
 
-		else if ((*tkn)->args_type[i] == DIRECT_LABEL)
+		else if ((*tkn)->args[i]->argtype == DIRECT_LABEL)
 		{
 			//printf("dir_lbl = %d\n", process_label(tkn, (*tkn)->op_args[i]));
 			int_to_hex(process_label(tkn, line), d_size, cursor);
 		}
 
-		else if ((*tkn)->args_type[i] == INDIRECT_LABEL)
+		else if ((*tkn)->args[i]->argtype == INDIRECT_LABEL)
 			int_to_hex(process_label(tkn, line), IND_SIZE, cursor);
 
 		i++;
@@ -161,12 +158,12 @@ void	translate(void)
 		unsigned int i = 0;
 		while(i < (tmp)->op->args_num)
 		{
-			if(tmp->args_type[i] == REGISTER)
-				printf("%s - REGISTER\n",tmp->op_args[i]);
-			else if(tmp->args_type[i] == DIRECT || tmp->args_type[i] == DIRECT_LABEL)
-				printf("%s - DIRECT\n",tmp->op_args[i]);
-			else if(tmp->args_type[i] == INDIRECT || tmp->args_type[i] == INDIRECT_LABEL)
-				printf("%s - INDIRECT\n",tmp->op_args[i]);
+			if(tmp->args[i]->argtype == REGISTER)
+				printf("%s - REGISTER\n",tmp->args[i]->arg);
+			else if(tmp->args[i]->argtype == DIRECT || tmp->args[i]->argtype == DIRECT_LABEL)
+				printf("%s - DIRECT\n",tmp->args[i]->arg);
+			else if(tmp->args[i]->argtype == INDIRECT || tmp->args[i]->argtype == INDIRECT_LABEL)
+				printf("%s - INDIRECT\n",tmp->args[i]->arg);
 			i++;
 		}
 		printf("code operation(%d):\n", tmp->op->code);

@@ -1,5 +1,16 @@
 #include "../../includes/com.h"
 
+void		put_error(char *err, int type)
+{
+	if (type)
+	{
+		printf("%s [%d:%d]\n", err, g_data->y, g_data->x);
+		errno = EINVAL;
+	}
+	else
+   		printf("%s\n", err);
+	exit(errno);
+}
 
 void		print_error(char *message)
 {
@@ -17,6 +28,7 @@ void	error_line(char *event, char *line, int x)
 	printf("event_%s_x_%d\n", event, x);
 	ft_strdel(&line);
 	free_data();
+	exit(1);
 }
 
 void	error_event(char *event)

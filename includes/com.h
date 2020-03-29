@@ -92,6 +92,8 @@ typedef unsigned long	t_8b;
 # define PURPUL	"\033[0;35m"
 # define CYAN	"\033[0;36m"
 
+# define IS_BLANK(c) (c == ' ' || c == '\t')
+# define IS_ENDLINE(c) (c == '\n' || c == '\0')
 //typedef char	t_arg_type;
 
 #define T_REG					1
@@ -100,19 +102,20 @@ typedef unsigned long	t_8b;
 #define T_LAB					8
 
 
-# define REGISTER		(t_2b)0b100000000000
-# define DIRECT			(t_2b)0b010000000000
-# define DIRECT_LABEL	(t_2b)0b001000000000
-# define INDIRECT		(t_2b)0b000100000000
-# define INDIRECT_LABEL	(t_2b)0b000010000000
-# define COMMAND		(t_2b)0b000001000000
-# define STRING			(t_2b)0b000000100000
-# define LABEL			(t_2b)0b000000010000
-# define INSTRUCTION	(t_2b)0b000000001000
-# define SEPARATOR		(t_2b)0b000000000100
-# define NEW_LINE		(t_2b)0b000000000010
-# define END			(t_2b)0b000000000001
-
+# define REGISTER		(t_2b)0b10000000000000
+# define DIRECT			(t_2b)0b01000000000000
+# define DIRECT_LABEL	(t_2b)0b00100000000000
+# define INDIRECT		(t_2b)0b00010000000000
+# define INDIRECT_LABEL	(t_2b)0b00001000000000
+# define COMMAND		(t_2b)0b00000100000000
+# define STRING			(t_2b)0b00000010000000
+# define LABEL			(t_2b)0b00000001000000
+# define INSTRUCTION	(t_2b)0b00000000100000
+# define SEPARATOR		(t_2b)0b00000000010000
+# define NEW_LINE		(t_2b)0b00000000001000
+# define END			(t_2b)0b00000000000100
+# define NAME			(t_2b)0b00000000000010
+# define COMMENT		(t_2b)0b00000000000001
 /*
 **
 */
@@ -139,24 +142,36 @@ struct				s_op
 {
 	char			*name;
 	unsigned int	code;
-	unsigned int	args_num;
+	u_int16_t		args_num;
 	u_int8_t		args_types_code;
 	unsigned int	args_types[3];
 	unsigned int	t_dir_size;
 };
 
+typedef struct s_opargs	t_opargs;
+struct				s_opargs
+{
+	int				x;
+	int				y;
+	char			*arg;
+	int32_t			argsize;
+	t_2b			argtype;
+	int				value;
+};
+
 typedef struct s_token	t_token;
 struct				s_token
 {
-	//char			*label;
-	u_int16_t		st_x;
-	u_int16_t		arg_x[3];
-	t_op			*op;//fill in join_token
-	char			**op_args;
-	t_2b			args_type[3];//fill in parse_op
-	int				status;//-1_-2_0_1
-	int				offset;//относит начала exec code
-	int				num_byte_op;//fill in parse_op
+	int				x;
+	int				y;
+	t_2b			new_line;
+	t_op			*op;
+	t_opargs		*args[3];
+	//char			**op_args;
+	//t_2b			args_type[3];
+	//int32_t			status;//-1_-2_0_1
+	int32_t			offset;//относит начала exec code
+	int32_t			num_byte_op;//fill in parse_op
 
 	t_token			*next;
 	t_token			*prev;
@@ -165,25 +180,27 @@ struct				s_token
 typedef struct s_data	t_data;
 struct				s_data
 {
+	int					x;
+	int					y;
 	t_op			*g_op_tab;
 	char			*filename;
 	t_header		*head;
 	//t_token			*tkn_lst;
 	int				fd_s;
-	int				fd_cor;
+	//int				fd_cor;
 	t_4b			name_f;
 	t_4b			comm_f;
 	unsigned long	namelen;
 	unsigned long	commlen;
-	u_int64_t		exec_bytes;
+	int64_t		exec_bytes;
 };
 
 typedef struct s_lbl_lst	t_lbl_lst;
 struct				s_lbl_lst
 {
 	char			*label;
-	u_int64_t		offset;//относит начала exec code
-
+	int32_t			offset;//относит начала exec code
+	t_2b			new_line;
 	t_lbl_lst		*next;
 };
 
@@ -333,14 +350,26 @@ static t_op			g_op_tab[16] = {
 /*   asm.h                                              :+:      :+:    :+:   */
 /* ************************************************************************** */
 
+void	print_memory(const void *addr, size_t size);
 
 /*
-** supfun.c.c
+** supfun_2.c.c
+*/
+int				ft_findchar(char *str, int c);
+int				ft_strmerge(char **dest, char **srcs);
+
+/*
+** supfun.c
 */
 void			print_bits(size_t size, void *ptr, char space);
 int32_t			ft_atoi_cor(const char *str, u_int8_t size);
 char			*skip_space(char *s);
 char			*skip_comment(char *s);
+
+/*
+** write_to_file.c
+*/
+void			write_to_file(void);
 
 /*
 ** translate.c
@@ -361,58 +390,85 @@ void			free_data(void);
 /*
 ** error.c
 */
+void			put_error(char *err, int type);
 void			print_error(char *message);
 void			error_line(char *event, char *line, int x);
 void			error_event(char *event);
 
 void			error(void);
 
+/*
+** args_type.c
+*/
+int				check_reg(char *line, int size, u_int16_t i);
+int				check_dir(char *line, int size, u_int16_t i);
+int				check_ind(char *line, int size, u_int16_t i);
+void			parse_args_type(u_int16_t i, char *line);
 
 /*
 ** is_type.c
 */
-int				is_reg(char *line);
-int				is_direct(char *line);
-int				is_dir_label(char *line);
-int				is_indirect(char *line);
-int				is_ind_label(char *line);
+int				is_reg(char *line, int len);
+int				is_direct(char *line, int len);
+int				is_dir_label(char *line, int len);
+int				is_indirect(char *line, int len);
+int				is_ind_label(char *line, int len);
 
-//void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+
+/*
+** get_args.c
+*/
+t_opargs		*parse_parameter(char *line);
+void			get_args(char *line);
+
 /*
 ** asm_3.c
 */
-void			parse_args_type();
-void			parse_op(char *op);
 int				is_lblchar(char c);
-void			solve_res(char *s, char **s_op, int a);
 int				check_same_name(char *s, char **s_op, int a);
-void			search_op(char *s);
+
 
 /*
-** asm_2.c
+** parse_op.c
 */
-void			need_address_label(t_token *new);
-
-
+void			parse_op(char *line);
+int				search_op(char *line);
 t_token			*new_token();
-t_token			*join_token( int indx_op);
-int				add_token(char *s, int size, t_2b token_type, int indx_op);
-void			add_lbl(char *s, const int size);
+void			add_token(char *line,  int indx_op);
+void			check_op(char *line);
 
+/*
+** check_label.c
+*/
+void			check_new_line(char *line, int f);
+void			add_lbl(char *s, size_t size);
+void			check_label(char *line);
 
+/*
+** add_header.c
+*/
+void			valid_headlen(t_2b type_h, int len);
+void			put_header(char *str, int len, t_2b type_h);
+void			process_header(char **line, t_2b type_h);
+t_2b			exist_header(char **line);
+void			add_header(char **line);
 
+/*
+** parse_file.c
+*/
+void			parse_str(char **line);
+void			parse_file();
 
-void			save_head(char *p, t_4b type_h, t_4b *flg, unsigned long *len );
-char			*init_headdata(char *p, t_4b *flg);
-void			add_header(char *s);
-
-void			parse_str(char **buf);
+/*
+** get_line.c
+*/
+int			get_line(const int fd, char **row);
 
 /*
 ** main.c
 */
 void				valid_filename(char *filename);
-void				parse_file(int fd_s);
 void				data_init();
 void				read_file(char *filename, int flag);
 

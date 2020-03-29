@@ -1,75 +1,100 @@
 #include "../../includes/com.h"
 
-void	save_head(char *p, t_4b type_h, t_4b *flg, unsigned long *len )
+void	valid_headlen(t_2b type_h, int len)
 {
-	if (*p == '\0')
-	{
-		if (type_h == 0)
-			g_data->head->prog_name[*len] = '\n';
-		else if (type_h == 1)
-			g_data->head->comment[*len] = '\n';
-	}
-	while (*p != '\"' && *p != '\0')
-	{
-		if ((type_h == 0 && *len > 128))
-			error_event(ERR_CHNAME_LEN);
-		else if (type_h == 1 && *len > 2048)
-			error_event(ERR_CHCOMM_LEN);
-		if (type_h == 0)
-			g_data->head->prog_name[*len] = *p;
-		else if (type_h == 1)
-			g_data->head->comment[*len] = *p;
-		p++;
-		(*len)++;
-	}
-	if (*p == '\0')
-		return ;
-	else if (*p == '\"')
-		*flg += 1;
+	if ((type_h == NAME && len > 128))
+		error_event(ERR_CHNAME_LEN);
+	else if (type_h == COMMENT && len > 2048)
+		error_event(ERR_CHCOMM_LEN);
 }
 
-char	*init_headdata(char *p, t_4b *flg)
+void	put_header(char *str, int len, t_2b type_h)
 {
-	p = skip_space(p);
-	if (*p != '\"' )
+	if (type_h == NAME)
 	{
-		error_event(ERR_NAMECOM);
-		//printf("what's in front of the name???\n");
+		ft_strncpy(g_data->head->prog_name, &(str[g_data->x]), len - 1);
+		g_data->name_f += 1;
+	}
+	else if (type_h == COMMENT)
+	{
+		ft_strncpy(g_data->head->comment,&(str[g_data->x]), len - 1);
+		g_data->comm_f += 1;
 	}
 	else
-	{
-		*flg += 1;
-	}
-	p++;
-	return(p);
+		error_event(ERR_NAMECOM);
 }
 
-void	add_header(char *s)
+void	process_header(char **line, t_2b type_h)
+{
+	int		len;
+	char	*str;
+	char	*temp;
+
+	temp = 0;
+	str = *line;
+	//printf("put_header = %s\nline[%d] = %s\n",str, g_data->x, &(str[g_data->x]));
+
+	while (!(len = ft_findchar(str + g_data->x, '\"'))
+			&& get_line(g_data->fd_s, &temp) && ++g_data->y)
+		ft_strmerge(&str, &temp);
+	if (!len)
+		error_line(ERR_STR_STOP, str, 0);
+	valid_headlen(type_h, len);
+	put_header(str, len, type_h);
+	*line = str;
+	g_data->x += len;
+	skip_space(str);
+	if(str[g_data->x] == '\n')
+		g_data->x++;
+	else
+		error_event(ERR_NAMECOM);
+//	printf("end_%s_s[%d]=%s\n", str, g_data->x, &(str[g_data->x]));
+}
+
+t_2b	exist_header(char **line)
 {
 	char	*p;
+	t_2b	type;
 
-	if ((p = ft_strstr(s, NAME_CMD_STRING)) != NULL
-		 && p == s && g_data->name_f == 0 && g_data->namelen == 0)
+	type = 0;
+	if ((p = ft_strstr(&((*line)[g_data->x]), NAME_CMD_STRING)) != NULL
+			&& p == &((*line)[g_data->x]) && g_data->name_f == 0)
 	{
-		p += ft_strlen(NAME_CMD_STRING);
-		save_head(init_headdata(p, &(g_data->name_f)), 0, &(g_data->name_f), &(g_data->namelen));
+		type = NAME;
+		g_data->x += ft_strlen(NAME_CMD_STRING);
+		//printf("name_%s_s[%d]=%s\n", *line, g_data->x, &((*line)[g_data->x]));
 	}
-	else if(g_data->name_f == 1)
-		save_head(s, 0, &(g_data->name_f), &(g_data->namelen));
-	else if((p = ft_strstr(s, COMMENT_CMD_STRING))!= NULL && p == s
-			 && g_data->comm_f == 0)
+	else if((p = ft_strstr(&((*line)[g_data->x]), COMMENT_CMD_STRING))!= NULL
+				 && p == &((*line)[g_data->x]) && g_data->comm_f == 0)
 	{
-		p += ft_strlen(COMMENT_CMD_STRING);
-		save_head(init_headdata(p,&(g_data->comm_f)), 1, &(g_data->comm_f), &(g_data->commlen));
+		type = COMMENT;
+		g_data->x += ft_strlen(COMMENT_CMD_STRING);
+		//printf("comment_%s_s[%d]=%s\n", *line, g_data->x, &((*line)[g_data->x]));
 	}
-	else if(g_data->comm_f == 1)
-		save_head(s, 1, &(g_data->comm_f), &(g_data->commlen));
-	else if (g_data->name_f == 2 && g_data->comm_f == 2)
-	{
-		//printf("ERROR header already exists\n");
+	else
 		error_event(ERR_NAMECOM);
-	}
-	printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
+	return (type);
 }
 
+void	add_header(char **line)
+{
 
+	t_2b	type;
+
+	type = exist_header(line);
+	skip_space(*line);
+	if ((*line)[g_data->x] == '\"' && ++g_data->x)
+		process_header(line, type);
+	else
+		error_event(ERR_NAMECOM);
+	while((*line)[g_data->x] != '\n' && (*line)[g_data->x] != '\0')
+	{
+		if (IS_BLANK((*line)[g_data->x]))
+			g_data->x++;
+		else
+			error_event(ERR_NAMECOM);
+	}
+
+	printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
+	//printf("line = %s\nline[%d] = %s\n",line, g_data->x, &(line[g_data->x]));
+}

@@ -53,19 +53,6 @@ void    print_bits(size_t size, void *ptr, char space)
     ft_putchar('\n');
 }
 
-/*dst = 0;
-    i = -1;
-    while (++i < 2)
-    {
-        if (i + start < MEM_SIZE)
-            position = i + start;
-        else
-            position = i + start - MEM_SIZE;
-        dst = dst << 8;
-        dst += (short)arena[position];
-    }
-    return ((int)dst);*/
-
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {
 	int				neg;
@@ -85,11 +72,11 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	{
 		num *= 10;
 		num += ((int)str[i] - 48);
-		//printf("num = %lld\n",num);
+		printf("num = %ld\n",num);
 		i++;
 	}
 	num = (neg == 1 ? -num : num);
-	//printf("%s_atoi_%lld\n", str,num);
+	printf("%s_atoi_%ld\n", str,num);
 	size == 1 ? (num = (u_int8_t)num) : 1;
 	size == 2 ? (num = (int16_t)num) : 1;
 	size == 4 ? (num = (int32_t)num) : 1;
@@ -97,16 +84,32 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	return (num);
 }
 
+int		is_lblchar(char c)
+{
+	char	*ptr;
+
+	ptr = LABEL_CHARS;
+	while(*ptr != '\0')
+	{
+		if (*ptr == c)
+			return (1);
+		ptr++;
+	}
+	return (0);
+}
+
 char *skip_space(char *s)
 {
-	while(*s == ' ' || *s == '	')
-		s++;
-	return(s);
+	while(s[g_data->x] == ' ' || s[g_data->x] == '	')
+		g_data->x++;
+	return(&(s[g_data->x]));
 }
 
 char *skip_comment(char *s)
 {
 	char	*pnt;
+	int		len;
+	//char	end_ch;
 
 	pnt = ft_strstr(s, "#");
 	if (pnt != NULL)
@@ -114,5 +117,7 @@ char *skip_comment(char *s)
 	pnt = ft_strstr(s, ";");
 	if (pnt != NULL)
 		*pnt = '\0';
+	len = ft_strlen(s);
+	while(!IS_BLANK(s[len--]));
 	return(s);
 }
