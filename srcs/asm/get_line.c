@@ -37,7 +37,6 @@ static int	divide_str(char **str, char **row)
 	div++;
 	if (!(*row = ft_strsub(*str, 0, div - *str)))
 		return (-1);
-	printf("row_|%s|\n", *row);
 	if (!ft_strlen(div))
 	{
 		free(*str);
@@ -65,7 +64,6 @@ int			get_line(const int fd, char **row)
 		{
 			if (!(*row = str))
 			{
-				printf("row = str\n");
 				return (0);
 			}
 			str = NULL;

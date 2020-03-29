@@ -32,8 +32,6 @@ void	process_header(char **line, t_2b type_h)
 
 	temp = 0;
 	str = *line;
-	//printf("put_header = %s\nline[%d] = %s\n",str, g_data->x, &(str[g_data->x]));
-
 	while (!(len = ft_findchar(str + g_data->x, '\"'))
 			&& get_line(g_data->fd_s, &temp) && ++g_data->y)
 		ft_strmerge(&str, &temp);
@@ -48,7 +46,6 @@ void	process_header(char **line, t_2b type_h)
 		g_data->x++;
 	else
 		error_event(ERR_NAMECOM);
-//	printf("end_%s_s[%d]=%s\n", str, g_data->x, &(str[g_data->x]));
 }
 
 t_2b	exist_header(char **line)
@@ -62,14 +59,12 @@ t_2b	exist_header(char **line)
 	{
 		type = NAME;
 		g_data->x += ft_strlen(NAME_CMD_STRING);
-		//printf("name_%s_s[%d]=%s\n", *line, g_data->x, &((*line)[g_data->x]));
 	}
 	else if((p = ft_strstr(&((*line)[g_data->x]), COMMENT_CMD_STRING))!= NULL
 				 && p == &((*line)[g_data->x]) && g_data->comm_f == 0)
 	{
 		type = COMMENT;
 		g_data->x += ft_strlen(COMMENT_CMD_STRING);
-		//printf("comment_%s_s[%d]=%s\n", *line, g_data->x, &((*line)[g_data->x]));
 	}
 	else
 		error_event(ERR_NAMECOM);
@@ -78,7 +73,6 @@ t_2b	exist_header(char **line)
 
 void	add_header(char **line)
 {
-
 	t_2b	type;
 
 	type = exist_header(line);
@@ -94,7 +88,6 @@ void	add_header(char **line)
 		else
 			error_event(ERR_NAMECOM);
 	}
-
-	printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
+	//printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
 	//printf("line = %s\nline[%d] = %s\n",line, g_data->x, &(line[g_data->x]));
 }

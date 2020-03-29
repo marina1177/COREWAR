@@ -75,7 +75,8 @@ int32_t	process_label(t_token **tkn, char *label)
 	t_lbl_lst	*tmp;
 
 	tmp = g_label_first;
-	label += 2;
+	while(*label == LABEL_CHAR || *label == DIRECT_CHAR)
+		label++;
 	while (tmp)
 	{
 		printf("%s__vs__%s\n", label, tmp->label);
@@ -85,7 +86,6 @@ int32_t	process_label(t_token **tkn, char *label)
 	}
 	if (!tmp)
 	{
-		printf("ERR_LABEL_EX!! -- <<add token x/y>>\n");
 		error();
 	}
 	off = tmp->offset - ((*tkn)->offset);
@@ -113,10 +113,9 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 			int_to_hex(ft_atoi_cor(line + 1, 1), 1, cursor);//+ 'r'
 
 		}
-
 		else if ((*tkn)->args[i]->argtype == DIRECT)
 		{
-			printf("dir = !%s!\n", line);
+			printf("dir = !%s!\n", (*tkn)->args[i]->arg + 1);
 			int_to_hex(ft_atoi_cor(line + 1, d_size), d_size, cursor);//+ '%'
 		}
 		else if ((*tkn)->args[i]->argtype == INDIRECT)
@@ -124,10 +123,9 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 
 		else if ((*tkn)->args[i]->argtype == DIRECT_LABEL)
 		{
-			//printf("dir_lbl = %d\n", process_label(tkn, (*tkn)->op_args[i]));
+			printf("dir_lbl = %d\n", process_label(tkn, line));
 			int_to_hex(process_label(tkn, line), d_size, cursor);
 		}
-
 		else if ((*tkn)->args[i]->argtype == INDIRECT_LABEL)
 			int_to_hex(process_label(tkn, line), IND_SIZE, cursor);
 
@@ -142,20 +140,16 @@ void	translate(void)
 
 	cursor = 0;
 	int_to_hex(COREWAR_EXEC_MAGIC, 4, &cursor);
-
 	print_champion_info();
-
 	cursor = 4 + PROG_NAME_LENGTH + 4;
-	printf("exec_bytes(%lld):\n", g_data->exec_bytes);
 	int_to_hex(g_data->exec_bytes, 4, &cursor);
 	cursor = EXEC_START;
-	printf("EXEC_START\n");
-
+//	printf("EXEC_START\n");
 	tmp = g_tkn_first;
 	while (tmp != NULL)
 	{
-		printf("tmp_instr = %s\n", tmp->op->name);
-		unsigned int i = 0;
+		//printf("tmp_instr = %s\n", tmp->op->name);
+		/*unsigned int i = 0;
 		while(i < (tmp)->op->args_num)
 		{
 			if(tmp->args[i]->argtype == REGISTER)
@@ -165,16 +159,14 @@ void	translate(void)
 			else if(tmp->args[i]->argtype == INDIRECT || tmp->args[i]->argtype == INDIRECT_LABEL)
 				printf("%s - INDIRECT\n",tmp->args[i]->arg);
 			i++;
-		}
-		printf("code operation(%d):\n", tmp->op->code);
+		}*/
+	//	printf("code operation(%d):\n", tmp->op->code);
 		int_to_hex(tmp->op->code, 1, &cursor);
-
-		printf("args_types_code:\n");
+	//	printf("args_types_code:\n");
 		print_args_types_code(tmp, &cursor);
-
-		printf("************ARGS*************:\n");
+//		printf("************ARGS*************:\n");
 		print_args(&tmp, &cursor);
-		printf("*****************************:\n");
+	//	printf("*****************************:\n");
 		tmp = tmp->next;
 	}
 	size_t size = EXEC_START + g_data->exec_bytes;
