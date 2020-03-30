@@ -2,7 +2,7 @@
 
 void		tokenize(char**line)
 {
-	//printf("tokenize_|%s|\n", &((*line)[g_data->x]));
+	printf("tokenize_|%s|\n", &((*line)[g_data->x]));
 	check_label(*line);
 	skip_space(*line);
 	check_new_line(*line, 1);
@@ -62,7 +62,7 @@ void	parse_file()
 	if (size == -1)
 		error_event(ERR_READING);
 //*************************************************
-	t_token		*tmp = g_tkn_first;
+//	t_token		*tmp = g_tkn_first;
 
 /*	printf("EXEC_BYTES = %ld(0x%lx)\n", g_data->exec_bytes,g_data->exec_bytes);
 	while(tmp != NULL)

@@ -46,15 +46,20 @@ void	check_dup_label()
 void	add_lbl(char *s, size_t size)
 {
 	t_lbl_lst	*new;
-//	printf("add_label_s[%zu] =%s\n", size, s);
+	printf("add_label_s[%zu] =%s\n", size, s);
 	if (!(new = (t_lbl_lst *)malloc(sizeof(t_lbl_lst))))
 		error_event(ERR_ALLOC);
 	new->next = NULL;
-	if ((g_tkn_last == NULL && g_tkn_first == NULL))
+	if ((g_tkn_first == NULL && g_label_first == NULL))
 	{
 		g_label_first = new;
 		g_label_last = g_label_first;
 		new->offset = 0;
+	}
+	else if (g_tkn_first == NULL && g_label_first)
+	{
+		g_label_last->next = new;
+		new->offset = g_label_last->offset;
 	}
 	else
 	{
@@ -70,8 +75,8 @@ void	add_lbl(char *s, size_t size)
 	g_label_last = new;
 	g_label_last->label = ft_strsub(s, 0, size);
 	check_dup_label();
-/*	printf("label_last->label= %s\nlabel_last->offset = %d\n",
-	 g_label_last->label, g_label_last->offset);*/
+	printf("label_last->label= %s\nlabel_last->offset = %d\n",
+	 g_label_last->label, g_label_last->offset);
 }
 
 static size_t	label_size(char *s)
@@ -91,11 +96,24 @@ void			check_label(char *line)
 {
 	size_t		size;
 
-//	printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+	printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
 	if ((size = label_size(line)))
 	{
 		add_lbl(&(line[g_data->x]), size);
 		g_label_last->new_line = 0;
 		g_data->x += size + 1;
 	}
+
+	t_lbl_lst	*tmp = g_label_first;
+
+//	printf("EXEC_BYTES = %ld(0x%lx)\n", g_data->exec_bytes,g_data->exec_bytes);
+	while(tmp != NULL)
+	{
+		printf("label[%d] = |%s| ===>\n",
+			tmp->offset, tmp->label);
+		tmp = tmp->next;
+	}
+	printf("\n");
+	//valid_newline();
+	//token_add(END);
 }

@@ -79,7 +79,7 @@ int32_t	process_label(t_token **tkn, char *label)
 		label++;
 	while (tmp)
 	{
-		//printf("%s__vs__%s\n", label, tmp->label);
+		printf("%s__vs__%s\n", label, tmp->label);
 		if (!(ft_strcmp(label, tmp->label)))
 			break ;
 		tmp = tmp->next;
