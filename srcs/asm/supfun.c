@@ -94,11 +94,12 @@ int		is_lblchar(char c)
 	return (0);
 }
 
-char *skip_space(char *s)
+void	skip_space(char *s)
 {
+	if (!(&(s[g_data->x])) || s[g_data->x] == '\0')
+		return ;
 	while(s[g_data->x] == ' ' || s[g_data->x] == '	')
 		g_data->x++;
-	return(&(s[g_data->x]));
 }
 
 char *skip_comment(char *s)

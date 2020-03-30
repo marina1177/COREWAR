@@ -47,7 +47,9 @@ void	data_init()
 
 void		compilation(void)
 {
-	g_data->exec_bytes = g_tkn_last->offset + g_tkn_last->num_byte_op;
+	printf("compilation\n");
+
+	g_data->exec_bytes = (g_tkn_first ? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
 	if (!(g_buf = (char*)malloc(sizeof(char) * (EXEC_START + g_data->exec_bytes))))
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);

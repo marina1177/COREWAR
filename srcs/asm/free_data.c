@@ -47,8 +47,8 @@ void	free_label()
 
 void		free_data(void)
 {
-	/*if (g_buf)
-		free(g_buf);*/
+	if (g_buf != NULL)
+		free(g_buf);
 	if (g_data)
 	{
 		if (g_data->fd_s)

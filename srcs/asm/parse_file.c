@@ -32,6 +32,11 @@ void		parse_str(char **line)
 		else
 			tokenize(line);
 		skip_space(*line);
+		if (!((*line)[g_data->x]) || (*line)[g_data->x] == '\0')
+		{
+			printf("return\n");
+			return ;
+		}
 		if((*line)[g_data->x] == '\n')
 			g_data->x++;
 	}
@@ -48,6 +53,7 @@ void	parse_file()
 							&& !(g_data->x = 0)
 							&& ++g_data->y)
 	{
+		printf("get_|%s|\n", line);
 		while (line[g_data->x])
 		{
 			skip_comment(line);

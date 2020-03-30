@@ -59,7 +59,7 @@ void	add_token(int indx_op)
 {
 	t_token		*new;
 
-//	printf("add_token__indxop = %d\n", indx_op);
+	printf("add_token__indxop = %d\n", indx_op);
 	new = NULL;
 	new = new_token();
 	new->op = &(g_op_tab[indx_op]);
@@ -71,9 +71,12 @@ void	add_token(int indx_op)
 
 void					check_op(char *line)
 {
-	printf("check_op_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
-	if (!line[g_data->x])
+	printf("check_op_%s_line[%d]=\n", line, g_data->x);
+	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
+	{
+		printf("return\n");
 		return ;
+	}
 	skip_space(line);
 	add_token(search_op(line));
 	g_tkn_last->num_byte_op = 1;

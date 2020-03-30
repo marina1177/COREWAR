@@ -520,7 +520,7 @@ int				ft_strmerge(char **dest, char **srcs);
 */
 void			print_bits(size_t size, void *ptr, char space);
 int32_t			ft_atoi_cor(const char *str, u_int8_t size);
-char			*skip_space(char *s);
+void			skip_space(char *s);
 char			*skip_comment(char *s);
 
 /*

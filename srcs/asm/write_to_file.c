@@ -37,10 +37,8 @@ void				write_to_file()
 	free(new_name);
 	if (write(fd, g_buf, EXEC_START + g_data->exec_bytes) == -1)
 	{
-		free(g_buf);
 		close(fd);
 		error_event(ERR_WRFHEX);
 	}
-	free(g_buf);
 	close(fd);
 }

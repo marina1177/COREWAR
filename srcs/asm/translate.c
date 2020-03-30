@@ -138,6 +138,7 @@ void	translate(void)
 	t_token		*tmp;
 	u_int32_t	cursor;
 
+	printf("translate");
 	cursor = 0;
 	int_to_hex(COREWAR_EXEC_MAGIC, 4, &cursor);
 	print_champion_info();
@@ -148,19 +149,6 @@ void	translate(void)
 	tmp = g_tkn_first;
 	while (tmp != NULL)
 	{
-		//printf("tmp_instr = %s\n", tmp->op->name);
-		/*unsigned int i = 0;
-		while(i < (tmp)->op->args_num)
-		{
-			if(tmp->args[i]->argtype == REGISTER)
-				printf("%s - REGISTER\n",tmp->args[i]->arg);
-			else if(tmp->args[i]->argtype == DIRECT || tmp->args[i]->argtype == DIRECT_LABEL)
-				printf("%s - DIRECT\n",tmp->args[i]->arg);
-			else if(tmp->args[i]->argtype == INDIRECT || tmp->args[i]->argtype == INDIRECT_LABEL)
-				printf("%s - INDIRECT\n",tmp->args[i]->arg);
-			i++;
-		}*/
-	//	printf("code operation(%d):\n", tmp->op->code);
 		int_to_hex(tmp->op->code, 1, &cursor);
 	//	printf("args_types_code:\n");
 		print_args_types_code(tmp, &cursor);

@@ -2,7 +2,12 @@
 
 void	check_new_line(char *line, int f)
 {
-	//printf("check_new_line_|%s|\n", &(line[g_data->x]));
+	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
+	{
+		printf("return\n");
+		return ;
+	}
+	printf("check_new_line_|%s|\n", &(line[g_data->x]));
 	if (line[g_data->x] == '\n')
 	{
 		if(f == 2)
@@ -24,6 +29,7 @@ void	check_new_line(char *line, int f)
 
 		}
 		g_data->x++;
+		printf("g->x = %d\n", g_data->x);
 	}
 }
 
@@ -102,18 +108,20 @@ void			check_label(char *line)
 		add_lbl(&(line[g_data->x]), size);
 		g_label_last->new_line = 0;
 		g_data->x += size + 1;
+		printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+		printf("g_data->x =%d\n", g_data->x);
 	}
 
-	t_lbl_lst	*tmp = g_label_first;
+	//t_lbl_lst	*tmp = g_label_first;
 
 //	printf("EXEC_BYTES = %ld(0x%lx)\n", g_data->exec_bytes,g_data->exec_bytes);
-	while(tmp != NULL)
+/*	while(tmp != NULL)
 	{
 		printf("label[%d] = |%s| ===>\n",
 			tmp->offset, tmp->label);
 		tmp = tmp->next;
 	}
-	printf("\n");
+	printf("\n");*/
 	//valid_newline();
 	//token_add(END);
 }
