@@ -2,7 +2,7 @@
 
 int		check_reg(char *line, int size, u_int16_t i)
 {
-//	printf("check_reg_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
+	printf("check_reg_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	if (is_reg(&(line[g_data->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_REG)
 	{
@@ -25,7 +25,7 @@ int		check_dir(char *line, int size, u_int16_t i)
 		g_tkn_last->args[i]->argtype = DIRECT;
 		g_tkn_last->args[i]->argsize = g_tkn_last->op->t_dir_size;
 		g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
-	//	printf("DIRECT\nnumbyte_%d\n",g_tkn_last->num_byte_op);
+//		printf("DIRECT\nnumbyte_%d\n",g_tkn_last->num_byte_op);
 		return (TRUE);
 	}
 	else if(is_dir_label(&(line[g_data->x]), size)
@@ -34,7 +34,7 @@ int		check_dir(char *line, int size, u_int16_t i)
 		g_tkn_last->args[i]->argtype = DIRECT_LABEL;
 		g_tkn_last->args[i]->argsize = g_tkn_last->op->t_dir_size;
 		g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
-/*		printf("DIRECT_LABEL\nnumbyte_%d\n",
+/*	printf("DIRECT_LABEL\nnumbyte_%d\n",
 		g_tkn_last->num_byte_op);*/
 		return (TRUE);
 	}
@@ -48,18 +48,18 @@ int		check_ind(char *line, int size, u_int16_t i)
 			&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args[i]->argtype = INDIRECT;
-		g_tkn_last->args[i]->argsize = IND_CODE;
-		g_tkn_last->num_byte_op += IND_CODE;
-		printf("INDIRECT\nnumbyte_%d\n", g_tkn_last->num_byte_op);
+		g_tkn_last->args[i]->argsize = 2;
+		g_tkn_last->num_byte_op += 2;
+//		printf("INDIRECT\nnumbyte_%d\n", g_tkn_last->num_byte_op);
 		return (TRUE);
 	}
 	else if(is_ind_label(&(line[g_data->x]), size)
 		&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args[i]->argtype = INDIRECT_LABEL;
-		g_tkn_last->args[i]->argsize = IND_CODE;
-		g_tkn_last->num_byte_op += IND_CODE;
-		printf("INDIRECT_LABEL\nnumbyte_%d\n", g_tkn_last->num_byte_op);
+		g_tkn_last->args[i]->argsize = 2;
+		g_tkn_last->num_byte_op += 2;
+//		printf("INDIRECT_LABEL\nnumbyte_%d\n", g_tkn_last->num_byte_op);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -86,6 +86,20 @@ int		is_emptyline(char *line)
 	return (i);
 }
 
+int		is_end_arg(char *line)
+{
+	int	i;
+
+	i = 0;
+	while(line[i] != SEPARATOR_CHAR)
+	{
+		if (!IS_BLANK(line[i]))
+			return(FALSE);
+		i++;
+	}
+	return(TRUE);
+}
+
 void	parse_args_type(u_int16_t i, char *line)
 {
 	int	size;
@@ -103,6 +117,8 @@ void	parse_args_type(u_int16_t i, char *line)
 		{
 			break ;
 		}
+		if(IS_BLANK(line[g_data->x + size]) && is_end_arg(&(line[g_data->x + size])))
+			break ;
 		size++;
 	}
 	if (check_reg(line, size, i) || check_dir(line, size, i)

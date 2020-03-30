@@ -12,12 +12,12 @@ static char			*new_filename(char *filename)
 		&& filename[len + 1] == 's'
 		&& filename[len + 2] == '\0')
 			break ;
-	if (!(new_name = (char*)malloc((len + 5) + 1)))
+	if (!(new_name = (char*)malloc((len + 5+3) + 1)))
 		error_event(ERR_ALLOC);
 	i = -1;
 	while (++i < len)
 		new_name[i] = filename[i];
-	ft_strcpy(&(new_name[i]), ".cor");
+	ft_strcpy(&(new_name[i]), "_my.cor");
 	return (new_name);
 }
 
@@ -37,8 +37,10 @@ void				write_to_file()
 	free(new_name);
 	if (write(fd, g_buf, EXEC_START + g_data->exec_bytes) == -1)
 	{
+		free(g_buf);
 		close(fd);
 		error_event(ERR_WRFHEX);
 	}
+	free(g_buf);
 	close(fd);
 }

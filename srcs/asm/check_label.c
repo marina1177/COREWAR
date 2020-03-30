@@ -30,7 +30,7 @@ void	check_new_line(char *line, int f)
 void	check_dup_label()
 {
 	t_lbl_lst *tmp;
-	
+
 	tmp = g_label_first;
 	if(g_label_first != g_label_last)
 	{
@@ -70,7 +70,7 @@ void	add_lbl(char *s, size_t size)
 	g_label_last = new;
 	g_label_last->label = ft_strsub(s, 0, size);
 	check_dup_label();
-	/*printf("label_last->label= %s\nlabel_last->offset = %d\n",
+/*	printf("label_last->label= %s\nlabel_last->offset = %d\n",
 	 g_label_last->label, g_label_last->offset);*/
 }
 
@@ -91,7 +91,7 @@ void			check_label(char *line)
 {
 	size_t		size;
 
-	//printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+//	printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
 	if ((size = label_size(line)))
 	{
 		add_lbl(&(line[g_data->x]), size);

@@ -47,13 +47,13 @@ t_opargs	*parse_parameter(char *line)
 	return (param);
 }
 
-void			get_args(char *line)
+void			parse_args(char *line)
 {
 	size_t		i;
 	size_t		cw;
 
 	i = 0;
-	//printf("get_args_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
+	//printf("parse_args_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	cw = count_word(&(line[g_data->x]), SEPARATOR_CHAR);
 	if (cw != g_tkn_last->op->args_num)
 		error_event(ERR_OP);

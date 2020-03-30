@@ -37,8 +37,8 @@ SRC_ASM_LIST =	main.c \
 				print_bits.c \
 				get_line.c \
 				check_label.c \
-				parse_op.c \
-				get_args.c \
+				check_op.c \
+				parse_args.c \
 				write_to_file.c\
 				is_type.c
 

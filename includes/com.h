@@ -1,4 +1,166 @@
+/*# include <errno.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
 
+# include "libft.h"
+ #define MAX_FILE_SIZE 4096
+
+void		error(void)
+{
+	char *s;
+
+	s = "Error\n";
+	write(2, s, ft_strlen(s));
+	exit(0);
+}
+
+static void	ft_print_hex(unsigned char c)
+{
+	char *radix;
+
+	radix = "0123456789abcdef";
+	write(1, &radix[c / 16], 1);
+	write(1, &radix[c % 16], 1);
+}
+
+static void	ft_print_char(unsigned char c)
+{
+	if (c >= ' ' && c <= '~')
+		write(1, &c, 1);
+	else
+		write(1, ".", 1);
+}
+
+void	print_memory(const void *addr, size_t size)
+{
+	size_t i;
+	size_t j;
+	unsigned char *ptr;
+
+	i = 0;
+	j = 0;
+	ptr = (unsigned char*)addr;
+	while (i < size)
+	{
+		j = 0;
+		while (j < 16 && i + j < size)
+		{
+			ft_print_hex(ptr[i + j]);
+			if (j % 2)
+				write(1, " ", 1);
+			j++;
+		}
+		while (j < 16)
+		{
+			write(1, "  ", 2);
+			if (j % 2)
+				write(1, " ", 1);
+			j++;
+		}
+		j = 0;
+		while (j < 16 && i + j < size)
+		{
+			ft_print_char(ptr[i + j]);
+			j++;
+		}
+		write(1, "\n", 1);
+		i += 16;
+	}
+}
+
+int main(int ac, char **av)
+{
+	int fd;
+	int i=0;
+	char	*line;
+	off_t		size;
+	char readdata[MAX_FILE_SIZE];
+
+	printf("ac = %d\n", ac);
+	if (ac == 2)
+	{
+		void *buffer = NULL;
+		int fd = open(av[1], O_RDONLY);
+
+		if (fd != -1)
+		{
+		    FILE *file = fdopen(fd, "rb");
+		    if (file) {
+		        struct stat statistics;
+		        if (fstat(fd, &statistics) != -1)
+				{
+					size = statistics.st_size;
+					printf("size = %ld\n", size);
+		            buffer = (char*)malloc(statistics.st_size);
+					int byte = read(fd, buffer,size );
+					printf("byte = %d\n", byte);
+					print_memory(buffer, size);
+		        }
+		        fclose(file);
+		    }
+		    close(fd);
+		}
+		if (!buffer) {
+		    free(buffer);
+
+		//print_memory(buffer, size);
+
+    }
+	}
+
+}
+*/
+
+/*NAME = versus
+
+CC=gcc
+FLAGS= -Wall -Werror -Wextra
+
+SRC_DIR=./src
+LIB_DIR=./libft
+OBJ_DIR=./obj
+
+SRC_NAME=main.c
+
+OBJ_NAME=$(SRC_NAME:.c=.o)
+
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
+
+INC = -I ./includes -I $(LIB_DIR)/includes
+
+all: $(NAME)
+
+$(NAME) : $(OBJ)
+	#@make -s -C $(LIB_DIR)
+	@$(CC) -o $(NAME) $(OBJ) $(LIB_DIR)/libft.a $(INC) -lpthread
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p obj
+	@$(CC) -o $@ -c $< $(INC)
+	@echo "\033[34m\033[1mCompilation of \033[0m\033[36m$(notdir $<)\033[1m\033[34m done.\033[0m"
+
+clean:
+		#@make clean -s -C $(LIB_DIR)
+		@rm -f $(OBJ)
+
+fclean: clean
+		#@make fclean -s -C $(LIB_DIR)
+		@rm -rf *test*
+		@rm -rf $(NAME)*
+
+test: $(NAME)
+	./$(NAME)  includes/ . src/ libft/
+
+re:	fclean all
+
+.PHONY: all, clean, fclean, re
+*/
 #ifndef COM_H
 # define COM_H
 
@@ -183,7 +345,6 @@ struct				s_data
 	char			*filename;
 	t_header		*head;
 	int				fd_s;
-	//int				fd_cor;
 	t_4b			name_f;
 	t_4b			comm_f;
 	unsigned long	namelen;
@@ -413,10 +574,10 @@ int				is_ind_label(char *line, int len);
 void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
 
 /*
-** get_args.c
+** parse_args.c
 */
 t_opargs		*parse_parameter(char *line);
-void			get_args(char *line);
+void			parse_args(char *line);
 
 /*
 ** asm_3.c

@@ -44,8 +44,6 @@ void	parse_file()
 	char	*line;
 	int		size;
 
-	g_snum = 0;
-
 	while ((size = get_line(g_data->fd_s, &line))
 							&& !(g_data->x = 0)
 							&& ++g_data->y)
@@ -63,6 +61,18 @@ void	parse_file()
 	}
 	if (size == -1)
 		error_event(ERR_READING);
+//*************************************************
+	t_token		*tmp = g_tkn_first;
+
+/*	printf("EXEC_BYTES = %ld(0x%lx)\n", g_data->exec_bytes,g_data->exec_bytes);
+	while(tmp != NULL)
+	{
+		printf("opname[%d:%d] = %s_offset = %d(%x)___numbyte = %d ===>\n",
+			tmp->y, tmp->x,tmp->op->name, tmp->offset, tmp->offset, tmp->num_byte_op);
+
+		tmp = tmp->next;
+	}
+	printf("\n");*/
 	//valid_newline();
 	//token_add(END);
 }

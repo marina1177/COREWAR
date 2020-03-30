@@ -47,44 +47,41 @@ t_token	*new_token()
 	}
 	g_data->exec_bytes += g_tkn_last->num_byte_op;
 	g_tkn_last = new;
+
+//	printf("EXEC_BYTES = %ld\n", g_data->exec_bytes);
+
 	return (new);
 }
 
-	//	printf("EXEC_BYTES = %lld\n", g_data->exec_bytes);
-/*	t_token		*tmp = g_tkn_first;
-	while(tmp != NULL)
-	{
-		printf("--tmp_offset = %d****tmp_numbyte = %d--",
-			 tmp->offset, tmp->num_byte_op);
 
-		tmp = tmp->next;
-	}
-	printf("\n");*/
 
 void	add_token(int indx_op)
 {
 	t_token		*new;
 
-	//printf("add_token__indx = %d\n", indx_op);
+//	printf("add_token__indxop = %d\n", indx_op);
 	new = NULL;
 	new = new_token();
 	new->op = &(g_op_tab[indx_op]);
 	new->new_line = 0;
+	new->y = g_data->y;
+	new->x = g_data->x;
 //	printf("line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 }
 
 void					check_op(char *line)
 {
-//	printf("check_op_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+	printf("check_op_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
 	if (!line[g_data->x])
 		return ;
+	skip_space(line);
 	add_token(search_op(line));
 	g_tkn_last->num_byte_op = 1;
 	if (g_tkn_last->op->args_types_code)
+	{
 		g_tkn_last->num_byte_op += 1;
+	}
 	skip_space(line);
-	get_args(line);
-	/*if (!validate_parameters(opcode->type, opcode->param_code))
-		put_error("Syntax error: wrong parameters types", 1);*/
+	parse_args(line);
 }
 
