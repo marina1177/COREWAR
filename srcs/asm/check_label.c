@@ -4,10 +4,10 @@ void	check_new_line(char *line, int f)
 {
 	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
 	{
-		printf("return\n");
+		//printf("return\n");
 		return ;
 	}
-	printf("check_new_line_|%s|\n", &(line[g_data->x]));
+	//printf("check_new_line_|%s|\n", &(line[g_data->x]));
 	if (line[g_data->x] == '\n')
 	{
 		if(f == 2)
@@ -29,7 +29,7 @@ void	check_new_line(char *line, int f)
 
 		}
 		g_data->x++;
-		printf("g->x = %d\n", g_data->x);
+		//printf("g->x = %d\n", g_data->x);
 	}
 }
 
@@ -52,7 +52,7 @@ void	check_dup_label()
 void	add_lbl(char *s, size_t size)
 {
 	t_lbl_lst	*new;
-	printf("add_label_s[%zu] =%s\n", size, s);
+	//printf("add_label_s[%zu] =%s\n", size, s);
 	if (!(new = (t_lbl_lst *)malloc(sizeof(t_lbl_lst))))
 		error_event(ERR_ALLOC);
 	new->next = NULL;
@@ -81,8 +81,8 @@ void	add_lbl(char *s, size_t size)
 	g_label_last = new;
 	g_label_last->label = ft_strsub(s, 0, size);
 	check_dup_label();
-	printf("label_last->label= %s\nlabel_last->offset = %d\n",
-	 g_label_last->label, g_label_last->offset);
+	/*printf("label_last->label= %s\nlabel_last->offset = %d\n",
+	 g_label_last->label, g_label_last->offset);*/
 }
 
 static size_t	label_size(char *s)

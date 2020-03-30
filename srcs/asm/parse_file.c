@@ -1,8 +1,8 @@
 #include "../../includes/com.h"
 
-void		tokenize(char**line)
+void		 tokenize(char**line)
 {
-	printf("tokenize_|%s|\n", &((*line)[g_data->x]));
+	//printf("tokenize_|%s|\n", &((*line)[g_data->x]));
 	check_label(*line);
 	skip_space(*line);
 	check_new_line(*line, 1);
@@ -19,22 +19,24 @@ void		parse_str(char **line)
 	start = g_data->x;
 	if ((*line)[g_data->x] != '\0')
 	{
-		if ((*line)[g_data->x] == '.' && (g_data->name_f == 0 || g_data->comm_f == 0))
+		if ((*line)[g_data->x] == '.' && (g_data->name_f == 0 || g_data->comm_f == 0)
+				&& (g_tkn_first == NULL && g_label_first == NULL))
 		{
 			if( g_data->x == start)
 				add_header(line);
 			else
 				error_event(ERR_NAMECOM);
-		//	printf("after_header_line[%d] =%c\n",g_data->x, (*line)[g_data->x] );
 		}
 		else if ((*line)[g_data->x] == '\n' && ++g_data->x)
 			check_new_line(*line, 0);
-		else
+		else if(g_data->name_f == 1 && g_data->comm_f == 1)
 			tokenize(line);
+		else if ((g_data->name_f == 0 || g_data->comm_f == 0))
+			put_error("Lexical error: invalid instruction", 1);
 		skip_space(*line);
 		if (!((*line)[g_data->x]) || (*line)[g_data->x] == '\0')
 		{
-			printf("return\n");
+			//printf("return\n");
 			return ;
 		}
 		if((*line)[g_data->x] == '\n')
@@ -53,7 +55,7 @@ void	parse_file()
 							&& !(g_data->x = 0)
 							&& ++g_data->y)
 	{
-		printf("get_|%s|\n", line);
+		//printf("get_|%s|\n", line);
 		while (line[g_data->x])
 		{
 			skip_comment(line);
