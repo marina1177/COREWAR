@@ -102,16 +102,16 @@ void			check_label(char *line)
 {
 	size_t		size;
 
-	printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+	//printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
 	if ((size = label_size(line)))
 	{
 		add_lbl(&(line[g_data->x]), size);
 		g_label_last->new_line = 0;
 		g_data->x += size + 1;
-		printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
-		printf("g_data->x =%d\n", g_data->x);
+		/*printf("check_label_%s_line[%d]=%s", line, g_data->x, &(line[g_data->x]));
+		printf("g_data->x =%d\n", g_data->x);*/
 	}
-
+}
 	//t_lbl_lst	*tmp = g_label_first;
 
 //	printf("EXEC_BYTES = %ld(0x%lx)\n", g_data->exec_bytes,g_data->exec_bytes);
@@ -124,4 +124,3 @@ void			check_label(char *line)
 	printf("\n");*/
 	//valid_newline();
 	//token_add(END);
-}

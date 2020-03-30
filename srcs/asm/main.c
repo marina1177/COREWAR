@@ -47,7 +47,7 @@ void	data_init()
 
 void		compilation(void)
 {
-	printf("compilation\n");
+//	printf("compilation\n");
 
 	g_data->exec_bytes = (g_tkn_first ? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
 	if (!(g_buf = (char*)malloc(sizeof(char) * (EXEC_START + g_data->exec_bytes))))

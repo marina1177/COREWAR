@@ -2,7 +2,7 @@
 
 int		check_reg(char *line, int size, u_int16_t i)
 {
-	printf("check_reg_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
+	//printf("check_reg_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	if (is_reg(&(line[g_data->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_REG)
 	{
@@ -43,7 +43,7 @@ int		check_dir(char *line, int size, u_int16_t i)
 
 int		check_ind(char *line, int size, u_int16_t i)
 {
-	printf("check_ind_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
+	//printf("check_ind_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	if(is_indirect(&(line[g_data->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_IND)
 	{

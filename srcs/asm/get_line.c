@@ -58,17 +58,17 @@ int			get_line(const int fd, char **row)
 
 	if (fd < 0 || !row || read(fd, buff, 0) < 0)
 	{
-		printf("gnl_return_-1\n");
+		//printf("gnl_return_-1\n");
 		return (-1);
 	}
 	while (!ft_strchrs(str, '\n'))
 	{
 		if (!(size = read(fd, buff, BUFF_SIZE)))
 		{
-			printf("gnl_size =%zd\n", size);
+			//printf("gnl_size =%zd\n", size);
 			if (!(*row = str))
 			{
-				printf("gnl_return_0\n");
+				//printf("gnl_return_0\n");
 				return (0);
 			}
 			str = NULL;
