@@ -39,6 +39,7 @@ void	free_label()
 	while (g_label_first != NULL)
 	{
 		temp = g_label_first;
+		free(temp->label);
 		g_label_first = g_label_first->next;
 		free(temp);
 	}
