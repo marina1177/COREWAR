@@ -16,7 +16,7 @@ int	is_reg(char *line, int len)
 			if (k > 16)
 				ft_putstr("warning: num of reg more 16!\n");
 			else if (k == 0)
-				error_event(ERR_ZERO_REG );
+				error_event(ERR_ZERO_REG);
 			return (TRUE);
 		}
 	}

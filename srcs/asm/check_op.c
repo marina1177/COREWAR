@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:15 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 14:11:17 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 20:37:25 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		search_op(char *line)
 	return (i - 1);
 }
 
-t_token	*new_token()
+t_token	*new_token(void)
 {
 	t_token		*new;
 
@@ -88,4 +88,3 @@ void	check_op(char *line)
 	skip_space(line);
 	parse_args(line);
 }
-

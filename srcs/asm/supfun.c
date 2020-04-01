@@ -28,12 +28,12 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	return (num);
 }
 
-int		is_lblchar(char c)
+int			is_lblchar(char c)
 {
 	char	*ptr;
 
 	ptr = LABEL_CHARS;
-	while(*ptr != '\0')
+	while (*ptr != '\0')
 	{
 		if (*ptr == c)
 			return (1);
@@ -42,15 +42,15 @@ int		is_lblchar(char c)
 	return (0);
 }
 
-void	skip_space(char *s)
+void		skip_space(char *s)
 {
 	if (!(&(s[g_data->x])) || s[g_data->x] == '\0')
 		return ;
-	while(s[g_data->x] == ' ' || s[g_data->x] == '	')
+	while (s[g_data->x] == ' ' || s[g_data->x] == '	')
 		g_data->x++;
 }
 
-char *skip_comment(char *s)
+char		*skip_comment(char *s)
 {
 	char	*pnt;
 	int		len;
@@ -62,19 +62,20 @@ char *skip_comment(char *s)
 	if (pnt != NULL)
 		*pnt = '\0';
 	len = ft_strlen(s);
-	while(!IS_BLANK(s[len--]));
-	return(s);
+	while (!IS_BLANK(s[len]))
+		len--;
+	return (s);
 }
 
-void	check_new_line(char *line, int f)
+void		check_new_line(char *line, int f)
 {
 	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
 		return ;
 	if (line[g_data->x] == '\n')
 	{
-		if(f == 2)
+		if (f == 2)
 		{
-			if(g_tkn_last)
+			if (g_tkn_last)
 				g_tkn_last->new_line += 1;
 		}
 		if (f == 1)

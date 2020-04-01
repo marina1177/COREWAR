@@ -6,25 +6,25 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 13:18:21 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 16:47:31 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 19:20:24 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-static void add_tail_list(t_lbl_lst	**new)
+static	void	add_tail_list(t_lbl_lst **new)
 {
 	if (g_label_first == NULL && g_label_last == NULL)
-		{
-			g_label_first = *new;
-			g_label_last = g_label_first;
-		}
+	{
+		g_label_first = *new;
+		g_label_last = g_label_first;
+	}
 	else
 		g_label_last->next = *new;
 	(*new)->offset = g_tkn_last->offset + g_tkn_last->num_byte_op;
 }
 
-static void add_top_list(t_lbl_lst	**new)
+static void		add_top_list(t_lbl_lst **new)
 {
 	if (g_label_first == NULL)
 	{
@@ -39,7 +39,7 @@ static void add_top_list(t_lbl_lst	**new)
 	}
 }
 
-void	add_lbl(char *s, size_t size)
+void			add_lbl(char *s, size_t size)
 {
 	t_lbl_lst	*new;
 
@@ -52,5 +52,4 @@ void	add_lbl(char *s, size_t size)
 		add_tail_list(&new);
 	g_label_last = new;
 	g_label_last->label = ft_strsub(s, 0, size);
-	//check_dup_label();
 }

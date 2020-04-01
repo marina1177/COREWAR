@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 16:55:57 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/02 01:11:23 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char			*new_filename(char *filename)
 	return (new_name);
 }
 
-void				write_to_file()
+void				write_to_file(void)
 {
 	int				fd;
 	char			*new_name;
@@ -44,7 +44,7 @@ void				write_to_file()
 	//ft_printf("%sWriting output program to %s%s\n", GREEN, new_name, EOC);
 	ft_putstr("Writing output program to ");
 	ft_putstr(new_name);
-	write(1,"\n",1);
+	write(1, "\n", 1);
 
 	free(new_name);
 	if (write(fd, g_buf, EXEC_START + g_data->exec_bytes) == -1)

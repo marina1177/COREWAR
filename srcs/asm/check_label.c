@@ -6,13 +6,13 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:39 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 16:55:42 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 20:31:19 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-void	check_empty_file()
+void			check_empty_file(void)
 {
 	if ((g_tkn_first == NULL && g_label_first == NULL)
 	|| (g_tkn_first == NULL && !g_label_first->new_line))
@@ -23,10 +23,9 @@ void	check_empty_file()
 	}
 	else if (g_label_last != NULL && g_label_last->new_line)
 		return ;
-
 }
 
-void	check_dup_label()
+void			check_dup_label(void)
 {
 	t_lbl_lst	*ptr1;
 	t_lbl_lst	*ptr2;

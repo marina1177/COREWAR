@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:50:23 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 14:56:02 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 21:53:03 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_opargs			*parse_parameter(char *line)
 	return (param);
 }
 
-void			parse_args(char *line)
+void				parse_args(char *line)
 {
 	size_t		i;
 	size_t		cw;

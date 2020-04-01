@@ -6,18 +6,18 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 17:02:38 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 17:02:38 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/02 00:57:43 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-void	print_champion_info()
+void	print_champion_info(void)
 {
 	ft_memcpy(g_buf + 4 + PROG_NAME_LENGTH + 4 * 2,
 			g_data->head->comment, ft_strlen(g_data->head->comment));
 	ft_memcpy(g_buf + 4, g_data->head->prog_name,
-		ft_strlen( g_data->head->prog_name));
+		ft_strlen(g_data->head->prog_name));
 }
 
 void	print_args_types_code(t_token *tkn, u_int32_t *cursor)

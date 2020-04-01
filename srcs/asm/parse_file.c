@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 15:04:51 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/02 01:05:57 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	parse_str(char **line)
 	start = g_data->x;
 	if ((*line)[g_data->x] != '\0')
 	{
-		if ((*line)[g_data->x] == '.' && (g_data->name_f == 0 || g_data->comm_f == 0)
+		if ((*line)[g_data->x] == '.'
+				&& (g_data->name_f == 0 || g_data->comm_f == 0)
 				&& (g_tkn_first == NULL && g_label_first == NULL))
 		{
-			if ( g_data->x == start)
+			if (g_data->x == start)
 				add_header(line);
 			else
 				error_event(ERR_NAMECOM);
@@ -43,7 +44,6 @@ void	parse_str(char **line)
 			tokenize(line);
 		else if ((g_data->name_f == 0 || g_data->comm_f == 0))
 			put_error("Lexical error: invalid instruction", 1);
-//		skip_space(*line);
 		if (!((*line)[g_data->x]) || (*line)[g_data->x] == '\0')
 			return ;
 /*		if ((*line)[g_data->x] == '\n')
@@ -51,7 +51,7 @@ void	parse_str(char **line)
 	}
 }
 
-void	parse_file()
+void	parse_file(void)
 {
 	char	*line;
 	int		size;
@@ -64,7 +64,7 @@ void	parse_file()
 		{
 			skip_comment(line);
 			skip_space(line);
-			if (&(line[g_data->x]) && line[g_data->x] )
+			if (&(line[g_data->x]) && line[g_data->x])
 				parse_str(&line);
 		}
 		ft_strdel(&line);
@@ -72,4 +72,3 @@ void	parse_file()
 	if (size == -1)
 		error_event(ERR_READING);
 }
-

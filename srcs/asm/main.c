@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 19:54:47 by bcharity          #+#    #+#             */
-/*   Updated: 2020/03/29 19:54:47 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 21:18:10 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	valid_filename(char *fname)
 		error_event(ERR_FNAME);
 }
 
-void	data_init()
+void	data_init(void)
 {
 	g_tkn_last = NULL;
 	g_tkn_first = NULL;
@@ -36,7 +36,7 @@ void	data_init()
 		error_event(ERR_ALLOC);
 	if (!(g_data->head = (t_header*)malloc(sizeof(t_header))))
 		error_event(ERR_ALLOC);
-	ft_memset(g_data->head->prog_name, '\0', PROG_NAME_LENGTH+1);
+	ft_memset(g_data->head->prog_name, '\0', PROG_NAME_LENGTH + 1);
 	ft_memset(g_data->head->comment, '\0', COMMENT_LENGTH + 1);
 	g_data->name_f = 0;
 	g_data->namelen = 0;
@@ -47,8 +47,10 @@ void	data_init()
 
 void	compilation(void)
 {
-	g_data->exec_bytes = (g_tkn_first ? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
-	if (!(g_buf = (char*)malloc(sizeof(char) * (EXEC_START + g_data->exec_bytes))))
+	g_data->exec_bytes = (g_tkn_first 
+			? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
+	if (!(g_buf = (char*)malloc(sizeof(char) * 
+					(EXEC_START + g_data->exec_bytes))))
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);
 	check_dup_label();

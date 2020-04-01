@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_header.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/31 15:23:23 by bcharity          #+#    #+#             */
-/*   Updated: 2020/03/31 15:23:23 by bcharity         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../includes/com.h"
 
@@ -29,7 +19,7 @@ void	put_header(char *str, int len, t_2b type_h)
 	}
 	else if (type_h == COMMENT)
 	{
-		ft_strncpy(g_data->head->comment,&(str[g_data->x]), len - 1);
+		ft_strncpy(g_data->head->comment, &(str[g_data->x]), len - 1);
 		g_data->comm_f += 1;
 	}
 	else
@@ -72,8 +62,8 @@ t_2b	exist_header(char **line)
 		type = NAME;
 		g_data->x += ft_strlen(NAME_CMD_STRING);
 	}
-	else if((p = ft_strstr(&((*line)[g_data->x]), COMMENT_CMD_STRING))!= NULL
-				 && p == &((*line)[g_data->x]) && g_data->comm_f == 0)
+	else if ((p = ft_strstr(&((*line)[g_data->x]), COMMENT_CMD_STRING)) != NULL
+			&& p == &((*line)[g_data->x]) && g_data->comm_f == 0)
 	{
 		type = COMMENT;
 		g_data->x += ft_strlen(COMMENT_CMD_STRING);

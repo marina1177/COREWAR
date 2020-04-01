@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 17:04:04 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 17:04:06 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/01 23:14:08 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 {
 	int			move;
 	int			buf;
+	u_int8_t	tmp;
 
 	buf = dir_size;
 	move = 0;
-	u_int8_t tmp;
 	while (dir_size)
 	{
 		tmp = (u_int8_t)((dec >> move) & 0xFF);
@@ -72,4 +72,3 @@ int		ft_strmerge(char **dest, char **srcs)
 	*srcs = src;
 	return (1);
 }
-
