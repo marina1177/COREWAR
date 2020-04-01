@@ -1,57 +1,5 @@
 #include "../../includes/com.h"
 
-void	bits_to_str(size_t size, void *ptr, char space)
-{
-	unsigned char	*b;
-	unsigned char	byte;
-	int				i;
-	int				j;
-
-	b = (unsigned char*)ptr;
-	i = size - 1;
-	j = 7;
-	while (i >= 0)
-	{
-		while (j >= 0)
-		{
-			byte = (b[i] >> j) & 1;
-			ft_putchar(byte + '0');
-			j--;
-		}
-		if (space == 1)
-			ft_putchar(' ');
-		j = 7;
-		i--;
-	}
-	ft_putchar('\n');
-}
-
-
-void		print_bits(size_t size, void *ptr, char space)
-{
-	unsigned char	*b;
-	unsigned char	byte;
-	int				i;
-	int				j;
-	b = (unsigned char*)ptr;
-	i = size - 1;
-	j = 7;
-	while (i >= 0)
-	{
-		while (j >= 0)
-		{
-			byte = (b[i] >> j) & 1;
-			ft_putchar(byte + '0');
-			j--;
-		}
-		if (space == 1)
-			ft_putchar(' ');
-		j = 7;
-		i--;
-	}
-	ft_putchar('\n');
-}
-
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {
 	int				neg;
@@ -106,7 +54,6 @@ char *skip_comment(char *s)
 {
 	char	*pnt;
 	int		len;
-	//char	end_ch;
 
 	pnt = ft_strstr(s, "#");
 	if (pnt != NULL)
@@ -117,4 +64,31 @@ char *skip_comment(char *s)
 	len = ft_strlen(s);
 	while(!IS_BLANK(s[len--]));
 	return(s);
+}
+
+void	check_new_line(char *line, int f)
+{
+	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
+		return ;
+	if (line[g_data->x] == '\n')
+	{
+		if(f == 2)
+		{
+			if(g_tkn_last)
+				g_tkn_last->new_line += 1;
+		}
+		if (f == 1)
+		{
+			if (g_label_last)
+				g_label_last->new_line += 1;
+		}
+		if (f == 0)
+		{
+			if (g_tkn_last)
+				g_tkn_last->new_line += 1;
+			else if (g_label_last)
+				g_label_last->new_line += 1;
+		}
+		g_data->x++;
+	}
 }

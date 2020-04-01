@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/01 14:10:59 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/01 14:10:59 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-char			*freesplit(t_token	*tmp)
+char	*freesplit(t_token	*tmp)
 {
 	unsigned int	i;
 
@@ -45,7 +56,7 @@ void	free_label()
 	}
 }
 
-void		free_data(void)
+void	free_data(void)
 {
 	if (g_buf != NULL)
 		free(g_buf);

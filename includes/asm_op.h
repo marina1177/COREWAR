@@ -1,47 +1,19 @@
-#ifndef VM_H
-# define VM_H
+
+#ifndef ASM_OP_H
+# define ASM_OP_H
 
 # include "com.h"
 
-# define RUNNING 			713
-# define CYCLE_PER_SEC		1225
-# define CYCLE_COORD		1993
-# define PROCESSES			2505
-# define PL_ONE_LIVE		3529
-
-# define LIVE_CODE	0x01
-# define LD_CODE 	0x02
-# define ST_CODE	0x03
-# define ADD_CODE	0x04
-# define SUB_CODE	0x05
-# define AND_CODE	0x06
-# define OR_CODE	0x07
-# define XOR_CODE	0x08
-# define ZJMP_CODE	0x09
-# define LDI_CODE	0x0a
-# define STI_CODE	0x0b
-# define FORK_CODE	0x0c
-# define LLD_CODE	0x0d
-# define LLDI_CODE	0x0e
-# define LFORK_CODE	0x0f
-# define AFF_CODE	0x10
-
-# define LIVE_CYCLE_CD	10
-# define LD_CYCLE_CD	5
-# define ST_CYCLE_CD	5
-# define ADD_CYCLE_CD	10
-# define SUB_CYCLE_CD	10
-# define AND_CYCLE_CD	6
-# define OR_CYCLE_CD	6
-# define XOR_CYCLE_CD	6
-# define ZJMP_CYCLE_CD	20
-# define LDI_CYCLE_CD	25
-# define STI_CYCLE_CD	25
-# define FORK_CYCLE_CD	800
-# define LLD_CYCLE_CD	10
-# define LLDI_CYCLE_CD	50
-# define LFORK_CYCLE_CD	1000
-# define AFF_CYCLE_CD	2
+typedef struct s_op	t_op;
+struct				s_op
+{
+	char			*name;
+	unsigned int	code;
+	u_int16_t		args_num;
+	u_int8_t		args_types_code;
+	unsigned int	args_types[3];
+	unsigned int	t_dir_size;
+};
 
 static t_op			g_op_tab[16] = {
 	{
@@ -173,35 +145,6 @@ static t_op			g_op_tab[16] = {
 			.t_dir_size = 4,
 	}
 };
-
-
-typedef	struct	s_cw
-{
-
-	t_player		**champs;
-
-}				t_cw;
-
-typedef	struct			s_player
-{
-	int					num;
-	char				*name;
-	char				*comment;
-	int					exec_size;
-	char				*exec;
-}						t_player;
-
-
-typedef	struct			s_carriage
-{
-	int					num_of_carriage;
-	int					carry;
-	int					regs[REG_NUMBER];
-
-	struct s_carriage	*next;
-	struct s_carriage	*prev;
-}						t_carriage;
-
 
 
 #endif

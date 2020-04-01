@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Toutes les tailles sont en octets.
-** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
-*/
+#ifndef OP_H
+# define OP_H
 
 #define IND_SIZE				2
 #define REG_SIZE				4
@@ -48,25 +46,22 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
-/*
-**
-*/
-
-//typedef char	t_arg_type;
 
 #define T_REG					1
 #define T_DIR					2
 #define T_IND					4
 #define T_LAB					8
 
-/*
-**
-*/
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
+# define IS_BLANK(c) (c == ' ' || c == '\t')
+# define IS_ENDLINE(c) (c == '\n' || c == '\0')
+
+# define EXEC_START (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4)
+# define FULL_SIZE (EXEC_START + CHAMP_MAX_SIZE)
 
 typedef struct		s_header t_header;
 struct				s_header
@@ -76,3 +71,6 @@ struct				s_header
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 };
+
+
+#endif

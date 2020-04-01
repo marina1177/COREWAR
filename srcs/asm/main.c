@@ -45,25 +45,23 @@ void	data_init()
 	g_data->exec_bytes = 0;
 }
 
-void		compilation(void)
+void	compilation(void)
 {
-//	printf("compilation\n");
-
 	g_data->exec_bytes = (g_tkn_first ? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
 	if (!(g_buf = (char*)malloc(sizeof(char) * (EXEC_START + g_data->exec_bytes))))
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);
+	check_dup_label();
+	check_empty_file();
 	translate();
 	write_to_file();
 }
-
 
 void	read_file(char *filename)
 {
 	int	fd_s;
 
 	valid_filename(filename);
-
 	if ((fd_s = open(filename, O_RDONLY, 0)) < 0)
 		error_event(ERR_FOPEN);
 	data_init();

@@ -1,4 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   supfun_2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/01 17:04:04 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/01 17:04:06 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/com.h"
+
+void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
+{
+	int			move;
+	int			buf;
+
+	buf = dir_size;
+	move = 0;
+	u_int8_t tmp;
+	while (dir_size)
+	{
+		tmp = (u_int8_t)((dec >> move) & 0xFF);
+		g_buf[*place + dir_size - 1] = tmp;
+		move += 8;
+		dir_size--;
+	}
+	*place += buf;
+}
 
 int		ft_findchar(char *str, int c)
 {

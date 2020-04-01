@@ -30,7 +30,6 @@ SRC_ASM_LIST =	main.c \
 				supfun.c \
 				supfun_2.c \
 				free_data.c \
-				args_type.c \
 				translate.c \
 				parse_file.c \
 				add_header.c \
@@ -39,7 +38,11 @@ SRC_ASM_LIST =	main.c \
 				check_label.c \
 				check_op.c \
 				parse_args.c \
+				parse_args_type.c \
 				write_to_file.c\
+				add_label.c \
+				check_type_arg.c \
+				my_atoi.c \
 				is_type.c
 
 SRC_ASM = $(addprefix $(SRC_ASM_DIR), $(SRC_ASM_LIST))

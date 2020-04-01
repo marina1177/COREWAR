@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/01 14:50:23 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/01 14:56:02 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/com.h"
 
-static void				skip_to_separator(char *line)
+static void			skip_to_separator(char *line)
 {
 	while (line[g_data->x] && !IS_BLANK(line[g_data->x])
 		&& line[g_data->x] != SEPARATOR_CHAR)
@@ -27,7 +39,7 @@ static size_t		count_word(char const *s, char c)
 	return (lns);
 }
 
-t_opargs	*parse_parameter(char *line)
+t_opargs			*parse_parameter(char *line)
 {
 	t_opargs	*param;
 	int			i;
@@ -40,9 +52,7 @@ t_opargs	*parse_parameter(char *line)
 			error_event(ERR_ALLOC);
 		param->x = g_data->x;
 		param->y = g_data->y;
-		//param->value = 0;
 		param->arg = NULL;
-		//parse_args_type(&param, line);
 	}
 	return (param);
 }
@@ -53,19 +63,15 @@ void			parse_args(char *line)
 	size_t		cw;
 
 	i = 0;
-	//printf("parse_args_line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 	cw = count_word(&(line[g_data->x]), SEPARATOR_CHAR);
 	if (cw != g_tkn_last->op->args_num)
 		error_event(ERR_OP);
-
 	while (i < cw)
 	{
 		skip_space(line);
 		if ((g_tkn_last->args[i] = parse_parameter(line)))
 		{
 			parse_args_type(i, line);
-			/*printf("tkn_offset = %d\ntkn_numbyte = %d\n", g_tkn_last->offset,
-			g_tkn_last->num_byte_op);*/
 			skip_to_separator(line);
 			skip_space(line);
 			if (line[g_data->x]

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_header.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/31 15:23:23 by bcharity          #+#    #+#             */
+/*   Updated: 2020/03/31 15:23:23 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/com.h"
 
 void	valid_headlen(t_2b type_h, int len)
@@ -42,7 +54,7 @@ void	process_header(char **line, t_2b type_h)
 	*line = str;
 	g_data->x += len;
 	skip_space(str);
-	if(str[g_data->x] == '\n')
+	if (str[g_data->x] == '\n')
 		g_data->x++;
 	else
 		error_event(ERR_NAMECOM);
@@ -81,13 +93,11 @@ void	add_header(char **line)
 		process_header(line, type);
 	else
 		error_event(ERR_NAMECOM);
-	while((*line)[g_data->x] != '\n' && (*line)[g_data->x] != '\0')
+	while ((*line)[g_data->x] != '\n' && (*line)[g_data->x] != '\0')
 	{
 		if (IS_BLANK((*line)[g_data->x]))
 			g_data->x++;
 		else
 			error_event(ERR_NAMECOM);
 	}
-	//printf("prog_name =%s\ncomment=%s\n", g_data->head->prog_name, g_data->head->comment);
-	//printf("line = %s\nline[%d] = %s\n",line, g_data->x, &(line[g_data->x]));
 }

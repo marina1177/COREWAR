@@ -17,7 +17,7 @@ static void	ft_print_char(unsigned char c)
 		write(1, ".", 1);
 }
 
-void	print_memory(const void *addr, size_t size)
+void		print_memory(const void *addr, size_t size)
 {
 	size_t i;
 	size_t j;
@@ -52,4 +52,56 @@ void	print_memory(const void *addr, size_t size)
 		write(1, "\n", 1);
 		i += 16;
 	}
+}
+
+void	bits_to_str(size_t size, void *ptr, char space)
+{
+	unsigned char	*b;
+	unsigned char	byte;
+	int				i;
+	int				j;
+
+	b = (unsigned char*)ptr;
+	i = size - 1;
+	j = 7;
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			byte = (b[i] >> j) & 1;
+			ft_putchar(byte + '0');
+			j--;
+		}
+		if (space == 1)
+			ft_putchar(' ');
+		j = 7;
+		i--;
+	}
+	ft_putchar('\n');
+}
+
+
+void		print_bits(size_t size, void *ptr, char space)
+{
+	unsigned char	*b;
+	unsigned char	byte;
+	int				i;
+	int				j;
+	b = (unsigned char*)ptr;
+	i = size - 1;
+	j = 7;
+	while (i >= 0)
+	{
+		while (j >= 0)
+		{
+			byte = (b[i] >> j) & 1;
+			ft_putchar(byte + '0');
+			j--;
+		}
+		if (space == 1)
+			ft_putchar(' ');
+		j = 7;
+		i--;
+	}
+	ft_putchar('\n');
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_op.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/01 14:11:15 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/01 14:11:17 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/com.h"
 
 int		search_op(char *line)
@@ -47,35 +59,25 @@ t_token	*new_token()
 	}
 	g_data->exec_bytes += g_tkn_last->num_byte_op;
 	g_tkn_last = new;
-
-//	printf("EXEC_BYTES = %ld\n", g_data->exec_bytes);
-
 	return (new);
 }
-
-
 
 void	add_token(int indx_op)
 {
 	t_token		*new;
 
-	//printf("add_token__indxop = %d\n", indx_op);
 	new = NULL;
 	new = new_token();
 	new->op = &(g_op_tab[indx_op]);
 	new->new_line = 0;
 	new->y = g_data->y;
 	new->x = g_data->x;
-//	printf("line[%d]=%s\n", g_data->x, &(line[g_data->x]));
 }
 
-void					check_op(char *line)
+void	check_op(char *line)
 {
-	//printf("check_op_%s_line[%d]=\n", line, g_data->x);
 	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
-	{
 		return ;
-	}
 	skip_space(line);
 	add_token(search_op(line));
 	g_tkn_last->num_byte_op = 1;
