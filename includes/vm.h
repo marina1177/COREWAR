@@ -96,8 +96,19 @@ typedef	struct			s_carriage
 	// struct s_carriage	*prev;
 }						t_carriage;
 
+typedef struct			s_vm_info
+{
+	uint8_t				arena[MEM_SIZE];
+	ssize_t				cycles;
+	ssize_t				cycles_to_die;
+	ssize_t				cycles_after_check;
+	size_t				checks_num;
+	int					checks_counter;
+	int					lives_counter;
+}						t_vm_info;
+
 typedef struct 			s_mods
-{	
+{
 	ssize_t				dump_cycle;
 	int					dump_size;
 	ssize_t				show_cycle;
@@ -109,6 +120,7 @@ typedef struct 			s_mods
 typedef	struct	s_vm
 {
 	unsigned char	*arena;
+	t_vm_info		*data;
 	t_player		*players;
 	t_carriage		*carriages;
 	t_mods			*mods;
@@ -119,28 +131,28 @@ typedef	struct			s_bit
 	unsigned		forth : 2;
 	unsigned		third : 2;
 	unsigned		second : 2;
-	unsigned		first : 2;				
+	unsigned		first : 2;
 }						t_bit;
 
 typedef	union			s_arg_types
 {
 	unsigned char	types;
-	t_bit			bit;				
+	t_bit			bit;
 }						t_arg_types;
 
-void	init(t_vm *arena, int quantity);
+void	init(t_vm *data, int quantity);
 void	init_arena(t_vm *data, int quantity);
 void	read_data(char *filename, t_player *player);
 void	ft_exit(char *line);
 void	clean_data(t_vm *data);
 void	print_byte(unsigned char c);
 void	print_memory(const void *addr, size_t size);
-int		check_operation(char *arena, t_carriage *carriage, unsigned char *arguments);
+int		check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
 void	change_position(unsigned int *position, int change);
-int		get_num_from_char(char *arena, int position, int size);
-int		get_arg_size(int op, char arg);
-void	write_reg(char *arena, int reg, int position, int change);
-int		get_arg_value(char *arena, t_carriage *car, int *pos, char arg_type);
+int		get_num_from_char(unsigned char *arena,  unsigned int position, int size);
+int		get_arg_size(int op, unsigned char arg);
+void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change);
+int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type);
 
 t_carriage	*make_new_carriage(unsigned int position);
 void		add_carriage(t_carriage **head, t_carriage *new);
@@ -148,21 +160,21 @@ void		del_carriage(t_carriage **head, t_carriage *carriage);
 
 void	(*actions[17])();
 void	do_live(t_carriage *carriage, t_vm *vm);
-void	do_ld(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_st(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_add(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_sub(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_and(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_or(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_xor(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_sub(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
 void	do_zjmp(t_carriage *carriage, t_vm *vm);
-void	do_ldi(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_sti(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
 void	do_fork(t_carriage *carriage, t_vm *vm);
-void	do_lld(t_carriage *carriage, t_vm *vm, char *arguments);
-void	do_lldi(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
 void	do_lfork(t_carriage *carriage, t_vm *vm);
-void	do_aff(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
 
 typedef struct s_op	t_op;
 

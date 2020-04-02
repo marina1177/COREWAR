@@ -1,30 +1,12 @@
 #include "../../includes/vm.h"
 
-void	make_operation(t_vm *data, t_carriage *carriage, char *arguments)
+void	make_operation(t_vm *data, t_carriage *carriage, unsigned char *arguments)
 {
-	if (g_op_tab[carriage->op_code].args_types_code)
-		actions[carriage->op_code](carriage, data->arena, arguments);
+	if (g_op_tab[(int)carriage->op_code].args_types_code)
+		actions[(int)carriage->op_code](carriage, data, arguments);
 	else
-		actions[carriage->op_code](carriage, data);
+		actions[(int)carriage->op_code](carriage, data);
 	printf("arguments is OK\n");
-}
-
-int			get_num_from_char(char *arena, int position, int size)
-{
-	int		*num;
-	int		i;
-	char	arguments[5];
-
-	i = size;
-	ft_bzero(arguments, 5);
-	while (--i >= 0)
-	{
-		arguments[i] = arena[position];
-		change_position(&position, 1);
-	}
-	print_memory(arguments, size);
-	num = (int *)arguments;
-	return (*num);
 }
 
 void	play_game(t_vm *data)
@@ -33,8 +15,6 @@ void	play_game(t_vm *data)
 	unsigned char arguments[4];
 	char check[100];
 	ft_bzero(check, 100);
-	char *try;
-	try = ft_memcpy(check, data->arena, 50);
 	check[0] = 2;
 	check[1] = 0b10010111;
 	data->arena[0] = 2;

@@ -69,13 +69,13 @@ void	init_arena(t_vm *data, int quantity)
 		position = data->players[i].position;
 		ft_memcpy(&(data->arena[position]), data->players[i].exec, 683);
 		ft_strdel(&(data->players[i].exec));
-		i++;	
+		i++;
 	}
 }
 
 void	init(t_vm *data, int quantity)
 {
-	data->arena = (char *)malloc(sizeof(char) * MEM_SIZE);
+	data->arena = (unsigned char *)malloc(sizeof(char) * MEM_SIZE);
 	if (!data->arena)
 		ft_exit(ERR_ALLOC);
 	ft_bzero(data->arena, MEM_SIZE);

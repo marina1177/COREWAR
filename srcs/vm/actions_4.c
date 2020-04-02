@@ -1,9 +1,9 @@
 #include "../../includes/vm.h"
 
-void	do_aff(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	char reg;
-	int position;
+	unsigned int position;
 	int value;
 
 	if (!vm->mods->aff)

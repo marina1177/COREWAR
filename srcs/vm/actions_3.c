@@ -1,14 +1,11 @@
 #include "../../includes/vm.h"
 
-void	do_sti(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
-	int i;
-	int size;
+	unsigned int position;
 
 	printf("sti\n");
-	i = 0;
 	position = carriage->position;
 	printf("position %d\noperation %d\n", position, vm->arena[position]);
 	print_memory(&vm->arena[position], 1);
@@ -27,7 +24,7 @@ void	do_sti(t_carriage *carriage, t_vm *vm, char *arguments)
 void	do_fork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	int position;
+	unsigned int position;
 	t_carriage *new;
 	int i;
 
@@ -45,11 +42,11 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 	printf("fork\n");
 }
 
-void	do_lld(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	int position;
-	int temp;
+	unsigned int position;
+	unsigned int temp;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -69,11 +66,11 @@ void	do_lld(t_carriage *carriage, t_vm *vm, char *arguments)
 	printf("lld\n");
 }
 
-void	do_lldi(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
-	int res;
+	unsigned int position;
+	unsigned int temp;
 	int i;
 
 	i = -1;
@@ -87,8 +84,8 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, char *arguments)
 		if (i < 2 && arguments[i] == T_REG)
 			values[i] = carriage->regs[values[i]];
 	}
-	i = values[0] + values[1];
-	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &i, T_IND);
+	temp = values[0] + values[1];
+	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &temp, T_IND);
 	carriage->position = position;
 	printf("lldi\n");
 }
@@ -96,7 +93,7 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, char *arguments)
 void	do_lfork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	int position;
+	unsigned int position;
 	t_carriage *new;
 	int i;
 

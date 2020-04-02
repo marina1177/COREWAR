@@ -1,9 +1,9 @@
 #include "../../includes/vm.h"
 
-void	do_and(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
+	unsigned int position;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -16,10 +16,10 @@ void	do_and(t_carriage *carriage, t_vm *vm, char *arguments)
 	printf("and\n");
 }
 
-void	do_or(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
+	unsigned int position;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -32,10 +32,10 @@ void	do_or(t_carriage *carriage, t_vm *vm, char *arguments)
 	printf("or\n");
 }
 
-void	do_xor(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
+	unsigned int position;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -51,7 +51,7 @@ void	do_xor(t_carriage *carriage, t_vm *vm, char *arguments)
 void	do_zjmp(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	int position;
+	unsigned int position;
 
 	printf("zjmp\n");
 	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
@@ -62,27 +62,26 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 	carriage->position += value % IDX_MOD;
 }
 
-void	do_ldi(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
-	int res;
-	int i;
+	unsigned int position;
+	unsigned int i;
 
-	i = -1;
+	i = 0;
 	printf("ldi\n");
 	position = carriage->position;
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
-	while (++i < 3)
+	while (i < 3)
 	{
 		values[i] = get_arg_value(vm->arena, carriage, &position, arguments[i]);
 		if (i < 2 && arguments[i] == T_REG)
 			values[i] = carriage->regs[values[i]];
+		i++;
 	}
 	i = (values[0] + values[1]) % IDX_MOD;
 	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &i, T_IND);
 	carriage->position = position;
-	
 }

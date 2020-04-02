@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-int		get_arg_size(int op, char arg)
+int		get_arg_size(int op, unsigned char arg)
 {
 	if (arg == T_REG)
 		return (1);
@@ -20,7 +20,6 @@ void	change_position(unsigned int *position, int change)
 		*position += MEM_SIZE;
 }
 
-
 static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 {
 	int change; // а если третий бит 00?
@@ -28,26 +27,26 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 
 	i = 0;
 	change = 2;
-	if (g_op_tab[carriage->op_code].args_types_code)
+	if (g_op_tab[(int)carriage->op_code].args_types_code)
 	{
-		while(i < g_op_tab[carriage->op_code].args_num)
+		while(i < g_op_tab[(int)carriage->op_code].args_num)
 		{
 			change += get_arg_size(carriage->op_code, arguments[i]);
 			i++;
 		}
 	}
 	else
-		change += g_op_tab[carriage->op_code].t_dir_size;
+		change += g_op_tab[(int)carriage->op_code].t_dir_size;
 	change_position(&carriage->position, change);
-	printf("ошибка в аргс\n"); 
+	printf("ошибка в аргс\n");
 }
 
-static int	valid_register(t_carriage *carriage, char *arena, int position, char *arguments)
+static int	valid_register(t_carriage *carriage, unsigned char *arena, unsigned int position, unsigned char *arguments)
 {
 	int i;
 
 	i = 0;
-	while (i < g_op_tab[carriage->op_code].args_num)
+	while (i < g_op_tab[(int)carriage->op_code].args_num)
 	{
 		if (arguments[i] == T_REG)
 		{
@@ -71,7 +70,7 @@ static int	valid_register(t_carriage *carriage, char *arena, int position, char 
 	}
 	return (1);
 }
-static int			valid_args_types(t_carriage *carriage, unsigned char *types, unsigned char *arguments)
+static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigned char *arguments)
 {
 	int i;
 	t_arg_types code;
@@ -82,15 +81,15 @@ static int			valid_args_types(t_carriage *carriage, unsigned char *types, unsign
 	arguments[0] = code.bit.first;
 	arguments[1] = code.bit.second;
 	arguments[2] = code.bit.third;
-	while (i < g_op_tab[carriage->op_code].args_num)
+	while (i < g_op_tab[(int)carriage->op_code].args_num)
 	{
 		if (arguments[i] == 0x3)
 			arguments[i] = 0x4;
-		if (!(arguments[i] = arguments[i] & g_op_tab[carriage->op_code].args_types[i]))
+		if (!(arguments[i] = arguments[i] & g_op_tab[(int)carriage->op_code].args_types[i]))
 		{
 			printf("NOT VALID CODE\n");
 			return 0;
-		}	
+		}
 		i++;
 	}
 	printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
@@ -108,9 +107,9 @@ static int	valid_operation_code(t_carriage *carriage)
 }
 
 
-int	check_operation(char *arena, t_carriage *carriage, unsigned char *arguments)
+int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments)
 {
-	int position;
+	unsigned int position;
 
 	position = carriage->position;
 	ft_bzero(arguments, 4);
@@ -120,12 +119,11 @@ int	check_operation(char *arena, t_carriage *carriage, unsigned char *arguments)
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);
-	if (g_op_tab[carriage->op_code].args_types_code)
+	if (g_op_tab[(int)carriage->op_code].args_types_code)
 	{
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))
 		{
-			
 			skip_args(carriage, arguments);
 			return 0;
 		}

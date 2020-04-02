@@ -1,8 +1,26 @@
 #include "../../includes/vm.h"
 
-int		get_arg_value(char *arena, t_carriage *car, int *pos, char arg_type)
+int			get_num_from_char(unsigned char *arena, unsigned int position, int size)
 {
-	int temp;
+	int		*num;
+	int		i;
+	char	arguments[5];
+
+	i = size;
+	ft_bzero(arguments, 5);
+	while (--i >= 0)
+	{
+		arguments[i] = arena[position];
+		change_position(&position, 1);
+	}
+	print_memory(arguments, size);
+	num = (int *)arguments;
+	return (*num);
+}
+
+int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type)
+{
+	 unsigned int temp;
 	int result;
 
 	if (arg_type == T_REG)
@@ -12,8 +30,8 @@ int		get_arg_value(char *arena, t_carriage *car, int *pos, char arg_type)
 	}
 	else if (arg_type == T_DIR)
 	{
-		result = get_num_from_char(arena, *pos, g_op_tab[car->op_code].t_dir_size);
-		change_position(pos, g_op_tab[car->op_code].t_dir_size);
+		result = get_num_from_char(arena, *pos, g_op_tab[(int)car->op_code].t_dir_size);
+		change_position(pos, g_op_tab[(int)car->op_code].t_dir_size);
 	}
 	else if (arg_type == T_IND)
 	{
@@ -25,7 +43,7 @@ int		get_arg_value(char *arena, t_carriage *car, int *pos, char arg_type)
 	return (result);
 }
 
-void	write_reg(char *arena, int reg, int position, int change)
+void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change)
 {
 	char			temp;
 

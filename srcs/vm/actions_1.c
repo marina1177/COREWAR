@@ -2,21 +2,21 @@
 
 void	do_live(t_carriage *carriage, t_vm *vm)
 {
-	int position;
+	unsigned int position;
 	int num;
 
 	position = carriage->position;
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 2);
-	num = get_arg_value(vm->arena, carriage, &position, arguments[0]);
-	//TO DO разобраться сос структурой Димы
+	num = get_arg_value(vm->arena, carriage, &position, T_DIR);
+	//TO DO разобраться со структурой Димы
 	printf("live\n");
 }
 
-void	do_ld(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	int position;
+	unsigned int position;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -31,10 +31,10 @@ void	do_ld(t_carriage *carriage, t_vm *vm, char *arguments)
 	// print_memory(&vm->arena[carriage->position], 1);
 }
 
-void	do_st(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	int position;
+	unsigned int position;
 	int temp;
 
 	printf("sti\n");
@@ -59,12 +59,10 @@ void	do_st(t_carriage *carriage, t_vm *vm, char *arguments)
 	printf("st\n");
 }
 
-void	do_add(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
-	int size;
-	int reg;
+	unsigned int position;
 
 	printf("add\n");
 	position = carriage->position;
@@ -73,16 +71,14 @@ void	do_add(t_carriage *carriage, t_vm *vm, char *arguments)
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
 	values[2] = get_arg_value(vm->arena, carriage, &position, arguments[2]);
 	carriage->regs[values[2]] = values[0] + values[1]; //зачем здесь уменьшать?
-	carriage->carry = reg == 0 ? 1 : 0;
+	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->position = position;
 }
 
-void	do_sub(t_carriage *carriage, t_vm *vm, char *arguments)
+void	do_sub(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	int position;
-	int size;
-	int reg;
+	unsigned int position;
 
 	position = carriage->position;
 	change_position(&position, 2);
@@ -90,7 +86,7 @@ void	do_sub(t_carriage *carriage, t_vm *vm, char *arguments)
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
 	values[2] = get_arg_value(vm->arena, carriage, &position, arguments[2]);
 	carriage->regs[values[2]] = values[0] - values[1]; //зачем здесь уменьшать ?
-	carriage->carry = reg == 0 ? 1 : 0;
+	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->position = position;
 	// printf("sub\n");
 	// printf("values[0] = %d values[1] = %d\n", values[0], values[1]);
