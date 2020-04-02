@@ -1,4 +1,5 @@
-#include "../../includes/com.h"
+
+#include "com.h"
 
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {

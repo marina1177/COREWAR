@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   args_type.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 13:46:53 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 21:58:17 by student          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "../../includes/com.h"
+#include "com.h"
 
 static int		is_emptyline(char *line)
 {
@@ -59,7 +48,7 @@ void			parse_args_type(u_int16_t i, char *line)
 		if ((i == g_tkn_last->op->args_num - 1
 			&& is_emptyline(&(line[g_data->x + size]))))
 			break ;
-		if (IS_BLANK(line[g_data->x + size]) 
+		if (IS_BLANK(line[g_data->x + size])
 				&& is_end_arg(&(line[g_data->x + size])))
 			break ;
 		size++;

@@ -1,4 +1,5 @@
-#include "../../includes/com.h"
+
+#include "com.h"
 
 int	is_reg(char *line, int len)
 {

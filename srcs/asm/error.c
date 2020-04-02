@@ -47,17 +47,6 @@ void		error(void)
 	exit(0);
 }
 
-//**************************************
-
-/*void		print_line_error(char *message, char *line, int x)
-{
-	description_token(message, g_data->token);
-	write(2, line, x);
-	ft_putstr_fd(RED, 2);
-	write(2, line + x, g_data->x - x + 1);
-	ft_putstr_fd(EOC, 2);
-	ft_putendl_fd(line + g_data->x + 1, 2);
-}*/
 
 void		print_filename(void)
 {

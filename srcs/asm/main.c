@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/29 19:54:47 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 21:18:10 by student          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "../../includes/com.h"
+#include "com.h"
 
 void	valid_filename(char *fname)
 {
@@ -47,9 +36,9 @@ void	data_init(void)
 
 void	compilation(void)
 {
-	g_data->exec_bytes = (g_tkn_first 
+	g_data->exec_bytes = (g_tkn_first
 			? g_tkn_last->offset + g_tkn_last->num_byte_op : 0);
-	if (!(g_buf = (char*)malloc(sizeof(char) * 
+	if (!(g_buf = (char*)malloc(sizeof(char) *
 					(EXEC_START + g_data->exec_bytes))))
 		error_event(ERR_ALLOC);
 	ft_bzero(g_buf, EXEC_START + g_data->exec_bytes);

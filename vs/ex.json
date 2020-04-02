@@ -1,0 +1,54 @@
+{
+    Consts:
+      {
+       mem_size: '{{integer()}}',
+       cycle_delta: '{{integer()}}',
+       players_number: '{{integer()}}',
+       max_checks: '{{index()}}',
+       Players:
+       [
+         {
+           id: '{{integer()}}',
+           name: '{{name}}',
+           start_code:'{{integer(0, 3072)}}',
+           exec_code_size: '{{integer(0, 680)}}',
+         }
+       ]
+      },
+    cycle: '{{index()}}',
+    state_refreshed: '{{integer(0, 1)}}',
+    State:
+    {
+     error_code: '{{integer(0, 1)}}',
+     total_process: '{{index()}}',
+     cycle_to_die: '{{index()}}',
+     nbr_live: '{{index()}}',
+    },
+    players_refreshed: '{{integer(0, 1)}}',
+    Players:
+        [
+      '{{repeat(4)}}',
+      {
+        is_alive: '{{integer(0, 1)}}',
+        id: '{{objectId()}}',
+        last_live: '{{integer(0, 100)}}',
+        lives_in_period: '{{integer(0, 100)}}'
+      }],
+     carriages_refreshed: '{{integer(0, 1)}}',
+     Carriages: [
+      '{{repeat(5)}}',
+      {
+        id: '{{objectId()}}',
+        op_code: '{{integer(1, 16)}}',
+        place: '{{integer(0, 4096)}}'
+      }
+    ],
+     cells_refreshed: '{{integer(0, 1)}}',
+     Cells: [
+      '{{repeat(integer(0, 10))}}',
+       {
+         cell_address: '{{integer(0, 4096)}}',
+         player_id: '{{integer(1, 4)}}',
+       }
+       ]
+  }

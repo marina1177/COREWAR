@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 21:11:51 by student           #+#    #+#             */
-/*   Updated: 2020/04/01 21:12:15 by student          ###   ########.fr       */
+/*   Created: 2020/04/02 02:16:26 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/02 02:16:28 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "com.h"
 
-char	*freesplit(t_token *tmp)
+void	freesplit(t_token *tmp)
 {
 	unsigned int	i;
 
@@ -23,7 +23,6 @@ char	*freesplit(t_token *tmp)
 		free(tmp->args[i]);
 		++i;
 	}
-	return (NULL);
 }
 
 void	free_token(void)

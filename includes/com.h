@@ -18,10 +18,8 @@
 
 # include "../libft/includes/libft.h"
 
-
 # include "op.h"
 # include "asm.h"
-
 
 # include <errno.h>
 # include <sys/types.h>
@@ -39,7 +37,6 @@
 ** realloc free perror strerror exit
 */
 
-
 # define EOC	"\033[0m"
 # define RED	"\033[1;31m"
 # define YELLOW	"\033[1;33m"
@@ -49,9 +46,5 @@
 # define BLUE	"\033[0;34m"
 # define PURPUL	"\033[0;35m"
 # define CYAN	"\033[0;36m"
-
-
-
-
 
 #endif

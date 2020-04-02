@@ -1,53 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   translate.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 17:02:38 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/02 00:57:43 by student          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "../../includes/com.h"
-
-void	print_champion_info(void)
-{
-	ft_memcpy(g_buf + 4 + PROG_NAME_LENGTH + 4 * 2,
-			g_data->head->comment, ft_strlen(g_data->head->comment));
-	ft_memcpy(g_buf + 4, g_data->head->prog_name,
-		ft_strlen(g_data->head->prog_name));
-}
-
-void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
-{
-	u_int8_t	byte;
-	u_int8_t	i;
-	int			k;
-	t_2b		type;
-
-	if (!tkn->op->args_types_code)
-		return ;
-	byte = 0;
-	i = 0;
-	k = 3;
-	while (i < (tkn)->op->args_num && (type = tkn->args[i]->argtype))
-	{
-		if (type & REGISTER)
-			byte ^= 1 << ((2 * k));
-		else if ((type & DIRECT) || (type & DIRECT_LABEL))
-			byte ^= 1 << ((2 * k) + 1);
-		else if ((type & INDIRECT) || (type & INDIRECT_LABEL))
-		{
-			byte ^= 1 << ((2 * k));
-			byte ^= 1 << ((2 * k) + 1);
-		}
-		i++;
-		k--;
-	}
-	int_to_hex((int32_t)byte, 1, cursor);
-}
+#include "com.h"
 
 int32_t	process_label(t_token **tkn, char *label)
 {
@@ -92,6 +44,43 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 			int_to_hex(process_label(tkn, line), IND_SIZE, cursor);
 		i++;
 	}
+}
+
+void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
+{
+	u_int8_t	byte;
+	u_int8_t	i;
+	int			k;
+	t_2b		type;
+
+	if (!tkn->op->args_types_code)
+		return ;
+	byte = 0;
+	i = 0;
+	k = 3;
+	while (i < (tkn)->op->args_num && (type = tkn->args[i]->argtype))
+	{
+		if (type & REGISTER)
+			byte ^= 1 << ((2 * k));
+		else if ((type & DIRECT) || (type & DIRECT_LABEL))
+			byte ^= 1 << ((2 * k) + 1);
+		else if ((type & INDIRECT) || (type & INDIRECT_LABEL))
+		{
+			byte ^= 1 << ((2 * k));
+			byte ^= 1 << ((2 * k) + 1);
+		}
+		i++;
+		k--;
+	}
+	int_to_hex((int32_t)byte, 1, cursor);
+}
+
+void	print_champion_info(void)
+{
+	ft_memcpy(g_buf + 4 + PROG_NAME_LENGTH + 4 * 2,
+			g_data->head->comment, ft_strlen(g_data->head->comment));
+	ft_memcpy(g_buf + 4, g_data->head->prog_name,
+		ft_strlen(g_data->head->prog_name));
 }
 
 void	translate(void)
