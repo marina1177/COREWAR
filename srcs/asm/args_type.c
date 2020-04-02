@@ -1,6 +1,6 @@
 #include "../../includes/com.h"
 
-int check_reg(int i)
+int valid_register(int i)
 {
 	char *line;
 
@@ -87,7 +87,7 @@ void	parse_args_type()
 	{
 		printf("lex[%d] = %s - ", i, g_tkn_last->op_args[i]);
 
-		if(check_reg(i))
+		if(valid_register(i))
 		{
 			printf("is_reg_%s\n",g_tkn_last->op_args[i]);
 			continue ;

@@ -1,7 +1,28 @@
 #ifndef VM_H
 # define VM_H
 
-# include "com.h"
+# include "asm_error.h"
+# include "../libft/includes/libft.h"
+
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stdint.h>
+# include <stdio.h>
+# include <stdbool.h>
+
+# define TRUE 1
+# define FALSE 0
+
+#define REG_NUMBER				16
+#define MEM_SIZE				(4*1024)
+#define IDX_MOD					(MEM_SIZE / 8)
+# define PROG_NAME_LENGTH		(128)
+# define COMMENT_LENGTH			(2048)
 
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
@@ -43,7 +64,120 @@
 # define LFORK_CYCLE_CD	1000
 # define AFF_CYCLE_CD	2
 
-static t_op			g_op_tab[16] = {
+#define T_REG					1
+#define T_DIR					2
+#define T_IND					4
+
+#define IND_SIZE				2
+#define REG_SIZE				4
+#define DIR_SIZE				REG_SIZE
+
+typedef	struct			s_player
+{
+	int					num;
+	char				*name;
+	char				*comment;
+	int					exec_size;
+	char				*exec;
+	unsigned int		position;
+}						t_player;
+
+typedef	struct			s_carriage
+{
+	unsigned int		position;
+	int					last_cycle_alive;
+	char				op_code;
+	int					circles;
+	int					num_of_carriage;
+	int					carry;
+	int					regs[REG_NUMBER + 1];
+
+	struct s_carriage	*next;
+	// struct s_carriage	*prev;
+}						t_carriage;
+
+typedef struct 			s_mods
+{	
+	ssize_t				dump_cycle;
+	int					dump_size;
+	ssize_t				show_cycle;
+	int					show_print_mode;
+	bool				aff;
+	int					log;
+}						t_mods;
+
+typedef	struct	s_vm
+{
+	unsigned char	*arena;
+	t_player		*players;
+	t_carriage		*carriages;
+	t_mods			*mods;
+}				t_vm;
+
+typedef	struct			s_bit
+{
+	unsigned		forth : 2;
+	unsigned		third : 2;
+	unsigned		second : 2;
+	unsigned		first : 2;				
+}						t_bit;
+
+typedef	union			s_arg_types
+{
+	unsigned char	types;
+	t_bit			bit;				
+}						t_arg_types;
+
+void	init(t_vm *arena, int quantity);
+void	init_arena(t_vm *data, int quantity);
+void	read_data(char *filename, t_player *player);
+void	ft_exit(char *line);
+void	clean_data(t_vm *data);
+void	print_byte(unsigned char c);
+void	print_memory(const void *addr, size_t size);
+int		check_operation(char *arena, t_carriage *carriage, unsigned char *arguments);
+void	change_position(unsigned int *position, int change);
+int		get_num_from_char(char *arena, int position, int size);
+int		get_arg_size(int op, char arg);
+void	write_reg(char *arena, int reg, int position, int change);
+int		get_arg_value(char *arena, t_carriage *car, int *pos, char arg_type);
+
+t_carriage	*make_new_carriage(unsigned int position);
+void		add_carriage(t_carriage **head, t_carriage *new);
+void		del_carriage(t_carriage **head, t_carriage *carriage);
+
+void	(*actions[17])();
+void	do_live(t_carriage *carriage, t_vm *vm);
+void	do_ld(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_st(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_add(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_sub(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_and(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_or(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_xor(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_zjmp(t_carriage *carriage, t_vm *vm);
+void	do_ldi(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_sti(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_fork(t_carriage *carriage, t_vm *vm);
+void	do_lld(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_lldi(t_carriage *carriage, t_vm *vm, char *arguments);
+void	do_lfork(t_carriage *carriage, t_vm *vm);
+void	do_aff(t_carriage *carriage, t_vm *vm, char *arguments);
+
+typedef struct s_op	t_op;
+
+struct				s_op
+{
+	char			*name;
+	unsigned int	code;
+	unsigned int	args_num;
+	uint8_t		args_types_code;
+	unsigned char	args_types[3];
+	unsigned int	t_dir_size;
+};
+
+static t_op			g_op_tab[17] = {
+	{},
 	{
 			.name = "live",
 			.code = 0x01,
@@ -173,35 +307,6 @@ static t_op			g_op_tab[16] = {
 			.t_dir_size = 4,
 	}
 };
-
-
-typedef	struct	s_cw
-{
-
-	t_player		**champs;
-
-}				t_cw;
-
-typedef	struct			s_player
-{
-	int					num;
-	char				*name;
-	char				*comment;
-	int					exec_size;
-	char				*exec;
-}						t_player;
-
-
-typedef	struct			s_carriage
-{
-	int					num_of_carriage;
-	int					carry;
-	int					regs[REG_NUMBER];
-
-	struct s_carriage	*next;
-	struct s_carriage	*prev;
-}						t_carriage;
-
 
 
 #endif

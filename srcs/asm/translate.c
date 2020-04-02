@@ -1,6 +1,6 @@
 #include "../../includes/com.h"
 
-void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
+void	int_to_hex(int32_t dec, int dir_size, uint32_t *place)
 {
 	int			move;
 	int			buf;
@@ -8,10 +8,10 @@ void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 	printf(">>_int_to_hex_>> __%d\n", dec);
 	buf = dir_size;
 	move = 0;
-	u_int8_t tmp;
+	uint8_t tmp;
 	while (dir_size)
 	{
-		tmp = (u_int8_t)((dec >> move) & 0xFF);
+		tmp = (uint8_t)((dec >> move) & 0xFF);
 		//printf("hex = %c = %d = 0x%x\n", tmp, (int)tmp, tmp);
 		g_buf[*place + dir_size - 1] = tmp;
 		move += 8;
@@ -30,9 +30,9 @@ void	print_champion_info()
 		ft_strlen( g_data->head->prog_name));
 }
 
-void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
+void	print_args_types_code(t_token *tkn, uint32_t *cursor)
 {
-	u_int8_t	byte;
+	uint8_t	byte;
 	int			i;
 	int			k;
 	t_2b		type;
@@ -88,10 +88,10 @@ int32_t	process_label(t_token **tkn, char *label)
 	return (off);
 }
 
-void	print_args(t_token **tkn, u_int32_t *cursor)
+void	print_args(t_token **tkn, uint32_t *cursor)
 {
-	u_int8_t	i;
-	u_int8_t	d_size;
+	uint8_t	i;
+	uint8_t	d_size;
 
 	printf("print_args\n");
 
@@ -130,7 +130,7 @@ void	print_args(t_token **tkn, u_int32_t *cursor)
 void	translate(void)
 {
 	t_token		*tmp;
-	u_int32_t	cursor;
+	uint32_t	cursor;
 
 	cursor = 0;
 	int_to_hex(COREWAR_EXEC_MAGIC, 4, &cursor);

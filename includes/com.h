@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-
+# include <stdint.h>
 # include <stdio.h>
 
 /*
@@ -140,7 +140,7 @@ struct				s_op
 	char			*name;
 	unsigned int	code;
 	unsigned int	args_num;
-	u_int8_t		args_types_code;
+	uint8_t		args_types_code;
 	unsigned int	args_types[3];
 	unsigned int	t_dir_size;
 };
@@ -149,8 +149,8 @@ typedef struct s_token	t_token;
 struct				s_token
 {
 	//char			*label;
-	u_int16_t		st_x;
-	u_int16_t		arg_x[3];
+	uint16_t		st_x;
+	uint16_t		arg_x[3];
 	t_op			*op;//fill in join_token
 	char			**op_args;
 	t_2b			args_type[3];//fill in parse_op
@@ -175,14 +175,14 @@ struct				s_data
 	t_4b			comm_f;
 	unsigned long	namelen;
 	unsigned long	commlen;
-	u_int64_t		exec_bytes;
+	uint64_t		exec_bytes;
 };
 
 typedef struct s_lbl_lst	t_lbl_lst;
 struct				s_lbl_lst
 {
 	char			*label;
-	u_int64_t		offset;//относит начала exec code
+	uint64_t		offset;//относит начала exec code
 
 	t_lbl_lst		*next;
 };
@@ -196,7 +196,7 @@ struct				s_lbl_lst
 
 
 
-static t_op			g_op_tab[16] = {
+static t_op			g_op_tab[17] = {
 	{
 			.name = "live",
 			.code = 0x01,
@@ -333,21 +333,21 @@ static t_op			g_op_tab[16] = {
 /*   asm.h                                              :+:      :+:    :+:   */
 /* ************************************************************************** */
 
-
+void	print_memory(const void *addr, size_t size);
 /*
 ** supfun.c.c
 */
 void			print_bits(size_t size, void *ptr, char space);
-int32_t			ft_atoi_cor(const char *str, u_int8_t size);
+int32_t			ft_atoi_cor(const char *str, uint8_t size);
 char			*skip_space(char *s);
 char			*skip_comment(char *s);
 
 /*
 ** translate.c
 */
-void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+void			int_to_hex(int32_t dec, int dir_size, uint32_t *place);
 void			print_champion_info();
-void			print_instruction(t_token **op, u_int32_t *cursor, u_int8_t type);
+void			print_instruction(t_token **op, uint32_t *cursor, uint8_t type);
 void			translate(void);
 
 /*
@@ -377,7 +377,7 @@ int				is_dir_label(char *line);
 int				is_indirect(char *line);
 int				is_ind_label(char *line);
 
-//void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+//void			int_to_hex(int32_t dec, int dir_size, uint32_t *place);
 /*
 ** asm_3.c
 */
@@ -431,7 +431,7 @@ t_token		*g_tkn_last;
 
 t_lbl_lst	*g_label_first;
 t_lbl_lst	*g_label_last;
-u_int64_t	g_offset;//отн начала файла
+uint64_t	g_offset;//отн начала файла
 char		*g_buf;
 
 

@@ -68,3 +68,6 @@ fclean:
 	@echo "$(RED_B)corewar:  $(RED) corewar have been deleted$(RESET)" 
 
 re: fclean all
+
+play:
+	gcc *.c -L ../../libft/ -lft && ./a.* ../../players/Car.cor ../../players/fluttershy.cor ../../players/helltrain.cor

@@ -62,14 +62,14 @@ struct				s_data
 	int				fd_cor;
 	int				namelen;
 	int				commlen;
-	u_int64_t		exec_bytes
+	uint64_t		exec_bytes
 };
 
 typedef struct s_lbl_lst	t_lbl_lst;
 struct				s_lbl_lst
 {
 	char			*label;
-	u_int64_t		offset;//относит начала exec code
+	uint64_t		offset;//относит начала exec code
 
 	t_lbl_lst		*next;
 };
@@ -85,7 +85,7 @@ void			syntax_err(int token);
 /*
 ** twrite_bytes.c
 */
-void			int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+void			int_to_hex(int32_t dec, int dir_size, uint32_t *place);
 
 
 /*
