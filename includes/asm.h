@@ -74,6 +74,7 @@ struct						s_mdata
 	int						x;
 	int						y;
 	char					*line;
+	t_op					*g_op_tab;
 	char					*filename;
 	t_header				*head;
 	int						fd_s;
@@ -90,34 +91,22 @@ struct						s_lbl_lst
 	t_lbl_lst				*next;
 };
 
-typedef struct s_command
-{
-	char *str;
-	struct s_command *next;
-
-}t_command;
-
-typedef struct s_lstcommand
-{
-	int size;
-	struct s_command *head;
-
-
-}t_lstcommand;
-
-
 void			print_bits(size_t size, void *ptr, char space);
 void			print_memory(const void *addr, size_t size);
+
 
 
 /*
 ** error.c
 */
-char			*get_pruff(char *line);
-void			put_error( char *err, int type);
+void			put_error(char *err, int type);
 void			print_error(char *message);
+void			error_line(char *event, char *line, int x);
 void			error_event(char *event);
-void			error(void);
+
+void				error(void);
+
+
 
 /*
 ** my_atoi.c
@@ -136,8 +125,8 @@ int							ft_strmerge(char **dest, char **srcs);
 */
 int32_t						ft_atoi_cor(const char *str, u_int8_t size);
 int							is_lblchar(char c);
-void						skip_space(char *s);
-void						skip_comment(char **s);
+void						skip_space(char *line);
+void						skip_comment(char *s);
 void						check_new_line(char *line, int f);
 
 /*
@@ -145,7 +134,7 @@ void						check_new_line(char *line, int f);
 */
 void						freesplit(t_token *tmp);
 void						free_token(void);
-void						free_label(t_lbl_lst **label);
+void						free_label(void);
 void						free_data(void);
 
 /*
@@ -242,13 +231,14 @@ t_1b	put_flg(char *av);
 void	usage(void);
 
 
-t_1b					g_flg;
+
 t_mdata					*g_mdata;
 t_token					*g_tkn_first;
 t_token					*g_tkn_last;
 t_lbl_lst				*g_label_first;
 t_lbl_lst				*g_label_last;
 char					*g_mbuf;
+t_1b					g_flg;
 
 
 #endif

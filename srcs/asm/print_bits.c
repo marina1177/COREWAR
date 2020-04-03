@@ -3,9 +3,9 @@
 static char	*get_color(size_t num_byte)
 {
 
-	if(num_byte >= 0 && num_byte < 4)
-		return (PURPUL);
-	else if (num_byte >= 4 && num_byte < 132)
+	/*if(num_byte >= 0 && num_byte < 4)
+		return (PURPUL);*/
+	if (num_byte >= 4 && num_byte < 132)
 		return (C_YEL);
 	else if ((num_byte >= 132 && num_byte < 136)
 		|| (num_byte >= 2188 && num_byte < 2192))
@@ -16,7 +16,7 @@ static char	*get_color(size_t num_byte)
 		return (C_RED);
 	else if (num_byte >= 2192)
 		return (CYAN);
-	return(WHITE);
+	return(PURPUL);
 }
 
 static void	ft_print_hex(unsigned char c, char *color)
@@ -104,7 +104,6 @@ void	bits_to_str(size_t size, void *ptr, char space)
 	}
 	ft_putchar('\n');
 }
-
 
 void		print_bits(size_t size, void *ptr, char space)
 {

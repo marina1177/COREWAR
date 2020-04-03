@@ -102,7 +102,4 @@ void	translate(void)
 		print_args(&tmp, &cursor);
 		tmp = tmp->next;
 	}
-	size_t size = EXEC_START + g_mdata->exec_bytes;
-	if (g_flg & F_OPRINT)
-		print_memory((void *)g_mbuf, size);
 }

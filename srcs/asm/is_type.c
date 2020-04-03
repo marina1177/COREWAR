@@ -11,7 +11,7 @@ int	is_reg(char *line, int len)
 	{
 		while (ft_isdigit(line[i]) && i < len)
 			i++;
-		k = my_atoi(&line[1]);
+		k = ft_atoi(&line[1]);
 		if (i == (len) && k >= 0)
 		{
 			if (k > 16)

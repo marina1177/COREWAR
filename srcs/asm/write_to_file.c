@@ -31,10 +31,6 @@ void				write_to_file(void)
 	if ((fd = open(new_name, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		error_event(ERR_CRFHEX);
 	ft_printf("%sWriting output program to %s%s\n", GREEN, new_name, EOC);
-	/*ft_putstr("Writing output program to ");
-	ft_putstr(new_name);
-	write(1, "\n", 1);*/
-
 	free(new_name);
 	if (write(fd, g_mbuf, EXEC_START + g_mdata->exec_bytes) == -1)
 	{

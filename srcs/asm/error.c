@@ -42,6 +42,7 @@ void	error_event(char *event)
 		ft_putendl_fd(event, 2);
 	else
 		perror(event);
+	ft_putstr_fd(EOC, 2);
 	free_data();
 	exit(1);
 	//print_error(event);
@@ -82,4 +83,3 @@ void		print_error_info(int x, int y)
 	ft_putstr_fd(EOC, 2);
 	write(2, ": ", 2);
 }
-

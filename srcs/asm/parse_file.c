@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 18:52:20 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/03 20:54:39 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,28 @@ void	parse_str(char **line)
 			put_error("Lexical error: invalid instruction", 1);
 		if (!((*line)[g_mdata->x]) || (*line)[g_mdata->x] == '\0')
 			return ;
-		if ((*line)[g_mdata->x] == '\n')
-			g_mdata->x++;
+/*		if ((*line)[g_mdata->x] == '\n')
+			g_mdata->x++;*/
 	}
 }
 
 void	parse_file(void)
 {
+	char	*line;
 	int		size;
 
-	while ((size = get_line(g_mdata->fd_s, &g_mdata->line))
+	while ((size = get_line(g_mdata->fd_s, &line))
 							&& !(g_mdata->x = 0)
 							&& ++g_mdata->y)
 	{
-		while (g_mdata->line[g_mdata->x])
+		while (line[g_mdata->x])
 		{
-			skip_comment(&g_mdata->line);
-			skip_space(g_mdata->line);
-			if (&(g_mdata->line[g_mdata->x]) && g_mdata->line[g_mdata->x])
-				parse_str(&g_mdata->line);
+			skip_comment(line);
+			skip_space(line);
+			if (&(line[g_mdata->x]) && line[g_mdata->x])
+				parse_str(&line);
 		}
-		ft_strdel(&g_mdata->line);
+		ft_strdel(&line);
 	}
 	if (size == -1)
 		error_event(ERR_READING);

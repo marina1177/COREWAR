@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 01:32:42 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/02 23:27:50 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/03 20:18:51 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	process_header(char **line, t_2b type_h)
 			&& get_line(g_mdata->fd_s, &temp) && ++g_mdata->y)
 		ft_strmerge(&str, &temp);
 	if (!len)
-		put_error(ERR_STR_STOP, 1);
+		error_line(ERR_STR_STOP, str, 0);
 	valid_headlen(type_h, len);
 	put_header(str, len, type_h);
 	*line = str;

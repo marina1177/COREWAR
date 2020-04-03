@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:39 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 13:53:51 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/03 20:20:06 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void			check_dup_label(void)
 {
 	t_lbl_lst	*ptr1;
 	t_lbl_lst	*ptr2;
-	//t_lbl_lst	*dup;
 
 	ptr1 = g_label_first;
 	while (ptr1 != NULL && ptr1->next != NULL)
@@ -38,7 +37,9 @@ void			check_dup_label(void)
 		while (ptr2->next != NULL)
 		{
 			if (!ft_strcmp(ptr1->label, ptr2->next->label))
+			{
 				error_event(ERR_LABEL_DUB);
+			}
 			else
 				ptr2 = ptr2->next;
 		}

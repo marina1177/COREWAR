@@ -51,9 +51,12 @@ void		skip_space(char *s)
 		g_mdata->x++;
 }
 
-void		skip_comment(char **s)
+void		skip_comment(char *line)
 {
-	char	*pnt;
+	while (*line && *line != COMMENT_CHAR && *line != COMMENT_CHAR_ALT)
+		++line;
+	*line = 0;
+	/*char	*pnt;
 	char	*tmp;
 
 	if (!s || *s == '\0')
@@ -67,8 +70,22 @@ void		skip_comment(char **s)
 		*s = ft_strndup(tmp, pnt - tmp);
 		ft_strdup(tmp);
 
-	}
+	}*/
+	/*char	*pnt;
+	int		len;
+
+	pnt = ft_strstr(s, "#");
+	if (pnt != NULL)
+		*pnt = '\0';
+	pnt = ft_strstr(s, ";");
+	if (pnt != NULL)
+		*pnt = '\0';
+	len = ft_strlen(s);
+	while (!IS_BLANK(s[len]))
+		len--;*/
 }
+
+
 
 void		check_new_line(char *line, int f)
 {
