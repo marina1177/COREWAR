@@ -145,7 +145,8 @@ void	init_arena(t_vm *data, int quantity);
 void	read_data(char *filename, t_player *player);
 void	ft_exit(char *line);
 void	clean_data(t_vm *data);
-void	print_byte(unsigned char c);
+void	test(int op, unsigned char *arena); //delete
+void	print_byte(unsigned char c); //delete
 void	print_memory(const void *addr, size_t size);
 int		check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
 void	change_position(unsigned int *position, int change);
@@ -153,6 +154,7 @@ int		get_num_from_char(unsigned char *arena,  unsigned int position, int size);
 int		get_arg_size(int op, unsigned char arg);
 void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change);
 int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type);
+int		get_reg_value(unsigned char *arena, unsigned int *pos);
 
 t_carriage	*make_new_carriage(unsigned int position);
 void		add_carriage(t_carriage **head, t_carriage *new);

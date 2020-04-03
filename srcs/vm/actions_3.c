@@ -14,7 +14,7 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
 	values[2] = get_arg_value(vm->arena, carriage, &position, arguments[2]);
-	write_reg(vm->arena, carriage->regs[values[0]], carriage->position, (values[1] + values[2]) % IDX_MOD);
+	write_reg(vm->arena, values[0], carriage->position, (values[1] + values[2]) % IDX_MOD);
 	printf("position %d\n", position);
 	carriage->position = position;
 	print_memory(&vm->arena[position], 1);
@@ -59,7 +59,7 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 		values[0] = get_num_from_char(vm->arena, temp, IND_SIZE);
 		change_position(&position, IND_SIZE);
 	}
-	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
+	values[1] = get_reg_value(vm->arena, &position);
 	carriage->regs[values[1]] = values[0];
 	carriage->carry = values[0] == 0 ? 1 : 0;
 	carriage->position = position;
@@ -71,19 +71,12 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[3];
 	unsigned int position;
 	unsigned int temp;
-	int i;
 
-	i = -1;
 	position = carriage->position;
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
-	while (++i < 3)
-	{
-		values[i] = get_arg_value(vm->arena, carriage, &position, arguments[i]);
-		if (i < 2 && arguments[i] == T_REG)
-			values[i] = carriage->regs[values[i]];
-	}
+	values[2] = get_reg_value(vm->arena, &position);
 	temp = values[0] + values[1];
 	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &temp, T_IND);
 	carriage->position = position;

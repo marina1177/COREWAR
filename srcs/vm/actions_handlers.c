@@ -18,6 +18,16 @@ int			get_num_from_char(unsigned char *arena, unsigned int position, int size)
 	return (*num);
 }
 
+int		get_reg_value(unsigned char *arena, unsigned int *pos)
+{
+	int result;
+
+	result = arena[*pos];
+	printf("REG = %d\n", result);
+	change_position(pos, 1);
+	return (result);
+}
+
 int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type)
 {
 	 unsigned int temp;
@@ -25,7 +35,9 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, ch
 
 	if (arg_type == T_REG)
 	{
-		result = arena[*pos];
+		result = car->regs[arena[*pos]];
+		print_memory(&arena[*pos], 1);
+		printf("%d", result);
 		change_position(pos, 1);
 	}
 	else if (arg_type == T_DIR)
