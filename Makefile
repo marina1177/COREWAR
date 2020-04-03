@@ -6,7 +6,7 @@ CC = clang
 FLAGS = -Wall -Wextra -Werror
 
 ################# LIB #################
-LIB_DIR = ./libft/
+LIB_DIR = ./libft_clala/
 LIB_NAME = libft.a
 LIB_FILE = $(LIB_DIR)$(LIB_NAME)
 LIB = -L $(LIB_DIR) -lft

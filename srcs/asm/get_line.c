@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:57 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 21:13:12 by student          ###   ########.fr       */
+/*   Updated: 2020/04/03 18:31:06 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ static int	divide_str(char **str, char **row)
 	return ((new) ? 1 : -1);
 }
 
+static int	gg_norma(char **str)
+{
+	if (*str != NULL)
+		free(*str);
+	return (-1);
+}
+
 int			get_line(const int fd, char **row)
 {
 	static char		*str = NULL;
@@ -69,7 +76,7 @@ int			get_line(const int fd, char **row)
 	char			*tmp;
 
 	if (fd < 0 || !row || read(fd, buff, 0) < 0)
-		return (-1);
+		return (gg_norma(&str));
 	while (!ft_strchrs(str, '\n'))
 	{
 		if (!(size = read(fd, buff, BUFF_SIZE)))

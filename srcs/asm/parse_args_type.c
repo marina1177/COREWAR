@@ -41,22 +41,22 @@ void			parse_args_type(u_int16_t i, char *line)
 	int	size;
 
 	size = 0;
-	while (line[g_data->x + size] != SEPARATOR_CHAR
-			&& (line[g_data->x + size] != '\n'
-				&& line[g_data->x + size] != '\0'))
+	while (line[g_mdata->x + size] != SEPARATOR_CHAR
+			&& (line[g_mdata->x + size] != '\n'
+				&& line[g_mdata->x + size] != '\0'))
 	{
 		if ((i == g_tkn_last->op->args_num - 1
-			&& is_emptyline(&(line[g_data->x + size]))))
+			&& is_emptyline(&(line[g_mdata->x + size]))))
 			break ;
-		if (IS_BLANK(line[g_data->x + size])
-				&& is_end_arg(&(line[g_data->x + size])))
+		if (IS_BLANK(line[g_mdata->x + size])
+				&& is_end_arg(&(line[g_mdata->x + size])))
 			break ;
 		size++;
 	}
 	if (check_reg(line, size, i) || check_dir(line, size, i)
 			|| check_ind(line, size, i))
 	{
-		g_tkn_last->args[i]->arg = ft_strsub(line, g_data->x, size);
+		g_tkn_last->args[i]->arg = ft_strsub(line, g_mdata->x, size);
 		return ;
 	}
 	else

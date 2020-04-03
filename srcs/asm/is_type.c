@@ -11,8 +11,8 @@ int	is_reg(char *line, int len)
 	{
 		while (ft_isdigit(line[i]) && i < len)
 			i++;
-		k = ft_atoi(&line[1]);
-		if (i == (len) && (k = my_atoi(&line[1]) >= 0))
+		k = my_atoi(&line[1]);
+		if (i == (len) && k >= 0)
 		{
 			if (k > 16)
 				ft_putstr("warning: num of reg more 16!\n");

@@ -16,7 +16,10 @@
 # define TRUE 1
 # define FALSE 0
 
-# include "../libft/includes/libft.h"
+# include "../libft_clala/includes/libft.h"
+# include "../libft_clala/includes/ft_printf.h"
+
+//# include "../libft/includes/libft.h"
 
 # include "op.h"
 # include "asm.h"
@@ -44,7 +47,8 @@
 # define BLACK	"\033[0;30m"
 # define GREEN	"\033[0;32m"
 # define BLUE	"\033[0;34m"
-# define PURPUL	"\033[0;35m"
-# define CYAN	"\033[0;36m"
+# define PURPUL	"\033[1;35m"
+# define CYAN	"\033[1;36m"
+# define GRAY	"\033[1;30m"
 
 #endif

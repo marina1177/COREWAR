@@ -45,34 +45,36 @@ int			is_lblchar(char c)
 
 void		skip_space(char *s)
 {
-	if (!(&(s[g_data->x])) || s[g_data->x] == '\0')
+	if (!(&(s[g_mdata->x])) || s[g_mdata->x] == '\0')
 		return ;
-	while (s[g_data->x] == ' ' || s[g_data->x] == '	')
-		g_data->x++;
+	while (s[g_mdata->x] == ' ' || s[g_mdata->x] == '	')
+		g_mdata->x++;
 }
 
-char		*skip_comment(char *s)
+void		skip_comment(char **s)
 {
 	char	*pnt;
-	int		len;
+	char	*tmp;
 
-	pnt = ft_strstr(s, "#");
+	if (!s || *s == '\0')
+		return ;
+	tmp = *s;
+	pnt = ft_strstr(*s, "#");
 	if (pnt != NULL)
-		*pnt = '\0';
-	pnt = ft_strstr(s, ";");
-	if (pnt != NULL)
-		*pnt = '\0';
-	len = ft_strlen(s);
-	while (!IS_BLANK(s[len]))
-		len--;
-	return (s);
+	{
+		while (!IS_BLANK(*pnt))
+			pnt--;
+		*s = ft_strndup(tmp, pnt - tmp);
+		ft_strdup(tmp);
+
+	}
 }
 
 void		check_new_line(char *line, int f)
 {
-	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
+	if (!(&(line[g_mdata->x])) || line[g_mdata->x] == '\0')
 		return ;
-	if (line[g_data->x] == '\n')
+	if (line[g_mdata->x] == '\n')
 	{
 		if (f == 2)
 		{
@@ -91,6 +93,6 @@ void		check_new_line(char *line, int f)
 			else if (g_label_last)
 				g_label_last->new_line += 1;
 		}
-		g_data->x++;
+		g_mdata->x++;
 	}
 }

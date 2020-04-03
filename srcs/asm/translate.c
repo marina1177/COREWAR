@@ -77,10 +77,10 @@ void	print_args_types_code(t_token *tkn, u_int32_t *cursor)
 
 void	print_champion_info(void)
 {
-	ft_memcpy(g_buf + 4 + PROG_NAME_LENGTH + 4 * 2,
-			g_data->head->comment, ft_strlen(g_data->head->comment));
-	ft_memcpy(g_buf + 4, g_data->head->prog_name,
-		ft_strlen(g_data->head->prog_name));
+	ft_memcpy(g_mbuf + 4 + PROG_NAME_LENGTH + 4 * 2,
+			g_mdata->head->comment, ft_strlen(g_mdata->head->comment));
+	ft_memcpy(g_mbuf + 4, g_mdata->head->prog_name,
+		ft_strlen(g_mdata->head->prog_name));
 }
 
 void	translate(void)
@@ -92,7 +92,7 @@ void	translate(void)
 	int_to_hex(COREWAR_EXEC_MAGIC, 4, &cursor);
 	print_champion_info();
 	cursor = 4 + PROG_NAME_LENGTH + 4;
-	int_to_hex(g_data->exec_bytes, 4, &cursor);
+	int_to_hex(g_mdata->exec_bytes, 4, &cursor);
 	cursor = EXEC_START;
 	tmp = g_tkn_first;
 	while (tmp != NULL)
@@ -102,4 +102,7 @@ void	translate(void)
 		print_args(&tmp, &cursor);
 		tmp = tmp->next;
 	}
+	size_t size = EXEC_START + g_mdata->exec_bytes;
+	if (g_flg & F_OPRINT)
+		print_memory((void *)g_mbuf, size);
 }

@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:07 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 20:38:04 by student          ###   ########.fr       */
+/*   Updated: 2020/04/02 12:44:50 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_reg(char *line, int size, u_int16_t i)
 {
-	if (is_reg(&(line[g_data->x]), size)
+	if (is_reg(&(line[g_mdata->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_REG)
 	{
 		g_tkn_last->args[i]->argtype = REGISTER;
@@ -27,7 +27,7 @@ int		check_reg(char *line, int size, u_int16_t i)
 
 int		check_dir(char *line, int size, u_int16_t i)
 {
-	if (is_direct(&(line[g_data->x]), size)
+	if (is_direct(&(line[g_mdata->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_DIR)
 	{
 		g_tkn_last->args[i]->argtype = DIRECT;
@@ -35,7 +35,7 @@ int		check_dir(char *line, int size, u_int16_t i)
 		g_tkn_last->num_byte_op += g_tkn_last->op->t_dir_size;
 		return (TRUE);
 	}
-	else if (is_dir_label(&(line[g_data->x]), size)
+	else if (is_dir_label(&(line[g_mdata->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_DIR)
 	{
 		g_tkn_last->args[i]->argtype = DIRECT_LABEL;
@@ -48,7 +48,7 @@ int		check_dir(char *line, int size, u_int16_t i)
 
 int		check_ind(char *line, int size, u_int16_t i)
 {
-	if (is_indirect(&(line[g_data->x]), size)
+	if (is_indirect(&(line[g_mdata->x]), size)
 			&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args[i]->argtype = INDIRECT;
@@ -56,7 +56,7 @@ int		check_ind(char *line, int size, u_int16_t i)
 		g_tkn_last->num_byte_op += 2;
 		return (TRUE);
 	}
-	else if (is_ind_label(&(line[g_data->x]), size)
+	else if (is_ind_label(&(line[g_mdata->x]), size)
 		&& g_tkn_last->op->args_types[i] & T_IND)
 	{
 		g_tkn_last->args[i]->argtype = INDIRECT_LABEL;

@@ -12,7 +12,7 @@ void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 	while (dir_size)
 	{
 		tmp = (u_int8_t)((dec >> move) & 0xFF);
-		g_buf[*place + dir_size - 1] = tmp;
+		g_mbuf[*place + dir_size - 1] = tmp;
 		move += 8;
 		dir_size--;
 	}

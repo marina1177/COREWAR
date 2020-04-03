@@ -27,16 +27,16 @@ void				write_to_file(void)
 	int				fd;
 	char			*new_name;
 
-	new_name = new_filename(g_data->filename);
+	new_name = new_filename(g_mdata->filename);
 	if ((fd = open(new_name, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		error_event(ERR_CRFHEX);
-	//ft_printf("%sWriting output program to %s%s\n", GREEN, new_name, EOC);
-	ft_putstr("Writing output program to ");
+	ft_printf("%sWriting output program to %s%s\n", GREEN, new_name, EOC);
+	/*ft_putstr("Writing output program to ");
 	ft_putstr(new_name);
-	write(1, "\n", 1);
+	write(1, "\n", 1);*/
 
 	free(new_name);
-	if (write(fd, g_buf, EXEC_START + g_data->exec_bytes) == -1)
+	if (write(fd, g_mbuf, EXEC_START + g_mdata->exec_bytes) == -1)
 	{
 		close(fd);
 		error_event(ERR_WRFHEX);

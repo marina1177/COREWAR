@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:15 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 20:37:25 by student          ###   ########.fr       */
+/*   Updated: 2020/04/02 23:30:22 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int		search_op(char *line)
 	while (--i)
 	{
 		size = ft_strlen(types[i]);
-		if (ft_strnequ(&(line[g_data->x]), types[i], size))
+		if (ft_strnequ(&(line[g_mdata->x]), types[i], size))
 			break ;
 	}
 	if (i == 0)
 		put_error("Lexical error: invalid instruction", 1);
-	g_data->x += size;
+	g_mdata->x += size;
 	return (i - 1);
 }
 
@@ -57,7 +57,7 @@ t_token	*new_token(void)
 		new->offset = g_tkn_last->offset
 			+ g_tkn_last->num_byte_op;
 	}
-	g_data->exec_bytes += g_tkn_last->num_byte_op;
+	g_mdata->exec_bytes += g_tkn_last->num_byte_op;
 	g_tkn_last = new;
 	return (new);
 }
@@ -70,13 +70,13 @@ void	add_token(int indx_op)
 	new = new_token();
 	new->op = &(g_op_tab[indx_op]);
 	new->new_line = 0;
-	new->y = g_data->y;
-	new->x = g_data->x;
+	new->y = g_mdata->y;
+	new->x = g_mdata->x;
 }
 
 void	check_op(char *line)
 {
-	if (!(&(line[g_data->x])) || line[g_data->x] == '\0')
+	if (!(&(line[g_mdata->x])) || line[g_mdata->x] == '\0')
 		return ;
 	skip_space(line);
 	add_token(search_op(line));

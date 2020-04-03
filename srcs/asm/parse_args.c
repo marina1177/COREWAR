@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:50:23 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 21:53:03 by student          ###   ########.fr       */
+/*   Updated: 2020/04/02 23:28:23 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void			skip_to_separator(char *line)
 {
-	while (line[g_data->x] && !IS_BLANK(line[g_data->x])
-		&& line[g_data->x] != SEPARATOR_CHAR)
+	while (line[g_mdata->x] && !IS_BLANK(line[g_mdata->x])
+		&& line[g_mdata->x] != SEPARATOR_CHAR)
 	{
-		++g_data->x;
+		++g_mdata->x;
 	}
 }
 
@@ -46,12 +46,12 @@ t_opargs			*parse_parameter(char *line)
 
 	i = 0;
 	param = NULL;
-	if (line[g_data->x])
+	if (line[g_mdata->x])
 	{
 		if (!(param = (t_opargs*)malloc(sizeof(t_opargs))))
 			error_event(ERR_ALLOC);
-		param->x = g_data->x;
-		param->y = g_data->y;
+		param->x = g_mdata->x;
+		param->y = g_mdata->y;
 		param->arg = NULL;
 	}
 	return (param);
@@ -63,7 +63,7 @@ void				parse_args(char *line)
 	size_t		cw;
 
 	i = 0;
-	cw = count_word(&(line[g_data->x]), SEPARATOR_CHAR);
+	cw = count_word(&(line[g_mdata->x]), SEPARATOR_CHAR);
 	if (cw != g_tkn_last->op->args_num)
 		error_event(ERR_OP);
 	while (i < cw)
@@ -74,8 +74,8 @@ void				parse_args(char *line)
 			parse_args_type(i, line);
 			skip_to_separator(line);
 			skip_space(line);
-			if (line[g_data->x]
-				&& (line[g_data->x++] != SEPARATOR_CHAR || i == cw - 1))
+			if (line[g_mdata->x]
+				&& (line[g_mdata->x++] != SEPARATOR_CHAR || i == cw - 1))
 				put_error("Syntax error: wrong parameters", 1);
 		}
 		++i;
