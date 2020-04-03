@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:54:39 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/04 02:00:39 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,20 @@ void	parse_str(char **line)
 
 void	parse_file(void)
 {
-	char	*line;
 	int		size;
 
-	while ((size = get_line(g_mdata->fd_s, &line))
+	while ((size = get_line(g_mdata->fd_s, &g_mdata->line))
 							&& !(g_mdata->x = 0)
 							&& ++g_mdata->y)
 	{
-		while (line[g_mdata->x])
+		while (g_mdata->line[g_mdata->x])
 		{
-			skip_comment(line);
-			skip_space(line);
-			if (&(line[g_mdata->x]) && line[g_mdata->x])
-				parse_str(&line);
+			skip_comment(g_mdata->line);
+			skip_space(g_mdata->line);
+			if (&(g_mdata->line[g_mdata->x]) && g_mdata->line[g_mdata->x])
+				parse_str(&g_mdata->line);
 		}
-		ft_strdel(&line);
+		ft_strdel(&g_mdata->line);
 	}
 	if (size == -1)
 		error_event(ERR_READING);

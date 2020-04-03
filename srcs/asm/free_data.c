@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 02:16:26 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:21:37 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/04 01:58:15 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ void	free_data(void)
 	if (g_mdata)
 	{
 		if (g_mdata->fd_s)
+		{
+			get_line(-1, NULL);
 			close(g_mdata->fd_s);
+		}
+		if (g_mdata->line)
+			free(g_mdata->line);
 		free(g_mdata->head);
 		free(g_mdata);
 	}

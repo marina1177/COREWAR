@@ -37,5 +37,6 @@ void				write_to_file(void)
 		close(fd);
 		error_event(ERR_WRFHEX);
 	}
+	
 	close(fd);
 }
