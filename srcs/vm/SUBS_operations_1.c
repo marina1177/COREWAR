@@ -8,15 +8,14 @@ void		live(t_carriage *curr, t_vm *vm)
 	int		num;
 	t_player	*player;
 
-	curr->last_cycle_alive = vm->data->cycles;
-	num = 0;
+	curr->last_cycle_alive = vm->data->cycles;	
 	temp = curr->pos;
 	increase_position(&temp, 1);
 	num = get_int(&temp, curr, vm, INT_SIZE);
 	if (-num <= vm->players->qty && -num >= 1)
 	{
 		vm->players->last_alive_num = -num;
-		if (vm->mods->dump_cycle)
+		if (vm->mods->dump_cycle > 0)
 		{
 			player = get_player_by_number(vm->players, -num);
 			print_is_alive(-num, player->name);

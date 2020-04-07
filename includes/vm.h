@@ -5,6 +5,7 @@
 # include <stdbool.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include "op.h"
 # include "../libft_clala/includes/ft_printf.h"
 # include "../libft_clala/includes/libft.h"
@@ -64,14 +65,17 @@ typedef struct			s_op
 
 extern t_op				g_op_tab[17];
 
+
 typedef	struct			s_player
 {
 	int					num;
 	char				*name;
 	char				*comment;
-	unsigned int		code_size;
+	int					code_size;
 	char				*code;
 	struct s_player		*next;
+	int					last_live;
+	int					is_alive;
 }						t_player;
 
 typedef struct 		s_players
@@ -79,14 +83,14 @@ typedef struct 		s_players
 	int				qty;
 	struct s_player	*first_player;
 	int				last_alive_num;
-	size_t			lives_num;
+	int				lives_num;
 }					t_players;
 
 typedef struct 			s_mods
 {	
-	ssize_t				dump_cycle;
+	int					dump_cycle;
 	int					dump_size;
-	ssize_t				show_cycle;
+	int					show_cycle;
 	int					show_print_mode;
 	bool				aff;
 	int					log;
@@ -147,7 +151,7 @@ void	handle_carriages(t_vm *vm);
 void				game(t_player *players[], t_vm *vm);
 void				display_memory(char *arena);
 //void				state_opcode(t_carriage *curr, t_vm *vm);
-//void				exec_op(t_carriage *curr, t_vm *vm);
+int					exec_op(t_carriage *carriage, t_vm *vm);
 
 unsigned char		*get_args(char arg_code, unsigned char arr[4]);
 int					check_args(int *step, unsigned char *args, t_carriage *curr,
@@ -183,18 +187,6 @@ void				delete_old_carriage(t_vm *vm);
 void				display_arena(t_vm *vm);
 
 // END OP_CODE
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 ** t_players functions
@@ -252,6 +244,7 @@ int	is_integer(char *s);
 t_vm		*t_vm_create(void);
 t_vs		*t_vs_create(t_vm *vm);
 t_mods *t_mods_create(t_vm *vm);
+t_vm_info *t_vm_info_create(t_vm *vm);
 
 /*
 ** print functions
@@ -265,5 +258,10 @@ void	print_last_alive(t_vm *vm);
 void		print_is_alive(int num, char *player_name);
 int		print_dump(t_vm *vm);
 void		print_final_result(t_vm *vm);
+
+/*
+** Aux
+*/
+void		do_iarray_fill(int *arr, int size, int val);
 
 #endif

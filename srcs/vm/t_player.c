@@ -22,6 +22,8 @@ static t_player *t_player_new(void)
 		new->comment = NULL;
 		new->code = NULL;
 		new->next = NULL;
+		new->last_live = 0;
+		new->is_alive = 1;
 	}
 	return (new);
 }

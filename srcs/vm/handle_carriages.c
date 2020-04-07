@@ -44,6 +44,7 @@ static int		check_reg(unsigned char *args, t_carriage *curr,
 	int				temp;
 
 	i = 0;
+	temp = curr->pos;
 	increase_position(&temp, 2);
 	while (i < (vm->op_tab)[curr->opcode].arg_count)
 	{
@@ -132,32 +133,40 @@ static int	is_code_valid(int *i, t_carriage *carriage, t_vm *vm)
 		if (!is_args_valid(i, args, carriage, vm))
 			return (0);
 	}
+	else if (carriage->opcode == 1)
+		*i = 5;
+	else
+		*i = 3;
 	return (1);
 }
 
-static void	exec_op(t_carriage *carriage, t_vm *vm)
+int		exec_op(t_carriage *carriage, t_vm *vm)
 {
 	int	i;
+
 
 	if (carriage->opcode >= 0x01 && carriage->opcode <= 0x10)
 	{
 		if (is_code_valid(&i, carriage, vm))
+		{
 			(vm->exec)[carriage->opcode](carriage, vm);
+		}
 		if (carriage->opcode != 0x09 ||
 			(carriage->opcode == 0x09 && !carriage->carry))
 			increase_position(&(carriage->pos), i);
 	}
 	else
 		increase_position(&(carriage->pos), 1);
+	carriage->cycles_countdown = -1;
+	return (1);
 }
 
 static int	get_opcode(t_carriage *carriage, t_vm *vm)
 {
-	carriage->opcode = vm->data->arena[carriage->pos];
+	carriage->opcode = (int)(vm->data->arena[carriage->pos]);
+	carriage->cycles_countdown = 1;
 	if (carriage->opcode >= 0x01 && carriage->opcode <= 0x10)
 		carriage->cycles_countdown = (vm->op_tab)[carriage->opcode].loop;
-	else
-		carriage->cycles_countdown = 1;
 	return (1);
 }
 
@@ -167,16 +176,21 @@ static int	get_opcode(t_carriage *carriage, t_vm *vm)
 void			handle_carriages(t_vm *vm)
 {
 	t_carriage	*carriage;
+	/*char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
+						 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"}; */
 
 	carriage = vm->carr->head;
 	while (carriage)
-	{
+	{		
 		carriage->cycles_countdown < 0 ? get_opcode(carriage, vm) : 0;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 		{
-			if (!carriage->cycles_countdown)
-				exec_op(carriage, vm);
 			carriage->cycles_countdown--;
+			if (!carriage->cycles_countdown)
+			{
+				exec_op(carriage, vm);
+				ft_printf("cycle: %d operation: %s\n", vm->data->cycles, names[carriage->opcode]);
+			}
 		}
 		carriage = carriage->next;
 	}

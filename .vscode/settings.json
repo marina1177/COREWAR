@@ -1,7 +1,0 @@
-{
-	"files.associations": {
-		"limits": "c",
-		"vm.h": "c",
-		"op.h": "c"
-	}
-}

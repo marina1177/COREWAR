@@ -25,6 +25,8 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 	new->opcode = 0;
 	new->cycles_countdown = -2;
 	new->last_cycle_alive = 0;
+	do_iarray_fill(new->regs, REG_NUMBER, 0);
+	new->regs[0] = -(new->num);
 	return (new);
 }
 

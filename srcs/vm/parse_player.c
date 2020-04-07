@@ -65,7 +65,7 @@ int	parse_player(t_vm *vm, char *arg, t_player *player)
 	char	*s;
 	int		fd;	
 
-	s = ft_strnew(1);
+	s = NULL;
 	if ((fd = open(arg, O_RDONLY)) == -1)
 		handle_error_str_arg(ERR_FOPEN, arg, vm);
 	read(fd, s, 0) < 0 ? handle_error_str_arg(ERR_READING, arg, vm) : 1;
@@ -83,7 +83,9 @@ int	parse_player(t_vm *vm, char *arg, t_player *player)
 								CH_COMM_SIZE);
 	get_integer(fd, arg, vm) ? handle_error_str_arg(ERR_NO_NULL, arg, vm) : 0;
 	player->code = valid_read(fd, arg, player->code_size, vm);
+	s = ft_strnew(1);
 	if (read(fd, s, 1) && ft_free("1", s))
 		handle_error_str_arg(ERR_BIGEX, arg, vm);
+	free(s);
 	return (1);
 }

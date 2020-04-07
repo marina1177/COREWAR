@@ -41,6 +41,7 @@ static void	init_exec(t_vm *vm)
 static t_vm *t_vm_new(void)
 {
 	t_vm	*vm;
+	int 	i;
 
 	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error("Malloc error") : 0;	
 	!(vm->data = t_vm_info_new()) ? handle_error_vm("Malloc error", vm) : 0;
@@ -48,6 +49,9 @@ static t_vm *t_vm_new(void)
 	!(vm->carr = t_carriages_new()) ? handle_error_vm("Malloc error", vm) : 0;
 	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ? handle_error_vm("Malloc error", vm) : 0;
 	!(vm->mods = t_mods_create(vm)) ? handle_error_vm("Malloc error", vm) : 0;
+	i = -1;
+	while (++i < 17)
+		vm->op_tab[i] = g_op_tab[i];
 	init_exec(vm);
 
 	return	(vm);

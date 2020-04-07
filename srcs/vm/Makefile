@@ -46,7 +46,22 @@ ALL_C_CW = main.c \
 			SUBS_operations_2.c \
 			SUBS_operations_3.c \
 			SUBS_operations_4.c \
-			SUBS_args.c
+			SUBS_args.c \
+			op.c \
+			actions_1.c \
+			actions_2.c \
+			actions_3.c \
+			actions_4.c \
+			actions_handlers.c \
+			carriages_actions.c \
+			check_operation.c \
+			handlers.c \
+			init.c \
+			main_kreiily.c \
+			print_bits.c \
+			test.c
+
+
 			
 SRCDIR_ASM = ./srcs_asm
 OBJDIR_ASM = ./objs_asm

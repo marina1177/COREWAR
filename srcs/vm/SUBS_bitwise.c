@@ -16,14 +16,12 @@ static int			get_num_from_char(int *pos, t_vm *vm, int num_size)
 {
 	int		num;
 	int		i;
-	char	pos_value;
 
 	num = 0;
 	i = -1;
-	pos_value = vm->data->arena[*pos];
 	while (++i < num_size)
 	{
-		num |= (unsigned char)(pos_value) << (8 * (num_size - 1 - i));
+		num |= (unsigned char)(vm->data->arena[*pos]) << (8 * (num_size - 1 - i));
 		increase_position(pos, 1);
 	}
 	return (num);

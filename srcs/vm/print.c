@@ -56,6 +56,7 @@ void	print_last_alive(t_vm *vm)
 	last = get_player_by_number(vm->players, vm->players->last_alive_num);
 	ft_printf("Contestant %d, \"%s\", has won !\n",
 				last->num, last->name);
+	exit(0);
 }
 
 int		print_dump(t_vm *vm)

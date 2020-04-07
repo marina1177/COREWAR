@@ -48,8 +48,12 @@ void	corewar(t_vm *vm)
 	cycles = 0;
 	while (vm->carr->qty)
 	{
-		handle_carriages(vm);		
-		ft_printf("%d\n", vm->data->cycles);
+		if (vm->data->cycles == vm->mods->dump_cycle)
+		{
+			print_dump(vm);
+			exit(0);
+		}		
+		handle_carriages(vm);
 		if (vm->mods->dump_cycle == vm->data->cycles && print_dump(vm))
 			exit(0);		
 		if (cycles == vm->data->cycles_to_die || vm->data->cycles_to_die <=0)
@@ -88,11 +92,8 @@ int     main(int ac, char **av)
 	ac < 2 ? print_usage() : 0;	
 	vm = t_vm_create();
 	parse_args(vm, ac, av);
-	//print_introduction(vm->players);
-	//print_t_players(vm->players);
-	create_arena(vm);
-	//print_t_carriages(vm->carr);
-	//print_dump(vm->data->arena, 64);
+	print_introduction(vm->players);	
+	create_arena(vm);	
 	corewar(vm);
 	print_final_result(vm);
 	return (0);
