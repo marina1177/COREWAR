@@ -44,7 +44,7 @@ void	print_int_arr_in_row(int *arr, int size)
 void	print_t_carriage(t_carriage *carriage)
 {	
 	ft_printf("Number %-4d, position %-8d\n", carriage->num, carriage->pos);
-	ft_printf("opcode %-4d, countdown %-8d\n", carriage->opcode, carriage->cycles_countdown);
+	ft_printf("opcode %-4d, countdown %-8d\n", carriage->op_code, carriage->cycles_countdown);
 	print_int_arr_in_row(carriage->regs, REG_NUMBER);
 	ft_putchar('\n');
 }

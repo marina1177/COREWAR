@@ -20,22 +20,22 @@ static int	is_valid_op_h(void)
 static void	init_exec(t_vm *vm)
 {
 	vm->exec[0] = 0;
-	vm->exec[1] = live;
-	vm->exec[2] = ld;
-	vm->exec[3] = st;
-	vm->exec[4] = add;
-	vm->exec[5] = sub;
-	vm->exec[6] = and;
-	vm->exec[7] = or;
-	vm->exec[8] = xor;
-	vm->exec[9] = zjmp;
-	vm->exec[10] = ldi;
-	vm->exec[11] = sti;
-	vm->exec[12] = cwfork;
-	vm->exec[13] = lld;
-	vm->exec[14] = lldi;
-	vm->exec[15] = lfork;
-	vm->exec[16] = aff;
+	vm->exec[1] = do_live;
+	vm->exec[2] = do_ld;
+	vm->exec[3] = do_st;
+	vm->exec[4] = do_add;
+	vm->exec[5] = do_sub;
+	vm->exec[6] = do_and;
+	vm->exec[7] = do_or;
+	vm->exec[8] = do_xor;
+	vm->exec[9] = do_zjmp;
+	vm->exec[10] = do_ldi;
+	vm->exec[11] = do_sti;
+	vm->exec[12] = do_fork;
+	vm->exec[13] = do_lld;
+	vm->exec[14] = do_lldi;
+	vm->exec[15] = do_lfork;
+	vm->exec[16] = do_aff;
 }
 
 static t_vm *t_vm_new(void)

@@ -47,7 +47,7 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, ch
 	}
 	else if (arg_type == T_IND)
 	{
-		temp = car->position;
+		temp = car->pos;
 		change_position(&temp, get_num_from_char(arena, *pos, 2) % IDX_MOD);
 		result = get_num_from_char(arena, temp, IND_SIZE);
 		change_position(pos, IND_SIZE);

@@ -1,5 +1,14 @@
 #include "../../includes/vm.h"
 
+void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
+{
+	if (g_op_tab[(int)carriage->op_code].arg_type)
+		vm->exec[(int)carriage->op_code](carriage, vm->data, arguments);
+	else
+		vm->exec[(int)carriage->op_code](carriage, vm->data);
+	printf("arguments is OK\n");
+}
+
 int		get_arg_size(int op, unsigned char arg)
 {
 	if (arg == T_REG)
@@ -27,7 +36,7 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 
 	i = 0;
 	change = 2;
-	if (g_op_tab[(int)carriage->op_code].args_types_code)
+	if (g_op_tab[(int)carriage->op_code].arg_type)
 	{
 		while(i < g_op_tab[(int)carriage->op_code].args_num)
 		{
@@ -37,7 +46,7 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 	}
 	else
 		change += g_op_tab[(int)carriage->op_code].t_dir_size;
-	change_position(&carriage->position, change);
+	change_position(&carriage->pos, change);
 	printf("ошибка в аргс\n");
 }
 
@@ -85,7 +94,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	{
 		if (arguments[i] == 0x3)
 			arguments[i] = 0x4;
-		if (!(arguments[i] = arguments[i] & g_op_tab[(int)carriage->op_code].args_types[i]))
+		if (!(arguments[i] == arguments[i] & g_op_tab[(int)carriage->op_code].arg_type))
 		{
 			printf("NOT VALID CODE\n");
 			return 0;
@@ -100,7 +109,7 @@ static int	valid_operation_code(t_carriage *carriage)
 {
 	if (carriage->op_code < LIVE_CODE || carriage->op_code > AFF_CODE)
 	{
-		change_position(&carriage->position, 1);
+		change_position(&carriage->pos, 1);
 		return (0);
 	}
 	return (1);
@@ -111,15 +120,15 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 {
 	unsigned int position;
 
-	position = carriage->position;
+	position = carriage->pos;
 	ft_bzero(arguments, 4);
-	carriage->op_code = arena[carriage->position];
+	carriage->op_code = arena[carriage->pos];
 	//printf("here %d\n", carriage->op_code);
 	//print_byte(carriage->op_code);
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);
-	if (g_op_tab[(int)carriage->op_code].args_types_code)
+	if (g_op_tab[(int)carriage->op_code].arg_type)
 	{
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))

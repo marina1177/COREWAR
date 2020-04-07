@@ -10,6 +10,7 @@
 # include "../libft_clala/includes/ft_printf.h"
 # include "../libft_clala/includes/libft.h"
 # include "vm_error.h"
+# include <stdio.h>
 
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
@@ -54,13 +55,13 @@
 typedef struct			s_op
 {
 	char				*name;
-	int					arg_count;
+	int					args_num;
 	int					arr[3];
 	int					index;
 	int					loop;
 	char				*description;
 	int					arg_type;
-	int					dir_size;
+	int					t_dir_size;
 }						t_op;
 
 extern t_op				g_op_tab[17];
@@ -120,7 +121,7 @@ typedef struct			s_carriage
 	int					carry;
 	int					regs[REG_NUMBER];
 	int					pos;
-	int					opcode;
+	int					op_code;
 	int					live_cycle;
 	int					cycles_countdown;
 	int					last_cycle_alive;
@@ -143,7 +144,8 @@ typedef struct			s_vm
 	struct s_vs			*vs;					
 	struct s_mods		*mods;
 	t_op				op_tab[17];
-	void				(*exec[17])(t_carriage *curr, struct s_vm *vm);
+	void				(*exec[17])();
+	//void				(*exec[17])(t_carriage *curr, struct s_vm *vm);
 }						t_vm;
 
 typedef	struct			s_bit
@@ -169,6 +171,7 @@ void	test(int op, unsigned char *arena); //delete
 void	print_byte(unsigned char c); //delete
 void	print_memory(const void *addr, size_t size);
 int		check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
+void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments);
 void	change_position(unsigned int *position, int change);
 int		get_num_from_char(unsigned char *arena,  unsigned int position, int size);
 int		get_arg_size(int op, unsigned char arg);
@@ -202,7 +205,7 @@ void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
 void	handle_carriages(t_vm *vm);
 void				game(t_player *players[], t_vm *vm);
 void				display_memory(char *arena);
-//void				state_opcode(t_carriage *curr, t_vm *vm);
+//void				state_op_code(t_carriage *curr, t_vm *vm);
 int					exec_op(t_carriage *carriage, t_vm *vm);
 
 unsigned char		*get_args(char arg_code, unsigned char arr[4]);
@@ -218,22 +221,7 @@ int					get_one_arg_no_md(int *temp, unsigned char code,
 									t_carriage *curr, t_vm *vm);
 void				increase_position(int *pos, int delta);
 
-void				live(t_carriage *curr, t_vm *vm);
-void				ld(t_carriage *curr, t_vm *vm);
-void				st(t_carriage *curr, t_vm *vm);
-void				add(t_carriage *curr, t_vm *vm);
-void				sub(t_carriage *curr, t_vm *vm);
-void				and(t_carriage *curr, t_vm *vm);
-void				or(t_carriage *curr, t_vm *vm);
-void				xor(t_carriage *curr, t_vm *vm);
-void				zjmp(t_carriage *curr, t_vm *vm);
-void				ldi(t_carriage *curr, t_vm *vm);
-void				sti(t_carriage *curr, t_vm *vm);
-void				cwfork(t_carriage *curr, t_vm *vm);
-void				lld(t_carriage *curr, t_vm *vm);
-void				lldi(t_carriage *curr, t_vm *vm);
-void				lfork(t_carriage *curr, t_vm *vm);
-void				aff(t_carriage *curr, t_vm *vm);
+
 void				test_display(char*arena);
 void				delete_old_carriage(t_vm *vm);
 void				display_arena(t_vm *vm);

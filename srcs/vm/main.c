@@ -62,6 +62,7 @@ void	corewar(t_vm *vm)
 			cycles = 0;
 		}
 		vm->data->cycles++;
+		ft_printf("%d\n", vm->data->cycles);
 		cycles++;
 	}	
 }

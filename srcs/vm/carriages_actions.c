@@ -1,24 +1,5 @@
 #include "../../includes/vm.h"
 
-t_carriage	*make_new_carriage(unsigned int position)
-{
-	t_carriage		*new;
-	int i;
-
-	i = -1;
-	new = NULL;
-	if (!(new = (t_carriage*)malloc(sizeof(t_carriage))))
-		ft_exit(ERR_ALLOC);
-	new->position = position;
-	new->last_cycle_alive = 0;
-	new->num_of_carriage = 0;
-	new->carry = 0;
-	while (++i <= REG_NUMBER)
-		new->regs[i] = 0;
-	new->next = NULL;
-	return (new);
-}
-
 void	add_carriage(t_carriage **head, t_carriage *new)
 {
 	if (head && new)

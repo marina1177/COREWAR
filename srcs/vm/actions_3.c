@@ -6,18 +6,18 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	unsigned int position;
 
 	printf("sti\n");
-	position = carriage->position;
-	printf("position %d\noperation %d\n", position, vm->arena[position]);
-	print_memory(&vm->arena[position], 1);
+	position = carriage->pos;
+	printf("position %d\noperation %d\n", position, vm->data->arena[position]);
+	print_memory(&vm->data->arena[position], 1);
 	change_position(&position, 2);
 	printf("\nresize \n");
-	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
-	values[2] = get_arg_value(vm->arena, carriage, &position, arguments[2]);
-	write_reg(vm->arena, values[0], carriage->position, (values[1] + values[2]) % IDX_MOD);
+	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[2] = get_arg_value(vm->data->arena, carriage, &position, arguments[2]);
+	write_reg(vm->data->arena, values[0], carriage->pos, (values[1] + values[2]) % IDX_MOD);
 	printf("position %d\n", position);
-	carriage->position = position;
-	print_memory(&vm->arena[position], 1);
+	carriage->pos = position;
+	print_memory(&vm->data->arena[position], 1);
 	printf("final int %d %d %d\n", values[0], values[1], values[2]);
 }
 
@@ -25,20 +25,15 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
 	unsigned int position;
-	t_carriage *new;
 	int i;
 
 	i = -1;
-	position = carriage->position;
+	position = carriage->pos;
 	change_position(&position, 1);
-	value = get_arg_value(vm->arena, carriage, &position, T_DIR);
-	carriage->position = position;
-	new = make_new_carriage(value % IDX_MOD);
-	while (++i <= REG_NUMBER)
-		new->regs[i] = carriage->regs[i];
-	new->carry = carriage->carry;
-	new->last_cycle_alive = carriage->last_cycle_alive; //здесь копируется номер цикла, в котором в последний раз выполнялась операция live
-	add_carriage(&vm->carriages, new); //какое имя у каретки? что еще скопировать?
+	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
+	carriage->pos = position;
+	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
+	vm->carr->head->pos = value % IDX_MOD;
 	printf("fork\n");
 }
 
@@ -48,21 +43,21 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	unsigned int position;
 	unsigned int temp;
 
-	position = carriage->position;
+	position = carriage->pos;
 	change_position(&position, 2);
 	if (arguments[0] == T_DIR)
-		values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
+		values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	else
 	{
-		temp = carriage->position;
-		change_position(&temp, get_num_from_char(vm->arena, position, 2));
-		values[0] = get_num_from_char(vm->arena, temp, IND_SIZE);
+		temp = carriage->pos;
+		change_position(&temp, get_num_from_char(vm->data->arena, position, 2));
+		values[0] = get_num_from_char(vm->data->arena, temp, IND_SIZE);
 		change_position(&position, IND_SIZE);
 	}
-	values[1] = get_reg_value(vm->arena, &position);
+	values[1] = get_reg_value(vm->data->arena, &position);
 	carriage->regs[values[1]] = values[0];
 	carriage->carry = values[0] == 0 ? 1 : 0;
-	carriage->position = position;
+	carriage->pos = position;
 	printf("lld\n");
 }
 
@@ -72,14 +67,14 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	unsigned int position;
 	unsigned int temp;
 
-	position = carriage->position;
+	position = carriage->pos;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
-	values[2] = get_reg_value(vm->arena, &position);
+	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[2] = get_reg_value(vm->data->arena, &position);
 	temp = values[0] + values[1];
-	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &temp, T_IND);
-	carriage->position = position;
+	carriage->regs[values[2]] = get_arg_value(vm->data->arena, carriage, &temp, T_IND);
+	carriage->pos = position;
 	printf("lldi\n");
 }
 
@@ -91,15 +86,11 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 	int i;
 
 	i = -1;
-	position = carriage->position;
+	position = carriage->pos;
 	change_position(&position, 1);
-	value = get_arg_value(vm->arena, carriage, &position, T_DIR);
-	carriage->position = position;
-	new = make_new_carriage(value);
-	while (++i <= REG_NUMBER)
-		new->regs[i] = carriage->regs[i];
-	new->carry = carriage->carry;
-	new->last_cycle_alive = carriage->last_cycle_alive; //здесь копируется номер цикла, в котором в последний раз выполнялась операция live
-	add_carriage(&vm->carriages, new); //какое имя у каретки? что еще скопировать?
+	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
+	carriage->pos = position;
+	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
+	vm->carr->head->pos = value;
 	printf("lfork\n");
 }
