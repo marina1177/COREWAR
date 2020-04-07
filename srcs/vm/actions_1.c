@@ -23,41 +23,32 @@ void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	values[1] = get_reg_value(vm->arena, &position);
-	print_memory(&vm->arena[position], 2);
 	carriage->regs[values[1]] = values[0];
 	carriage->carry = values[0] == 0 ? 1 : 0;
 	carriage->position = position;
-	printf("values[0] = %d values[1] = %d\n", values[0], values[1]);
-	printf("reg[%d] = %d\n",values[1], carriage->regs[values[1]]);
-	print_memory(&vm->arena[carriage->position], 2);
+	printf("result reg[%d] = %d stay at %d\n",values[1], carriage->regs[values[1]], carriage->position);
+	//print_memory(&vm->arena[carriage->position], 2);
 }
 
 void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
 	unsigned int position;
-	int temp;
 
-	printf("sti\n");
 	position = carriage->position;
-	printf("position %d\noperation %d\n", position, vm->arena[position]);
-	print_memory(&vm->arena[position], 1);
 	change_position(&position, 2);
-	printf("\nresize \n");
+	carriage->regs[3] = 23;
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	if (arguments[1] == T_REG)
-		carriage->regs[values[1]] = values[0];
+		carriage->regs[get_reg_value(vm->arena, &position)] = values[0];
 	else
 	{
-		temp = get_num_from_char(vm->arena, position, 2) % IDX_MOD;
-		write_reg(vm->arena, values[0], carriage->position, temp);
-		change_position(&position, IND_SIZE);
+		values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
+		write_reg(vm->arena, values[0], carriage->position, values[1]); //нужно ли здесь дополнительно усекать?
 	}
-	printf("position %d\n", position);
 	carriage->position = position;
-	print_memory(&vm->arena[position], 1);
-	printf("final int %d %d %d\n", values[0], values[1], values[2]);
-	printf("st\n");
+	print_memory(vm->arena, 16);
+	printf("expect arena[%d] changed stay at %d\n", values[1], position);
 }
 
 void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)

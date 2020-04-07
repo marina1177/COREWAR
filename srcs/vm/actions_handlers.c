@@ -13,7 +13,7 @@ int			get_num_from_char(unsigned char *arena, unsigned int position, int size)
 		arguments[i] = arena[position];
 		change_position(&position, 1);
 	}
-	print_memory(arguments, size);
+	//print_memory(arguments, size);
 	num = (int *)arguments;
 	return (*num);
 }
@@ -23,7 +23,7 @@ int		get_reg_value(unsigned char *arena, unsigned int *pos)
 	int result;
 
 	result = arena[*pos];
-	printf("REG = %d\n", result);
+	//printf("REG = %d\n", result);
 	change_position(pos, 1);
 	return (result);
 }
@@ -36,8 +36,8 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, ch
 	if (arg_type == T_REG)
 	{
 		result = car->regs[arena[*pos]];
-		print_memory(&arena[*pos], 1);
-		printf("%d", result);
+		// print_memory(&arena[*pos], 1);
+		// printf("%d", result);
 		change_position(pos, 1);
 	}
 	else if (arg_type == T_DIR)
@@ -49,8 +49,8 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, ch
 	{
 		temp = car->position;
 		change_position(&temp, get_num_from_char(arena, *pos, 2) % IDX_MOD);
-		result = get_num_from_char(arena, temp, IND_SIZE);
-		change_position(pos, IND_SIZE);
+		result = get_num_from_char(arena, temp, DIR_SIZE);
+		change_position(pos, 2);
 	}
 	return (result);
 }
@@ -71,7 +71,4 @@ void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change
 	change_position(&position, 1);
 	temp = (reg & 0x000000ff);
 	arena[position] = temp;
-	printf("here");
-	print_memory(&arena[position - 4], 4);
-	//print_memory(arena, MEM_SIZE);
 }

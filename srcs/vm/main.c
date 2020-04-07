@@ -14,7 +14,7 @@ void	play_game(t_vm *data)
 	t_carriage *carriage;
 	unsigned char arguments[4];
 
-	test(2, data->arena);
+	test(3, data->arena);
 	carriage = data->carriages;
 	while (carriage)
 	{
@@ -38,7 +38,6 @@ int main(int ac, char **av)
 	}
 	init_arena(&data, ac - 1);
 	play_game(&data);
-	// printf("main arena\n\n");
 	// print_memory(data.arena, MEM_SIZE);
 	clean_data(&data);
 	return 0;

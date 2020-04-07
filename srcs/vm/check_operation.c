@@ -16,8 +16,8 @@ void	change_position(unsigned int *position, int change)
 	*position += change;
 	if (*position >= MEM_SIZE)
 		*position %= MEM_SIZE;
-	else if (*position < 0)  //?
-		*position += MEM_SIZE;
+	// else if (*position < 0)
+	// 	*position += MEM_SIZE; //никогда сюда не заходит, ведь unsigned
 }
 
 static void	skip_args(t_carriage *carriage, unsigned char *arguments)
@@ -76,7 +76,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	t_arg_types code;
 
 	i = 0;
-	print_byte(*types);
+	//print_byte(*types);
 	code.types = *types;
 	arguments[0] = code.bit.first;
 	arguments[1] = code.bit.second;
@@ -92,7 +92,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 		}
 		i++;
 	}
-	printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
+	//printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
 	return 1;
 }
 //сдвигаем каретку, только если код невалидный
@@ -115,7 +115,7 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 	ft_bzero(arguments, 4);
 	carriage->op_code = arena[carriage->position];
 	//printf("here %d\n", carriage->op_code);
-	print_byte(carriage->op_code);
+	//print_byte(carriage->op_code);
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);

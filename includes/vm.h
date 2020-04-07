@@ -68,9 +68,10 @@
 #define T_DIR					2
 #define T_IND					4
 
-#define IND_SIZE				2
+
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
+#define IND_SIZE				2
 
 typedef	struct			s_player
 {

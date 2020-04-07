@@ -56,14 +56,14 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	{
 		temp = carriage->position;
 		change_position(&temp, get_num_from_char(vm->arena, position, 2));
-		values[0] = get_num_from_char(vm->arena, temp, IND_SIZE);
+		values[0] = get_num_from_char(vm->arena, temp, DIR_SIZE);
 		change_position(&position, IND_SIZE);
 	}
 	values[1] = get_reg_value(vm->arena, &position);
 	carriage->regs[values[1]] = values[0];
 	carriage->carry = values[0] == 0 ? 1 : 0;
 	carriage->position = position;
-	printf("lld\n");
+	printf("lld result reg[%d] = %d stay at %d\n",values[1], carriage->regs[values[1]], carriage->position);
 }
 
 void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -77,10 +77,11 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[0] = get_arg_value(vm->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->arena, carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->arena, &position);
-	temp = values[0] + values[1];
-	carriage->regs[values[2]] = get_arg_value(vm->arena, carriage, &temp, T_IND);
+	temp = carriage->position;
+	change_position(&temp, values[0] + values[1]);
+	carriage->regs[values[2]] = get_num_from_char(vm->arena, temp, 4);
 	carriage->position = position;
-	printf("lldi\n");
+	printf("lldi result reg[%d] = %d stay at %d\n",values[2], carriage->regs[values[2]], carriage->position);
 }
 
 void	do_lfork(t_carriage *carriage, t_vm *vm)
