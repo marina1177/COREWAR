@@ -23,6 +23,10 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 	new->carry = false;
 	new->pos = pos;
 	new->op_code = 0;
+	new->cycles_countdown = -2;
+	new->last_cycle_alive = 0;
+	ft_bzero((void *)new->regs, REG_NUMBER * sizeof(int));
+	new->regs[0] = -(new->num);
 	return (new);
 }
 

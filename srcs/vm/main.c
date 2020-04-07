@@ -12,6 +12,61 @@
 
 #include "../../includes/vm.h"
 
+
+
+static void		delete_old_carriages(t_vm *vm)
+{
+	t_carriage *curr;
+
+	curr = vm->carr->head;
+	while (curr)
+	{		
+		if (vm->data->cycles_to_die <= 0 ||
+		vm->data->cycles - curr->last_cycle_alive >= vm->data->cycles_to_die)
+			t_carriages_remove_node(vm->carr, curr);
+		curr = curr->next;
+	}	
+}
+
+static void		check_carriages(t_vm *vm)
+{
+	delete_old_carriages(vm);
+	vm->data->checks_counter++;
+	if (vm->data->lives_counter > NBR_LIVE ||
+		vm->data->checks_counter == MAX_CHECKS)
+	{
+		vm->data->cycles_to_die -= CYCLE_DELTA;
+		vm->data->checks_counter = 0;
+	}
+	vm->data->lives_counter = 0;
+}
+
+void	corewar(t_vm *vm)
+{
+	int	cycles;
+
+	cycles = 0;
+	while (vm->carr->qty)
+	{
+		if (vm->data->cycles == vm->mods->dump_cycle)
+		{
+			print_dump(vm);
+			exit(0);
+		}		
+		handle_carriages(vm);
+		if (vm->mods->dump_cycle == vm->data->cycles && print_dump(vm))
+			exit(0);		
+		if (cycles == vm->data->cycles_to_die || vm->data->cycles_to_die <=0)
+		{
+			check_carriages(vm);
+			cycles = 0;
+		}
+		vm->data->cycles++;
+		ft_printf("%d\n", vm->data->cycles);
+		cycles++;
+	}	
+}
+
 void	create_arena(t_vm *vm)
 {
 	t_player	*player;
@@ -31,25 +86,6 @@ void	create_arena(t_vm *vm)
 	}	
 }
 
-void	game(t_vm *vm, t_players *players, t_carriages *carr)
-{
-	int	i;
-
-	i = 0;
-	while (carr->qty)
-	{
-		vm->mods->dump_cycle == vm->data->cycles && print_dump(vm) ? exit(0) : 0;
-		if (i == vm->data->cycles_to_die || vm->data->cycles_to_die <=0)
-		{
-			check(vm);
-			i = 0;
-		}
-		vm->data->cycles++;
-		i++;			
-	}
-	print_final_result(vm);
-}
-
 int     main(int ac, char **av)
 {
 	t_vm	*vm;
@@ -57,11 +93,9 @@ int     main(int ac, char **av)
 	ac < 2 ? print_usage() : 0;	
 	vm = t_vm_create();
 	parse_args(vm, ac, av);
-	//print_introduction(vm->players);
-	//print_t_players(vm->players);
-	create_arena(vm);
-	//print_t_carriages(vm->carr);
-	//print_dump(vm->data->arena, 64);
-	game(vm, vm->players, vm->carr);
+	print_introduction(vm->players);	
+	create_arena(vm);	
+	corewar(vm);
+	print_final_result(vm);
 	return (0);
 }

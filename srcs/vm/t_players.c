@@ -101,10 +101,24 @@ t_players *t_players_new(void)
 	{
 		new->qty = 0;
 		new->first_player = NULL;
-		new->last_alive = NULL;
+		new->last_alive_num = 0;
 		new->lives_num = -1;
 	}
 	return (new);
+}
+
+t_player *get_player_by_number(t_players *players, int num)
+{
+	t_player *player;
+
+	player = players->first_player;
+	while (player)
+	{
+		if (player->num == num)
+			return (player);
+		player = player->next;
+	}
+	return (player);
 }
 
 void handle_players(t_vm *vm, t_players *players)
@@ -122,5 +136,5 @@ void handle_players(t_vm *vm, t_players *players)
 			handle_error_str_arg(ERR_INV_P_NUM, temp->name, vm);
 		temp = temp->next;
 	}
-	vm->players->last_alive = players->first_player;
+	vm->players->last_alive_num = players->first_player->num;
 }

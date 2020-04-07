@@ -42,6 +42,11 @@ static int	parse_flag_dump(t_vm *vm, char *arg, char *num)
 	return (1);
 }
 
+int		parse_flag_l()
+{
+	return (0);
+}
+
 void	parse_args(t_vm *vm, int ac, char **av)
 {
 	int	i;
@@ -55,17 +60,21 @@ void	parse_args(t_vm *vm, int ac, char **av)
 			number = is_valid_flag_n(vm, av[++i]);
 			parse_player(vm, av[++i],
 			t_players_add_new_player(vm->players, number, vm));
-			
 		}
 		else if (!ft_strcmp(av[i], "-dump") || !ft_strcmp(av[i], "-d"))
+		{
 			parse_flag_dump(vm, av[i], av[i + 1]);
+			i++;
+		}
 		else if (!ft_strcmp(av[i], "-v"))
 			vm->vs = t_vs_create(vm);
+		else if (!ft_strcmp(av[i], "-a"))
+			vm->mods->aff = true;
+		else if (!ft_strcmp(av[i], "-l"))
+			parse_flag_l();
 		else
-		{
 			parse_player(vm, av[i],
 			t_players_add_new_player(vm->players, 0, vm));
-		}
 	}
 	handle_players(vm, vm->players);
 }

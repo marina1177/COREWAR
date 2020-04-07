@@ -42,20 +42,28 @@ void		print_final_result(t_vm *vm)
 	exit(0);
 }
 
+void		print_is_alive(int num, char *player_name)
+{
+	ft_printf("A process shows that player %d (%s) is alive\n",
+		num, player_name);
+}
+
+
 void	print_last_alive(t_vm *vm)
 {
 	t_player *last;
 
-	last = vm->players->last_alive;
+	last = get_player_by_number(vm->players, vm->players->last_alive_num);
 	ft_printf("Contestant %d, \"%s\", has won !\n",
 				last->num, last->name);
+	exit(0);
 }
 
 int		print_dump(t_vm *vm)
 {
 	int		i;
 	int		j;
-	uint8_t	arena;
+	uint8_t	*arena;
 	int		dump_size;
 
 	arena = vm->data->arena;
@@ -73,4 +81,5 @@ int		print_dump(t_vm *vm)
 		ft_printf("\n");
 		i += dump_size;
 	}
+	return (1);
 }
