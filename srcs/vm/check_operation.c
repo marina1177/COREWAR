@@ -115,7 +115,7 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 	ft_bzero(arguments, 4);
 	carriage->op_code = arena[carriage->position];
 	//printf("here %d\n", carriage->op_code);
-	print_byte(carriage->op_code);
+	//print_byte(carriage->op_code);
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);

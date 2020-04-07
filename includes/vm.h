@@ -146,6 +146,58 @@ typedef struct			s_vm
 	void				(*exec[17])(t_carriage *curr, struct s_vm *vm);
 }						t_vm;
 
+typedef	struct			s_bit
+{
+	unsigned		forth : 2;
+	unsigned		third : 2;
+	unsigned		second : 2;
+	unsigned		first : 2;
+}						t_bit;
+
+typedef	union			s_arg_types
+{
+	unsigned char	types;
+	t_bit			bit;
+}						t_arg_types;
+
+void	init(t_vm *data, int quantity);
+void	init_arena(t_vm *data, int quantity);
+void	read_data(char *filename, t_player *player);
+void	ft_exit(char *line);
+void	clean_data(t_vm *data);
+void	test(int op, unsigned char *arena); //delete
+void	print_byte(unsigned char c); //delete
+void	print_memory(const void *addr, size_t size);
+int		check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
+void	change_position(unsigned int *position, int change);
+int		get_num_from_char(unsigned char *arena,  unsigned int position, int size);
+int		get_arg_size(int op, unsigned char arg);
+void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change);
+int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type);
+int		get_reg_value(unsigned char *arena, unsigned int *pos);
+
+t_carriage	*make_new_carriage(unsigned int position);
+void		add_carriage(t_carriage **head, t_carriage *new);
+void		del_carriage(t_carriage **head, t_carriage *carriage);
+
+void	(*actions[17])();
+void	do_live(t_carriage *carriage, t_vm *vm);
+void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_sub(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_zjmp(t_carriage *carriage, t_vm *vm);
+void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_fork(t_carriage *carriage, t_vm *vm);
+void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void	do_lfork(t_carriage *carriage, t_vm *vm);
+void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+
 // op_code fucntions
 void	handle_carriages(t_vm *vm);
 void				game(t_player *players[], t_vm *vm);

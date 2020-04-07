@@ -176,6 +176,7 @@ static int	get_opcode(t_carriage *carriage, t_vm *vm)
 void			handle_carriages(t_vm *vm)
 {
 	t_carriage	*carriage;
+	unsigned char arguments[4];
 	/*char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
 						 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"}; */
 
@@ -188,8 +189,9 @@ void			handle_carriages(t_vm *vm)
 			carriage->cycles_countdown--;
 			if (!carriage->cycles_countdown)
 			{
-				exec_op(carriage, vm);
-				ft_printf("cycle: %d operation: %s\n", vm->data->cycles, names[carriage->opcode]);
+				if (check_operation(data->arena, carriage, arguments))
+					make_operation(data, carriage, arguments);
+				//ft_printf("cycle: %d operation: %s\n", vm->data->cycles, names[carriage->opcode]);
 			}
 		}
 		carriage = carriage->next;
