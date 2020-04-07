@@ -3,7 +3,7 @@
 void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	printf("sti\n");
 	position = carriage->pos;
@@ -24,10 +24,8 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_fork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	unsigned int position;
-	int i;
+	int position;
 
-	i = -1;
 	position = carriage->pos;
 	change_position(&position, 1);
 	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
@@ -40,8 +38,8 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	unsigned int position;
-	unsigned int temp;
+	int position;
+	int temp;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -64,8 +62,8 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
-	unsigned int temp;
+	int position;
+	int temp;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -82,9 +80,9 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_lfork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	unsigned int position;
-	t_carriage *new;
-	unsigned int pos;
+	int position;
+	//t_carriage *new;
+	//int pos;
 
 	position = carriage->pos;
 	change_position(&position, 1);

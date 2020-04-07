@@ -3,7 +3,7 @@
 void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -19,7 +19,7 @@ void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -35,7 +35,7 @@ void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -51,7 +51,7 @@ void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_zjmp(t_carriage *carriage, t_vm *vm)
 {
 	int value;
-	unsigned int position;
+	int position;
 
 	printf("zjmp\n");
 	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
@@ -65,8 +65,8 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
-	unsigned int i;
+	int position;
+	int i;
 
 	printf("ldi\n");
 	position = carriage->pos;

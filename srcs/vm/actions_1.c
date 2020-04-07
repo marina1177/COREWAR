@@ -2,7 +2,7 @@
 
 void	do_live(t_carriage *carriage, t_vm *vm)
 {
-	unsigned int position;
+	int position;
 	int num;
 	int i;
 	t_player *p;
@@ -13,18 +13,18 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 2);
 	num = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
-	// if (num > 0 && num <= vm->players->qty)
-	// {
-	// 	while (++i <= vm->players->qty)
-	// 	{
-	// 		if (-num == p->num)
-	// 		{
-	// 			p->is_alive += 1; //мы эту переменную увеличиваем?
-	// 			break ;
-	// 		}
-	// 		p = p->next;
-	// 	}
-	// }
+	if (num > 0 && num <= vm->players->qty)
+	{
+		while (++i <= vm->players->qty)
+		{
+	 		if (-num == p->num)
+	 		{
+	 			p->last_live = vm->data->cycles; //мы эту переменную увеличиваем?
+	 			break ;
+	 		}
+	 		p = p->next;
+	 	}
+	}
 	//TO DO разобраться со структурой Димы
 	printf("live\n");
 }
@@ -32,7 +32,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	unsigned int position;
+	int position;
 
 	printf("ld\n");
 	position = carriage->pos;
@@ -49,7 +49,7 @@ void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
-	unsigned int position;
+	int position;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -69,7 +69,7 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	printf("add\n");
 	position = carriage->pos;
@@ -85,7 +85,7 @@ void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 void	do_sub(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[3];
-	unsigned int position;
+	int position;
 
 	position = carriage->pos;
 	change_position(&position, 2);

@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-int			get_num_from_char(unsigned char *arena, unsigned int position, int size)
+int			get_num_from_char(unsigned char *arena, int position, int size)
 {
 	int		*num;
 	int		i;
@@ -18,7 +18,7 @@ int			get_num_from_char(unsigned char *arena, unsigned int position, int size)
 	return (*num);
 }
 
-int		get_reg_value(unsigned char *arena, unsigned int *pos)
+int		get_reg_value(unsigned char *arena, int *pos)
 {
 	int result;
 
@@ -28,9 +28,9 @@ int		get_reg_value(unsigned char *arena, unsigned int *pos)
 	return (result);
 }
 
-int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type)
+int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_type)
 {
-	 unsigned int temp;
+	int temp;
 	int result;
 
 	if (arg_type == T_REG)
@@ -55,7 +55,7 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, ch
 	return (result);
 }
 
-void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change)
+void	write_reg(unsigned char *arena, int reg,  int position, int change)
 {
 	char			temp;
 

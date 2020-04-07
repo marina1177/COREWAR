@@ -29,7 +29,7 @@ static char *terminated(char *s, int len)
 	return (terminated);
 }
 
-unsigned int	get_integer(int fd, char *arg, t_vm *vm)
+int	get_integer(int fd, char *arg, t_vm *vm)
 {
 	int a;
 	char *buffer;

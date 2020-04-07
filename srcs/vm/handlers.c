@@ -2,6 +2,6 @@
 
 void	ft_exit(char *line)
 {
-	printf(line);
+	printf("%s", line);
 	exit(0);
 }
