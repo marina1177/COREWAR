@@ -57,12 +57,12 @@ void			handle_carriages(t_vm *vm)
 {
 	t_carriage	*carriage;
 	unsigned char arguments[4];
-	/*char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
-						 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"}; */
+	char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
+						 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
 
 	carriage = vm->carr->head;
 	while (carriage)
-	{		
+	{
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 		{
@@ -70,8 +70,10 @@ void			handle_carriages(t_vm *vm)
 			if (!carriage->cycles_countdown)
 			{
 				if (check_operation(vm->data->arena, carriage, arguments))
+				{
+					ft_printf("cycle %d operation %s\n", vm->data->cycles, names[carriage->op_code]);
 					make_operation(vm, carriage, arguments);
-				//ft_printf("cycle: %d operation: %s\n", vm->data->cycles, names[carriage->op_code]);
+				}				
 			}
 		}
 		carriage = carriage->next;

@@ -47,22 +47,16 @@ void	corewar(t_vm *vm)
 
 	cycles = 0;
 	while (vm->carr->qty)
-	{
-		if (vm->data->cycles == vm->mods->dump_cycle)
-		{
-			print_dump(vm);
-			exit(0);
-		}		
+	{		
 		handle_carriages(vm);
-		if (vm->mods->dump_cycle == vm->data->cycles && print_dump(vm))
-			exit(0);		
+		if (vm->mods->dump_cycle == vm->data->cycles)
+			print_dump(vm, vm->mods->dump_size);
 		if (cycles == vm->data->cycles_to_die || vm->data->cycles_to_die <=0)
 		{
 			check_carriages(vm);
 			cycles = 0;
 		}
 		vm->data->cycles++;
-		ft_printf("%d\n", vm->data->cycles);
 		cycles++;
 	}	
 }

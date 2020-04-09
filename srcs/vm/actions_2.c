@@ -13,7 +13,7 @@ void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] & values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	printf("and\n");
+	//printf("and\n");
 }
 
 void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -29,7 +29,7 @@ void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] | values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	printf("or\n");
+	//printf("or\n");
 }
 
 void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -45,7 +45,7 @@ void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] ^ values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	printf("xor\n");
+	//printf("xor\n");
 }
 
 void	do_zjmp(t_carriage *carriage, t_vm *vm)
@@ -53,7 +53,7 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 	int value;
 	int position;
 
-	printf("zjmp\n");
+	//printf("zjmp\n");
 	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
 		return ;
 	position = carriage->pos;
@@ -68,7 +68,7 @@ void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int position;
 	int i;
 
-	printf("ldi\n");
+	//printf("ldi\n");
 	position = carriage->pos;
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);

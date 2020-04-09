@@ -2,11 +2,13 @@
 
 void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
 {
+	
+	
 	if (g_op_tab[(int)carriage->op_code].arg_type)
-		vm->exec[(int)carriage->op_code](carriage, vm->data, arguments);
+		vm->exec[(int)carriage->op_code](carriage, vm, arguments);
 	else
-		vm->exec[(int)carriage->op_code](carriage, vm->data);
-	printf("arguments is OK\n");
+		vm->exec[(int)carriage->op_code](carriage, vm);
+	carriage->cycles_countdown--;
 }
 
 int		get_arg_size(int op, unsigned char arg)
@@ -47,7 +49,7 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 	else
 		change += g_op_tab[(int)carriage->op_code].t_dir_size;
 	change_position(&carriage->pos, change);
-	printf("ошибка в аргс\n");
+	//printf("ошибка в аргс\n");
 }
 
 static int	valid_register(t_carriage *carriage, unsigned char *arena, int position, unsigned char *arguments)
@@ -66,7 +68,7 @@ static int	valid_register(t_carriage *carriage, unsigned char *arena, int positi
 			if (arena[position] < 1 || arena[position] > 16)
 			{
 				skip_args(carriage, arguments);
-				printf("NOT VALID REG %d\n", carriage->op_code);
+				//printf("NOT VALID REG %d\n", carriage->op_code);
 				return (0);
 			}
 		}
@@ -85,7 +87,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	t_arg_types code;
 
 	i = 0;
-	print_byte(*types);
+	//print_byte(*types);
 	code.types = *types;
 	arguments[0] = code.bit.first;
 	arguments[1] = code.bit.second;
@@ -94,14 +96,9 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	{
 		if (arguments[i] == 0x3)
 			arguments[i] = 0x4;
-		if (!(arguments[i] = arguments[i] & g_op_tab[(int)carriage->op_code].arg_type))
-		{
-			printf("NOT VALID CODE\n");
-			return 0;
-		}
 		i++;
 	}
-	printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
+	//printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
 	return 1;
 }
 //сдвигаем каретку, только если код невалидный
@@ -123,8 +120,6 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 	position = carriage->pos;
 	ft_bzero(arguments, 4);
 	carriage->op_code = arena[carriage->pos];
-	//printf("here %d\n", carriage->op_code);
-	//print_byte(carriage->op_code);
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);

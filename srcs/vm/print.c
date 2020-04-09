@@ -59,15 +59,13 @@ void	print_last_alive(t_vm *vm)
 	exit(0);
 }
 
-int		print_dump(t_vm *vm)
+int		print_dump(t_vm *vm, int dump_size)
 {
 	int		i;
 	int		j;
 	uint8_t	*arena;
-	int		dump_size;
 
 	arena = vm->data->arena;
-	dump_size = vm->mods->dump_size;
 	i = 0;
 	while (i < MEM_SIZE)
 	{
@@ -81,5 +79,6 @@ int		print_dump(t_vm *vm)
 		ft_printf("\n");
 		i += dump_size;
 	}
-	return (1);
+	exit(0);
+	return (1);	
 }

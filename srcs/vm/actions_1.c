@@ -26,7 +26,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 	}
 	}
 	//TO DO разобраться со структурой Димы
-	printf("live\n");
+	//printf("live\n");
 }
 
 void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -34,7 +34,7 @@ void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[2];
 	int position;
 
-	printf("ld\n");
+	//printf("ld\n");
 	position = carriage->pos;
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
@@ -42,8 +42,8 @@ void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[1]] = values[0];
 	carriage->carry = values[0] == 0 ? 1 : 0;
 	carriage->pos = position;
-	printf("result reg[%d] = %d stay at %d\n",values[1], carriage->regs[values[1]], carriage->pos);
-	print_memory(&vm->data->arena[carriage->pos], 2);
+	//printf("result reg[%d] = %d stay at %d\n",values[1], carriage->regs[values[1]], carriage->pos);
+	//print_memory(&vm->data->arena[carriage->pos], 2);
 }
 
 void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -51,19 +51,30 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[2];
 	int position;
 
-	position = carriage->pos;
+	position = carriage->pos;	
 	change_position(&position, 2);
+	
+	//printf("%d\n", position);
+	//print_dump(vm, 32);
+	//printf("%d\n", position);
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
+	
+	//printf("sss\n");
+	
 	if (arguments[1] == T_REG)
+	{
+		
 		carriage->regs[get_reg_value(vm->data->arena, &position)] = values[0];
+	}
 	else
 	{
+		
 		values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]); //нужно ли здесь дополнительно усекать?
 	}
-	carriage->pos = position;
-	print_memory(vm->data->arena, 16);
-	printf("expect arena[%d] changed stay at %d\n", values[1], position);
+	carriage->pos = position;	
+	//print_memory(vm->data->arena, 16);
+	//printf("expect arena[%d] changed stay at %d\n", values[1], position);
 }
 
 void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -71,7 +82,7 @@ void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[3];
 	int position;
 
-	printf("add\n");
+	//printf("add\n");
 	position = carriage->pos;
 	change_position(&position, 2);
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);

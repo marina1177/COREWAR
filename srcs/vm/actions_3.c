@@ -5,7 +5,7 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[3];
 	int position;
 
-	printf("sti\n");
+	//printf("sti\n");
 	position = carriage->pos;
 	printf("position %d\noperation %d\n", position, vm->data->arena[position]);
 	print_memory(&vm->data->arena[position], 1);
@@ -32,7 +32,7 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 	carriage->pos = position;
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
 	vm->carr->head->pos = value % IDX_MOD;
-	printf("fork\n");
+	//printf("fork\n");
 }
 
 void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -97,5 +97,5 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 	// t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
 	// vm->carr->head->pos = pos;
 	// carriage->pos = position;
-	printf("lfork\n");
+	//printf("lfork\n");
 }

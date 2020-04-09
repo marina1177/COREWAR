@@ -139,7 +139,6 @@ typedef struct			s_vm
 {
 	struct s_vm_info	*data;
 	struct s_players	*players;
-
 	struct s_carriages	*carr;	
 	struct s_vs			*vs;					
 	struct s_mods		*mods;
@@ -172,12 +171,12 @@ void	print_byte(unsigned char c); //delete
 void	print_memory(const void *addr, size_t size);
 int		check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
 void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments);
-void	change_position(unsigned int *position, int change);
-int		get_num_from_char(unsigned char *arena,  unsigned int position, int size);
+void	change_position(int *position, int change);
+int		get_num_from_char(unsigned char *arena,  int position, int size);
 int		get_arg_size(int op, unsigned char arg);
-void	write_reg(unsigned char *arena, int reg,  unsigned int position, int change);
-int		get_arg_value(unsigned char *arena, t_carriage *car,  unsigned int *pos, char arg_type);
-int		get_reg_value(unsigned char *arena, unsigned int *pos);
+void	write_reg(unsigned char *arena, int reg,  int position, int change);
+int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_type);
+int		get_reg_value(unsigned char *arena, int *pos);
 
 t_carriage	*make_new_carriage(unsigned int position);
 void		add_carriage(t_carriage **head, t_carriage *new);
@@ -296,7 +295,7 @@ void	print_t_carriages(t_carriages *carriages);
 void		print_introduction(t_players *players);
 void	print_last_alive(t_vm *vm);
 void		print_is_alive(int num, char *player_name);
-int		print_dump(t_vm *vm);
+int		print_dump(t_vm *vm, int dump_size);
 void		print_final_result(t_vm *vm);
 
 /*
