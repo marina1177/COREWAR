@@ -26,7 +26,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 	}
 	}
 	//TO DO разобраться со структурой Димы
-	//printf("live\n");
+	printf("live\n");
 }
 
 void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)

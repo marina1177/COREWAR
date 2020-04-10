@@ -1,29 +1,27 @@
 Introducing contestants...
-* Player 1, weighting 320 bytes, "Jumper !" ("en fait C forker !") !
-* Player 2, weighting 320 bytes, "Jumper !" ("en fait C forker !") !
-cycle 5 operation st
-cycle 5 operation st
-cycle 14 operation st
-cycle 14 operation st
-cycle 23 operation ld
-cycle 23 operation ld
-cycle 35 operation or
-cycle 35 operation or
-cycle 47 operation live
-cycle 47 operation live
-cycle 57 operation live
-cycle 57 operation live
-cycle 67 operation live
-cycle 67 operation live
-cycle 77 operation live
-cycle 77 operation live
-cycle 87 operation live
-cycle 87 operation live
-cycle 97 operation live
-cycle 97 operation live
-0x0000 : 03 70 01 00 49 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
+* Player 1, weighing 320 bytes, "Jumper !" ("en fait C forker !") !
+* Player 2, weighing 320 bytes, "Jumper !" ("en fait C forker !") !
+cycle 5, operation st
+cycle 5, operation st
+cycle 10, operation st
+cycle 10, operation st
+cycle 15, operation ld
+cycle 15, operation ld
+cycle 20, operation ld
+cycle 20, operation ld
+cycle 40, operation zjmp
+cycle 40, operation zjmp
+cycle 65, operation sti
+cycle 65, operation sti
+cycle 75, operation live
+A process shows that player 2 (Jumper !) is alive
+cycle 75, operation live
+A process shows that player 1 (Jumper !) is alive
+cycle 100, operation sti
+cycle 100, operation sti
+0x0000 : 03 00 00 00 00 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
 0x0020 : ff fb 03 01 0b 64 01 ff 53 03 04 54 03 04 03 08 54 05 03 06 09 00 0d 02 90 00 00 00 00 07 09 ff 
-0x0040 : db 08 54 03 03 03 09 ff 31 00 00 00 00 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
+0x0040 : db 08 54 03 03 03 09 ff 31 ff ff ff ff 0b 68 01 00 07 00 01 01 ff ff ff ff 0b 68 02 ff b6 ff c4 
 0x0060 : 02 90 00 00 00 04 04 03 70 02 02 00 02 90 00 00 00 30 05 0b 68 01 ff a6 00 01 0b 68 01 00 96 00 
 0x0080 : 01 0b 68 01 00 23 00 01 0b 68 01 00 21 00 01 0b 68 01 00 1f 00 01 0b 68 01 00 1d 00 01 0b 68 01 
 0x00a0 : 00 1b 00 01 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 09 ff e7 
@@ -85,9 +83,9 @@ cycle 97 operation live
 0x07a0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x07c0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x07e0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
-0x0800 : 03 70 01 00 49 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
+0x0800 : 03 00 00 00 00 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
 0x0820 : ff fb 03 01 0b 64 01 ff 53 03 04 54 03 04 03 08 54 05 03 06 09 00 0d 02 90 00 00 00 00 07 09 ff 
-0x0840 : db 08 54 03 03 03 09 ff 31 00 00 00 00 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
+0x0840 : db 08 54 03 03 03 09 ff 31 ff ff ff fe 0b 68 01 00 07 00 01 01 ff ff ff fe 0b 68 02 ff b6 ff c4 
 0x0860 : 02 90 00 00 00 04 04 03 70 02 02 00 02 90 00 00 00 30 05 0b 68 01 ff a6 00 01 0b 68 01 00 96 00 
 0x0880 : 01 0b 68 01 00 23 00 01 0b 68 01 00 21 00 01 0b 68 01 00 1f 00 01 0b 68 01 00 1d 00 01 0b 68 01 
 0x08a0 : 00 1b 00 01 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 09 ff e7 
@@ -149,19 +147,3 @@ cycle 97 operation live
 0x0fa0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0fc0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0fe0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
-REG = 1
-REG = 1
-REG = 0
-REG = 0
-live
-live
-live
-live
-live
-live
-live
-live
-live
-live
-live
-live
