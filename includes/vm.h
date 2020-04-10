@@ -119,7 +119,7 @@ typedef struct			s_carriage
 	struct s_carriage	*prev;		
 	int					num;
 	int					carry;
-	int					regs[REG_NUMBER];
+	int					regs[REG_NUMBER + 1];
 	int					pos;
 	int					op_code;
 	int					live_cycle;

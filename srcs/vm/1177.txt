@@ -21,9 +21,189 @@ cycle 87 operation live
 cycle 87 operation live
 cycle 97 operation live
 cycle 97 operation live
+cycle 107 operation live
+cycle 107 operation live
+cycle 117 operation live
+cycle 117 operation live
+cycle 127 operation live
+cycle 127 operation live
+cycle 137 operation live
+cycle 137 operation live
+cycle 147 operation live
+cycle 147 operation live
+cycle 157 operation live
+cycle 157 operation live
+cycle 167 operation live
+cycle 167 operation live
+cycle 177 operation live
+cycle 177 operation live
+cycle 187 operation live
+cycle 187 operation live
+cycle 197 operation live
+cycle 197 operation live
+cycle 207 operation live
+cycle 207 operation live
+cycle 217 operation live
+cycle 217 operation live
+cycle 227 operation live
+cycle 227 operation live
+cycle 237 operation live
+cycle 237 operation live
+cycle 247 operation live
+cycle 247 operation live
+cycle 257 operation live
+cycle 257 operation live
+cycle 267 operation live
+cycle 267 operation live
+cycle 277 operation live
+cycle 277 operation live
+cycle 287 operation live
+cycle 287 operation live
+cycle 297 operation live
+cycle 297 operation live
+cycle 307 operation live
+cycle 307 operation live
+cycle 317 operation live
+cycle 317 operation live
+cycle 327 operation live
+cycle 327 operation live
+cycle 337 operation live
+cycle 337 operation live
+cycle 347 operation live
+cycle 347 operation live
+cycle 357 operation live
+cycle 357 operation live
+cycle 367 operation live
+cycle 367 operation live
+cycle 377 operation live
+cycle 377 operation live
+cycle 387 operation live
+cycle 387 operation live
+cycle 397 operation live
+cycle 397 operation live
+cycle 407 operation live
+cycle 407 operation live
+cycle 417 operation live
+cycle 417 operation live
+cycle 427 operation live
+cycle 427 operation live
+cycle 437 operation live
+cycle 437 operation live
+cycle 447 operation live
+cycle 447 operation live
+cycle 457 operation live
+cycle 457 operation live
+cycle 467 operation live
+cycle 467 operation live
+cycle 477 operation live
+cycle 477 operation live
+cycle 487 operation live
+cycle 487 operation live
+cycle 497 operation live
+cycle 497 operation live
+cycle 507 operation live
+cycle 507 operation live
+cycle 517 operation live
+cycle 517 operation live
+cycle 527 operation live
+cycle 527 operation live
+cycle 537 operation live
+cycle 537 operation live
+cycle 547 operation live
+cycle 547 operation live
+cycle 557 operation live
+cycle 557 operation live
+cycle 567 operation live
+cycle 567 operation live
+cycle 577 operation live
+cycle 577 operation live
+cycle 587 operation live
+cycle 587 operation live
+cycle 597 operation live
+cycle 597 operation live
+cycle 607 operation live
+cycle 607 operation live
+cycle 617 operation live
+cycle 617 operation live
+cycle 627 operation live
+cycle 627 operation live
+cycle 637 operation live
+cycle 637 operation live
+cycle 647 operation live
+cycle 647 operation live
+cycle 657 operation live
+cycle 657 operation live
+cycle 667 operation live
+cycle 667 operation live
+cycle 677 operation live
+cycle 677 operation live
+cycle 687 operation live
+cycle 687 operation live
+cycle 697 operation live
+cycle 697 operation live
+cycle 707 operation live
+cycle 707 operation live
+cycle 717 operation live
+cycle 717 operation live
+cycle 727 operation live
+cycle 727 operation live
+cycle 737 operation live
+cycle 737 operation live
+cycle 747 operation live
+cycle 747 operation live
+cycle 757 operation live
+cycle 757 operation live
+cycle 767 operation live
+cycle 767 operation live
+cycle 777 operation live
+cycle 777 operation live
+cycle 787 operation live
+cycle 787 operation live
+cycle 797 operation live
+cycle 797 operation live
+cycle 807 operation live
+cycle 807 operation live
+cycle 817 operation live
+cycle 817 operation live
+cycle 827 operation live
+cycle 827 operation live
+cycle 837 operation live
+cycle 837 operation live
+cycle 847 operation live
+cycle 847 operation live
+cycle 857 operation live
+cycle 857 operation live
+cycle 867 operation live
+cycle 867 operation live
+cycle 877 operation live
+cycle 877 operation live
+cycle 887 operation live
+cycle 887 operation live
+cycle 897 operation live
+cycle 897 operation live
+cycle 907 operation live
+cycle 907 operation live
+cycle 917 operation live
+cycle 917 operation live
+cycle 927 operation live
+cycle 927 operation live
+cycle 937 operation live
+cycle 937 operation live
+cycle 947 operation live
+cycle 947 operation live
+cycle 957 operation live
+cycle 957 operation live
+cycle 967 operation live
+cycle 967 operation live
+cycle 977 operation live
+cycle 977 operation live
+cycle 987 operation live
+cycle 987 operation live
+cycle 997 operation live
+cycle 997 operation live
 0x0000 : 03 70 01 00 49 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
 0x0020 : ff fb 03 01 0b 64 01 ff 53 03 04 54 03 04 03 08 54 05 03 06 09 00 0d 02 90 00 00 00 00 07 09 ff 
-0x0040 : db 08 54 03 03 03 09 ff 31 00 00 00 00 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
+0x0040 : db 08 54 03 03 03 09 ff 31 ff ff ff ff 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
 0x0060 : 02 90 00 00 00 04 04 03 70 02 02 00 02 90 00 00 00 30 05 0b 68 01 ff a6 00 01 0b 68 01 00 96 00 
 0x0080 : 01 0b 68 01 00 23 00 01 0b 68 01 00 21 00 01 0b 68 01 00 1f 00 01 0b 68 01 00 1d 00 01 0b 68 01 
 0x00a0 : 00 1b 00 01 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 09 ff e7 
@@ -87,7 +267,7 @@ cycle 97 operation live
 0x07e0 : 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
 0x0800 : 03 70 01 00 49 03 70 06 ff fc 02 d0 00 3f 01 02 90 00 00 00 00 07 09 00 37 01 00 00 00 42 0a 94 
 0x0820 : ff fb 03 01 0b 64 01 ff 53 03 04 54 03 04 03 08 54 05 03 06 09 00 0d 02 90 00 00 00 00 07 09 ff 
-0x0840 : db 08 54 03 03 03 09 ff 31 00 00 00 00 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
+0x0840 : db 08 54 03 03 03 09 ff 31 ff ff ff fe 0b 68 01 00 07 00 01 01 00 00 00 42 0b 68 02 ff b6 ff c4 
 0x0860 : 02 90 00 00 00 04 04 03 70 02 02 00 02 90 00 00 00 30 05 0b 68 01 ff a6 00 01 0b 68 01 00 96 00 
 0x0880 : 01 0b 68 01 00 23 00 01 0b 68 01 00 21 00 01 0b 68 01 00 1f 00 01 0b 68 01 00 1d 00 01 0b 68 01 
 0x08a0 : 00 1b 00 01 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 01 00 00 00 42 09 ff e7 
@@ -153,6 +333,186 @@ REG = 1
 REG = 1
 REG = 0
 REG = 0
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
+live
 live
 live
 live
