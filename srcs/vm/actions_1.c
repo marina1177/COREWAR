@@ -11,7 +11,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	i = 0;
 	position = carriage->pos;
 	carriage->last_cycle_alive = vm->data->cycles;
-	change_position(&position, 2);
+	change_position(&position, 1);
 	num = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
 	if (num > 0 && num <= vm->players->qty)
 	{
@@ -25,7 +25,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 		p = p->next;
 	 	}
 	}
-	//TO DO разобраться со структурой Димы
+	carriage->pos = position;
 	printf("live\n");
 }
 
@@ -69,6 +69,7 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	else
 	{
 		values[1] = get_num_from_char(vm->data->arena, position, 2) % IDX_MOD;
+		change_position(&position, 2);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]); //нужно ли здесь дополнительно усекать?
 	}
 	carriage->pos = position;	

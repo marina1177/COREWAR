@@ -1,4 +1,26 @@
 #include "../../includes/vm.h"
+static int	get_negative_number(unsigned int argument, int size)
+{
+	int num;
+	unsigned short int value;
+
+	if (size == 2)
+	{
+		value = argument;
+		value >>= 1;
+		value <<= 1;
+		value ^= 0xFFFF;
+		num = value;
+	}
+	else
+	{
+		argument >>= 1;
+		argument <<= 1;
+		argument ^= 0xFFFFFFFF;
+		num = argument;
+	}
+	return (-1 * num);
+}
 
 int			get_num_from_char(unsigned char *arena, int position, int size)
 {
@@ -14,6 +36,8 @@ int			get_num_from_char(unsigned char *arena, int position, int size)
 		change_position(&position, 1);
 	}
 	//print_memory(arguments, size);
+	if (arguments[0] & 0b10000000)
+		return (get_negative_number(*(unsigned int *)arguments, size));
 	num = (int *)arguments;
 	return (*num);
 }

@@ -2,8 +2,6 @@
 
 void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
 {
-	
-	
 	if (g_op_tab[(int)carriage->op_code].arg_type)
 		vm->exec[(int)carriage->op_code](carriage, vm, arguments);
 	else
