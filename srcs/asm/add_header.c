@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 01:32:42 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:18:51 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/04/11 13:08:04 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	valid_headlen(t_2b type_h, int len)
 {
-	if ((type_h == NAME && len > 128))
+	if ((type_h == NAME && len >= PROG_NAME_LENGTH))
 		error_event(ERR_CHNAME_LEN);
-	else if (type_h == COMMENT && len > 2048)
+	else if (type_h == COMMENT && len >= COMMENT_LENGTH)
 		error_event(ERR_CHCOMM_LEN);
 }
 
