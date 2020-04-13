@@ -7,15 +7,13 @@ static int	get_negative_number(unsigned int argument, int size)
 	if (size == 2)
 	{
 		value = argument;
-		value >>= 1;
-		value <<= 1;
+		value -= 1;
 		value ^= 0xFFFF;
 		num = value;
 	}
 	else
 	{
-		argument >>= 1;
-		argument <<= 1;
+		argument -= 1;
 		argument ^= 0xFFFFFFFF;
 		num = argument;
 	}
@@ -47,7 +45,7 @@ int		get_reg_value(unsigned char *arena, int *pos)
 	int result;
 
 	result = arena[*pos];
-	printf("REG = %d\n", result);
+	//printf("REG = %d\n", result);
 	change_position(pos, 1);
 	return (result);
 }

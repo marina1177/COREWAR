@@ -56,7 +56,7 @@ typedef struct			s_op
 {
 	char				*name;
 	int					args_num;
-	int					arr[3];
+	unsigned int					arr[3];
 	int					index;
 	int					loop;
 	char				*description;

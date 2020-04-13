@@ -59,14 +59,10 @@ static int	valid_register(t_carriage *carriage, unsigned char *arena, int positi
 	{
 		if (arguments[i] == T_REG)
 		{
-			//printf("REG\n");
 			change_position(&position, 1);
-			// printf("arena\n");
-			// print_byte(arena[position]);
 			if (arena[position] < 1 || arena[position] > 16)
 			{
 				skip_args(carriage, arguments);
-				//printf("NOT VALID REG %d\n", carriage->op_code);
 				return (0);
 			}
 		}
@@ -85,7 +81,8 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	t_arg_types code;
 
 	i = 0;
-	//print_byte(*types);
+	// print_byte(*types);
+	// print_memory(types, 4);
 	code.types = *types;
 	arguments[0] = code.bit.first;
 	arguments[1] = code.bit.second;
@@ -94,6 +91,12 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	{
 		if (arguments[i] == 0x3)
 			arguments[i] = 0x4;
+		//printf("op = %d check_args i = %d. arguments[i] = %d g_op_tab[i]%d\n ", carriage->op_code, i, arguments[i], g_op_tab[(int)carriage->op_code].arr[i]);
+		if (!(arguments[i] & g_op_tab[(int)carriage->op_code].arr[i]))
+		{
+			printf("NOT VALID CODE\n");
+			return 0;
+		}
 		i++;
 	}
 	//printf("%d %d %d\n", arguments[0], arguments[1], arguments[2]);
@@ -104,9 +107,11 @@ static int	valid_operation_code(t_carriage *carriage)
 {
 	if (carriage->op_code < LIVE_CODE || carriage->op_code > AFF_CODE)
 	{
+		//write(1, "not valid\n", 10);
 		change_position(&carriage->pos, 1);
 		return (0);
 	}
+	//write(1, "valid\n", 6);
 	return (1);
 }
 
@@ -126,6 +131,7 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))
 		{
+			printf("\n\n\nnot valid code\n\n\n");
 			skip_args(carriage, arguments);
 			return 0;
 		}

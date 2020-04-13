@@ -7,18 +7,18 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 
 	//printf("sti\n");
 	position = carriage->pos;
-	printf("position %d\noperation %d\n", position, vm->data->arena[position]);
-	print_memory(&vm->data->arena[position], 1);
+	// printf("position %d\noperation %d\n", position, vm->data->arena[position]);
+	// print_memory(&vm->data->arena[position], 6);
 	change_position(&position, 2);
-	printf("\nresize \n");
+	//printf("\nresize \n");
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 	values[2] = get_arg_value(vm->data->arena, carriage, &position, arguments[2]);
 	write_reg(vm->data->arena, values[0], carriage->pos, (values[1] + values[2]) % IDX_MOD);
-	printf("position %d\n", position);
+	//printf("position %d\n", position);
 	carriage->pos = position;
-	print_memory(&vm->data->arena[position], 1);
-	printf("final int %d %d %d\n", values[0], values[1], values[2]);
+	// print_memory(&vm->data->arena[position], 1);
+	// printf("final int %d %d %d\n", values[0], values[1], values[2]);
 }
 
 void	do_fork(t_carriage *carriage, t_vm *vm)
