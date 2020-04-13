@@ -54,12 +54,19 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 	int position;
 
 	//printf("zjmp\n");
-	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
-		return ;
+	//printf("position = %d\n", carriage->pos);
 	position = carriage->pos;
 	change_position(&position, 1);
-	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
+	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
+	{
+		change_position(&position, g_op_tab[(int)carriage->op_code].t_dir_size);
+		carriage->pos = position;
+		return ;
+	}	
+	value = get_arg_value(vm->data->arena, carriage, &position, g_op_tab[(int)carriage->op_code].t_dir_size);
+	//printf("value = %d\n", value);
 	change_position(&carriage->pos, value % IDX_MOD);
+	//printf("position = %d\n", carriage->pos);
 }
 
 void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)

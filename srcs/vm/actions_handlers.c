@@ -34,7 +34,7 @@ int			get_num_from_char(unsigned char *arena, int position, int size)
 		change_position(&position, 1);
 	}
 	//print_memory(arguments, size);
-	if (arguments[0] & 0b10000000)
+	if (arguments[size - 1] & 0b10000000)
 		return (get_negative_number(*(unsigned int *)arguments, size));
 	num = (int *)arguments;
 	return (*num);
@@ -65,7 +65,6 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_ty
 	}
 	else if (arg_type == T_DIR)
 	{
-		
 		result = get_num_from_char(arena, *pos, g_op_tab[(int)car->op_code].t_dir_size);
 		change_position(pos, g_op_tab[(int)car->op_code].t_dir_size);
 	}

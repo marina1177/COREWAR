@@ -26,7 +26,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 	}
 	}
 	carriage->pos = position;
-	printf("live\n");
+	//printf("live\n");
 }
 
 void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
