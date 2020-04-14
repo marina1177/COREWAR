@@ -27,11 +27,15 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 	int position;
 
 	position = carriage->pos;
+	//write(1, "fork\n", 5);
+	//print_memory(&vm->data->arena[position], 6);
+	//printf("fork position=%d\n", position);
 	change_position(&position, 1);
 	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
-	carriage->pos = position;
+	//printf("value=%d position=%d\n", value, position);
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
-	vm->carr->head->pos = value % IDX_MOD;
+	change_position(&vm->carr->head->pos, value % IDX_MOD);
+	carriage->pos = position;
 	//printf("fork\n");
 }
 
