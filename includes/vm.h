@@ -294,7 +294,7 @@ void	print_t_carriage(t_carriage *carriage);
 void	print_t_carriages(t_carriages *carriages);
 void		print_introduction(t_players *players);
 void	print_last_alive(t_vm *vm);
-void		print_is_alive(int num, char *player_name);
+int		print_is_alive(int num, char *player_name);
 int		print_dump(t_vm *vm, int dump_size);
 void		print_final_result(t_vm *vm);
 

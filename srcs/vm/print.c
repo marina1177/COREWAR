@@ -25,7 +25,7 @@ void		print_introduction(t_players *players)
 		while (temp)
 		{
 			if (temp->num == i + 1)
-				ft_printf("* Player %d, weighting %d bytes, \"%s\" (\"%s\") !\n",
+				ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 						temp->num, temp->code_size, temp->name, temp->comment);
 			temp = temp->next;
 		}
@@ -42,10 +42,11 @@ void		print_final_result(t_vm *vm)
 	exit(0);
 }
 
-void		print_is_alive(int num, char *player_name)
+int		print_is_alive(int num, char *player_name)
 {
 	ft_printf("A process shows that player %d (%s) is alive\n",
 		num, player_name);
+	return (1);
 }
 
 

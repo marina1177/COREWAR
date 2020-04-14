@@ -12,20 +12,23 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	position = carriage->pos;
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 1);
-	num = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
+	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);
 	if (num > 0 && num <= vm->players->qty)
 	{
 		while (++i <= vm->players->qty)
 		{
-	 		if (-num == p->num)
+	 		if (num == p->num)
 	 		{
 	 			p->last_live = vm->data->cycles; //мы эту переменную увеличиваем?
 	 			break ;
 	 		}
 	 		p = p->next;
 	 	}
+		print_is_alive(num, get_player_by_number(vm->players, num)->name);
 	}
 	carriage->pos = position;
+	//t_player *get_player_by_number(t_players *players, int num)
+	
 	//printf("live\n");
 }
 
