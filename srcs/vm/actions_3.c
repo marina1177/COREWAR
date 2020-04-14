@@ -91,15 +91,8 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 	position = carriage->pos;
 	change_position(&position, 1);
 	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
-	carriage->pos = position;
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
-	vm->carr->head->pos = value; //здесь можем вылететь из арены предлагаю так
-	//position = carriage->pos;
-	//pos = carriage->pos;
-	// change_position(&position, 1);
-	// change_position(&pos, get_arg_value(vm->data->arena, carriage, &position, T_DIR);
-	// t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
-	// vm->carr->head->pos = pos;
-	// carriage->pos = position;
+	change_position(&vm->carr->head->pos, value);
+	carriage->pos = position;
 	//printf("lfork\n");
 }
