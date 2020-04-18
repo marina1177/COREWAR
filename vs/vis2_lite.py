@@ -23,7 +23,7 @@ CARR_BORD_W = SQUARE_SPACING - 2*(HALF_SQUARE)
 CARR_WIDTH = 2 * HALF_SQUARE
 CARR_HEIGHT = 2 * HALF_SQUARE
 
-COLOR_PLAYER = [arcade.color.RED, arcade.color.GOLD, arcade.color.GREEN, arcade.color.BLUE]
+COLOR_PLAYER = [arcade.color.RED, arcade.color.GOLD, arcade.color.GREEN, arcade.color.BLUEBERRY]
 COLOR_WRITE = [arcade.color.ALABAMA_CRIMSON, arcade.color.LEMON_GLACIER, arcade.color.LINCOLN_GREEN, arcade.color.AQUA]
 
 
@@ -67,6 +67,8 @@ class MyGame(arcade.Window):
 		super().__init__(width, height, title)
 		arcade.set_background_color(arcade.color.BLACK)
 		self.data = data
+
+		self.cycle = 0
 		self.speed = -10
 		self.json_indx = 0
 		self.frame_count = 0
@@ -117,7 +119,7 @@ class MyGame(arcade.Window):
 					n = self.players[k].size_code + self.players[k].start_code
 					if(cnt < n) & (cnt >= self.players[k].start_code):
 						for i in range(4):
-							self.color_list.append((COLOR_PLAYER[k]))
+							self.color_list.append((COLOR_PLAYER[self.players[k].id]))
 						break
 					else:
 						if k == len(self.players) - 1:
@@ -130,19 +132,20 @@ class MyGame(arcade.Window):
 		self.shape_list.append(shape)
 
 	def state_refresh(self, data_state):
-		print('state_refresh')
+		#print('state_refresh')
 		#print('total_process:', data_state['total_process'],'\ncycle_to_die:', data_state['cycle_to_die'] )
 		self.state = State(data_state['total_process'], data_state['cycle_to_die'],  data_state['nbr_live'])
 
+
 	def players_refresh(self, data_pl):
-		print('players_refresh')
+		#print('players_refresh')
 		for i in range(0, len(self.players)):
 			self.players[i].is_alive = data_pl[i]['is_alive']
 			self.players[i].last_live = data_pl[i]['last_live']
 			self.players[i].lives_in_period = data_pl[i]['lives_in_period']
 
 	def carr_refresh(self, data_carr, point_list):
-		print('carr_refresh')
+		#print('carr_refresh')
 		del self.carriage_list[:]
 
 		for i in range(0, len(data_carr)):
@@ -156,7 +159,7 @@ class MyGame(arcade.Window):
 			self.carriage_list.append(carr)
 
 	def cell_refresh(self, data_cell):
-		print('cell_refresh')
+		#print('cell_refresh')
 		for i in range(0, len(data_cell)):
 			start_place = data_cell[i]['cell_address'] * 4
 			for k in range(0, 4):
@@ -179,9 +182,57 @@ class MyGame(arcade.Window):
 		# Cell color refresh
 		if self.data[self.json_indx]['cells_refresh'] > 0:
 			self.cell_refresh(self.data[self.json_indx]['Cells'], self.color_list)
+		self.cycle = self.data[self.json_indx]['cycle']
+
+	def draw_info(self):
+		start_y = SCREEN_WIDTH - 20
+		start_x = SCREEN_WIDTH + 20
+		# arcade.draw_point(start_x, start_y, arcade.color.BLUE, 5)
+		if self.game_over == False:
+			arcade.draw_text("game over: **running**",
+		                 start_x, start_y, arcade.color.WHITE, 12)
+		start_y -= 40
+		mystr = 'total process: ' + str(self.state.total_process)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+		start_y -= 20
+		mystr = 'cycle: ' + str(self.cycle)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+		start_y -= 40
+		mystr = 'cycle to die: ' + str(self.const.const_cycle_to_die)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+		start_y -= 20
+		mystr = 'cycle delta: ' + str(self.const.cycle_delta)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+		start_y -= 40
+		mystr = 'nbr_live: ' + str(self.state.nbr_live) + '/' + str(self.const.const_nbr_live)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+		"""start_y -= 20
+		mystr = 'max_checks: ' + str(self.state.max_checks) + '/' + str(self.const.const_max_checks)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)"""
+		start_y -= 50
+		for i in range(0, len(self.players)):
+
+			mystr = 'player: ' + str(self.players[i].id)
+			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+			start_y -= 20
+			arcade.draw_text(self.players[i].name, start_x, start_y, COLOR_PLAYER[self.players[i].id], 12)
+
+			start_y -= 20
+			mystr = 'last live: ' + str(self.players[i].last_live)
+			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+			start_y -= 20
+			mystr = 'lives in current period: ' + str(self.players[i].lives_in_period)
+			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+			start_y -= 30
+
 
 	def draw_carr(self, carr_list):
-		print('Draw carr')
+		#print('Draw carr')
 		for i in range(0, len(carr_list)):
 			bl0, bl1 = self.point_list[self.carriage_list[i].place * 4 + 3]
 			carr_list[i].x_cntr = bl0 + HALF_SQUARE
@@ -192,12 +243,13 @@ class MyGame(arcade.Window):
 			                              arcade.color.WHITE, CARR_BORD_W, 0)
 
 	def on_draw(self):
-		print('>>on_draw>>')
+		#print('>>on_draw>>')
 
 		arcade.start_render()
 		draw_start_time = timeit.default_timer()
 		self.shape_list.draw()
 		self.draw_carr(self.carriage_list)
+		self.draw_info()
 
 		output = f"Drawing time: {self.draw_time:.5f} seconds per frame."
 		arcade.draw_text(output, 20, SCREEN_HEIGHT - 40, arcade.color.WHITE, 18)
@@ -205,7 +257,7 @@ class MyGame(arcade.Window):
 		self.draw_time = timeit.default_timer() - draw_start_time
 
 	def update(self, delta_time):
-		print('update')
+		#print('update')
 		self.frame_count += 1
 		if self.frame_count % 10 == 0:
 			self.json_indx += 1
@@ -222,6 +274,7 @@ def main():
 		               data[0]['Consts']['max_checks'],
 		               data[0]['Consts']['const_nbr_live'],
 		               data[0]['Consts']['const_cycle_to_die'])
+
 		if ('State' in data[0]) & (data[0]['State']['error_code'] == 0):
 			state = State(data[0]['State']['total_process'],
 		               data[0]['State']['cycle_to_die'],
