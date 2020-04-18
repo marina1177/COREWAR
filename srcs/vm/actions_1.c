@@ -95,6 +95,7 @@ void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
+	ft_printf("\nadd %d %d %d carr\n", values[0], values[1], values[2], carriage->num);
 	carriage->regs[values[2]] = values[0] + values[1]; //зачем здесь уменьшать?
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
