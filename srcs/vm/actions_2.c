@@ -85,5 +85,5 @@ void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	change_position(&i, (values[0] + values[1]) % IDX_MOD);
 	carriage->regs[values[2]] = get_num_from_char(vm->data->arena, i, 4);
 	carriage->pos = position;
-	printf("ldi result reg[%d] = %d stay at %d\n",values[2], carriage->regs[values[2]], carriage->pos);
+	//printf("ldi result reg[%d] = %d stay at %d\n",values[2], carriage->regs[values[2]], carriage->pos);
 }

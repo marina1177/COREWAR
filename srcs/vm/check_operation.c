@@ -5,8 +5,7 @@ void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
 	if (g_op_tab[(int)carriage->op_code].arg_type)
 		vm->exec[(int)carriage->op_code](carriage, vm, arguments);
 	else
-		vm->exec[(int)carriage->op_code](carriage, vm);
-	carriage->cycles_countdown--;
+		vm->exec[(int)carriage->op_code](carriage, vm);	
 }
 
 int		get_arg_size(int op, unsigned char arg)
@@ -94,7 +93,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 		//printf("op = %d check_args i = %d. arguments[i] = %d g_op_tab[i]%d\n ", carriage->op_code, i, arguments[i], g_op_tab[(int)carriage->op_code].arr[i]);
 		if (!(arguments[i] & g_op_tab[(int)carriage->op_code].arr[i]))
 		{
-			printf("NOT VALID CODE\n");
+			//printf("NOT VALID CODE\n");
 			return 0;
 		}
 		i++;
@@ -104,7 +103,7 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 }
 //сдвигаем каретку, только если код невалидный
 static int	valid_operation_code(t_carriage *carriage)
-{
+{	
 	if (carriage->op_code < LIVE_CODE || carriage->op_code > AFF_CODE)
 	{
 		//write(1, "not valid\n", 10);
@@ -131,7 +130,7 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))
 		{
-			printf("\n\n\nnot valid code\n\n\n");
+			//printf("\n\n\nnot valid code\n\n\n");
 			skip_args(carriage, arguments);
 			return 0;
 		}
