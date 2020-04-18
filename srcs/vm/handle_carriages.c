@@ -41,14 +41,15 @@ void			increase_position(int *pos, int delta)
 # define ARGS_ARR_SIZE 4
 
 
-static int	get_op_code(t_carriage *carriage, t_vm *vm)
+static void	get_op_code(t_carriage *carriage, t_vm *vm)
 {
 	carriage->op_code = vm->data->arena[carriage->pos];
+	if (vm->data->arena[carriage->pos] & 0b10000000)
+		carriage->op_code = get_negative_number(&vm->data->arena[carriage->pos], 1);
 	//ft_printf("%d car pos %d car num\n", carriage->pos, carriage->num - 1);
 	carriage->cycles_countdown = 1;
 	if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
-		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;				
-	return (1);
+		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;
 }
 
 /*

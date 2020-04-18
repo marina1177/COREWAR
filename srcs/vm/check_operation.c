@@ -102,8 +102,9 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	return 1;
 }
 //сдвигаем каретку, только если код невалидный
-static int	valid_operation_code(t_carriage *carriage)
+int	valid_operation_code(t_carriage *carriage)
 {	
+	
 	if (carriage->op_code < LIVE_CODE || carriage->op_code > AFF_CODE)
 	{
 		//write(1, "not valid\n", 10);
