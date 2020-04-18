@@ -24,7 +24,8 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 		}
 	 		p = p->next;
 	 	}
-		print_is_alive(num, get_player_by_number(vm->players, num)->name);
+		if (vm->mods->dump_cycle != -1) 
+			print_is_alive(num, get_player_by_number(vm->players, num)->name);
 	}
 	carriage->pos = position;
 	//t_player *get_player_by_number(t_players *players, int num)

@@ -43,10 +43,11 @@ void			increase_position(int *pos, int delta)
 
 static int	get_op_code(t_carriage *carriage, t_vm *vm)
 {
-	carriage->op_code = (int)(vm->data->arena[carriage->pos]);
+	carriage->op_code = vm->data->arena[carriage->pos];
+	//ft_printf("%d car pos %d car num\n", carriage->pos, carriage->num - 1);
 	carriage->cycles_countdown = 1;
 	if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
-		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;
+		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;				
 	return (1);
 }
 
@@ -57,27 +58,33 @@ void			handle_carriages(t_vm *vm)
 {
 	t_carriage	*carriage;
 	unsigned char arguments[4];
-	char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
-						 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
+	//char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
+	//					 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
 
 	carriage = vm->carr->head;
 	while (carriage)
 	{
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
-		ft_printf("cycle %d, carriage %d, operation %s\n", vm->data->cycles, carriage->num - 1, names[carriage->op_code]);
-		if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
-		{
-			carriage->cycles_countdown--;
-			if (!carriage->cycles_countdown)
+		ft_printf("cycle %d, carriage %d, op_code %d, car pos %d\n",
+		vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos);
+		if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
+		{		
+			if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 			{
-				if (check_operation(vm->data->arena, carriage, arguments))
+				carriage->cycles_countdown--;
+				if (!carriage->cycles_countdown)
 				{
-					//ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
-					make_operation(vm, carriage, arguments);
-				}				
+					if (check_operation(vm->data->arena, carriage, arguments))
+					{
+						//ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
+						make_operation(vm, carriage, arguments);
+					}				
+				}
 			}
 		}
+		else
+			change_position(&carriage->pos, 1);
 		carriage = carriage->next;
-	}
+	}	
 	ft_putchar('\n');
 }
