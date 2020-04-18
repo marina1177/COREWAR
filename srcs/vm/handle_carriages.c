@@ -64,6 +64,7 @@ void			handle_carriages(t_vm *vm)
 	while (carriage)
 	{
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
+		ft_printf("cycle %d, carriage %d, operation %s\n", vm->data->cycles, carriage->num - 1, names[carriage->op_code]);
 		if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 		{
 			carriage->cycles_countdown--;
@@ -71,11 +72,12 @@ void			handle_carriages(t_vm *vm)
 			{
 				if (check_operation(vm->data->arena, carriage, arguments))
 				{
-					ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
+					//ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
 					make_operation(vm, carriage, arguments);
 				}				
 			}
 		}
 		carriage = carriage->next;
 	}
+	ft_putchar('\n');
 }
