@@ -153,8 +153,6 @@ typedef struct			s_cells
 }						t_cells;
 
 
-
-
 //********************************************************************
 typedef struct			s_carriage
 {
@@ -228,7 +226,7 @@ void		push_cells(t_vm *vm, int player_id, int	cell_number);
 char	*put_atom_const(t_vm *vm, char **buf);
 char	*put_array_const(t_vm *vm, char **buf);
 void	put_buf(t_vm *vm, int type, char **buf);
-void	print_vsconst(t_vm	*vm, int type);
+void	print_vs(t_vm	*vm, int type);
 
 /*
 ** vs_put_change.c
