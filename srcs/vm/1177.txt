@@ -22829,8 +22829,8 @@ cycle 3829, carriage 2, op_code 1, car pos 2227
 cycle 3829, carriage 1, op_code 4, car pos 2090
 cycle 3829, carriage 0, op_code 4, car pos 42
 
-cycle 3830, carriage 11, op_code 255, car pos 304
-cycle 3830, carriage 10, op_code 255, car pos 2352
+cycle 3830, carriage 11, op_code 255, car pos 303
+cycle 3830, carriage 10, op_code 255, car pos 2351
 cycle 3830, carriage 9, op_code 2, car pos 2103
 cycle 3830, carriage 8, op_code 2, car pos 55
 cycle 3830, carriage 7, op_code 12, car pos 253
@@ -22842,8 +22842,8 @@ cycle 3830, carriage 2, op_code 1, car pos 2227
 cycle 3830, carriage 1, op_code 4, car pos 2090
 cycle 3830, carriage 0, op_code 4, car pos 42
 
-cycle 3831, carriage 11, op_code 255, car pos 305
-cycle 3831, carriage 10, op_code 255, car pos 2353
+cycle 3831, carriage 11, op_code 255, car pos 304
+cycle 3831, carriage 10, op_code 255, car pos 2352
 cycle 3831, carriage 9, op_code 2, car pos 2103
 cycle 3831, carriage 8, op_code 2, car pos 55
 cycle 3831, carriage 7, op_code 12, car pos 253
@@ -22857,8 +22857,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3831, carriage 1, op_code 4, car pos 2090
 cycle 3831, carriage 0, op_code 4, car pos 42
 
-cycle 3832, carriage 11, op_code 255, car pos 306
-cycle 3832, carriage 10, op_code 255, car pos 2354
+cycle 3832, carriage 11, op_code 0, car pos 304
+cycle 3832, carriage 10, op_code 0, car pos 2352
 cycle 3832, carriage 9, op_code 2, car pos 2103
 cycle 3832, carriage 8, op_code 2, car pos 55
 cycle 3832, carriage 7, op_code 12, car pos 253
@@ -22870,8 +22870,8 @@ cycle 3832, carriage 2, op_code 1, car pos 2232
 cycle 3832, carriage 1, op_code 8, car pos 2095
 cycle 3832, carriage 0, op_code 8, car pos 47
 
-cycle 3833, carriage 11, op_code 255, car pos 307
-cycle 3833, carriage 10, op_code 255, car pos 2355
+cycle 3833, carriage 11, op_code 0, car pos 305
+cycle 3833, carriage 10, op_code 0, car pos 2353
 cycle 3833, carriage 9, op_code 9, car pos 2110
 cycle 3833, carriage 8, op_code 9, car pos 62
 cycle 3833, carriage 7, op_code 12, car pos 253
@@ -22883,8 +22883,8 @@ cycle 3833, carriage 2, op_code 1, car pos 2232
 cycle 3833, carriage 1, op_code 8, car pos 2095
 cycle 3833, carriage 0, op_code 8, car pos 47
 
-cycle 3834, carriage 11, op_code 255, car pos 308
-cycle 3834, carriage 10, op_code 255, car pos 2356
+cycle 3834, carriage 11, op_code 0, car pos 305
+cycle 3834, carriage 10, op_code 0, car pos 2353
 cycle 3834, carriage 9, op_code 9, car pos 2110
 cycle 3834, carriage 8, op_code 9, car pos 62
 cycle 3834, carriage 7, op_code 12, car pos 253
@@ -22896,8 +22896,8 @@ cycle 3834, carriage 2, op_code 1, car pos 2232
 cycle 3834, carriage 1, op_code 8, car pos 2095
 cycle 3834, carriage 0, op_code 8, car pos 47
 
-cycle 3835, carriage 11, op_code 255, car pos 309
-cycle 3835, carriage 10, op_code 255, car pos 2357
+cycle 3835, carriage 11, op_code 0, car pos 306
+cycle 3835, carriage 10, op_code 0, car pos 2354
 cycle 3835, carriage 9, op_code 9, car pos 2110
 cycle 3835, carriage 8, op_code 9, car pos 62
 cycle 3835, carriage 7, op_code 12, car pos 253
@@ -22909,8 +22909,8 @@ cycle 3835, carriage 2, op_code 1, car pos 2232
 cycle 3835, carriage 1, op_code 8, car pos 2095
 cycle 3835, carriage 0, op_code 8, car pos 47
 
-cycle 3836, carriage 11, op_code 255, car pos 310
-cycle 3836, carriage 10, op_code 255, car pos 2358
+cycle 3836, carriage 11, op_code 0, car pos 306
+cycle 3836, carriage 10, op_code 0, car pos 2354
 cycle 3836, carriage 9, op_code 9, car pos 2110
 cycle 3836, carriage 8, op_code 9, car pos 62
 cycle 3836, carriage 7, op_code 12, car pos 253
@@ -22922,8 +22922,8 @@ cycle 3836, carriage 2, op_code 1, car pos 2232
 cycle 3836, carriage 1, op_code 8, car pos 2095
 cycle 3836, carriage 0, op_code 8, car pos 47
 
-cycle 3837, carriage 11, op_code 255, car pos 311
-cycle 3837, carriage 10, op_code 255, car pos 2359
+cycle 3837, carriage 11, op_code 0, car pos 307
+cycle 3837, carriage 10, op_code 0, car pos 2355
 cycle 3837, carriage 9, op_code 9, car pos 2110
 cycle 3837, carriage 8, op_code 9, car pos 62
 cycle 3837, carriage 7, op_code 12, car pos 253
@@ -22935,8 +22935,8 @@ cycle 3837, carriage 2, op_code 1, car pos 2232
 cycle 3837, carriage 1, op_code 8, car pos 2095
 cycle 3837, carriage 0, op_code 8, car pos 47
 
-cycle 3838, carriage 11, op_code 255, car pos 312
-cycle 3838, carriage 10, op_code 255, car pos 2360
+cycle 3838, carriage 11, op_code 0, car pos 307
+cycle 3838, carriage 10, op_code 0, car pos 2355
 cycle 3838, carriage 9, op_code 9, car pos 2110
 cycle 3838, carriage 8, op_code 9, car pos 62
 cycle 3838, carriage 7, op_code 12, car pos 253
@@ -22948,8 +22948,8 @@ cycle 3838, carriage 2, op_code 1, car pos 2232
 cycle 3838, carriage 1, op_code 9, car pos 2100
 cycle 3838, carriage 0, op_code 9, car pos 52
 
-cycle 3839, carriage 11, op_code 255, car pos 313
-cycle 3839, carriage 10, op_code 255, car pos 2361
+cycle 3839, carriage 11, op_code 0, car pos 308
+cycle 3839, carriage 10, op_code 0, car pos 2356
 cycle 3839, carriage 9, op_code 9, car pos 2110
 cycle 3839, carriage 8, op_code 9, car pos 62
 cycle 3839, carriage 7, op_code 12, car pos 253
@@ -22961,8 +22961,8 @@ cycle 3839, carriage 2, op_code 1, car pos 2232
 cycle 3839, carriage 1, op_code 9, car pos 2100
 cycle 3839, carriage 0, op_code 9, car pos 52
 
-cycle 3840, carriage 11, op_code 255, car pos 314
-cycle 3840, carriage 10, op_code 255, car pos 2362
+cycle 3840, carriage 11, op_code 7, car pos 308
+cycle 3840, carriage 10, op_code 7, car pos 2356
 cycle 3840, carriage 9, op_code 9, car pos 2110
 cycle 3840, carriage 8, op_code 9, car pos 62
 cycle 3840, carriage 7, op_code 12, car pos 253
@@ -22974,8 +22974,8 @@ cycle 3840, carriage 2, op_code 1, car pos 2232
 cycle 3840, carriage 1, op_code 9, car pos 2100
 cycle 3840, carriage 0, op_code 9, car pos 52
 
-cycle 3841, carriage 11, op_code 255, car pos 315
-cycle 3841, carriage 10, op_code 255, car pos 2363
+cycle 3841, carriage 11, op_code 7, car pos 308
+cycle 3841, carriage 10, op_code 7, car pos 2356
 cycle 3841, carriage 9, op_code 9, car pos 2110
 cycle 3841, carriage 8, op_code 9, car pos 62
 cycle 3841, carriage 7, op_code 12, car pos 253
@@ -22989,8 +22989,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3841, carriage 1, op_code 9, car pos 2100
 cycle 3841, carriage 0, op_code 9, car pos 52
 
-cycle 3842, carriage 11, op_code 255, car pos 316
-cycle 3842, carriage 10, op_code 255, car pos 2364
+cycle 3842, carriage 11, op_code 7, car pos 308
+cycle 3842, carriage 10, op_code 7, car pos 2356
 cycle 3842, carriage 9, op_code 9, car pos 2110
 cycle 3842, carriage 8, op_code 9, car pos 62
 cycle 3842, carriage 7, op_code 12, car pos 253
@@ -23002,8 +23002,8 @@ cycle 3842, carriage 2, op_code 9, car pos 2237
 cycle 3842, carriage 1, op_code 9, car pos 2100
 cycle 3842, carriage 0, op_code 9, car pos 52
 
-cycle 3843, carriage 11, op_code 255, car pos 317
-cycle 3843, carriage 10, op_code 255, car pos 2365
+cycle 3843, carriage 11, op_code 7, car pos 308
+cycle 3843, carriage 10, op_code 7, car pos 2356
 cycle 3843, carriage 9, op_code 9, car pos 2110
 cycle 3843, carriage 8, op_code 9, car pos 62
 cycle 3843, carriage 7, op_code 12, car pos 253
@@ -23015,8 +23015,8 @@ cycle 3843, carriage 2, op_code 9, car pos 2237
 cycle 3843, carriage 1, op_code 9, car pos 2100
 cycle 3843, carriage 0, op_code 9, car pos 52
 
-cycle 3844, carriage 11, op_code 255, car pos 318
-cycle 3844, carriage 10, op_code 255, car pos 2366
+cycle 3844, carriage 11, op_code 7, car pos 308
+cycle 3844, carriage 10, op_code 7, car pos 2356
 cycle 3844, carriage 9, op_code 9, car pos 2110
 cycle 3844, carriage 8, op_code 9, car pos 62
 cycle 3844, carriage 7, op_code 12, car pos 253
@@ -23028,8 +23028,8 @@ cycle 3844, carriage 2, op_code 9, car pos 2237
 cycle 3844, carriage 1, op_code 9, car pos 2100
 cycle 3844, carriage 0, op_code 9, car pos 52
 
-cycle 3845, carriage 11, op_code 255, car pos 319
-cycle 3845, carriage 10, op_code 255, car pos 2367
+cycle 3845, carriage 11, op_code 7, car pos 308
+cycle 3845, carriage 10, op_code 7, car pos 2356
 cycle 3845, carriage 9, op_code 9, car pos 2110
 cycle 3845, carriage 8, op_code 9, car pos 62
 cycle 3845, carriage 7, op_code 12, car pos 253
@@ -23041,8 +23041,8 @@ cycle 3845, carriage 2, op_code 9, car pos 2237
 cycle 3845, carriage 1, op_code 9, car pos 2100
 cycle 3845, carriage 0, op_code 9, car pos 52
 
-cycle 3846, carriage 11, op_code 255, car pos 320
-cycle 3846, carriage 10, op_code 255, car pos 2368
+cycle 3846, carriage 11, op_code 7, car pos 314
+cycle 3846, carriage 10, op_code 7, car pos 2362
 cycle 3846, carriage 9, op_code 9, car pos 2110
 cycle 3846, carriage 8, op_code 9, car pos 62
 cycle 3846, carriage 7, op_code 12, car pos 253
@@ -23054,8 +23054,8 @@ cycle 3846, carriage 2, op_code 9, car pos 2237
 cycle 3846, carriage 1, op_code 9, car pos 2100
 cycle 3846, carriage 0, op_code 9, car pos 52
 
-cycle 3847, carriage 11, op_code 255, car pos 321
-cycle 3847, carriage 10, op_code 255, car pos 2369
+cycle 3847, carriage 11, op_code 3, car pos 314
+cycle 3847, carriage 10, op_code 3, car pos 2362
 cycle 3847, carriage 9, op_code 9, car pos 2110
 cycle 3847, carriage 8, op_code 9, car pos 62
 cycle 3847, carriage 7, op_code 12, car pos 253
@@ -23067,8 +23067,8 @@ cycle 3847, carriage 2, op_code 9, car pos 2237
 cycle 3847, carriage 1, op_code 9, car pos 2100
 cycle 3847, carriage 0, op_code 9, car pos 52
 
-cycle 3848, carriage 11, op_code 255, car pos 322
-cycle 3848, carriage 10, op_code 255, car pos 2370
+cycle 3848, carriage 11, op_code 3, car pos 314
+cycle 3848, carriage 10, op_code 3, car pos 2362
 cycle 3848, carriage 9, op_code 9, car pos 2110
 cycle 3848, carriage 8, op_code 9, car pos 62
 cycle 3848, carriage 7, op_code 12, car pos 253
@@ -23080,8 +23080,8 @@ cycle 3848, carriage 2, op_code 9, car pos 2237
 cycle 3848, carriage 1, op_code 9, car pos 2100
 cycle 3848, carriage 0, op_code 9, car pos 52
 
-cycle 3849, carriage 11, op_code 255, car pos 323
-cycle 3849, carriage 10, op_code 255, car pos 2371
+cycle 3849, carriage 11, op_code 3, car pos 314
+cycle 3849, carriage 10, op_code 3, car pos 2362
 cycle 3849, carriage 9, op_code 9, car pos 2110
 cycle 3849, carriage 8, op_code 9, car pos 62
 cycle 3849, carriage 7, op_code 12, car pos 253
@@ -23093,8 +23093,8 @@ cycle 3849, carriage 2, op_code 9, car pos 2237
 cycle 3849, carriage 1, op_code 9, car pos 2100
 cycle 3849, carriage 0, op_code 9, car pos 52
 
-cycle 3850, carriage 11, op_code 255, car pos 324
-cycle 3850, carriage 10, op_code 255, car pos 2372
+cycle 3850, carriage 11, op_code 3, car pos 314
+cycle 3850, carriage 10, op_code 3, car pos 2362
 cycle 3850, carriage 9, op_code 9, car pos 2110
 cycle 3850, carriage 8, op_code 9, car pos 62
 cycle 3850, carriage 7, op_code 12, car pos 253
@@ -23106,8 +23106,8 @@ cycle 3850, carriage 2, op_code 9, car pos 2237
 cycle 3850, carriage 1, op_code 9, car pos 2100
 cycle 3850, carriage 0, op_code 9, car pos 52
 
-cycle 3851, carriage 11, op_code 255, car pos 325
-cycle 3851, carriage 10, op_code 255, car pos 2373
+cycle 3851, carriage 11, op_code 3, car pos 314
+cycle 3851, carriage 10, op_code 3, car pos 2362
 cycle 3851, carriage 9, op_code 9, car pos 2110
 cycle 3851, carriage 8, op_code 9, car pos 62
 cycle 3851, carriage 7, op_code 12, car pos 253
@@ -23119,8 +23119,8 @@ cycle 3851, carriage 2, op_code 9, car pos 2237
 cycle 3851, carriage 1, op_code 9, car pos 2100
 cycle 3851, carriage 0, op_code 9, car pos 52
 
-cycle 3852, carriage 11, op_code 255, car pos 326
-cycle 3852, carriage 10, op_code 255, car pos 2374
+cycle 3852, carriage 11, op_code 3, car pos 316
+cycle 3852, carriage 10, op_code 3, car pos 2364
 cycle 3852, carriage 9, op_code 9, car pos 2110
 cycle 3852, carriage 8, op_code 9, car pos 62
 cycle 3852, carriage 7, op_code 12, car pos 253
@@ -23132,8 +23132,8 @@ cycle 3852, carriage 2, op_code 9, car pos 2237
 cycle 3852, carriage 1, op_code 9, car pos 2100
 cycle 3852, carriage 0, op_code 9, car pos 52
 
-cycle 3853, carriage 11, op_code 255, car pos 327
-cycle 3853, carriage 10, op_code 255, car pos 2375
+cycle 3853, carriage 11, op_code 3, car pos 316
+cycle 3853, carriage 10, op_code 3, car pos 2364
 cycle 3853, carriage 9, op_code 1, car pos 2073
 cycle 3853, carriage 8, op_code 1, car pos 25
 cycle 3853, carriage 7, op_code 12, car pos 253
@@ -23145,8 +23145,8 @@ cycle 3853, carriage 2, op_code 9, car pos 2237
 cycle 3853, carriage 1, op_code 9, car pos 2100
 cycle 3853, carriage 0, op_code 9, car pos 52
 
-cycle 3854, carriage 11, op_code 255, car pos 328
-cycle 3854, carriage 10, op_code 255, car pos 2376
+cycle 3854, carriage 11, op_code 3, car pos 316
+cycle 3854, carriage 10, op_code 3, car pos 2364
 cycle 3854, carriage 9, op_code 1, car pos 2073
 cycle 3854, carriage 8, op_code 1, car pos 25
 cycle 3854, carriage 7, op_code 12, car pos 253
@@ -23158,8 +23158,8 @@ cycle 3854, carriage 2, op_code 9, car pos 2237
 cycle 3854, carriage 1, op_code 9, car pos 2100
 cycle 3854, carriage 0, op_code 9, car pos 52
 
-cycle 3855, carriage 11, op_code 255, car pos 329
-cycle 3855, carriage 10, op_code 255, car pos 2377
+cycle 3855, carriage 11, op_code 3, car pos 316
+cycle 3855, carriage 10, op_code 3, car pos 2364
 cycle 3855, carriage 9, op_code 1, car pos 2073
 cycle 3855, carriage 8, op_code 1, car pos 25
 cycle 3855, carriage 7, op_code 12, car pos 253
@@ -23171,8 +23171,8 @@ cycle 3855, carriage 2, op_code 9, car pos 2237
 cycle 3855, carriage 1, op_code 9, car pos 2100
 cycle 3855, carriage 0, op_code 9, car pos 52
 
-cycle 3856, carriage 11, op_code 255, car pos 330
-cycle 3856, carriage 10, op_code 255, car pos 2378
+cycle 3856, carriage 11, op_code 3, car pos 316
+cycle 3856, carriage 10, op_code 3, car pos 2364
 cycle 3856, carriage 9, op_code 1, car pos 2073
 cycle 3856, carriage 8, op_code 1, car pos 25
 cycle 3856, carriage 7, op_code 12, car pos 253
@@ -23184,8 +23184,8 @@ cycle 3856, carriage 2, op_code 9, car pos 2237
 cycle 3856, carriage 1, op_code 9, car pos 2100
 cycle 3856, carriage 0, op_code 9, car pos 52
 
-cycle 3857, carriage 11, op_code 255, car pos 331
-cycle 3857, carriage 10, op_code 255, car pos 2379
+cycle 3857, carriage 11, op_code 3, car pos 316
+cycle 3857, carriage 10, op_code 3, car pos 2364
 cycle 3857, carriage 9, op_code 1, car pos 2073
 cycle 3857, carriage 8, op_code 1, car pos 25
 cycle 3857, carriage 7, op_code 12, car pos 253
@@ -23197,8 +23197,8 @@ cycle 3857, carriage 2, op_code 9, car pos 2237
 cycle 3857, carriage 1, op_code 9, car pos 2100
 cycle 3857, carriage 0, op_code 9, car pos 52
 
-cycle 3858, carriage 11, op_code 255, car pos 332
-cycle 3858, carriage 10, op_code 255, car pos 2380
+cycle 3858, carriage 11, op_code 3, car pos 318
+cycle 3858, carriage 10, op_code 3, car pos 2366
 cycle 3858, carriage 9, op_code 1, car pos 2073
 cycle 3858, carriage 8, op_code 1, car pos 25
 cycle 3858, carriage 7, op_code 12, car pos 253
@@ -23210,8 +23210,8 @@ cycle 3858, carriage 2, op_code 9, car pos 2237
 cycle 3858, carriage 1, op_code 2, car pos 2103
 cycle 3858, carriage 0, op_code 2, car pos 55
 
-cycle 3859, carriage 11, op_code 255, car pos 333
-cycle 3859, carriage 10, op_code 255, car pos 2381
+cycle 3859, carriage 11, op_code 0, car pos 318
+cycle 3859, carriage 10, op_code 0, car pos 2366
 cycle 3859, carriage 9, op_code 1, car pos 2073
 cycle 3859, carriage 8, op_code 1, car pos 25
 cycle 3859, carriage 7, op_code 12, car pos 253
@@ -23223,8 +23223,8 @@ cycle 3859, carriage 2, op_code 9, car pos 2237
 cycle 3859, carriage 1, op_code 2, car pos 2103
 cycle 3859, carriage 0, op_code 2, car pos 55
 
-cycle 3860, carriage 11, op_code 255, car pos 334
-cycle 3860, carriage 10, op_code 255, car pos 2382
+cycle 3860, carriage 11, op_code 0, car pos 319
+cycle 3860, carriage 10, op_code 0, car pos 2367
 cycle 3860, carriage 9, op_code 1, car pos 2073
 cycle 3860, carriage 8, op_code 1, car pos 25
 cycle 3860, carriage 7, op_code 12, car pos 253
@@ -23236,8 +23236,8 @@ cycle 3860, carriage 2, op_code 9, car pos 2237
 cycle 3860, carriage 1, op_code 2, car pos 2103
 cycle 3860, carriage 0, op_code 2, car pos 55
 
-cycle 3861, carriage 11, op_code 255, car pos 335
-cycle 3861, carriage 10, op_code 255, car pos 2383
+cycle 3861, carriage 11, op_code 1, car pos 319
+cycle 3861, carriage 10, op_code 1, car pos 2367
 cycle 3861, carriage 9, op_code 1, car pos 2073
 cycle 3861, carriage 8, op_code 1, car pos 25
 cycle 3861, carriage 7, op_code 12, car pos 253
@@ -23249,8 +23249,8 @@ cycle 3861, carriage 2, op_code 9, car pos 2237
 cycle 3861, carriage 1, op_code 2, car pos 2103
 cycle 3861, carriage 0, op_code 2, car pos 55
 
-cycle 3862, carriage 11, op_code 255, car pos 336
-cycle 3862, carriage 10, op_code 255, car pos 2384
+cycle 3862, carriage 11, op_code 1, car pos 319
+cycle 3862, carriage 10, op_code 1, car pos 2367
 cycle 3862, carriage 9, op_code 1, car pos 2073
 A process shows that player 2 (Jumper !) is alive
 cycle 3862, carriage 8, op_code 1, car pos 25
@@ -23264,8 +23264,8 @@ cycle 3862, carriage 2, op_code 1, car pos 2212
 cycle 3862, carriage 1, op_code 2, car pos 2103
 cycle 3862, carriage 0, op_code 2, car pos 55
 
-cycle 3863, carriage 11, op_code 255, car pos 337
-cycle 3863, carriage 10, op_code 255, car pos 2385
+cycle 3863, carriage 11, op_code 1, car pos 319
+cycle 3863, carriage 10, op_code 1, car pos 2367
 cycle 3863, carriage 9, op_code 10, car pos 2078
 cycle 3863, carriage 8, op_code 10, car pos 30
 cycle 3863, carriage 7, op_code 12, car pos 253
@@ -23277,8 +23277,8 @@ cycle 3863, carriage 2, op_code 1, car pos 2212
 cycle 3863, carriage 1, op_code 9, car pos 2110
 cycle 3863, carriage 0, op_code 9, car pos 62
 
-cycle 3864, carriage 11, op_code 255, car pos 338
-cycle 3864, carriage 10, op_code 255, car pos 2386
+cycle 3864, carriage 11, op_code 1, car pos 319
+cycle 3864, carriage 10, op_code 1, car pos 2367
 cycle 3864, carriage 9, op_code 10, car pos 2078
 cycle 3864, carriage 8, op_code 10, car pos 30
 cycle 3864, carriage 7, op_code 12, car pos 253
@@ -23290,8 +23290,8 @@ cycle 3864, carriage 2, op_code 1, car pos 2212
 cycle 3864, carriage 1, op_code 9, car pos 2110
 cycle 3864, carriage 0, op_code 9, car pos 62
 
-cycle 3865, carriage 11, op_code 255, car pos 339
-cycle 3865, carriage 10, op_code 255, car pos 2387
+cycle 3865, carriage 11, op_code 1, car pos 319
+cycle 3865, carriage 10, op_code 1, car pos 2367
 cycle 3865, carriage 9, op_code 10, car pos 2078
 cycle 3865, carriage 8, op_code 10, car pos 30
 cycle 3865, carriage 7, op_code 12, car pos 253
@@ -23303,8 +23303,8 @@ cycle 3865, carriage 2, op_code 1, car pos 2212
 cycle 3865, carriage 1, op_code 9, car pos 2110
 cycle 3865, carriage 0, op_code 9, car pos 62
 
-cycle 3866, carriage 11, op_code 255, car pos 340
-cycle 3866, carriage 10, op_code 255, car pos 2388
+cycle 3866, carriage 11, op_code 1, car pos 319
+cycle 3866, carriage 10, op_code 1, car pos 2367
 cycle 3866, carriage 9, op_code 10, car pos 2078
 cycle 3866, carriage 8, op_code 10, car pos 30
 cycle 3866, carriage 7, op_code 12, car pos 253
@@ -23316,8 +23316,8 @@ cycle 3866, carriage 2, op_code 1, car pos 2212
 cycle 3866, carriage 1, op_code 9, car pos 2110
 cycle 3866, carriage 0, op_code 9, car pos 62
 
-cycle 3867, carriage 11, op_code 255, car pos 341
-cycle 3867, carriage 10, op_code 255, car pos 2389
+cycle 3867, carriage 11, op_code 1, car pos 319
+cycle 3867, carriage 10, op_code 1, car pos 2367
 cycle 3867, carriage 9, op_code 10, car pos 2078
 cycle 3867, carriage 8, op_code 10, car pos 30
 cycle 3867, carriage 7, op_code 12, car pos 253
@@ -23329,8 +23329,8 @@ cycle 3867, carriage 2, op_code 1, car pos 2212
 cycle 3867, carriage 1, op_code 9, car pos 2110
 cycle 3867, carriage 0, op_code 9, car pos 62
 
-cycle 3868, carriage 11, op_code 255, car pos 342
-cycle 3868, carriage 10, op_code 255, car pos 2390
+cycle 3868, carriage 11, op_code 1, car pos 319
+cycle 3868, carriage 10, op_code 1, car pos 2367
 cycle 3868, carriage 9, op_code 10, car pos 2078
 cycle 3868, carriage 8, op_code 10, car pos 30
 cycle 3868, carriage 7, op_code 12, car pos 253
@@ -23342,8 +23342,8 @@ cycle 3868, carriage 2, op_code 1, car pos 2212
 cycle 3868, carriage 1, op_code 9, car pos 2110
 cycle 3868, carriage 0, op_code 9, car pos 62
 
-cycle 3869, carriage 11, op_code 255, car pos 343
-cycle 3869, carriage 10, op_code 255, car pos 2391
+cycle 3869, carriage 11, op_code 1, car pos 319
+cycle 3869, carriage 10, op_code 1, car pos 2367
 cycle 3869, carriage 9, op_code 10, car pos 2078
 cycle 3869, carriage 8, op_code 10, car pos 30
 cycle 3869, carriage 7, op_code 12, car pos 253
@@ -23355,8 +23355,8 @@ cycle 3869, carriage 2, op_code 1, car pos 2212
 cycle 3869, carriage 1, op_code 9, car pos 2110
 cycle 3869, carriage 0, op_code 9, car pos 62
 
-cycle 3870, carriage 11, op_code 255, car pos 344
-cycle 3870, carriage 10, op_code 255, car pos 2392
+cycle 3870, carriage 11, op_code 1, car pos 319
+cycle 3870, carriage 10, op_code 1, car pos 2367
 cycle 3870, carriage 9, op_code 10, car pos 2078
 cycle 3870, carriage 8, op_code 10, car pos 30
 cycle 3870, carriage 7, op_code 12, car pos 253
@@ -23368,8 +23368,8 @@ cycle 3870, carriage 2, op_code 1, car pos 2212
 cycle 3870, carriage 1, op_code 9, car pos 2110
 cycle 3870, carriage 0, op_code 9, car pos 62
 
-cycle 3871, carriage 11, op_code 255, car pos 345
-cycle 3871, carriage 10, op_code 255, car pos 2393
+cycle 3871, carriage 11, op_code 0, car pos 324
+cycle 3871, carriage 10, op_code 0, car pos 2372
 cycle 3871, carriage 9, op_code 10, car pos 2078
 cycle 3871, carriage 8, op_code 10, car pos 30
 cycle 3871, carriage 7, op_code 12, car pos 253
@@ -23383,8 +23383,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3871, carriage 1, op_code 9, car pos 2110
 cycle 3871, carriage 0, op_code 9, car pos 62
 
-cycle 3872, carriage 11, op_code 255, car pos 346
-cycle 3872, carriage 10, op_code 255, car pos 2394
+cycle 3872, carriage 11, op_code 0, car pos 325
+cycle 3872, carriage 10, op_code 0, car pos 2373
 cycle 3872, carriage 9, op_code 10, car pos 2078
 cycle 3872, carriage 8, op_code 10, car pos 30
 cycle 3872, carriage 7, op_code 12, car pos 253
@@ -23396,8 +23396,8 @@ cycle 3872, carriage 2, op_code 1, car pos 2217
 cycle 3872, carriage 1, op_code 9, car pos 2110
 cycle 3872, carriage 0, op_code 9, car pos 62
 
-cycle 3873, carriage 11, op_code 255, car pos 347
-cycle 3873, carriage 10, op_code 255, car pos 2395
+cycle 3873, carriage 11, op_code 0, car pos 325
+cycle 3873, carriage 10, op_code 0, car pos 2373
 cycle 3873, carriage 9, op_code 10, car pos 2078
 cycle 3873, carriage 8, op_code 10, car pos 30
 cycle 3873, carriage 7, op_code 12, car pos 253
@@ -23409,8 +23409,8 @@ cycle 3873, carriage 2, op_code 1, car pos 2217
 cycle 3873, carriage 1, op_code 9, car pos 2110
 cycle 3873, carriage 0, op_code 9, car pos 62
 
-cycle 3874, carriage 11, op_code 255, car pos 348
-cycle 3874, carriage 10, op_code 255, car pos 2396
+cycle 3874, carriage 11, op_code 0, car pos 326
+cycle 3874, carriage 10, op_code 0, car pos 2374
 cycle 3874, carriage 9, op_code 10, car pos 2078
 cycle 3874, carriage 8, op_code 10, car pos 30
 cycle 3874, carriage 7, op_code 12, car pos 253
@@ -23422,8 +23422,8 @@ cycle 3874, carriage 2, op_code 1, car pos 2217
 cycle 3874, carriage 1, op_code 9, car pos 2110
 cycle 3874, carriage 0, op_code 9, car pos 62
 
-cycle 3875, carriage 11, op_code 255, car pos 349
-cycle 3875, carriage 10, op_code 255, car pos 2397
+cycle 3875, carriage 11, op_code 0, car pos 326
+cycle 3875, carriage 10, op_code 0, car pos 2374
 cycle 3875, carriage 9, op_code 10, car pos 2078
 cycle 3875, carriage 8, op_code 10, car pos 30
 cycle 3875, carriage 7, op_code 12, car pos 253
@@ -23435,8 +23435,8 @@ cycle 3875, carriage 2, op_code 1, car pos 2217
 cycle 3875, carriage 1, op_code 9, car pos 2110
 cycle 3875, carriage 0, op_code 9, car pos 62
 
-cycle 3876, carriage 11, op_code 255, car pos 350
-cycle 3876, carriage 10, op_code 255, car pos 2398
+cycle 3876, carriage 11, op_code 0, car pos 327
+cycle 3876, carriage 10, op_code 0, car pos 2375
 cycle 3876, carriage 9, op_code 10, car pos 2078
 cycle 3876, carriage 8, op_code 10, car pos 30
 cycle 3876, carriage 7, op_code 12, car pos 253
@@ -23448,8 +23448,8 @@ cycle 3876, carriage 2, op_code 1, car pos 2217
 cycle 3876, carriage 1, op_code 9, car pos 2110
 cycle 3876, carriage 0, op_code 9, car pos 62
 
-cycle 3877, carriage 11, op_code 255, car pos 351
-cycle 3877, carriage 10, op_code 255, car pos 2399
+cycle 3877, carriage 11, op_code 0, car pos 327
+cycle 3877, carriage 10, op_code 0, car pos 2375
 cycle 3877, carriage 9, op_code 10, car pos 2078
 cycle 3877, carriage 8, op_code 10, car pos 30
 cycle 3877, carriage 7, op_code 12, car pos 253
@@ -23461,8 +23461,8 @@ cycle 3877, carriage 2, op_code 1, car pos 2217
 cycle 3877, carriage 1, op_code 9, car pos 2110
 cycle 3877, carriage 0, op_code 9, car pos 62
 
-cycle 3878, carriage 11, op_code 255, car pos 352
-cycle 3878, carriage 10, op_code 255, car pos 2400
+cycle 3878, carriage 11, op_code 0, car pos 328
+cycle 3878, carriage 10, op_code 0, car pos 2376
 cycle 3878, carriage 9, op_code 10, car pos 2078
 cycle 3878, carriage 8, op_code 10, car pos 30
 cycle 3878, carriage 7, op_code 12, car pos 253
@@ -23474,8 +23474,8 @@ cycle 3878, carriage 2, op_code 1, car pos 2217
 cycle 3878, carriage 1, op_code 9, car pos 2110
 cycle 3878, carriage 0, op_code 9, car pos 62
 
-cycle 3879, carriage 11, op_code 255, car pos 353
-cycle 3879, carriage 10, op_code 255, car pos 2401
+cycle 3879, carriage 11, op_code 0, car pos 328
+cycle 3879, carriage 10, op_code 0, car pos 2376
 cycle 3879, carriage 9, op_code 10, car pos 2078
 cycle 3879, carriage 8, op_code 10, car pos 30
 cycle 3879, carriage 7, op_code 12, car pos 253
@@ -23487,8 +23487,8 @@ cycle 3879, carriage 2, op_code 1, car pos 2217
 cycle 3879, carriage 1, op_code 9, car pos 2110
 cycle 3879, carriage 0, op_code 9, car pos 62
 
-cycle 3880, carriage 11, op_code 255, car pos 354
-cycle 3880, carriage 10, op_code 255, car pos 2402
+cycle 3880, carriage 11, op_code 0, car pos 329
+cycle 3880, carriage 10, op_code 0, car pos 2377
 cycle 3880, carriage 9, op_code 10, car pos 2078
 cycle 3880, carriage 8, op_code 10, car pos 30
 cycle 3880, carriage 7, op_code 12, car pos 253
@@ -23500,8 +23500,8 @@ cycle 3880, carriage 2, op_code 1, car pos 2217
 cycle 3880, carriage 1, op_code 9, car pos 2110
 cycle 3880, carriage 0, op_code 9, car pos 62
 
-cycle 3881, carriage 11, op_code 255, car pos 355
-cycle 3881, carriage 10, op_code 255, car pos 2403
+cycle 3881, carriage 11, op_code 0, car pos 329
+cycle 3881, carriage 10, op_code 0, car pos 2377
 cycle 3881, carriage 9, op_code 10, car pos 2078
 cycle 3881, carriage 8, op_code 10, car pos 30
 cycle 3881, carriage 7, op_code 12, car pos 253
@@ -23515,8 +23515,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3881, carriage 1, op_code 9, car pos 2110
 cycle 3881, carriage 0, op_code 9, car pos 62
 
-cycle 3882, carriage 11, op_code 255, car pos 356
-cycle 3882, carriage 10, op_code 255, car pos 2404
+cycle 3882, carriage 11, op_code 0, car pos 330
+cycle 3882, carriage 10, op_code 0, car pos 2378
 cycle 3882, carriage 9, op_code 10, car pos 2078
 cycle 3882, carriage 8, op_code 10, car pos 30
 cycle 3882, carriage 7, op_code 12, car pos 253
@@ -23528,8 +23528,8 @@ cycle 3882, carriage 2, op_code 1, car pos 2222
 cycle 3882, carriage 1, op_code 9, car pos 2110
 cycle 3882, carriage 0, op_code 9, car pos 62
 
-cycle 3883, carriage 11, op_code 255, car pos 357
-cycle 3883, carriage 10, op_code 255, car pos 2405
+cycle 3883, carriage 11, op_code 0, car pos 330
+cycle 3883, carriage 10, op_code 0, car pos 2378
 cycle 3883, carriage 9, op_code 10, car pos 2078
 cycle 3883, carriage 8, op_code 10, car pos 30
 cycle 3883, carriage 7, op_code 12, car pos 253
@@ -23541,8 +23541,8 @@ cycle 3883, carriage 2, op_code 1, car pos 2222
 cycle 3883, carriage 1, op_code 1, car pos 2073
 cycle 3883, carriage 0, op_code 1, car pos 25
 
-cycle 3884, carriage 11, op_code 255, car pos 358
-cycle 3884, carriage 10, op_code 255, car pos 2406
+cycle 3884, carriage 11, op_code 0, car pos 331
+cycle 3884, carriage 10, op_code 0, car pos 2379
 cycle 3884, carriage 9, op_code 10, car pos 2078
 cycle 3884, carriage 8, op_code 10, car pos 30
 cycle 3884, carriage 7, op_code 12, car pos 253
@@ -23554,8 +23554,8 @@ cycle 3884, carriage 2, op_code 1, car pos 2222
 cycle 3884, carriage 1, op_code 1, car pos 2073
 cycle 3884, carriage 0, op_code 1, car pos 25
 
-cycle 3885, carriage 11, op_code 255, car pos 359
-cycle 3885, carriage 10, op_code 255, car pos 2407
+cycle 3885, carriage 11, op_code 0, car pos 331
+cycle 3885, carriage 10, op_code 0, car pos 2379
 cycle 3885, carriage 9, op_code 10, car pos 2078
 cycle 3885, carriage 8, op_code 10, car pos 30
 cycle 3885, carriage 7, op_code 12, car pos 253
@@ -23567,8 +23567,8 @@ cycle 3885, carriage 2, op_code 1, car pos 2222
 cycle 3885, carriage 1, op_code 1, car pos 2073
 cycle 3885, carriage 0, op_code 1, car pos 25
 
-cycle 3886, carriage 11, op_code 255, car pos 360
-cycle 3886, carriage 10, op_code 255, car pos 2408
+cycle 3886, carriage 11, op_code 0, car pos 332
+cycle 3886, carriage 10, op_code 0, car pos 2380
 cycle 3886, carriage 9, op_code 10, car pos 2078
 cycle 3886, carriage 8, op_code 10, car pos 30
 cycle 3886, carriage 7, op_code 12, car pos 253
@@ -23580,8 +23580,8 @@ cycle 3886, carriage 2, op_code 1, car pos 2222
 cycle 3886, carriage 1, op_code 1, car pos 2073
 cycle 3886, carriage 0, op_code 1, car pos 25
 
-cycle 3887, carriage 11, op_code 255, car pos 361
-cycle 3887, carriage 10, op_code 255, car pos 2409
+cycle 3887, carriage 11, op_code 0, car pos 332
+cycle 3887, carriage 10, op_code 0, car pos 2380
 cycle 3887, carriage 9, op_code 10, car pos 2078
 cycle 3887, carriage 8, op_code 10, car pos 30
 cycle 3887, carriage 7, op_code 12, car pos 253
@@ -23593,8 +23593,8 @@ cycle 3887, carriage 2, op_code 1, car pos 2222
 cycle 3887, carriage 1, op_code 1, car pos 2073
 cycle 3887, carriage 0, op_code 1, car pos 25
 
-cycle 3888, carriage 11, op_code 255, car pos 362
-cycle 3888, carriage 10, op_code 255, car pos 2410
+cycle 3888, carriage 11, op_code 0, car pos 333
+cycle 3888, carriage 10, op_code 0, car pos 2381
 cycle 3888, carriage 9, op_code 11, car pos 2084
 cycle 3888, carriage 8, op_code 11, car pos 36
 cycle 3888, carriage 7, op_code 12, car pos 253
@@ -23606,8 +23606,8 @@ cycle 3888, carriage 2, op_code 1, car pos 2222
 cycle 3888, carriage 1, op_code 1, car pos 2073
 cycle 3888, carriage 0, op_code 1, car pos 25
 
-cycle 3889, carriage 11, op_code 255, car pos 363
-cycle 3889, carriage 10, op_code 255, car pos 2411
+cycle 3889, carriage 11, op_code 0, car pos 333
+cycle 3889, carriage 10, op_code 0, car pos 2381
 cycle 3889, carriage 9, op_code 11, car pos 2084
 cycle 3889, carriage 8, op_code 11, car pos 36
 cycle 3889, carriage 7, op_code 12, car pos 253
@@ -23619,8 +23619,8 @@ cycle 3889, carriage 2, op_code 1, car pos 2222
 cycle 3889, carriage 1, op_code 1, car pos 2073
 cycle 3889, carriage 0, op_code 1, car pos 25
 
-cycle 3890, carriage 11, op_code 255, car pos 364
-cycle 3890, carriage 10, op_code 255, car pos 2412
+cycle 3890, carriage 11, op_code 0, car pos 334
+cycle 3890, carriage 10, op_code 0, car pos 2382
 cycle 3890, carriage 9, op_code 11, car pos 2084
 cycle 3890, carriage 8, op_code 11, car pos 36
 cycle 3890, carriage 7, op_code 12, car pos 253
@@ -23632,8 +23632,8 @@ cycle 3890, carriage 2, op_code 1, car pos 2222
 cycle 3890, carriage 1, op_code 1, car pos 2073
 cycle 3890, carriage 0, op_code 1, car pos 25
 
-cycle 3891, carriage 11, op_code 255, car pos 365
-cycle 3891, carriage 10, op_code 255, car pos 2413
+cycle 3891, carriage 11, op_code 0, car pos 334
+cycle 3891, carriage 10, op_code 0, car pos 2382
 cycle 3891, carriage 9, op_code 11, car pos 2084
 cycle 3891, carriage 8, op_code 11, car pos 36
 cycle 3891, carriage 7, op_code 12, car pos 253
@@ -23647,8 +23647,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3891, carriage 1, op_code 1, car pos 2073
 cycle 3891, carriage 0, op_code 1, car pos 25
 
-cycle 3892, carriage 11, op_code 255, car pos 366
-cycle 3892, carriage 10, op_code 255, car pos 2414
+cycle 3892, carriage 11, op_code 0, car pos 335
+cycle 3892, carriage 10, op_code 0, car pos 2383
 cycle 3892, carriage 9, op_code 11, car pos 2084
 cycle 3892, carriage 8, op_code 11, car pos 36
 cycle 3892, carriage 7, op_code 12, car pos 253
@@ -23662,8 +23662,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3892, carriage 0, op_code 1, car pos 25
 A process shows that player 1 (Jumper !) is alive
 
-cycle 3893, carriage 11, op_code 255, car pos 367
-cycle 3893, carriage 10, op_code 255, car pos 2415
+cycle 3893, carriage 11, op_code 0, car pos 335
+cycle 3893, carriage 10, op_code 0, car pos 2383
 cycle 3893, carriage 9, op_code 11, car pos 2084
 cycle 3893, carriage 8, op_code 11, car pos 36
 cycle 3893, carriage 7, op_code 12, car pos 253
@@ -23675,8 +23675,8 @@ cycle 3893, carriage 2, op_code 1, car pos 2227
 cycle 3893, carriage 1, op_code 10, car pos 2078
 cycle 3893, carriage 0, op_code 10, car pos 30
 
-cycle 3894, carriage 11, op_code 255, car pos 368
-cycle 3894, carriage 10, op_code 255, car pos 2416
+cycle 3894, carriage 11, op_code 0, car pos 336
+cycle 3894, carriage 10, op_code 0, car pos 2384
 cycle 3894, carriage 9, op_code 11, car pos 2084
 cycle 3894, carriage 8, op_code 11, car pos 36
 cycle 3894, carriage 7, op_code 12, car pos 253
@@ -23688,8 +23688,8 @@ cycle 3894, carriage 2, op_code 1, car pos 2227
 cycle 3894, carriage 1, op_code 10, car pos 2078
 cycle 3894, carriage 0, op_code 10, car pos 30
 
-cycle 3895, carriage 11, op_code 255, car pos 369
-cycle 3895, carriage 10, op_code 255, car pos 2417
+cycle 3895, carriage 11, op_code 0, car pos 336
+cycle 3895, carriage 10, op_code 0, car pos 2384
 cycle 3895, carriage 9, op_code 11, car pos 2084
 cycle 3895, carriage 8, op_code 11, car pos 36
 cycle 3895, carriage 7, op_code 12, car pos 253
@@ -23701,8 +23701,8 @@ cycle 3895, carriage 2, op_code 1, car pos 2227
 cycle 3895, carriage 1, op_code 10, car pos 2078
 cycle 3895, carriage 0, op_code 10, car pos 30
 
-cycle 3896, carriage 11, op_code 255, car pos 370
-cycle 3896, carriage 10, op_code 255, car pos 2418
+cycle 3896, carriage 11, op_code 0, car pos 337
+cycle 3896, carriage 10, op_code 0, car pos 2385
 cycle 3896, carriage 9, op_code 11, car pos 2084
 cycle 3896, carriage 8, op_code 11, car pos 36
 cycle 3896, carriage 7, op_code 12, car pos 253
@@ -23714,8 +23714,8 @@ cycle 3896, carriage 2, op_code 1, car pos 2227
 cycle 3896, carriage 1, op_code 10, car pos 2078
 cycle 3896, carriage 0, op_code 10, car pos 30
 
-cycle 3897, carriage 11, op_code 255, car pos 371
-cycle 3897, carriage 10, op_code 255, car pos 2419
+cycle 3897, carriage 11, op_code 0, car pos 337
+cycle 3897, carriage 10, op_code 0, car pos 2385
 cycle 3897, carriage 9, op_code 11, car pos 2084
 cycle 3897, carriage 8, op_code 11, car pos 36
 cycle 3897, carriage 7, op_code 12, car pos 253
@@ -23727,8 +23727,8 @@ cycle 3897, carriage 2, op_code 1, car pos 2227
 cycle 3897, carriage 1, op_code 10, car pos 2078
 cycle 3897, carriage 0, op_code 10, car pos 30
 
-cycle 3898, carriage 11, op_code 255, car pos 372
-cycle 3898, carriage 10, op_code 255, car pos 2420
+cycle 3898, carriage 11, op_code 0, car pos 338
+cycle 3898, carriage 10, op_code 0, car pos 2386
 cycle 3898, carriage 9, op_code 11, car pos 2084
 cycle 3898, carriage 8, op_code 11, car pos 36
 cycle 3898, carriage 7, op_code 12, car pos 253
@@ -23740,8 +23740,8 @@ cycle 3898, carriage 2, op_code 1, car pos 2227
 cycle 3898, carriage 1, op_code 10, car pos 2078
 cycle 3898, carriage 0, op_code 10, car pos 30
 
-cycle 3899, carriage 11, op_code 255, car pos 373
-cycle 3899, carriage 10, op_code 255, car pos 2421
+cycle 3899, carriage 11, op_code 0, car pos 338
+cycle 3899, carriage 10, op_code 0, car pos 2386
 cycle 3899, carriage 9, op_code 11, car pos 2084
 cycle 3899, carriage 8, op_code 11, car pos 36
 cycle 3899, carriage 7, op_code 12, car pos 253
@@ -23753,8 +23753,8 @@ cycle 3899, carriage 2, op_code 1, car pos 2227
 cycle 3899, carriage 1, op_code 10, car pos 2078
 cycle 3899, carriage 0, op_code 10, car pos 30
 
-cycle 3900, carriage 11, op_code 255, car pos 374
-cycle 3900, carriage 10, op_code 255, car pos 2422
+cycle 3900, carriage 11, op_code 0, car pos 339
+cycle 3900, carriage 10, op_code 0, car pos 2387
 cycle 3900, carriage 9, op_code 11, car pos 2084
 cycle 3900, carriage 8, op_code 11, car pos 36
 cycle 3900, carriage 7, op_code 12, car pos 253
@@ -23766,8 +23766,8 @@ cycle 3900, carriage 2, op_code 1, car pos 2227
 cycle 3900, carriage 1, op_code 10, car pos 2078
 cycle 3900, carriage 0, op_code 10, car pos 30
 
-cycle 3901, carriage 11, op_code 255, car pos 375
-cycle 3901, carriage 10, op_code 255, car pos 2423
+cycle 3901, carriage 11, op_code 0, car pos 339
+cycle 3901, carriage 10, op_code 0, car pos 2387
 cycle 3901, carriage 9, op_code 11, car pos 2084
 cycle 3901, carriage 8, op_code 11, car pos 36
 cycle 3901, carriage 7, op_code 12, car pos 253
@@ -23781,8 +23781,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3901, carriage 1, op_code 10, car pos 2078
 cycle 3901, carriage 0, op_code 10, car pos 30
 
-cycle 3902, carriage 11, op_code 255, car pos 376
-cycle 3902, carriage 10, op_code 255, car pos 2424
+cycle 3902, carriage 11, op_code 0, car pos 340
+cycle 3902, carriage 10, op_code 0, car pos 2388
 cycle 3902, carriage 9, op_code 11, car pos 2084
 cycle 3902, carriage 8, op_code 11, car pos 36
 cycle 3902, carriage 7, op_code 12, car pos 253
@@ -23794,8 +23794,8 @@ cycle 3902, carriage 2, op_code 1, car pos 2232
 cycle 3902, carriage 1, op_code 10, car pos 2078
 cycle 3902, carriage 0, op_code 10, car pos 30
 
-cycle 3903, carriage 11, op_code 255, car pos 377
-cycle 3903, carriage 10, op_code 255, car pos 2425
+cycle 3903, carriage 11, op_code 0, car pos 340
+cycle 3903, carriage 10, op_code 0, car pos 2388
 cycle 3903, carriage 9, op_code 11, car pos 2084
 cycle 3903, carriage 8, op_code 11, car pos 36
 cycle 3903, carriage 7, op_code 12, car pos 253
@@ -23807,8 +23807,8 @@ cycle 3903, carriage 2, op_code 1, car pos 2232
 cycle 3903, carriage 1, op_code 10, car pos 2078
 cycle 3903, carriage 0, op_code 10, car pos 30
 
-cycle 3904, carriage 11, op_code 255, car pos 378
-cycle 3904, carriage 10, op_code 255, car pos 2426
+cycle 3904, carriage 11, op_code 0, car pos 341
+cycle 3904, carriage 10, op_code 0, car pos 2389
 cycle 3904, carriage 9, op_code 11, car pos 2084
 cycle 3904, carriage 8, op_code 11, car pos 36
 cycle 3904, carriage 7, op_code 12, car pos 253
@@ -23820,8 +23820,8 @@ cycle 3904, carriage 2, op_code 1, car pos 2232
 cycle 3904, carriage 1, op_code 10, car pos 2078
 cycle 3904, carriage 0, op_code 10, car pos 30
 
-cycle 3905, carriage 11, op_code 255, car pos 379
-cycle 3905, carriage 10, op_code 255, car pos 2427
+cycle 3905, carriage 11, op_code 0, car pos 341
+cycle 3905, carriage 10, op_code 0, car pos 2389
 cycle 3905, carriage 9, op_code 11, car pos 2084
 cycle 3905, carriage 8, op_code 11, car pos 36
 cycle 3905, carriage 7, op_code 12, car pos 253
@@ -23833,8 +23833,8 @@ cycle 3905, carriage 2, op_code 1, car pos 2232
 cycle 3905, carriage 1, op_code 10, car pos 2078
 cycle 3905, carriage 0, op_code 10, car pos 30
 
-cycle 3906, carriage 11, op_code 255, car pos 380
-cycle 3906, carriage 10, op_code 255, car pos 2428
+cycle 3906, carriage 11, op_code 0, car pos 342
+cycle 3906, carriage 10, op_code 0, car pos 2390
 cycle 3906, carriage 9, op_code 11, car pos 2084
 cycle 3906, carriage 8, op_code 11, car pos 36
 cycle 3906, carriage 7, op_code 12, car pos 253
@@ -23846,8 +23846,8 @@ cycle 3906, carriage 2, op_code 1, car pos 2232
 cycle 3906, carriage 1, op_code 10, car pos 2078
 cycle 3906, carriage 0, op_code 10, car pos 30
 
-cycle 3907, carriage 11, op_code 255, car pos 381
-cycle 3907, carriage 10, op_code 255, car pos 2429
+cycle 3907, carriage 11, op_code 0, car pos 342
+cycle 3907, carriage 10, op_code 0, car pos 2390
 cycle 3907, carriage 9, op_code 11, car pos 2084
 cycle 3907, carriage 8, op_code 11, car pos 36
 cycle 3907, carriage 7, op_code 12, car pos 253
@@ -23859,8 +23859,8 @@ cycle 3907, carriage 2, op_code 1, car pos 2232
 cycle 3907, carriage 1, op_code 10, car pos 2078
 cycle 3907, carriage 0, op_code 10, car pos 30
 
-cycle 3908, carriage 11, op_code 255, car pos 382
-cycle 3908, carriage 10, op_code 255, car pos 2430
+cycle 3908, carriage 11, op_code 0, car pos 343
+cycle 3908, carriage 10, op_code 0, car pos 2391
 cycle 3908, carriage 9, op_code 11, car pos 2084
 cycle 3908, carriage 8, op_code 11, car pos 36
 cycle 3908, carriage 7, op_code 12, car pos 253
@@ -23872,8 +23872,8 @@ cycle 3908, carriage 2, op_code 1, car pos 2232
 cycle 3908, carriage 1, op_code 10, car pos 2078
 cycle 3908, carriage 0, op_code 10, car pos 30
 
-cycle 3909, carriage 11, op_code 255, car pos 383
-cycle 3909, carriage 10, op_code 255, car pos 2431
+cycle 3909, carriage 11, op_code 0, car pos 343
+cycle 3909, carriage 10, op_code 0, car pos 2391
 cycle 3909, carriage 9, op_code 11, car pos 2084
 cycle 3909, carriage 8, op_code 11, car pos 36
 cycle 3909, carriage 7, op_code 12, car pos 253
@@ -23885,8 +23885,8 @@ cycle 3909, carriage 2, op_code 1, car pos 2232
 cycle 3909, carriage 1, op_code 10, car pos 2078
 cycle 3909, carriage 0, op_code 10, car pos 30
 
-cycle 3910, carriage 11, op_code 255, car pos 384
-cycle 3910, carriage 10, op_code 255, car pos 2432
+cycle 3910, carriage 11, op_code 0, car pos 344
+cycle 3910, carriage 10, op_code 0, car pos 2392
 cycle 3910, carriage 9, op_code 11, car pos 2084
 cycle 3910, carriage 8, op_code 11, car pos 36
 cycle 3910, carriage 7, op_code 12, car pos 253
@@ -23898,8 +23898,8 @@ cycle 3910, carriage 2, op_code 1, car pos 2232
 cycle 3910, carriage 1, op_code 10, car pos 2078
 cycle 3910, carriage 0, op_code 10, car pos 30
 
-cycle 3911, carriage 11, op_code 255, car pos 385
-cycle 3911, carriage 10, op_code 255, car pos 2433
+cycle 3911, carriage 11, op_code 0, car pos 344
+cycle 3911, carriage 10, op_code 0, car pos 2392
 cycle 3911, carriage 9, op_code 11, car pos 2084
 cycle 3911, carriage 8, op_code 11, car pos 36
 cycle 3911, carriage 7, op_code 12, car pos 253
@@ -23913,8 +23913,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3911, carriage 1, op_code 10, car pos 2078
 cycle 3911, carriage 0, op_code 10, car pos 30
 
-cycle 3912, carriage 11, op_code 255, car pos 386
-cycle 3912, carriage 10, op_code 255, car pos 2434
+cycle 3912, carriage 11, op_code 0, car pos 345
+cycle 3912, carriage 10, op_code 0, car pos 2393
 cycle 3912, carriage 9, op_code 11, car pos 2084
 cycle 3912, carriage 8, op_code 11, car pos 36
 cycle 3912, carriage 7, op_code 12, car pos 253
@@ -23926,8 +23926,8 @@ cycle 3912, carriage 2, op_code 9, car pos 2237
 cycle 3912, carriage 1, op_code 10, car pos 2078
 cycle 3912, carriage 0, op_code 10, car pos 30
 
-cycle 3913, carriage 11, op_code 255, car pos 387
-cycle 3913, carriage 10, op_code 255, car pos 2435
+cycle 3913, carriage 11, op_code 0, car pos 345
+cycle 3913, carriage 10, op_code 0, car pos 2393
 cycle 3913, carriage 9, op_code 4, car pos 2090
 cycle 3913, carriage 8, op_code 4, car pos 42
 cycle 3913, carriage 7, op_code 12, car pos 253
@@ -23939,8 +23939,8 @@ cycle 3913, carriage 2, op_code 9, car pos 2237
 cycle 3913, carriage 1, op_code 10, car pos 2078
 cycle 3913, carriage 0, op_code 10, car pos 30
 
-cycle 3914, carriage 11, op_code 255, car pos 388
-cycle 3914, carriage 10, op_code 255, car pos 2436
+cycle 3914, carriage 11, op_code 0, car pos 346
+cycle 3914, carriage 10, op_code 0, car pos 2394
 cycle 3914, carriage 9, op_code 4, car pos 2090
 cycle 3914, carriage 8, op_code 4, car pos 42
 cycle 3914, carriage 7, op_code 12, car pos 253
@@ -23952,8 +23952,8 @@ cycle 3914, carriage 2, op_code 9, car pos 2237
 cycle 3914, carriage 1, op_code 10, car pos 2078
 cycle 3914, carriage 0, op_code 10, car pos 30
 
-cycle 3915, carriage 11, op_code 255, car pos 389
-cycle 3915, carriage 10, op_code 255, car pos 2437
+cycle 3915, carriage 11, op_code 0, car pos 346
+cycle 3915, carriage 10, op_code 0, car pos 2394
 cycle 3915, carriage 9, op_code 4, car pos 2090
 cycle 3915, carriage 8, op_code 4, car pos 42
 cycle 3915, carriage 7, op_code 12, car pos 253
@@ -23965,8 +23965,8 @@ cycle 3915, carriage 2, op_code 9, car pos 2237
 cycle 3915, carriage 1, op_code 10, car pos 2078
 cycle 3915, carriage 0, op_code 10, car pos 30
 
-cycle 3916, carriage 11, op_code 255, car pos 390
-cycle 3916, carriage 10, op_code 255, car pos 2438
+cycle 3916, carriage 11, op_code 0, car pos 347
+cycle 3916, carriage 10, op_code 0, car pos 2395
 cycle 3916, carriage 9, op_code 4, car pos 2090
 cycle 3916, carriage 8, op_code 4, car pos 42
 cycle 3916, carriage 7, op_code 12, car pos 253
@@ -23978,8 +23978,8 @@ cycle 3916, carriage 2, op_code 9, car pos 2237
 cycle 3916, carriage 1, op_code 10, car pos 2078
 cycle 3916, carriage 0, op_code 10, car pos 30
 
-cycle 3917, carriage 11, op_code 255, car pos 391
-cycle 3917, carriage 10, op_code 255, car pos 2439
+cycle 3917, carriage 11, op_code 0, car pos 347
+cycle 3917, carriage 10, op_code 0, car pos 2395
 cycle 3917, carriage 9, op_code 4, car pos 2090
 cycle 3917, carriage 8, op_code 4, car pos 42
 cycle 3917, carriage 7, op_code 12, car pos 253
@@ -23991,8 +23991,8 @@ cycle 3917, carriage 2, op_code 9, car pos 2237
 cycle 3917, carriage 1, op_code 10, car pos 2078
 cycle 3917, carriage 0, op_code 10, car pos 30
 
-cycle 3918, carriage 11, op_code 255, car pos 392
-cycle 3918, carriage 10, op_code 255, car pos 2440
+cycle 3918, carriage 11, op_code 0, car pos 348
+cycle 3918, carriage 10, op_code 0, car pos 2396
 cycle 3918, carriage 9, op_code 4, car pos 2090
 cycle 3918, carriage 8, op_code 4, car pos 42
 cycle 3918, carriage 7, op_code 12, car pos 253
@@ -24004,8 +24004,8 @@ cycle 3918, carriage 2, op_code 9, car pos 2237
 cycle 3918, carriage 1, op_code 11, car pos 2084
 cycle 3918, carriage 0, op_code 11, car pos 36
 
-cycle 3919, carriage 11, op_code 255, car pos 393
-cycle 3919, carriage 10, op_code 255, car pos 2441
+cycle 3919, carriage 11, op_code 0, car pos 348
+cycle 3919, carriage 10, op_code 0, car pos 2396
 cycle 3919, carriage 9, op_code 4, car pos 2090
 cycle 3919, carriage 8, op_code 4, car pos 42
 cycle 3919, carriage 7, op_code 12, car pos 253
@@ -24017,8 +24017,8 @@ cycle 3919, carriage 2, op_code 9, car pos 2237
 cycle 3919, carriage 1, op_code 11, car pos 2084
 cycle 3919, carriage 0, op_code 11, car pos 36
 
-cycle 3920, carriage 11, op_code 255, car pos 394
-cycle 3920, carriage 10, op_code 255, car pos 2442
+cycle 3920, carriage 11, op_code 0, car pos 349
+cycle 3920, carriage 10, op_code 0, car pos 2397
 cycle 3920, carriage 9, op_code 4, car pos 2090
 cycle 3920, carriage 8, op_code 4, car pos 42
 cycle 3920, carriage 7, op_code 12, car pos 253
@@ -24030,8 +24030,8 @@ cycle 3920, carriage 2, op_code 9, car pos 2237
 cycle 3920, carriage 1, op_code 11, car pos 2084
 cycle 3920, carriage 0, op_code 11, car pos 36
 
-cycle 3921, carriage 11, op_code 255, car pos 395
-cycle 3921, carriage 10, op_code 255, car pos 2443
+cycle 3921, carriage 11, op_code 0, car pos 349
+cycle 3921, carriage 10, op_code 0, car pos 2397
 cycle 3921, carriage 9, op_code 4, car pos 2090
 cycle 3921, carriage 8, op_code 4, car pos 42
 cycle 3921, carriage 7, op_code 12, car pos 253
@@ -24043,8 +24043,8 @@ cycle 3921, carriage 2, op_code 9, car pos 2237
 cycle 3921, carriage 1, op_code 11, car pos 2084
 cycle 3921, carriage 0, op_code 11, car pos 36
 
-cycle 3922, carriage 11, op_code 255, car pos 396
-cycle 3922, carriage 10, op_code 255, car pos 2444
+cycle 3922, carriage 11, op_code 0, car pos 350
+cycle 3922, carriage 10, op_code 0, car pos 2398
 cycle 3922, carriage 9, op_code 4, car pos 2090
 cycle 3922, carriage 8, op_code 4, car pos 42
 cycle 3922, carriage 7, op_code 12, car pos 253
@@ -24056,8 +24056,8 @@ cycle 3922, carriage 2, op_code 9, car pos 2237
 cycle 3922, carriage 1, op_code 11, car pos 2084
 cycle 3922, carriage 0, op_code 11, car pos 36
 
-cycle 3923, carriage 11, op_code 255, car pos 397
-cycle 3923, carriage 10, op_code 255, car pos 2445
+cycle 3923, carriage 11, op_code 0, car pos 350
+cycle 3923, carriage 10, op_code 0, car pos 2398
 cycle 3923, carriage 9, op_code 8, car pos 2095
 cycle 3923, carriage 8, op_code 8, car pos 47
 cycle 3923, carriage 7, op_code 12, car pos 253
@@ -24069,8 +24069,8 @@ cycle 3923, carriage 2, op_code 9, car pos 2237
 cycle 3923, carriage 1, op_code 11, car pos 2084
 cycle 3923, carriage 0, op_code 11, car pos 36
 
-cycle 3924, carriage 11, op_code 255, car pos 398
-cycle 3924, carriage 10, op_code 255, car pos 2446
+cycle 3924, carriage 11, op_code 0, car pos 351
+cycle 3924, carriage 10, op_code 0, car pos 2399
 cycle 3924, carriage 9, op_code 8, car pos 2095
 cycle 3924, carriage 8, op_code 8, car pos 47
 cycle 3924, carriage 7, op_code 12, car pos 253
@@ -24082,8 +24082,8 @@ cycle 3924, carriage 2, op_code 9, car pos 2237
 cycle 3924, carriage 1, op_code 11, car pos 2084
 cycle 3924, carriage 0, op_code 11, car pos 36
 
-cycle 3925, carriage 11, op_code 255, car pos 399
-cycle 3925, carriage 10, op_code 255, car pos 2447
+cycle 3925, carriage 11, op_code 0, car pos 351
+cycle 3925, carriage 10, op_code 0, car pos 2399
 cycle 3925, carriage 9, op_code 8, car pos 2095
 cycle 3925, carriage 8, op_code 8, car pos 47
 cycle 3925, carriage 7, op_code 12, car pos 253
@@ -24095,8 +24095,8 @@ cycle 3925, carriage 2, op_code 9, car pos 2237
 cycle 3925, carriage 1, op_code 11, car pos 2084
 cycle 3925, carriage 0, op_code 11, car pos 36
 
-cycle 3926, carriage 11, op_code 255, car pos 400
-cycle 3926, carriage 10, op_code 255, car pos 2448
+cycle 3926, carriage 11, op_code 0, car pos 352
+cycle 3926, carriage 10, op_code 0, car pos 2400
 cycle 3926, carriage 9, op_code 8, car pos 2095
 cycle 3926, carriage 8, op_code 8, car pos 47
 cycle 3926, carriage 7, op_code 12, car pos 253
@@ -24108,8 +24108,8 @@ cycle 3926, carriage 2, op_code 9, car pos 2237
 cycle 3926, carriage 1, op_code 11, car pos 2084
 cycle 3926, carriage 0, op_code 11, car pos 36
 
-cycle 3927, carriage 11, op_code 255, car pos 401
-cycle 3927, carriage 10, op_code 255, car pos 2449
+cycle 3927, carriage 11, op_code 0, car pos 352
+cycle 3927, carriage 10, op_code 0, car pos 2400
 cycle 3927, carriage 9, op_code 8, car pos 2095
 cycle 3927, carriage 8, op_code 8, car pos 47
 cycle 3927, carriage 7, op_code 12, car pos 253
@@ -24121,8 +24121,8 @@ cycle 3927, carriage 2, op_code 9, car pos 2237
 cycle 3927, carriage 1, op_code 11, car pos 2084
 cycle 3927, carriage 0, op_code 11, car pos 36
 
-cycle 3928, carriage 11, op_code 255, car pos 402
-cycle 3928, carriage 10, op_code 255, car pos 2450
+cycle 3928, carriage 11, op_code 0, car pos 353
+cycle 3928, carriage 10, op_code 0, car pos 2401
 cycle 3928, carriage 9, op_code 8, car pos 2095
 cycle 3928, carriage 8, op_code 8, car pos 47
 cycle 3928, carriage 7, op_code 12, car pos 253
@@ -24134,8 +24134,8 @@ cycle 3928, carriage 2, op_code 9, car pos 2237
 cycle 3928, carriage 1, op_code 11, car pos 2084
 cycle 3928, carriage 0, op_code 11, car pos 36
 
-cycle 3929, carriage 11, op_code 255, car pos 403
-cycle 3929, carriage 10, op_code 255, car pos 2451
+cycle 3929, carriage 11, op_code 0, car pos 353
+cycle 3929, carriage 10, op_code 0, car pos 2401
 cycle 3929, carriage 9, op_code 9, car pos 2100
 cycle 3929, carriage 8, op_code 9, car pos 52
 cycle 3929, carriage 7, op_code 12, car pos 253
@@ -24147,8 +24147,8 @@ cycle 3929, carriage 2, op_code 9, car pos 2237
 cycle 3929, carriage 1, op_code 11, car pos 2084
 cycle 3929, carriage 0, op_code 11, car pos 36
 
-cycle 3930, carriage 11, op_code 255, car pos 404
-cycle 3930, carriage 10, op_code 255, car pos 2452
+cycle 3930, carriage 11, op_code 0, car pos 354
+cycle 3930, carriage 10, op_code 0, car pos 2402
 cycle 3930, carriage 9, op_code 9, car pos 2100
 cycle 3930, carriage 8, op_code 9, car pos 52
 cycle 3930, carriage 7, op_code 12, car pos 253
@@ -24160,8 +24160,8 @@ cycle 3930, carriage 2, op_code 9, car pos 2237
 cycle 3930, carriage 1, op_code 11, car pos 2084
 cycle 3930, carriage 0, op_code 11, car pos 36
 
-cycle 3931, carriage 11, op_code 255, car pos 405
-cycle 3931, carriage 10, op_code 255, car pos 2453
+cycle 3931, carriage 11, op_code 0, car pos 354
+cycle 3931, carriage 10, op_code 0, car pos 2402
 cycle 3931, carriage 9, op_code 9, car pos 2100
 cycle 3931, carriage 8, op_code 9, car pos 52
 cycle 3931, carriage 7, op_code 12, car pos 253
@@ -24173,8 +24173,8 @@ cycle 3931, carriage 2, op_code 9, car pos 2237
 cycle 3931, carriage 1, op_code 11, car pos 2084
 cycle 3931, carriage 0, op_code 11, car pos 36
 
-cycle 3932, carriage 11, op_code 255, car pos 406
-cycle 3932, carriage 10, op_code 255, car pos 2454
+cycle 3932, carriage 11, op_code 0, car pos 355
+cycle 3932, carriage 10, op_code 0, car pos 2403
 cycle 3932, carriage 9, op_code 9, car pos 2100
 cycle 3932, carriage 8, op_code 9, car pos 52
 cycle 3932, carriage 7, op_code 12, car pos 253
@@ -24186,8 +24186,8 @@ cycle 3932, carriage 2, op_code 1, car pos 2212
 cycle 3932, carriage 1, op_code 11, car pos 2084
 cycle 3932, carriage 0, op_code 11, car pos 36
 
-cycle 3933, carriage 11, op_code 255, car pos 407
-cycle 3933, carriage 10, op_code 255, car pos 2455
+cycle 3933, carriage 11, op_code 0, car pos 355
+cycle 3933, carriage 10, op_code 0, car pos 2403
 cycle 3933, carriage 9, op_code 9, car pos 2100
 cycle 3933, carriage 8, op_code 9, car pos 52
 cycle 3933, carriage 7, op_code 12, car pos 253
@@ -24199,8 +24199,8 @@ cycle 3933, carriage 2, op_code 1, car pos 2212
 cycle 3933, carriage 1, op_code 11, car pos 2084
 cycle 3933, carriage 0, op_code 11, car pos 36
 
-cycle 3934, carriage 11, op_code 255, car pos 408
-cycle 3934, carriage 10, op_code 255, car pos 2456
+cycle 3934, carriage 11, op_code 0, car pos 356
+cycle 3934, carriage 10, op_code 0, car pos 2404
 cycle 3934, carriage 9, op_code 9, car pos 2100
 cycle 3934, carriage 8, op_code 9, car pos 52
 cycle 3934, carriage 7, op_code 12, car pos 253
@@ -24212,8 +24212,8 @@ cycle 3934, carriage 2, op_code 1, car pos 2212
 cycle 3934, carriage 1, op_code 11, car pos 2084
 cycle 3934, carriage 0, op_code 11, car pos 36
 
-cycle 3935, carriage 11, op_code 255, car pos 409
-cycle 3935, carriage 10, op_code 255, car pos 2457
+cycle 3935, carriage 11, op_code 0, car pos 356
+cycle 3935, carriage 10, op_code 0, car pos 2404
 cycle 3935, carriage 9, op_code 9, car pos 2100
 cycle 3935, carriage 8, op_code 9, car pos 52
 cycle 3935, carriage 7, op_code 12, car pos 253
@@ -24225,8 +24225,8 @@ cycle 3935, carriage 2, op_code 1, car pos 2212
 cycle 3935, carriage 1, op_code 11, car pos 2084
 cycle 3935, carriage 0, op_code 11, car pos 36
 
-cycle 3936, carriage 11, op_code 255, car pos 410
-cycle 3936, carriage 10, op_code 255, car pos 2458
+cycle 3936, carriage 11, op_code 0, car pos 357
+cycle 3936, carriage 10, op_code 0, car pos 2405
 cycle 3936, carriage 9, op_code 9, car pos 2100
 cycle 3936, carriage 8, op_code 9, car pos 52
 cycle 3936, carriage 7, op_code 12, car pos 253
@@ -24238,8 +24238,8 @@ cycle 3936, carriage 2, op_code 1, car pos 2212
 cycle 3936, carriage 1, op_code 11, car pos 2084
 cycle 3936, carriage 0, op_code 11, car pos 36
 
-cycle 3937, carriage 11, op_code 255, car pos 411
-cycle 3937, carriage 10, op_code 255, car pos 2459
+cycle 3937, carriage 11, op_code 0, car pos 357
+cycle 3937, carriage 10, op_code 0, car pos 2405
 cycle 3937, carriage 9, op_code 9, car pos 2100
 cycle 3937, carriage 8, op_code 9, car pos 52
 cycle 3937, carriage 7, op_code 12, car pos 253
@@ -24253,8 +24253,8 @@ cycle 3937, carriage 2, op_code 1, car pos 2212
 cycle 3937, carriage 1, op_code 11, car pos 2084
 cycle 3937, carriage 0, op_code 11, car pos 36
 
-cycle 3938, carriage 11, op_code 255, car pos 412
-cycle 3938, carriage 10, op_code 255, car pos 2460
+cycle 3938, carriage 11, op_code 0, car pos 358
+cycle 3938, carriage 10, op_code 0, car pos 2406
 cycle 3938, carriage 9, op_code 9, car pos 2100
 cycle 3938, carriage 8, op_code 9, car pos 52
 cycle 3938, carriage 7, op_code 12, car pos 253
@@ -24266,8 +24266,8 @@ cycle 3938, carriage 2, op_code 1, car pos 2212
 cycle 3938, carriage 1, op_code 11, car pos 2084
 cycle 3938, carriage 0, op_code 11, car pos 36
 
-cycle 3939, carriage 11, op_code 255, car pos 413
-cycle 3939, carriage 10, op_code 255, car pos 2461
+cycle 3939, carriage 11, op_code 0, car pos 358
+cycle 3939, carriage 10, op_code 0, car pos 2406
 cycle 3939, carriage 9, op_code 9, car pos 2100
 cycle 3939, carriage 8, op_code 9, car pos 52
 cycle 3939, carriage 7, op_code 12, car pos 253
@@ -24279,8 +24279,8 @@ cycle 3939, carriage 2, op_code 1, car pos 2212
 cycle 3939, carriage 1, op_code 11, car pos 2084
 cycle 3939, carriage 0, op_code 11, car pos 36
 
-cycle 3940, carriage 11, op_code 255, car pos 414
-cycle 3940, carriage 10, op_code 255, car pos 2462
+cycle 3940, carriage 11, op_code 0, car pos 359
+cycle 3940, carriage 10, op_code 0, car pos 2407
 cycle 3940, carriage 9, op_code 9, car pos 2100
 cycle 3940, carriage 8, op_code 9, car pos 52
 cycle 3940, carriage 7, op_code 12, car pos 253
@@ -24292,8 +24292,8 @@ cycle 3940, carriage 2, op_code 1, car pos 2212
 cycle 3940, carriage 1, op_code 11, car pos 2084
 cycle 3940, carriage 0, op_code 11, car pos 36
 
-cycle 3941, carriage 11, op_code 255, car pos 415
-cycle 3941, carriage 10, op_code 255, car pos 2463
+cycle 3941, carriage 11, op_code 0, car pos 359
+cycle 3941, carriage 10, op_code 0, car pos 2407
 cycle 3941, carriage 9, op_code 9, car pos 2100
 cycle 3941, carriage 8, op_code 9, car pos 52
 cycle 3941, carriage 7, op_code 12, car pos 253
@@ -24307,8 +24307,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3941, carriage 1, op_code 11, car pos 2084
 cycle 3941, carriage 0, op_code 11, car pos 36
 
-cycle 3942, carriage 11, op_code 255, car pos 416
-cycle 3942, carriage 10, op_code 255, car pos 2464
+cycle 3942, carriage 11, op_code 0, car pos 360
+cycle 3942, carriage 10, op_code 0, car pos 2408
 cycle 3942, carriage 9, op_code 9, car pos 2100
 cycle 3942, carriage 8, op_code 9, car pos 52
 cycle 3942, carriage 7, op_code 12, car pos 253
@@ -24320,8 +24320,8 @@ cycle 3942, carriage 2, op_code 1, car pos 2217
 cycle 3942, carriage 1, op_code 11, car pos 2084
 cycle 3942, carriage 0, op_code 11, car pos 36
 
-cycle 3943, carriage 11, op_code 255, car pos 417
-cycle 3943, carriage 10, op_code 255, car pos 2465
+cycle 3943, carriage 11, op_code 0, car pos 360
+cycle 3943, carriage 10, op_code 0, car pos 2408
 cycle 3943, carriage 9, op_code 9, car pos 2100
 cycle 3943, carriage 8, op_code 9, car pos 52
 cycle 3943, carriage 7, op_code 12, car pos 253
@@ -24333,8 +24333,8 @@ cycle 3943, carriage 2, op_code 1, car pos 2217
 cycle 3943, carriage 1, op_code 4, car pos 2090
 cycle 3943, carriage 0, op_code 4, car pos 42
 
-cycle 3944, carriage 11, op_code 255, car pos 418
-cycle 3944, carriage 10, op_code 255, car pos 2466
+cycle 3944, carriage 11, op_code 0, car pos 361
+cycle 3944, carriage 10, op_code 0, car pos 2409
 cycle 3944, carriage 9, op_code 9, car pos 2100
 cycle 3944, carriage 8, op_code 9, car pos 52
 cycle 3944, carriage 7, op_code 12, car pos 253
@@ -24346,8 +24346,8 @@ cycle 3944, carriage 2, op_code 1, car pos 2217
 cycle 3944, carriage 1, op_code 4, car pos 2090
 cycle 3944, carriage 0, op_code 4, car pos 42
 
-cycle 3945, carriage 11, op_code 255, car pos 419
-cycle 3945, carriage 10, op_code 255, car pos 2467
+cycle 3945, carriage 11, op_code 0, car pos 361
+cycle 3945, carriage 10, op_code 0, car pos 2409
 cycle 3945, carriage 9, op_code 9, car pos 2100
 cycle 3945, carriage 8, op_code 9, car pos 52
 cycle 3945, carriage 7, op_code 12, car pos 253
@@ -24359,8 +24359,8 @@ cycle 3945, carriage 2, op_code 1, car pos 2217
 cycle 3945, carriage 1, op_code 4, car pos 2090
 cycle 3945, carriage 0, op_code 4, car pos 42
 
-cycle 3946, carriage 11, op_code 255, car pos 420
-cycle 3946, carriage 10, op_code 255, car pos 2468
+cycle 3946, carriage 11, op_code 0, car pos 362
+cycle 3946, carriage 10, op_code 0, car pos 2410
 cycle 3946, carriage 9, op_code 9, car pos 2100
 cycle 3946, carriage 8, op_code 9, car pos 52
 cycle 3946, carriage 7, op_code 12, car pos 253
@@ -24372,8 +24372,8 @@ cycle 3946, carriage 2, op_code 1, car pos 2217
 cycle 3946, carriage 1, op_code 4, car pos 2090
 cycle 3946, carriage 0, op_code 4, car pos 42
 
-cycle 3947, carriage 11, op_code 255, car pos 421
-cycle 3947, carriage 10, op_code 255, car pos 2469
+cycle 3947, carriage 11, op_code 0, car pos 362
+cycle 3947, carriage 10, op_code 0, car pos 2410
 cycle 3947, carriage 9, op_code 9, car pos 2100
 cycle 3947, carriage 8, op_code 9, car pos 52
 cycle 3947, carriage 7, op_code 12, car pos 253
@@ -24385,8 +24385,8 @@ cycle 3947, carriage 2, op_code 1, car pos 2217
 cycle 3947, carriage 1, op_code 4, car pos 2090
 cycle 3947, carriage 0, op_code 4, car pos 42
 
-cycle 3948, carriage 11, op_code 255, car pos 422
-cycle 3948, carriage 10, op_code 255, car pos 2470
+cycle 3948, carriage 11, op_code 0, car pos 363
+cycle 3948, carriage 10, op_code 0, car pos 2411
 cycle 3948, carriage 9, op_code 9, car pos 2100
 cycle 3948, carriage 8, op_code 9, car pos 52
 cycle 3948, carriage 7, op_code 12, car pos 253
@@ -24398,8 +24398,8 @@ cycle 3948, carriage 2, op_code 1, car pos 2217
 cycle 3948, carriage 1, op_code 4, car pos 2090
 cycle 3948, carriage 0, op_code 4, car pos 42
 
-cycle 3949, carriage 11, op_code 255, car pos 423
-cycle 3949, carriage 10, op_code 255, car pos 2471
+cycle 3949, carriage 11, op_code 0, car pos 363
+cycle 3949, carriage 10, op_code 0, car pos 2411
 cycle 3949, carriage 9, op_code 2, car pos 2103
 cycle 3949, carriage 8, op_code 2, car pos 55
 cycle 3949, carriage 7, op_code 12, car pos 253
@@ -24411,8 +24411,8 @@ cycle 3949, carriage 2, op_code 1, car pos 2217
 cycle 3949, carriage 1, op_code 4, car pos 2090
 cycle 3949, carriage 0, op_code 4, car pos 42
 
-cycle 3950, carriage 11, op_code 255, car pos 424
-cycle 3950, carriage 10, op_code 255, car pos 2472
+cycle 3950, carriage 11, op_code 0, car pos 364
+cycle 3950, carriage 10, op_code 0, car pos 2412
 cycle 3950, carriage 9, op_code 2, car pos 2103
 cycle 3950, carriage 8, op_code 2, car pos 55
 cycle 3950, carriage 7, op_code 12, car pos 253
@@ -24424,8 +24424,8 @@ cycle 3950, carriage 2, op_code 1, car pos 2217
 cycle 3950, carriage 1, op_code 4, car pos 2090
 cycle 3950, carriage 0, op_code 4, car pos 42
 
-cycle 3951, carriage 11, op_code 255, car pos 425
-cycle 3951, carriage 10, op_code 255, car pos 2473
+cycle 3951, carriage 11, op_code 0, car pos 364
+cycle 3951, carriage 10, op_code 0, car pos 2412
 cycle 3951, carriage 9, op_code 2, car pos 2103
 cycle 3951, carriage 8, op_code 2, car pos 55
 cycle 3951, carriage 7, op_code 12, car pos 253
@@ -24439,8 +24439,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3951, carriage 1, op_code 4, car pos 2090
 cycle 3951, carriage 0, op_code 4, car pos 42
 
-cycle 3952, carriage 11, op_code 255, car pos 426
-cycle 3952, carriage 10, op_code 255, car pos 2474
+cycle 3952, carriage 11, op_code 0, car pos 365
+cycle 3952, carriage 10, op_code 0, car pos 2413
 cycle 3952, carriage 9, op_code 2, car pos 2103
 cycle 3952, carriage 8, op_code 2, car pos 55
 cycle 3952, carriage 7, op_code 12, car pos 253
@@ -24452,8 +24452,8 @@ cycle 3952, carriage 2, op_code 1, car pos 2222
 cycle 3952, carriage 1, op_code 4, car pos 2090
 cycle 3952, carriage 0, op_code 4, car pos 42
 
-cycle 3953, carriage 11, op_code 255, car pos 427
-cycle 3953, carriage 10, op_code 255, car pos 2475
+cycle 3953, carriage 11, op_code 0, car pos 365
+cycle 3953, carriage 10, op_code 0, car pos 2413
 cycle 3953, carriage 9, op_code 2, car pos 2103
 cycle 3953, carriage 8, op_code 2, car pos 55
 cycle 3953, carriage 7, op_code 12, car pos 253
@@ -24465,8 +24465,8 @@ cycle 3953, carriage 2, op_code 1, car pos 2222
 cycle 3953, carriage 1, op_code 8, car pos 2095
 cycle 3953, carriage 0, op_code 8, car pos 47
 
-cycle 3954, carriage 11, op_code 255, car pos 428
-cycle 3954, carriage 10, op_code 255, car pos 2476
+cycle 3954, carriage 11, op_code 0, car pos 366
+cycle 3954, carriage 10, op_code 0, car pos 2414
 cycle 3954, carriage 9, op_code 9, car pos 2110
 cycle 3954, carriage 8, op_code 9, car pos 62
 cycle 3954, carriage 7, op_code 12, car pos 253
@@ -24478,8 +24478,8 @@ cycle 3954, carriage 2, op_code 1, car pos 2222
 cycle 3954, carriage 1, op_code 8, car pos 2095
 cycle 3954, carriage 0, op_code 8, car pos 47
 
-cycle 3955, carriage 11, op_code 255, car pos 429
-cycle 3955, carriage 10, op_code 255, car pos 2477
+cycle 3955, carriage 11, op_code 0, car pos 366
+cycle 3955, carriage 10, op_code 0, car pos 2414
 cycle 3955, carriage 9, op_code 9, car pos 2110
 cycle 3955, carriage 8, op_code 9, car pos 62
 cycle 3955, carriage 7, op_code 12, car pos 253
@@ -24491,8 +24491,8 @@ cycle 3955, carriage 2, op_code 1, car pos 2222
 cycle 3955, carriage 1, op_code 8, car pos 2095
 cycle 3955, carriage 0, op_code 8, car pos 47
 
-cycle 3956, carriage 11, op_code 255, car pos 430
-cycle 3956, carriage 10, op_code 255, car pos 2478
+cycle 3956, carriage 11, op_code 0, car pos 367
+cycle 3956, carriage 10, op_code 0, car pos 2415
 cycle 3956, carriage 9, op_code 9, car pos 2110
 cycle 3956, carriage 8, op_code 9, car pos 62
 cycle 3956, carriage 7, op_code 12, car pos 253
@@ -24504,8 +24504,8 @@ cycle 3956, carriage 2, op_code 1, car pos 2222
 cycle 3956, carriage 1, op_code 8, car pos 2095
 cycle 3956, carriage 0, op_code 8, car pos 47
 
-cycle 3957, carriage 11, op_code 255, car pos 431
-cycle 3957, carriage 10, op_code 255, car pos 2479
+cycle 3957, carriage 11, op_code 0, car pos 367
+cycle 3957, carriage 10, op_code 0, car pos 2415
 cycle 3957, carriage 9, op_code 9, car pos 2110
 cycle 3957, carriage 8, op_code 9, car pos 62
 cycle 3957, carriage 7, op_code 12, car pos 253
@@ -24517,8 +24517,8 @@ cycle 3957, carriage 2, op_code 1, car pos 2222
 cycle 3957, carriage 1, op_code 8, car pos 2095
 cycle 3957, carriage 0, op_code 8, car pos 47
 
-cycle 3958, carriage 11, op_code 255, car pos 432
-cycle 3958, carriage 10, op_code 255, car pos 2480
+cycle 3958, carriage 11, op_code 0, car pos 368
+cycle 3958, carriage 10, op_code 0, car pos 2416
 cycle 3958, carriage 9, op_code 9, car pos 2110
 cycle 3958, carriage 8, op_code 9, car pos 62
 cycle 3958, carriage 7, op_code 12, car pos 253
@@ -24530,8 +24530,8 @@ cycle 3958, carriage 2, op_code 1, car pos 2222
 cycle 3958, carriage 1, op_code 8, car pos 2095
 cycle 3958, carriage 0, op_code 8, car pos 47
 
-cycle 3959, carriage 11, op_code 255, car pos 433
-cycle 3959, carriage 10, op_code 255, car pos 2481
+cycle 3959, carriage 11, op_code 0, car pos 368
+cycle 3959, carriage 10, op_code 0, car pos 2416
 cycle 3959, carriage 9, op_code 9, car pos 2110
 cycle 3959, carriage 8, op_code 9, car pos 62
 cycle 3959, carriage 7, op_code 12, car pos 253
@@ -24543,8 +24543,8 @@ cycle 3959, carriage 2, op_code 1, car pos 2222
 cycle 3959, carriage 1, op_code 9, car pos 2100
 cycle 3959, carriage 0, op_code 9, car pos 52
 
-cycle 3960, carriage 11, op_code 255, car pos 434
-cycle 3960, carriage 10, op_code 255, car pos 2482
+cycle 3960, carriage 11, op_code 0, car pos 369
+cycle 3960, carriage 10, op_code 0, car pos 2417
 cycle 3960, carriage 9, op_code 9, car pos 2110
 cycle 3960, carriage 8, op_code 9, car pos 62
 cycle 3960, carriage 7, op_code 12, car pos 253
@@ -24556,8 +24556,8 @@ cycle 3960, carriage 2, op_code 1, car pos 2222
 cycle 3960, carriage 1, op_code 9, car pos 2100
 cycle 3960, carriage 0, op_code 9, car pos 52
 
-cycle 3961, carriage 11, op_code 255, car pos 435
-cycle 3961, carriage 10, op_code 255, car pos 2483
+cycle 3961, carriage 11, op_code 0, car pos 369
+cycle 3961, carriage 10, op_code 0, car pos 2417
 cycle 3961, carriage 9, op_code 9, car pos 2110
 cycle 3961, carriage 8, op_code 9, car pos 62
 cycle 3961, carriage 7, op_code 12, car pos 253
@@ -24571,8 +24571,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3961, carriage 1, op_code 9, car pos 2100
 cycle 3961, carriage 0, op_code 9, car pos 52
 
-cycle 3962, carriage 11, op_code 255, car pos 436
-cycle 3962, carriage 10, op_code 255, car pos 2484
+cycle 3962, carriage 11, op_code 0, car pos 370
+cycle 3962, carriage 10, op_code 0, car pos 2418
 cycle 3962, carriage 9, op_code 9, car pos 2110
 cycle 3962, carriage 8, op_code 9, car pos 62
 cycle 3962, carriage 7, op_code 12, car pos 253
@@ -24584,8 +24584,8 @@ cycle 3962, carriage 2, op_code 1, car pos 2227
 cycle 3962, carriage 1, op_code 9, car pos 2100
 cycle 3962, carriage 0, op_code 9, car pos 52
 
-cycle 3963, carriage 11, op_code 255, car pos 437
-cycle 3963, carriage 10, op_code 255, car pos 2485
+cycle 3963, carriage 11, op_code 0, car pos 370
+cycle 3963, carriage 10, op_code 0, car pos 2418
 cycle 3963, carriage 9, op_code 9, car pos 2110
 cycle 3963, carriage 8, op_code 9, car pos 62
 cycle 3963, carriage 7, op_code 12, car pos 253
@@ -24597,8 +24597,8 @@ cycle 3963, carriage 2, op_code 1, car pos 2227
 cycle 3963, carriage 1, op_code 9, car pos 2100
 cycle 3963, carriage 0, op_code 9, car pos 52
 
-cycle 3964, carriage 11, op_code 255, car pos 438
-cycle 3964, carriage 10, op_code 255, car pos 2486
+cycle 3964, carriage 11, op_code 0, car pos 371
+cycle 3964, carriage 10, op_code 0, car pos 2419
 cycle 3964, carriage 9, op_code 9, car pos 2110
 cycle 3964, carriage 8, op_code 9, car pos 62
 cycle 3964, carriage 7, op_code 12, car pos 253
@@ -24610,8 +24610,8 @@ cycle 3964, carriage 2, op_code 1, car pos 2227
 cycle 3964, carriage 1, op_code 9, car pos 2100
 cycle 3964, carriage 0, op_code 9, car pos 52
 
-cycle 3965, carriage 11, op_code 255, car pos 439
-cycle 3965, carriage 10, op_code 255, car pos 2487
+cycle 3965, carriage 11, op_code 0, car pos 371
+cycle 3965, carriage 10, op_code 0, car pos 2419
 cycle 3965, carriage 9, op_code 9, car pos 2110
 cycle 3965, carriage 8, op_code 9, car pos 62
 cycle 3965, carriage 7, op_code 12, car pos 253
@@ -24623,8 +24623,8 @@ cycle 3965, carriage 2, op_code 1, car pos 2227
 cycle 3965, carriage 1, op_code 9, car pos 2100
 cycle 3965, carriage 0, op_code 9, car pos 52
 
-cycle 3966, carriage 11, op_code 255, car pos 440
-cycle 3966, carriage 10, op_code 255, car pos 2488
+cycle 3966, carriage 11, op_code 0, car pos 372
+cycle 3966, carriage 10, op_code 0, car pos 2420
 cycle 3966, carriage 9, op_code 9, car pos 2110
 cycle 3966, carriage 8, op_code 9, car pos 62
 cycle 3966, carriage 7, op_code 12, car pos 253
@@ -24636,8 +24636,8 @@ cycle 3966, carriage 2, op_code 1, car pos 2227
 cycle 3966, carriage 1, op_code 9, car pos 2100
 cycle 3966, carriage 0, op_code 9, car pos 52
 
-cycle 3967, carriage 11, op_code 255, car pos 441
-cycle 3967, carriage 10, op_code 255, car pos 2489
+cycle 3967, carriage 11, op_code 0, car pos 372
+cycle 3967, carriage 10, op_code 0, car pos 2420
 cycle 3967, carriage 9, op_code 9, car pos 2110
 cycle 3967, carriage 8, op_code 9, car pos 62
 cycle 3967, carriage 7, op_code 12, car pos 253
@@ -24649,8 +24649,8 @@ cycle 3967, carriage 2, op_code 1, car pos 2227
 cycle 3967, carriage 1, op_code 9, car pos 2100
 cycle 3967, carriage 0, op_code 9, car pos 52
 
-cycle 3968, carriage 11, op_code 255, car pos 442
-cycle 3968, carriage 10, op_code 255, car pos 2490
+cycle 3968, carriage 11, op_code 0, car pos 373
+cycle 3968, carriage 10, op_code 0, car pos 2421
 cycle 3968, carriage 9, op_code 9, car pos 2110
 cycle 3968, carriage 8, op_code 9, car pos 62
 cycle 3968, carriage 7, op_code 12, car pos 253
@@ -24662,8 +24662,8 @@ cycle 3968, carriage 2, op_code 1, car pos 2227
 cycle 3968, carriage 1, op_code 9, car pos 2100
 cycle 3968, carriage 0, op_code 9, car pos 52
 
-cycle 3969, carriage 11, op_code 255, car pos 443
-cycle 3969, carriage 10, op_code 255, car pos 2491
+cycle 3969, carriage 11, op_code 0, car pos 373
+cycle 3969, carriage 10, op_code 0, car pos 2421
 cycle 3969, carriage 9, op_code 9, car pos 2110
 cycle 3969, carriage 8, op_code 9, car pos 62
 cycle 3969, carriage 7, op_code 12, car pos 253
@@ -24675,8 +24675,8 @@ cycle 3969, carriage 2, op_code 1, car pos 2227
 cycle 3969, carriage 1, op_code 9, car pos 2100
 cycle 3969, carriage 0, op_code 9, car pos 52
 
-cycle 3970, carriage 11, op_code 255, car pos 444
-cycle 3970, carriage 10, op_code 255, car pos 2492
+cycle 3970, carriage 11, op_code 0, car pos 374
+cycle 3970, carriage 10, op_code 0, car pos 2422
 cycle 3970, carriage 9, op_code 9, car pos 2110
 cycle 3970, carriage 8, op_code 9, car pos 62
 cycle 3970, carriage 7, op_code 12, car pos 253
@@ -24688,8 +24688,8 @@ cycle 3970, carriage 2, op_code 1, car pos 2227
 cycle 3970, carriage 1, op_code 9, car pos 2100
 cycle 3970, carriage 0, op_code 9, car pos 52
 
-cycle 3971, carriage 11, op_code 255, car pos 445
-cycle 3971, carriage 10, op_code 255, car pos 2493
+cycle 3971, carriage 11, op_code 0, car pos 374
+cycle 3971, carriage 10, op_code 0, car pos 2422
 cycle 3971, carriage 9, op_code 9, car pos 2110
 cycle 3971, carriage 8, op_code 9, car pos 62
 cycle 3971, carriage 7, op_code 12, car pos 253
@@ -24703,8 +24703,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3971, carriage 1, op_code 9, car pos 2100
 cycle 3971, carriage 0, op_code 9, car pos 52
 
-cycle 3972, carriage 11, op_code 255, car pos 446
-cycle 3972, carriage 10, op_code 255, car pos 2494
+cycle 3972, carriage 11, op_code 0, car pos 375
+cycle 3972, carriage 10, op_code 0, car pos 2423
 cycle 3972, carriage 9, op_code 9, car pos 2110
 cycle 3972, carriage 8, op_code 9, car pos 62
 cycle 3972, carriage 7, op_code 12, car pos 253
@@ -24716,8 +24716,8 @@ cycle 3972, carriage 2, op_code 1, car pos 2232
 cycle 3972, carriage 1, op_code 9, car pos 2100
 cycle 3972, carriage 0, op_code 9, car pos 52
 
-cycle 3973, carriage 11, op_code 255, car pos 447
-cycle 3973, carriage 10, op_code 255, car pos 2495
+cycle 3973, carriage 11, op_code 0, car pos 375
+cycle 3973, carriage 10, op_code 0, car pos 2423
 cycle 3973, carriage 9, op_code 9, car pos 2110
 cycle 3973, carriage 8, op_code 9, car pos 62
 cycle 3973, carriage 7, op_code 12, car pos 253
@@ -24729,8 +24729,8 @@ cycle 3973, carriage 2, op_code 1, car pos 2232
 cycle 3973, carriage 1, op_code 9, car pos 2100
 cycle 3973, carriage 0, op_code 9, car pos 52
 
-cycle 3974, carriage 11, op_code 255, car pos 448
-cycle 3974, carriage 10, op_code 255, car pos 2496
+cycle 3974, carriage 11, op_code 0, car pos 376
+cycle 3974, carriage 10, op_code 0, car pos 2424
 cycle 3974, carriage 9, op_code 1, car pos 2073
 cycle 3974, carriage 8, op_code 1, car pos 25
 cycle 3974, carriage 7, op_code 12, car pos 253
@@ -24742,8 +24742,8 @@ cycle 3974, carriage 2, op_code 1, car pos 2232
 cycle 3974, carriage 1, op_code 9, car pos 2100
 cycle 3974, carriage 0, op_code 9, car pos 52
 
-cycle 3975, carriage 11, op_code 255, car pos 449
-cycle 3975, carriage 10, op_code 255, car pos 2497
+cycle 3975, carriage 11, op_code 0, car pos 376
+cycle 3975, carriage 10, op_code 0, car pos 2424
 cycle 3975, carriage 9, op_code 1, car pos 2073
 cycle 3975, carriage 8, op_code 1, car pos 25
 cycle 3975, carriage 7, op_code 12, car pos 253
@@ -24755,8 +24755,8 @@ cycle 3975, carriage 2, op_code 1, car pos 2232
 cycle 3975, carriage 1, op_code 9, car pos 2100
 cycle 3975, carriage 0, op_code 9, car pos 52
 
-cycle 3976, carriage 11, op_code 255, car pos 450
-cycle 3976, carriage 10, op_code 255, car pos 2498
+cycle 3976, carriage 11, op_code 0, car pos 377
+cycle 3976, carriage 10, op_code 0, car pos 2425
 cycle 3976, carriage 9, op_code 1, car pos 2073
 cycle 3976, carriage 8, op_code 1, car pos 25
 cycle 3976, carriage 7, op_code 12, car pos 253
@@ -24768,8 +24768,8 @@ cycle 3976, carriage 2, op_code 1, car pos 2232
 cycle 3976, carriage 1, op_code 9, car pos 2100
 cycle 3976, carriage 0, op_code 9, car pos 52
 
-cycle 3977, carriage 11, op_code 255, car pos 451
-cycle 3977, carriage 10, op_code 255, car pos 2499
+cycle 3977, carriage 11, op_code 0, car pos 377
+cycle 3977, carriage 10, op_code 0, car pos 2425
 cycle 3977, carriage 9, op_code 1, car pos 2073
 cycle 3977, carriage 8, op_code 1, car pos 25
 cycle 3977, carriage 7, op_code 12, car pos 253
@@ -24781,8 +24781,8 @@ cycle 3977, carriage 2, op_code 1, car pos 2232
 cycle 3977, carriage 1, op_code 9, car pos 2100
 cycle 3977, carriage 0, op_code 9, car pos 52
 
-cycle 3978, carriage 11, op_code 255, car pos 452
-cycle 3978, carriage 10, op_code 255, car pos 2500
+cycle 3978, carriage 11, op_code 0, car pos 378
+cycle 3978, carriage 10, op_code 0, car pos 2426
 cycle 3978, carriage 9, op_code 1, car pos 2073
 cycle 3978, carriage 8, op_code 1, car pos 25
 cycle 3978, carriage 7, op_code 12, car pos 253
@@ -24794,8 +24794,8 @@ cycle 3978, carriage 2, op_code 1, car pos 2232
 cycle 3978, carriage 1, op_code 9, car pos 2100
 cycle 3978, carriage 0, op_code 9, car pos 52
 
-cycle 3979, carriage 11, op_code 255, car pos 453
-cycle 3979, carriage 10, op_code 255, car pos 2501
+cycle 3979, carriage 11, op_code 0, car pos 378
+cycle 3979, carriage 10, op_code 0, car pos 2426
 cycle 3979, carriage 9, op_code 1, car pos 2073
 cycle 3979, carriage 8, op_code 1, car pos 25
 cycle 3979, carriage 7, op_code 12, car pos 253
@@ -24807,8 +24807,8 @@ cycle 3979, carriage 2, op_code 1, car pos 2232
 cycle 3979, carriage 1, op_code 2, car pos 2103
 cycle 3979, carriage 0, op_code 2, car pos 55
 
-cycle 3980, carriage 11, op_code 255, car pos 454
-cycle 3980, carriage 10, op_code 255, car pos 2502
+cycle 3980, carriage 11, op_code 0, car pos 379
+cycle 3980, carriage 10, op_code 0, car pos 2427
 cycle 3980, carriage 9, op_code 1, car pos 2073
 cycle 3980, carriage 8, op_code 1, car pos 25
 cycle 3980, carriage 7, op_code 12, car pos 253
@@ -24820,8 +24820,8 @@ cycle 3980, carriage 2, op_code 1, car pos 2232
 cycle 3980, carriage 1, op_code 2, car pos 2103
 cycle 3980, carriage 0, op_code 2, car pos 55
 
-cycle 3981, carriage 11, op_code 255, car pos 455
-cycle 3981, carriage 10, op_code 255, car pos 2503
+cycle 3981, carriage 11, op_code 0, car pos 379
+cycle 3981, carriage 10, op_code 0, car pos 2427
 cycle 3981, carriage 9, op_code 1, car pos 2073
 cycle 3981, carriage 8, op_code 1, car pos 25
 cycle 3981, carriage 7, op_code 12, car pos 253
@@ -24835,8 +24835,8 @@ A process shows that player 2 (Jumper !) is alive
 cycle 3981, carriage 1, op_code 2, car pos 2103
 cycle 3981, carriage 0, op_code 2, car pos 55
 
-cycle 3982, carriage 11, op_code 255, car pos 456
-cycle 3982, carriage 10, op_code 255, car pos 2504
+cycle 3982, carriage 11, op_code 0, car pos 380
+cycle 3982, carriage 10, op_code 0, car pos 2428
 cycle 3982, carriage 9, op_code 1, car pos 2073
 cycle 3982, carriage 8, op_code 1, car pos 25
 cycle 3982, carriage 7, op_code 12, car pos 253
@@ -24848,8 +24848,8 @@ cycle 3982, carriage 2, op_code 9, car pos 2237
 cycle 3982, carriage 1, op_code 2, car pos 2103
 cycle 3982, carriage 0, op_code 2, car pos 55
 
-cycle 3983, carriage 11, op_code 255, car pos 457
-cycle 3983, carriage 10, op_code 255, car pos 2505
+cycle 3983, carriage 11, op_code 0, car pos 380
+cycle 3983, carriage 10, op_code 0, car pos 2428
 cycle 3983, carriage 9, op_code 1, car pos 2073
 A process shows that player 2 (Jumper !) is alive
 cycle 3983, carriage 8, op_code 1, car pos 25
@@ -24863,8 +24863,8 @@ cycle 3983, carriage 2, op_code 9, car pos 2237
 cycle 3983, carriage 1, op_code 2, car pos 2103
 cycle 3983, carriage 0, op_code 2, car pos 55
 
-cycle 3984, carriage 11, op_code 255, car pos 458
-cycle 3984, carriage 10, op_code 255, car pos 2506
+cycle 3984, carriage 11, op_code 0, car pos 381
+cycle 3984, carriage 10, op_code 0, car pos 2429
 cycle 3984, carriage 9, op_code 10, car pos 2078
 cycle 3984, carriage 8, op_code 10, car pos 30
 cycle 3984, carriage 7, op_code 12, car pos 253
@@ -24876,8 +24876,8 @@ cycle 3984, carriage 2, op_code 9, car pos 2237
 cycle 3984, carriage 1, op_code 9, car pos 2110
 cycle 3984, carriage 0, op_code 9, car pos 62
 
-cycle 3985, carriage 11, op_code 255, car pos 459
-cycle 3985, carriage 10, op_code 255, car pos 2507
+cycle 3985, carriage 11, op_code 0, car pos 381
+cycle 3985, carriage 10, op_code 0, car pos 2429
 cycle 3985, carriage 9, op_code 10, car pos 2078
 cycle 3985, carriage 8, op_code 10, car pos 30
 cycle 3985, carriage 7, op_code 12, car pos 253
@@ -24889,8 +24889,8 @@ cycle 3985, carriage 2, op_code 9, car pos 2237
 cycle 3985, carriage 1, op_code 9, car pos 2110
 cycle 3985, carriage 0, op_code 9, car pos 62
 
-cycle 3986, carriage 11, op_code 255, car pos 460
-cycle 3986, carriage 10, op_code 255, car pos 2508
+cycle 3986, carriage 11, op_code 0, car pos 382
+cycle 3986, carriage 10, op_code 0, car pos 2430
 cycle 3986, carriage 9, op_code 10, car pos 2078
 cycle 3986, carriage 8, op_code 10, car pos 30
 cycle 3986, carriage 7, op_code 12, car pos 253
@@ -24902,8 +24902,8 @@ cycle 3986, carriage 2, op_code 9, car pos 2237
 cycle 3986, carriage 1, op_code 9, car pos 2110
 cycle 3986, carriage 0, op_code 9, car pos 62
 
-cycle 3987, carriage 11, op_code 255, car pos 461
-cycle 3987, carriage 10, op_code 255, car pos 2509
+cycle 3987, carriage 11, op_code 0, car pos 382
+cycle 3987, carriage 10, op_code 0, car pos 2430
 cycle 3987, carriage 9, op_code 10, car pos 2078
 cycle 3987, carriage 8, op_code 10, car pos 30
 cycle 3987, carriage 7, op_code 12, car pos 253
@@ -24915,8 +24915,8 @@ cycle 3987, carriage 2, op_code 9, car pos 2237
 cycle 3987, carriage 1, op_code 9, car pos 2110
 cycle 3987, carriage 0, op_code 9, car pos 62
 
-cycle 3988, carriage 11, op_code 255, car pos 462
-cycle 3988, carriage 10, op_code 255, car pos 2510
+cycle 3988, carriage 11, op_code 0, car pos 383
+cycle 3988, carriage 10, op_code 0, car pos 2431
 cycle 3988, carriage 9, op_code 10, car pos 2078
 cycle 3988, carriage 8, op_code 10, car pos 30
 cycle 3988, carriage 7, op_code 12, car pos 253
@@ -24928,8 +24928,8 @@ cycle 3988, carriage 2, op_code 9, car pos 2237
 cycle 3988, carriage 1, op_code 9, car pos 2110
 cycle 3988, carriage 0, op_code 9, car pos 62
 
-cycle 3989, carriage 11, op_code 255, car pos 463
-cycle 3989, carriage 10, op_code 255, car pos 2511
+cycle 3989, carriage 11, op_code 0, car pos 383
+cycle 3989, carriage 10, op_code 0, car pos 2431
 cycle 3989, carriage 9, op_code 10, car pos 2078
 cycle 3989, carriage 8, op_code 10, car pos 30
 cycle 3989, carriage 7, op_code 12, car pos 253
@@ -24941,8 +24941,8 @@ cycle 3989, carriage 2, op_code 9, car pos 2237
 cycle 3989, carriage 1, op_code 9, car pos 2110
 cycle 3989, carriage 0, op_code 9, car pos 62
 
-cycle 3990, carriage 11, op_code 255, car pos 464
-cycle 3990, carriage 10, op_code 255, car pos 2512
+cycle 3990, carriage 11, op_code 0, car pos 384
+cycle 3990, carriage 10, op_code 0, car pos 2432
 cycle 3990, carriage 9, op_code 10, car pos 2078
 cycle 3990, carriage 8, op_code 10, car pos 30
 cycle 3990, carriage 7, op_code 12, car pos 253
@@ -24954,8 +24954,8 @@ cycle 3990, carriage 2, op_code 9, car pos 2237
 cycle 3990, carriage 1, op_code 9, car pos 2110
 cycle 3990, carriage 0, op_code 9, car pos 62
 
-cycle 3991, carriage 11, op_code 255, car pos 465
-cycle 3991, carriage 10, op_code 255, car pos 2513
+cycle 3991, carriage 11, op_code 0, car pos 384
+cycle 3991, carriage 10, op_code 0, car pos 2432
 cycle 3991, carriage 9, op_code 10, car pos 2078
 cycle 3991, carriage 8, op_code 10, car pos 30
 cycle 3991, carriage 7, op_code 12, car pos 253
@@ -24967,8 +24967,8 @@ cycle 3991, carriage 2, op_code 9, car pos 2237
 cycle 3991, carriage 1, op_code 9, car pos 2110
 cycle 3991, carriage 0, op_code 9, car pos 62
 
-cycle 3992, carriage 11, op_code 255, car pos 466
-cycle 3992, carriage 10, op_code 255, car pos 2514
+cycle 3992, carriage 11, op_code 0, car pos 385
+cycle 3992, carriage 10, op_code 0, car pos 2433
 cycle 3992, carriage 9, op_code 10, car pos 2078
 cycle 3992, carriage 8, op_code 10, car pos 30
 cycle 3992, carriage 7, op_code 12, car pos 253
@@ -24980,8 +24980,8 @@ cycle 3992, carriage 2, op_code 9, car pos 2237
 cycle 3992, carriage 1, op_code 9, car pos 2110
 cycle 3992, carriage 0, op_code 9, car pos 62
 
-cycle 3993, carriage 11, op_code 255, car pos 467
-cycle 3993, carriage 10, op_code 255, car pos 2515
+cycle 3993, carriage 11, op_code 0, car pos 385
+cycle 3993, carriage 10, op_code 0, car pos 2433
 cycle 3993, carriage 9, op_code 10, car pos 2078
 cycle 3993, carriage 8, op_code 10, car pos 30
 cycle 3993, carriage 7, op_code 12, car pos 253
@@ -24993,8 +24993,8 @@ cycle 3993, carriage 2, op_code 9, car pos 2237
 cycle 3993, carriage 1, op_code 9, car pos 2110
 cycle 3993, carriage 0, op_code 9, car pos 62
 
-cycle 3994, carriage 11, op_code 255, car pos 468
-cycle 3994, carriage 10, op_code 255, car pos 2516
+cycle 3994, carriage 11, op_code 0, car pos 386
+cycle 3994, carriage 10, op_code 0, car pos 2434
 cycle 3994, carriage 9, op_code 10, car pos 2078
 cycle 3994, carriage 8, op_code 10, car pos 30
 cycle 3994, carriage 7, op_code 12, car pos 253
@@ -25006,8 +25006,8 @@ cycle 3994, carriage 2, op_code 9, car pos 2237
 cycle 3994, carriage 1, op_code 9, car pos 2110
 cycle 3994, carriage 0, op_code 9, car pos 62
 
-cycle 3995, carriage 11, op_code 255, car pos 469
-cycle 3995, carriage 10, op_code 255, car pos 2517
+cycle 3995, carriage 11, op_code 0, car pos 386
+cycle 3995, carriage 10, op_code 0, car pos 2434
 cycle 3995, carriage 9, op_code 10, car pos 2078
 cycle 3995, carriage 8, op_code 10, car pos 30
 cycle 3995, carriage 7, op_code 12, car pos 253
@@ -25019,8 +25019,8 @@ cycle 3995, carriage 2, op_code 9, car pos 2237
 cycle 3995, carriage 1, op_code 9, car pos 2110
 cycle 3995, carriage 0, op_code 9, car pos 62
 
-cycle 3996, carriage 11, op_code 255, car pos 470
-cycle 3996, carriage 10, op_code 255, car pos 2518
+cycle 3996, carriage 11, op_code 0, car pos 387
+cycle 3996, carriage 10, op_code 0, car pos 2435
 cycle 3996, carriage 9, op_code 10, car pos 2078
 cycle 3996, carriage 8, op_code 10, car pos 30
 cycle 3996, carriage 7, op_code 12, car pos 253
@@ -25032,8 +25032,8 @@ cycle 3996, carriage 2, op_code 9, car pos 2237
 cycle 3996, carriage 1, op_code 9, car pos 2110
 cycle 3996, carriage 0, op_code 9, car pos 62
 
-cycle 3997, carriage 11, op_code 255, car pos 471
-cycle 3997, carriage 10, op_code 255, car pos 2519
+cycle 3997, carriage 11, op_code 0, car pos 387
+cycle 3997, carriage 10, op_code 0, car pos 2435
 cycle 3997, carriage 9, op_code 10, car pos 2078
 cycle 3997, carriage 8, op_code 10, car pos 30
 cycle 3997, carriage 7, op_code 12, car pos 253
@@ -25045,8 +25045,8 @@ cycle 3997, carriage 2, op_code 9, car pos 2237
 cycle 3997, carriage 1, op_code 9, car pos 2110
 cycle 3997, carriage 0, op_code 9, car pos 62
 
-cycle 3998, carriage 11, op_code 255, car pos 472
-cycle 3998, carriage 10, op_code 255, car pos 2520
+cycle 3998, carriage 11, op_code 0, car pos 388
+cycle 3998, carriage 10, op_code 0, car pos 2436
 cycle 3998, carriage 9, op_code 10, car pos 2078
 cycle 3998, carriage 8, op_code 10, car pos 30
 cycle 3998, carriage 7, op_code 12, car pos 253
@@ -25058,8 +25058,8 @@ cycle 3998, carriage 2, op_code 9, car pos 2237
 cycle 3998, carriage 1, op_code 9, car pos 2110
 cycle 3998, carriage 0, op_code 9, car pos 62
 
-cycle 3999, carriage 11, op_code 255, car pos 473
-cycle 3999, carriage 10, op_code 255, car pos 2521
+cycle 3999, carriage 11, op_code 0, car pos 388
+cycle 3999, carriage 10, op_code 0, car pos 2436
 cycle 3999, carriage 9, op_code 10, car pos 2078
 cycle 3999, carriage 8, op_code 10, car pos 30
 cycle 3999, carriage 7, op_code 12, car pos 253
@@ -25071,8 +25071,8 @@ cycle 3999, carriage 2, op_code 9, car pos 2237
 cycle 3999, carriage 1, op_code 9, car pos 2110
 cycle 3999, carriage 0, op_code 9, car pos 62
 
-cycle 4000, carriage 11, op_code 255, car pos 474
-cycle 4000, carriage 10, op_code 255, car pos 2522
+cycle 4000, carriage 11, op_code 0, car pos 389
+cycle 4000, carriage 10, op_code 0, car pos 2437
 cycle 4000, carriage 9, op_code 10, car pos 2078
 cycle 4000, carriage 8, op_code 10, car pos 30
 cycle 4000, carriage 7, op_code 12, car pos 253
@@ -25248,6 +25248,48 @@ ldi result reg[1] = 33554431 stay at 2084
 ldi result reg[1] = 33554431 stay at 36
 ldi result reg[1] = -83689205 stay at 3970
 ldi result reg[1] = -83689205 stay at 1922
+NOT VALID CODE
+
+
+
+not valid code
+
+
+NOT VALID CODE
+
+
+
+not valid code
+
+
+NOT VALID CODE
+
+
+
+not valid code
+
+
+NOT VALID CODE
+
+
+
+not valid code
+
+
+NOT VALID CODE
+
+
+
+not valid code
+
+
+NOT VALID CODE
+
+
+
+not valid code
+
+
 ldi result reg[1] = -32860929 stay at 2084
 ldi result reg[1] = -16083713 stay at 36
 ldi result reg[1] = -32860929 stay at 2084

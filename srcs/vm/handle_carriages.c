@@ -67,8 +67,7 @@ void			handle_carriages(t_vm *vm)
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
 		ft_printf("cycle %d, carriage %d, op_code %d, car pos %d\n",
 		vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos);
-		if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
-		{		
+			
 			if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 			{
 				carriage->cycles_countdown--;
@@ -81,9 +80,7 @@ void			handle_carriages(t_vm *vm)
 					}				
 				}
 			}
-		}
-		else
-			change_position(&carriage->pos, 1);
+				
 		carriage = carriage->next;
 	}	
 	ft_putchar('\n');
