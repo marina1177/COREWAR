@@ -95,7 +95,8 @@ void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
-	ft_printf("\nadd %d %d %d carr\n", values[0], values[1], values[2], carriage->num);
+	if (vm->mods->dump_cycle - vm->data->cycles < 1000)
+		ft_printf("ADD:\targ1 val: %d | arg2 val: %d | arg3 reg: %d | arg3 val: %d | carr number: %d\n\n", values[0], values[1], values[2], values[0] + values[1], carriage->num);	
 	carriage->regs[values[2]] = values[0] + values[1]; //зачем здесь уменьшать?
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
