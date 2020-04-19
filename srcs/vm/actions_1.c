@@ -26,7 +26,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 	}
 		if (vm->mods->dump_cycle != -1 )
 		{
-			if (vm->mods->dump_cycle - vm->data->cycles <  1000)
+			if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
 				print_is_alive(num, get_player_by_number(vm->players, num)->name);
 		}
 	}

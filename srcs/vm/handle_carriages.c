@@ -66,7 +66,7 @@ void			handle_carriages(t_vm *vm)
 	while (carriage)
 	{
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
-		if (vm->mods->dump_cycle - vm->data->cycles <  1000)
+		if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
 			ft_printf("cycle %d, carriage %d, op_code %d, car pos %d, cd %d\n",
 		vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos, carriage->cycles_countdown);
 			
@@ -86,6 +86,6 @@ void			handle_carriages(t_vm *vm)
 				
 		carriage = carriage->next;
 	}
-	if (vm->mods->dump_cycle - vm->data->cycles <  1000)
+	if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
 		ft_putchar('\n');
 }

@@ -52,7 +52,7 @@ void	corewar(t_vm *vm)
 		if (vm->mods->dump_cycle == vm->data->cycles)
 			print_dump(vm, vm->mods->dump_size);
 		if (cycles == vm->data->cycles_to_die || vm->data->cycles_to_die <=0)
-		{
+		{						
 			check_carriages(vm);
 			cycles = 0;
 		}
