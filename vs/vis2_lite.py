@@ -9,15 +9,21 @@ import os
 import json
 from pprint import pprint
 import math
+from pathlib import Path
+from typing import Union
+import ffmpeg
+import pygame
+
 
 MEM_SIZE = (4*1024)
-SCREEN_WIDTH = 640 + 20
-SCREEN_HEIGHT = 640 + 20
+SQUARE_SPACING = 12
+
+SCREEN_WIDTH = int(math.sqrt(MEM_SIZE) * SQUARE_SPACING) + 20
+SCREEN_HEIGHT = int(math.sqrt(MEM_SIZE) * SQUARE_SPACING) + 20
 SCREEN_TITLE = "Arena"
 
-HALF_SQUARE_WIDTH = 4
-HALF_SQUARE = 4
-SQUARE_SPACING = 10
+HALF_SQUARE = int((SQUARE_SPACING - 2) / 2) if SQUARE_SPACING % 2 == 0 else int((SQUARE_SPACING - 1) / 2)
+
 
 CARR_BORD_W = SQUARE_SPACING - 2*(HALF_SQUARE)
 CARR_WIDTH = 2 * HALF_SQUARE
@@ -25,17 +31,22 @@ CARR_HEIGHT = 2 * HALF_SQUARE
 
 COLOR_PLAYER = [arcade.color.RED, arcade.color.GOLD, arcade.color.GREEN, arcade.color.BLUEBERRY]
 COLOR_WRITE = [arcade.color.ALABAMA_CRIMSON, arcade.color.LEMON_GLACIER, arcade.color.LINCOLN_GREEN, arcade.color.AQUA]
-
+OP_CODE = ['lv', 'd', 'st', 'ad', 'su', '&', 'or', 'xo', 'zj', 'di', 'si', 'fk', 'll', 'li', 'lf', 'af']
 
 class Consts(object):
 	def __init__(self, mem_size = 4096, cycle_delta = 50, players_number = 0,
 	             max_checks = 10, const_nbr_live = 21, const_cycle_to_die = 1536):
 		self.mem_size = mem_size
+		self.sq_spacing = 10
+		self.screen = (self.mem_size / self.sq_spacing) + 20
+		self.half_sq = ((self.sq_spacing - 2) / 2 if self.sq_spacing % 2 == 0 else self.sq_spacing / 2)
+
 		self.cycle_delta = cycle_delta
 		self.players_number = players_number
 		self.max_checks = max_checks
 		self.const_nbr_live = const_nbr_live
 		self.const_cycle_to_die = const_cycle_to_die
+
 
 class State(object):
 	def __init__(self, total_process = -1, cycle_to_die = -1, nbr_live = -1):
@@ -49,6 +60,7 @@ class Champion(object):
 		self.name = name
 		self.start_code = start_code
 		self.size_code = size_code
+		self.area = size_code
 		self.is_alive = 1
 		self.last_live = 0
 		self.lives_in_period = 0
@@ -69,7 +81,7 @@ class MyGame(arcade.Window):
 		self.data = data
 
 		self.cycle = 0
-		self.speed = -10
+		self.speed = 5
 		self.json_indx = 0
 		self.frame_count = 0
 		self.draw_time = 0
@@ -100,15 +112,17 @@ class MyGame(arcade.Window):
 			self.carriage_list.append(carr)
 
 	def setup(self):
+
 		self.shape_list = arcade.ShapeElementList()
+
 		cnt = 0
 		for y in range(SCREEN_WIDTH - 10 - HALF_SQUARE, 10, -SQUARE_SPACING):
 			for x in range(HALF_SQUARE + 10, SCREEN_WIDTH-10, SQUARE_SPACING):
 
-				top_left = (x - HALF_SQUARE_WIDTH, y + HALF_SQUARE)
-				top_right = (x + HALF_SQUARE_WIDTH, y + HALF_SQUARE)
-				bottom_right = (x + HALF_SQUARE_WIDTH, y - HALF_SQUARE)
-				bottom_left = (x - HALF_SQUARE_WIDTH, y - HALF_SQUARE)
+				top_left = (x - HALF_SQUARE, y + HALF_SQUARE)
+				top_right = (x + HALF_SQUARE, y + HALF_SQUARE)
+				bottom_right = (x + HALF_SQUARE, y - HALF_SQUARE)
+				bottom_left = (x - HALF_SQUARE, y - HALF_SQUARE)
 
 				self.point_list.append(top_left)
 				self.point_list.append(top_right)
@@ -131,9 +145,9 @@ class MyGame(arcade.Window):
 		shape = arcade.create_rectangles_filled_with_colors(self.point_list, self.color_list)
 		self.shape_list.append(shape)
 
+
 	def state_refresh(self, data_state):
 		#print('state_refresh')
-		#print('total_process:', data_state['total_process'],'\ncycle_to_die:', data_state['cycle_to_die'] )
 		self.state = State(data_state['total_process'], data_state['cycle_to_die'],  data_state['nbr_live'])
 
 
@@ -155,16 +169,27 @@ class MyGame(arcade.Window):
 			                 data_carr[i]['place'])
 			carr.x_cntr = bl0
 			carr.y_cntr = bl1
-			print('carr.x=', carr.x_cntr, 'carr.y =', carr.y_cntr)
+			#print('carr.x=', carr.x_cntr, 'carr.y =', carr.y_cntr)
 			self.carriage_list.append(carr)
 
 	def cell_refresh(self, data_cell):
 		#print('cell_refresh')
 		for i in range(0, len(data_cell)):
 			start_place = data_cell[i]['cell_address'] * 4
+
+			# увеличиваю счетчик занятой игроком площади
+			for j in range(0, len(self.players)):
+				if self.color_list[start_place] == COLOR_PLAYER[data_cell[i]['player_id'] - 1]:
+					break
+				elif (self.color_list[start_place] == COLOR_PLAYER[j]) & j != data_cell[i]['player_id'] - 1:
+					self.players[j].area -= 1
+					self.players[data_cell[i]['player_id'] - 1].area += 1
+				elif self.color_list[start_place] == arcade.color.BATTLESHIP_GREY:
+					self.players[data_cell[i]['player_id'] - 1].area += 1
+
+			# меняю цвет ячейки
 			for k in range(0, 4):
 				self.color_list[start_place + k] = COLOR_WRITE[data_cell[i]['player_id'] - 1]
-
 
 	def drop(self):
 		# State refresh
@@ -181,7 +206,7 @@ class MyGame(arcade.Window):
 			self.carr_refresh(self.data[self.json_indx]['Carriages'], self.point_list)
 		# Cell color refresh
 		if self.data[self.json_indx]['cells_refresh'] > 0:
-			self.cell_refresh(self.data[self.json_indx]['Cells'], self.color_list)
+			self.cell_refresh(self.data[self.json_indx]['Cells'])
 		self.cycle = self.data[self.json_indx]['cycle']
 
 	def draw_info(self):
@@ -189,8 +214,13 @@ class MyGame(arcade.Window):
 		start_x = SCREEN_WIDTH + 20
 		# arcade.draw_point(start_x, start_y, arcade.color.BLUE, 5)
 		if self.game_over == False:
-			arcade.draw_text("game over: **running**",
+			arcade.draw_text("game state: **running**",
 		                 start_x, start_y, arcade.color.WHITE, 12)
+		start_y -= 20
+		output = f"Drawing time: {self.draw_time:.5f} seconds per frame."
+		arcade.draw_text(output, start_x, start_y, arcade.color.WHITE, 12)
+
+
 		start_y -= 40
 		mystr = 'total process: ' + str(self.state.total_process)
 		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
@@ -229,6 +259,7 @@ class MyGame(arcade.Window):
 			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
 
 			start_y -= 30
+		#print('star_x =', start_x, 'start_y =', start_y)
 
 
 	def draw_carr(self, carr_list):
@@ -241,6 +272,32 @@ class MyGame(arcade.Window):
 			arcade.draw_rectangle_outline(carr_list[i].x_cntr, carr_list[i].y_cntr,
 			                              CARR_WIDTH, CARR_HEIGHT,
 			                              arcade.color.WHITE, CARR_BORD_W, 0)
+			arcade.draw_text(OP_CODE[carr_list[i].op_code], bl0, bl1, arcade.color.BLACK, 8)
+
+
+	def draw_schem(self):
+		# print('Draw schem')
+		start_x = start_x = SCREEN_WIDTH + 20
+		start_y = 120
+
+		arcade.draw_text('arena distribute:', start_x, start_y, arcade.color.WHITE, 12)
+		start_y -= 10
+		arcade.draw_lrtb_rectangle_outline(start_x, start_x + MEM_SIZE/10 + 2, start_y, start_y - 12,
+		                             arcade.color.WHITE, 2)
+		start_x += 2
+		start_y -= 2
+		sum_area = 0
+		for i in range(0, len(self.players)):
+			sum_area += self.players[i].area
+			arcade.draw_lrtb_rectangle_filled(start_x, start_x + self.players[i].area/10,
+			                                  start_y, start_y - 8,
+			                                  COLOR_PLAYER[i])
+			start_x += self.players[i].area/10
+
+		arcade.draw_lrtb_rectangle_filled(start_x, start_x + (self.const.mem_size - sum_area)/10,
+		                                  start_y, start_y - 8,
+		                                  arcade.color.BATTLESHIP_GREY)
+
 
 	def on_draw(self):
 		#print('>>on_draw>>')
@@ -250,39 +307,75 @@ class MyGame(arcade.Window):
 		self.shape_list.draw()
 		self.draw_carr(self.carriage_list)
 		self.draw_info()
-
-		output = f"Drawing time: {self.draw_time:.5f} seconds per frame."
-		arcade.draw_text(output, 20, SCREEN_HEIGHT - 40, arcade.color.WHITE, 18)
-
+		self.draw_schem()
 		self.draw_time = timeit.default_timer() - draw_start_time
 
 	def update(self, delta_time):
 		#print('update')
-		self.frame_count += 1
+		"""self.frame_count += 1
 		if self.frame_count % 10 == 0:
 			self.json_indx += 1
 			if self.json_indx < len(self.data):
+				self.drop()"""
+
+		if self.speed > 0:
+			self.json_indx += self.speed if self.json_indx != 0 else 1
+			if self.json_indx <= len(self.data) - 1:
 				self.drop()
+			else:
+				self.game_over = True
+		if self.speed < 0:
+			self.frame_count += 1 # обнулить в key_press
+		if self.frame_count % int(math.fabs(self.speed)) == 0:
+			self.json_indx += 1
+			if self.json_indx < len(self.data):
+				self.drop()
+			elif self.json_indx > len(self.data) - 1:
+				self.json_indx = len(self.data) - 1
+				self.drop()
+				self.game_over = True
+
+	def on_key_press(self, key, modifiers):
+
+		if key == arcade.key.UP:
+			self.frame_count = 0
+			dt = (2 if self.speed == -1 else 1)
+			self.speed += dt
+			if self.speed > 10:
+				self.speed = 10
+		elif key == arcade.key.DOWN:
+			self.frame_count = 0
+			self.speed -= (2 if self.speed == 1 else 1)
+			if self.speed < -10:
+				self.speed = -10
+		print('speed =', self.speed)
 
 def main():
+	pygame.init()
+	pygame.mixer.music.load('sound/Secret_of_Mana_Desert_Snowstorm_OC_ReMix.mp3')
+	pygame.mixer.music.play(- 1)
 	with open('vis.json') as f:
 		data = json.load(f)
-
-		const = Consts(data[0]['Consts']['mem_size'],
+	const = Consts(data[0]['Consts']['mem_size'],
 		               data[0]['Consts']['cycle_delta'],
 		               data[0]['Consts']['players_number'],
 		               data[0]['Consts']['max_checks'],
 		               data[0]['Consts']['const_nbr_live'],
 		               data[0]['Consts']['const_cycle_to_die'])
 
-		if ('State' in data[0]) & (data[0]['State']['error_code'] == 0):
-			state = State(data[0]['State']['total_process'],
+	const.sq_spacing = 12
+
+	if ('State' in data[0]) & (data[0]['State']['error_code'] == 0):
+		state = State(data[0]['State']['total_process'],
 		               data[0]['State']['cycle_to_die'],
 		               data[0]['State']['nbr_live'])
-			window = MyGame(SCREEN_WIDTH + 500, SCREEN_HEIGHT, SCREEN_TITLE,
+
+		MEM_SIZE = const.mem_size
+		const.sq_spacing = SQUARE_SPACING
+		window = MyGame(SCREEN_WIDTH + 500, SCREEN_HEIGHT, 'Arena',
 			                data, const, state)
-			window.setup()
-			arcade.run()
+		window.setup()
+		arcade.run()
 
 
 if __name__ == "__main__":
