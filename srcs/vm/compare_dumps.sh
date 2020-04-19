@@ -1,4 +1,4 @@
-make && ./corewar jumper.cor jumper.cor -d $1 > 1177.txt && ./corewar_copy -d $1 jumper.cor jumper.cor > origin.txt;
+make && ./corewar_copy -d $1 jumper.cor jumper.cor jumper.cor > origin.txt && ./corewar jumper.cor jumper.cor jumper.cor -d $1 > 1177.txt;
 diff 1177.txt origin.txt
 ret=$?
 green='\033[0;32m'

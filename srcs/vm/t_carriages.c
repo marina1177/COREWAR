@@ -25,12 +25,16 @@ t_carriages			*t_carriages_new(void)
 }
 
 t_carriage	*t_carriages_pop(t_carriages *list, t_carriage *node)
-{
-	if (!node->prev)
-		list->head = node->next;
+{		
+	if (node->prev == NULL)
+	{		
+		list->head = node->next;		
+	}
 	else
-		node->prev->next = node->next;
-	if (!node->next)
+	{		
+		node->prev->next = node->next;		
+	}
+	if (node->next == NULL)
 		list->tail = node->prev;
 	else
 		node->next->prev = node->prev;
@@ -46,9 +50,10 @@ t_carriage	*t_carriages_pop(t_carriages *list, t_carriage *node)
 }
 
 t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node)
-{
+{	
 	t_carriages_pop(list, node);
 	free(node);
+	node = NULL;
 	return (list);
 }
 
@@ -81,4 +86,19 @@ t_carriage		*t_carriages_append(t_carriages *list, t_carriage *new)
 	else
 		t_carriages_insert_after(list, list->tail, new);
 	return (new);
+}
+
+int				t_carriages_len(t_carriages *list)
+{
+	t_carriage	*temp;
+	int 		len;
+
+	len = 0;
+	temp = list->head;
+	while(temp)
+	{
+		len++;
+		temp = temp->next;
+	}
+	return (len);
 }

@@ -36,7 +36,7 @@ void		print_final_result(t_vm *vm)
 {
 	t_player *winner;
 
-	winner = vm->players->first_player;
+	winner = get_player_by_number(vm->players, vm->players->last_alive_num);
 	ft_printf("Contestant %d, \"%s\", has won !\n",
 		winner->num, winner->name);
 	exit(0);

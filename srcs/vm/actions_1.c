@@ -20,6 +20,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	 		if (num == p->num)
 	 		{
 	 			p->last_live = vm->data->cycles; //мы эту переменную увеличиваем?
+				vm->players->last_alive_num = num;			
 	 			break ;
 	 		}
 	 		p = p->next;
@@ -29,8 +30,10 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 			if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
 				print_is_alive(num, get_player_by_number(vm->players, num)->name);
 		}
+		
 	}
 	carriage->pos = position;
+	vm->data->lives_counter++;
 	//t_player *get_player_by_number(t_players *players, int num)
 	
 	//printf("live\n");
@@ -95,8 +98,8 @@ void	do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
-	if (vm->mods->dump_cycle - vm->data->cycles < 1000)
-		ft_printf("ADD:\targ1 val: %d | arg2 val: %d | arg3 reg: %d | arg3 val: %d | carr number: %d\n\n", values[0], values[1], values[2], values[0] + values[1], carriage->num);	
+	//if (vm->mods->dump_cycle - vm->data->cycles < 1000)
+	//	ft_printf("ADD:\targ1 val: %d | arg2 val: %d | arg3 reg: %d | arg3 val: %d | carr number: %d\n\n", values[0], values[1], values[2], values[0] + values[1], carriage->num);	
 	carriage->regs[values[2]] = values[0] + values[1]; //зачем здесь уменьшать?
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
