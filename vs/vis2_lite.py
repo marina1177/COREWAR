@@ -169,22 +169,19 @@ class MyGame(arcade.Window):
 			                 data_carr[i]['place'])
 			carr.x_cntr = bl0
 			carr.y_cntr = bl1
-			#print('carr.x=', carr.x_cntr, 'carr.y =', carr.y_cntr)
 			self.carriage_list.append(carr)
 
 	def cell_refresh(self, data_cell):
 		#print('cell_refresh')
 		for i in range(0, len(data_cell)):
 			for j in range(0, len(data_cell[i]['cells_address'])):
-				#print(data_cell[i]['cells_address'][j])
 
 				start_place = data_cell[i]['cells_address'][j] * 4
 			# меняю счетчик занятой игроком площади
 				for k in range(0, len(self.players)):
 					if self.color_list[start_place] == COLOR_PLAYER[data_cell[i]['id'] - 1]:
-						print('color', self.color_list[start_place], 'is', data_cell[i]['id'], 'player')
 						break
-					elif (self.color_list[start_place] == COLOR_PLAYER[self.players[k].id - 1]):
+					elif self.color_list[start_place] == COLOR_PLAYER[self.players[k].id - 1]:
 						self.players[k].area -= 1
 						self.players[len(self.players) - data_cell[i]['id']].area += 1
 						break
@@ -194,11 +191,8 @@ class MyGame(arcade.Window):
 			# меняю цвет ячейки
 				for n in range(0, 4):
 					self.color_list[start_place + n] = COLOR_WRITE[data_cell[i]['id'] - 1]
-					print(str(self.color_list[start_place + n]))
 
 	def drop(self):
-		"""del self.shape_list[:]
-		self.shape_list = arcade.ShapeElementList()"""
 
 		# State refresh
 		if self.data[self.json_indx]['state_refresh'] > 0:
@@ -230,6 +224,10 @@ class MyGame(arcade.Window):
 		start_y -= 20
 		output = f"Drawing time: {self.draw_time:.5f} seconds per frame."
 		arcade.draw_text(output, start_x, start_y, arcade.color.WHITE, 12)
+
+		start_y -= 20
+		mystr = 'SPEED:' + str(self.speed)
+		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
 
 
 		start_y -= 40
@@ -326,12 +324,7 @@ class MyGame(arcade.Window):
 		self.draw_time = timeit.default_timer() - draw_start_time
 
 	def update(self, delta_time):
-		#print('update')
-		"""self.frame_count += 1
-		if self.frame_count % 10 == 0:
-			self.json_indx += 1
-			if self.json_indx < len(self.data):
-				self.drop()"""
+		# print('update')
 
 		if self.speed > 0:
 			self.json_indx += self.speed if self.json_indx != 0 else 1
@@ -354,16 +347,15 @@ class MyGame(arcade.Window):
 
 		if key == arcade.key.UP:
 			self.frame_count = 0
-			dt = (2 if self.speed == -1 else 1)
+			dt = (3 if self.speed == -2 else 2)
 			self.speed += dt
-			if self.speed > 10:
-				self.speed = 10
+			if self.speed > 20:
+				self.speed = 20
 		elif key == arcade.key.DOWN:
 			self.frame_count = 0
-			self.speed -= (2 if self.speed == 1 else 1)
-			if self.speed < -10:
-				self.speed = -10
-		print('speed =', self.speed)
+			self.speed -= (3 if self.speed == 2 else 2)
+			if self.speed < -60:
+				self.speed = -60
 
 def main():
 	pygame.init()
