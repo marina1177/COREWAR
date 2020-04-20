@@ -29,8 +29,8 @@ CARR_BORD_W = SQUARE_SPACING - 2*(HALF_SQUARE)
 CARR_WIDTH = 2 * HALF_SQUARE
 CARR_HEIGHT = 2 * HALF_SQUARE
 
-COLOR_PLAYER = [arcade.color.RED, arcade.color.GOLD, arcade.color.GREEN, arcade.color.BLUEBERRY]
-COLOR_WRITE = [arcade.color.ALABAMA_CRIMSON, arcade.color.LEMON_GLACIER, arcade.color.LINCOLN_GREEN, arcade.color.AQUA]
+COLOR_PLAYER = [arcade.color.RED, arcade.color.AMBER, arcade.color.APPLE_GREEN, arcade.color.BLUEBERRY]
+COLOR_WRITE = [arcade.color.ALABAMA_CRIMSON, arcade.color.LEMON_GLACIER, arcade.color.GREEN, arcade.color.AQUA]
 OP_CODE = ['lv', 'd', 'st', 'ad', 'su', '&', 'or', 'xo', 'zj', 'di', 'si', 'fk', 'll', 'li', 'lf', 'af']
 
 class Consts(object):
@@ -81,7 +81,7 @@ class MyGame(arcade.Window):
 		self.data = data
 
 		self.cycle = 0
-		self.speed = 5
+		self.speed = -10
 		self.json_indx = 0
 		self.frame_count = 0
 		self.draw_time = 0
@@ -133,7 +133,7 @@ class MyGame(arcade.Window):
 					n = self.players[k].size_code + self.players[k].start_code
 					if(cnt < n) & (cnt >= self.players[k].start_code):
 						for i in range(4):
-							self.color_list.append((COLOR_PLAYER[self.players[k].id]))
+							self.color_list.append((COLOR_PLAYER[self.players[k].id - 1]))
 						break
 					else:
 						if k == len(self.players) - 1:
@@ -175,23 +175,31 @@ class MyGame(arcade.Window):
 	def cell_refresh(self, data_cell):
 		#print('cell_refresh')
 		for i in range(0, len(data_cell)):
-			start_place = data_cell[i]['cell_address'] * 4
+			for j in range(0, len(data_cell[i]['cells_address'])):
+				#print(data_cell[i]['cells_address'][j])
 
-			# увеличиваю счетчик занятой игроком площади
-			for j in range(0, len(self.players)):
-				if self.color_list[start_place] == COLOR_PLAYER[data_cell[i]['player_id'] - 1]:
-					break
-				elif (self.color_list[start_place] == COLOR_PLAYER[j]) & j != data_cell[i]['player_id'] - 1:
-					self.players[j].area -= 1
-					self.players[data_cell[i]['player_id'] - 1].area += 1
-				elif self.color_list[start_place] == arcade.color.BATTLESHIP_GREY:
-					self.players[data_cell[i]['player_id'] - 1].area += 1
-
+				start_place = data_cell[i]['cells_address'][j] * 4
+			# меняю счетчик занятой игроком площади
+				for k in range(0, len(self.players)):
+					if self.color_list[start_place] == COLOR_PLAYER[data_cell[i]['id'] - 1]:
+						print('color', self.color_list[start_place], 'is', data_cell[i]['id'], 'player')
+						break
+					elif (self.color_list[start_place] == COLOR_PLAYER[self.players[k].id - 1]):
+						self.players[k].area -= 1
+						self.players[len(self.players) - data_cell[i]['id']].area += 1
+						break
+					elif self.color_list[start_place] == arcade.color.BATTLESHIP_GREY:
+						self.players[len(self.players) - data_cell[i]['id']].area += 1
+						break
 			# меняю цвет ячейки
-			for k in range(0, 4):
-				self.color_list[start_place + k] = COLOR_WRITE[data_cell[i]['player_id'] - 1]
+				for n in range(0, 4):
+					self.color_list[start_place + n] = COLOR_WRITE[data_cell[i]['id'] - 1]
+					print(str(self.color_list[start_place + n]))
 
 	def drop(self):
+		"""del self.shape_list[:]
+		self.shape_list = arcade.ShapeElementList()"""
+
 		# State refresh
 		if self.data[self.json_indx]['state_refresh'] > 0:
 			if self.data[self.json_indx]['State']['error_code'] > 0:
@@ -208,6 +216,9 @@ class MyGame(arcade.Window):
 		if self.data[self.json_indx]['cells_refresh'] > 0:
 			self.cell_refresh(self.data[self.json_indx]['Cells'])
 		self.cycle = self.data[self.json_indx]['cycle']
+
+		shape = arcade.create_rectangles_filled_with_colors(self.point_list, self.color_list)
+		self.shape_list.append(shape)
 
 	def draw_info(self):
 		start_y = SCREEN_WIDTH - 20
@@ -229,7 +240,7 @@ class MyGame(arcade.Window):
 		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
 
 		start_y -= 40
-		mystr = 'cycle to die: ' + str(self.const.const_cycle_to_die)
+		mystr = 'cycle to die: ' + str(self.state.cycle_to_die)
 		arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
 		start_y -= 20
 		mystr = 'cycle delta: ' + str(self.const.cycle_delta)
@@ -248,7 +259,7 @@ class MyGame(arcade.Window):
 			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
 
 			start_y -= 20
-			arcade.draw_text(self.players[i].name, start_x, start_y, COLOR_PLAYER[self.players[i].id], 12)
+			arcade.draw_text(self.players[i].name, start_x, start_y, COLOR_WRITE[self.players[i].id - 1], 12)
 
 			start_y -= 20
 			mystr = 'last live: ' + str(self.players[i].last_live)
@@ -257,6 +268,10 @@ class MyGame(arcade.Window):
 			start_y -= 20
 			mystr = 'lives in current period: ' + str(self.players[i].lives_in_period)
 			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)
+
+			"""start_y -= 20
+			mystr = 'area = ' + str(self.players[i].area)
+			arcade.draw_text(mystr, start_x, start_y, arcade.color.WHITE, 12)"""
 
 			start_y -= 30
 		#print('star_x =', start_x, 'start_y =', start_y)
@@ -280,7 +295,7 @@ class MyGame(arcade.Window):
 		start_x = start_x = SCREEN_WIDTH + 20
 		start_y = 120
 
-		arcade.draw_text('arena distribute:', start_x, start_y, arcade.color.WHITE, 12)
+		arcade.draw_text('arena distribution:', start_x, start_y, arcade.color.WHITE, 12)
 		start_y -= 10
 		arcade.draw_lrtb_rectangle_outline(start_x, start_x + MEM_SIZE/10 + 2, start_y, start_y - 12,
 		                             arcade.color.WHITE, 2)
@@ -291,7 +306,7 @@ class MyGame(arcade.Window):
 			sum_area += self.players[i].area
 			arcade.draw_lrtb_rectangle_filled(start_x, start_x + self.players[i].area/10,
 			                                  start_y, start_y - 8,
-			                                  COLOR_PLAYER[i])
+			                                  COLOR_WRITE[self.players[i].id - 1])
 			start_x += self.players[i].area/10
 
 		arcade.draw_lrtb_rectangle_filled(start_x, start_x + (self.const.mem_size - sum_area)/10,
