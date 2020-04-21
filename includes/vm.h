@@ -52,6 +52,7 @@
 # define LFORK_CYCLE_CD	1000
 # define AFF_CYCLE_CD	2
 
+# define CYCLES_BEFORE_DUMP 1000
 typedef struct			s_op
 {
 	char				*name;
@@ -271,6 +272,7 @@ t_carriage			*t_carriages_pop(t_carriages *list, t_carriage *node);
 t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node);
 int					*get_nums(t_carriages *carrs);
 t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src);
+int				t_carriages_len(t_carriages *list);
 
 /*
 ** Validation
