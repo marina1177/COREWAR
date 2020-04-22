@@ -35,7 +35,7 @@ void	print_int_arr_in_row(int *arr, int size)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (++i < size)	
 		ft_printf("%d ", arr[i]);
 	ft_putchar('\n');

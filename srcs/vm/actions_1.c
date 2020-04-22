@@ -10,6 +10,7 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	p = vm->players->first_player;
 	i = 0;
 	position = carriage->pos;
+	
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 1);
 	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);

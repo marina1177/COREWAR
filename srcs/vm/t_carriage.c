@@ -24,7 +24,7 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 	new->pos = pos;
 	new->op_code = 0;
 	new->cycles_countdown = -2;
-	new->last_cycle_alive = 0;
+	new->last_cycle_alive = -1;
 	ft_bzero((void *)new->regs, (REG_NUMBER + 1) * sizeof(int));
 	new->regs[1] = -(new->num);
 	return (new);
@@ -78,6 +78,7 @@ t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src)
 	copy->op_code = src->op_code;
 	copy->pos = src->pos;
 	copy->live_cycle = src->live_cycle;
+	copy->last_cycle_alive = src->last_cycle_alive;
 	i = -1;
 	while (++i < REG_NUMBER + 1)
 		copy->regs[i] = src->regs[i];
