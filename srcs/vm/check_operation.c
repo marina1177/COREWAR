@@ -107,7 +107,7 @@ int	valid_operation_code(t_carriage *carriage)
 	
 	if (carriage->op_code < LIVE_CODE || carriage->op_code > AFF_CODE)
 	{
-		//write(1, "not valid\n", 10);
+		//ft_printf("NON VALID %d\n", carriage->op_code);
 		change_position(&carriage->pos, 1);
 		return (0);
 	}
@@ -122,10 +122,11 @@ int	check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *a
 
 	position = carriage->pos;
 	ft_bzero(arguments, 4);
-	carriage->op_code = arena[carriage->pos];
+	//carriage->op_code = arena[carriage->pos];		
 	if (!valid_operation_code(carriage))
 		return 0;
 	change_position(&position, 1);
+	
 	if (g_op_tab[(int)carriage->op_code].arg_type)
 	{
 		if (!valid_args_types(carriage, &arena[position], arguments) || \

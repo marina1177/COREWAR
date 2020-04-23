@@ -79,6 +79,7 @@ void			handle_carriages(t_vm *vm)
 				{
 					if (check_operation(vm->data->arena, carriage, arguments))
 					{
+						//ft_printf("here\n");
 						//ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
 						make_operation(vm, carriage, arguments);
 					}

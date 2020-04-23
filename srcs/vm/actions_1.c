@@ -57,17 +57,28 @@ void	do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	//print_memory(&vm->data->arena[carriage->pos], 2);
 }
 
+/*
+** 
+*/
 void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
 	int values[2];
 	int position;
 
+	//ft_printf("\nST OPERATION\n");
+	//ft_printf("position before operation %d\n", carriage->pos);
 	position = carriage->pos;	
 	change_position(&position, 2);
 	
 	// printf("position %d\n", position);
 	// print_memory(&vm->data->arena[carriage->pos], 8);
 	//print_dump(vm, 32);
+	//ft_printf("position before get arg %d\n", position);
+	//int i = -1;
+	//while (++i < 4)
+	//	ft_printf("%d ", (int)arguments[i]);
+	//ft_printf("\n");
+	ft_printf("position before get value[0] %d\n", position);
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	//print_memory(&values[0], 4);
 	// printf("каретка 01 = %d\n", carriage->regs[1]);
@@ -80,10 +91,13 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	else
 	{
 		values[1] = get_num_from_char(vm->data->arena, position, 2) % IDX_MOD;
+		//
 		change_position(&position, 2);
+		ft_printf("POSITION TO WRITE TO %d\n", carriage->pos);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]); //нужно ли здесь дополнительно усекать?
 	}
-	carriage->pos = position;	
+	carriage->pos = position;
+	//print_t_carriage(carriage);	
 	//print_memory(vm->data->arena, 16);
 	//printf("expect arena[%d] changed stay at %d\n", values[1], position);
 }

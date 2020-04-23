@@ -55,8 +55,9 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 
 	//printf("zjmp\n");
 	//printf("position = %d\n", carriage->pos);
+	ft_printf("zjmp: carry = %d\n", carriage->carry);
 	position = carriage->pos;
-	change_position(&position, 1);
+	change_position(&position, 1);	
 	if (!carriage->carry) //нужно ли устанавливать тут значение того. что операция не выполнилась?
 	{
 		change_position(&position, g_op_tab[(int)carriage->op_code].t_dir_size);
@@ -64,7 +65,7 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 		return ;
 	}	
 	value = get_arg_value(vm->data->arena, carriage, &position, g_op_tab[(int)carriage->op_code].t_dir_size);
-	//printf("value = %d\n", value);
+	ft_printf("value = %d, carry = %d\n", value, carriage->carry);
 	change_position(&carriage->pos, value % IDX_MOD);
 	//printf("position = %d\n", carriage->pos);
 }
