@@ -70,6 +70,7 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[2];
 	int position;
 	int	reg;
+	int temp_val;
 	
 	//print_t_carriage(carriage);
 	position = carriage->pos;
@@ -82,7 +83,8 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	}
 	else
 	{
-		values[1] = get_num_from_char(vm->data->arena, position, 2) % IDX_MOD;
+		temp_val = get_num_from_char(vm->data->arena, position, 2);
+		values[1] = temp_val % IDX_MOD;
 		change_position(&position, 2);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]); //нужно ли здесь дополнительно усекать?
 	}
@@ -91,7 +93,7 @@ void	do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" r%d", reg);
-		ft_printf(" %hd\n", values[1]);
+		ft_printf(" %hd\n", values[1] < temp_val ? temp_val : values[1]);
 	}
 	carriage->pos = position;
 	//print_t_carriage(carriage);	
