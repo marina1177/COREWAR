@@ -44,7 +44,7 @@ static t_vm *t_vm_new(void)
 	int 	i;
 
 	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error("Malloc error") : 0;	
-	!(vm->data = t_vm_info_new()) ? handle_error_vm("Malloc error", vm) : 0;
+	!(vm->data = t_vm_info_create(vm)) ? handle_error_vm("Malloc error", vm) : 0;
 	!(vm->players = t_players_new()) ? handle_error_vm("Malloc error", vm) : 0;
 	!(vm->carr = t_carriages_new()) ? handle_error_vm("Malloc error", vm) : 0;
 	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ? handle_error_vm("Malloc error", vm) : 0;

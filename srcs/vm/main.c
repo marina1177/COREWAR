@@ -41,6 +41,8 @@ static void	check_carriages(t_vm *vm)
 	{
 		vm->data->cycles_to_die -= CYCLE_DELTA;
 		vm->data->checks_counter = 0;
+		if (vm->mods->verbosity_level & VERB_L2)
+			ft_printf("Cycle to die is now %d\n", vm->data->cycles_to_die);
 	}
 	vm->data->lives_counter = 0;
 }
@@ -49,9 +51,11 @@ void	corewar(t_vm *vm)
 {
 	int	cycles;
 
-	cycles = 0;
+	cycles = 0;		
 	while (vm->carr->qty)
-	{		
+	{
+		if (vm->data->cycles && (vm->mods->verbosity_level & VERB_L2))
+			ft_printf("It is now cycle %d\n", vm->data->cycles);
 		handle_carriages(vm);
 		if (vm->mods->dump_cycle == vm->data->cycles)
 			print_dump(vm, vm->mods->dump_size);
@@ -61,8 +65,7 @@ void	corewar(t_vm *vm)
 			cycles = 0;
 		}
 		vm->data->cycles++;
-		cycles++;
-		ft_printf("%d\n", vm->data->cycles);
+		cycles++;					
 	}	
 }
 

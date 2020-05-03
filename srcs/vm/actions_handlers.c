@@ -55,10 +55,7 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_ty
 	
 	if (arg_type == T_REG)
 	{
-		//printf("%d", arena[0]);
 		result = car->regs[arena[*pos]];
-		//print_memory(&arena[*pos], 1);
-		//printf("REG = %d\n", arena[*pos]);
 		change_position(pos, 1);
 	}
 	else if (arg_type == T_DIR)

@@ -58,9 +58,7 @@ static void	get_op_code(t_carriage *carriage, t_vm *vm)
 void			handle_carriages(t_vm *vm)
 {
 	t_carriage	*carriage;
-	unsigned char arguments[4];
-	//char names[17][5] = {"0", "live", "ld", "st", "add", "sub", "and", "or",
-	//					 "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
+	unsigned char arguments[4];	
 
 	carriage = vm->carr->head;
 	while (carriage)
@@ -68,9 +66,9 @@ void			handle_carriages(t_vm *vm)
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
 		if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
 		{
-			ft_printf("cycle %d, carriage %d, op_code %d, car pos %d, cd %d, last_cycle_alive %d\n",
-		vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos, carriage->cycles_countdown, carriage->last_cycle_alive);
-			print_t_carriage(carriage);
+			//ft_printf("cycle %d, carriage %d, op_code %d, car pos %d, cd %d, last_cycle_alive %d\n",
+		//vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos, carriage->cycles_countdown, carriage->last_cycle_alive);
+		//	print_t_carriage(carriage);
 		}
 			if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 			{
@@ -78,9 +76,7 @@ void			handle_carriages(t_vm *vm)
 				if (!carriage->cycles_countdown)
 				{
 					if (check_operation(vm->data->arena, carriage, arguments))
-					{
-						//ft_printf("here\n");
-						//ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);
+					{						
 						make_operation(vm, carriage, arguments);
 					}
 					carriage->cycles_countdown--;					
@@ -89,6 +85,6 @@ void			handle_carriages(t_vm *vm)
 				
 		carriage = carriage->next;
 	}
-	if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
-		ft_putchar('\n');
+	//if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
+	//	ft_putchar('\n');
 }

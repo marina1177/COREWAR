@@ -1,4 +1,6 @@
-make && ./corewar_copy $2 $2 -d $1 > origin.txt && ./corewar $2 $2 -d $1 > 1177.txt;
+make;
+./corewar_linux $1 $1 $1 $1 -v $2 -d $3 > origin.txt;
+./corewar $1 $1 $1 $1 -v $2 -d $3 > 1177.txt;
 diff 1177.txt origin.txt
 ret=$?
 green='\033[0;32m'

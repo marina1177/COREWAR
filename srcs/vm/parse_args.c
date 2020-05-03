@@ -37,8 +37,21 @@ static int	parse_flag_dump(t_vm *vm, char *arg, char *num)
 	number = ft_atoi(num);
 	if (number < 0)
 		handle_error_str_arg(ERR_D_FLAG, num, vm);
-	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 32 : 64;
+	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 64 : 32;
 	vm->mods->dump_cycle = number;
+	return (1);
+}
+
+static int	parse_flag_v(t_vm *vm, char *num)
+{
+	int		number;
+
+	if (!is_integer(num))
+		handle_error_str_arg(ERR_NOINT, num, vm);
+	number = ft_atoi(num);
+	if (number < 0 || number > 31)
+		handle_error_str_arg(ERR_D_FLAG, num, vm);	
+	vm->mods->verbosity_level = number;	
 	return (1);
 }
 
@@ -67,11 +80,12 @@ void	parse_args(t_vm *vm, int ac, char **av)
 			i++;
 		}
 		else if (!ft_strcmp(av[i], "-v"))
-			vm->vs = t_vs_create(vm);
+		{
+			parse_flag_v(vm, av[i + 1]);
+			i++;
+		}
 		else if (!ft_strcmp(av[i], "-a"))
-			vm->mods->aff = true;
-		else if (!ft_strcmp(av[i], "-l"))
-			parse_flag_l();
+			vm->mods->aff = true;		
 		else
 			parse_player(vm, av[i],
 			t_players_add_new_player(vm->players, 0, vm));

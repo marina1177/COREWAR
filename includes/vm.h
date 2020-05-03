@@ -53,6 +53,12 @@
 # define AFF_CYCLE_CD	2
 
 # define CYCLES_BEFORE_DUMP 1000
+# define VERB_L0 0
+# define VERB_L1 1
+# define VERB_L2 2
+# define VERB_L3 4
+# define VERB_L4 8
+# define VERB_L5 16
 typedef struct			s_op
 {
 	char				*name;
@@ -92,10 +98,11 @@ typedef struct 			s_mods
 {	
 	int					dump_cycle;
 	int					dump_size;
+	int					verbosity_level;
 	int					show_cycle;
 	int					show_print_mode;
 	bool				aff;
-	int					log;
+	
 }						t_mods;
 
 typedef struct			s_vm_info
