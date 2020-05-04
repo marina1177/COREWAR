@@ -10,11 +10,11 @@ void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
 
 int		get_arg_size(int op, unsigned char arg)
 {
-	if (arg == T_REG)
+	if (arg == REG_CODE)
 		return (1);
-	else if (arg == T_IND)
+	else if (arg == IND_CODE)
 		return (2);
-	else if (arg == T_DIR)
+	else if (arg == DIR_CODE)
 		return (g_op_tab[op].t_dir_size);
 	return 0;
 }
@@ -40,6 +40,7 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 		while(i < g_op_tab[(int)carriage->op_code].args_num)
 		{
 			change += get_arg_size(carriage->op_code, arguments[i]);
+			//ft_printf("skip %d\n", change);
 			i++;
 		}
 	}
@@ -84,8 +85,6 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	arguments[2] = code.bit.third;
 	while (i < g_op_tab[(int)carriage->op_code].args_num)
 	{
-		if (arguments[i] == 0x3)
-			arguments[i] = 0x4;
 		if (!(arguments[i] & g_op_tab[(int)carriage->op_code].arr[i]))
 		{
 			//printf("NOT VALID CODE\n");
