@@ -36,8 +36,10 @@ static int	parse_flag_dump(t_vm *vm, char *arg, char *num)
 		handle_error_str_arg(ERR_NOINT, num, vm);
 	number = ft_atoi(num);
 	if (number < 0)
-		handle_error_str_arg(ERR_D_FLAG, num, vm);
-	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 32 : 64;
+		handle_error_str_arg(ERR_D_FLAG, num, vm);	
+	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 64 : 32;
+	if (g_el)
+		vm->mods->dump_size = vm->mods->dump_size == 32 ? 64 : 32;
 	vm->mods->dump_cycle = number;
 	return (1);
 }
@@ -84,6 +86,8 @@ void	parse_args(t_vm *vm, int ac, char **av)
 			parse_flag_v(vm, av[i + 1]);
 			i++;
 		}
+		else if (!ft_strcmp(av[i], "-el"))		
+			g_el = 1;
 		else if (!ft_strcmp(av[i], "-a"))
 			vm->mods->aff = true;		
 		else

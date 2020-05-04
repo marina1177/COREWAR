@@ -59,6 +59,9 @@
 # define VERB_L3 4
 # define VERB_L4 8
 # define VERB_L5 16
+
+int g_el;
+
 typedef struct			s_op
 {
 	char				*name;

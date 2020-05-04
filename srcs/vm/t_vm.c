@@ -53,6 +53,7 @@ static t_vm *t_vm_new(void)
 	while (++i < 17)
 		vm->op_tab[i] = g_op_tab[i];
 	init_exec(vm);
+	g_el = 0;
 
 	return	(vm);
 }

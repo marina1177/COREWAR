@@ -65,12 +65,10 @@ void			handle_carriages(t_vm *vm)
 	while (carriage)
 	{
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
-		// if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
-		// {
+		if (g_el)
 			ft_printf("cycle %d, carriage %d, op_code %d, car pos %d, carry %d, cd %d, last_cycle_alive %d\n",
 		vm->data->cycles, carriage->num - 1, carriage->op_code, carriage->pos, carriage->carry, carriage->cycles_countdown, carriage->last_cycle_alive);
-			//print_t_carriage(carriage);
-		// }
+			
 			if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
 			{
 				carriage->cycles_countdown--;
@@ -80,21 +78,25 @@ void			handle_carriages(t_vm *vm)
 					if (check_operation(vm->data->arena, carriage, arguments))
 					{
 						//ft_printf("after check\n", carriage->op_code);
-						ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);				
+						if (g_el)
+							ft_printf("cycle %d, operation %s\n", vm->data->cycles, names[carriage->op_code]);				
 						make_operation(vm, carriage, arguments);
-						while(i < 17)
+						if (g_el)
 						{
-							ft_printf("%d ", carriage->regs[i]);
-							i++;
+							while(i < 17)
+							{
+								ft_printf("%d ", carriage->regs[i]);
+								i++;
+							}
+							ft_printf("\n\n");
+							i = 1;
 						}
-						ft_printf("\n\n");
-						i = 1;
 					}
 					carriage->cycles_countdown--;					
 				}
 			}
 		carriage = carriage->next;
 	}
-	//if (vm->mods->dump_cycle - vm->data->cycles <  CYCLES_BEFORE_DUMP)
+	if (g_el)
 		ft_putchar('\n');
 }
