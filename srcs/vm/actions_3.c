@@ -118,6 +118,7 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	temp = carriage->pos;
 	change_position(&temp, values[0] + values[1]);
 	carriage->regs[values[2]] = get_num_from_char(vm->data->arena, temp, 4);
+	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
 	if (vm->mods->verbosity_level & VERB_L3)	
 	{

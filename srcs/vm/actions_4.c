@@ -7,7 +7,10 @@ void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int value;
 
 	if (!vm->mods->aff)
+	{
+		change_position(&carriage->pos, 3);
 		return ;
+	}	
 	position = carriage->pos;
 	change_position(&position, 1);
 	value = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);

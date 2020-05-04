@@ -1,5 +1,5 @@
 make;
-./corewar_linux $1 $1 $1 $1 -v $2 -d $3 > origin.txt;
+./corewar_copy $1 $1 $1 $1 -v $2 -d $3 > origin.txt;
 ./corewar $1 $1 $1 $1 -v $2 -d $3 > 1177.txt;
 diff 1177.txt origin.txt
 ret=$?

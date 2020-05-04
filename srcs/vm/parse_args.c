@@ -37,7 +37,7 @@ static int	parse_flag_dump(t_vm *vm, char *arg, char *num)
 	number = ft_atoi(num);
 	if (number < 0)
 		handle_error_str_arg(ERR_D_FLAG, num, vm);
-	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 64 : 32;
+	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 32 : 64;
 	vm->mods->dump_cycle = number;
 	return (1);
 }

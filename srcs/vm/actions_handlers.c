@@ -53,6 +53,7 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_ty
 	int temp;
 	int result;	
 	
+	result = 0;
 	if (arg_type == T_REG)
 	{
 		result = car->regs[arena[*pos]];

@@ -54,6 +54,7 @@ t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node)
 	t_carriages_pop(list, node);
 	free(node);
 	node = NULL;
+	ft_printf("CARRIAGE DELETED\n");
 	return (list);
 }
 

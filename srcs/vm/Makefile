@@ -49,10 +49,7 @@ ALL_C_CW = main.c \
 			actions_handlers.c \
 			carriages_actions.c \
 			check_operation.c \
-			handlers.c \
-			init.c \
-			print_bits.c \
-			test.c
+			print_bits.c
 
 
 			
