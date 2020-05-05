@@ -16,5 +16,6 @@ void	do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	value = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	reg = (char)value;	
 	carriage->pos = position;
-	ft_printf("Aff: %c\n", reg);	
+	if (vm->mods->aff)
+		ft_printf("Aff: %c\n", reg);	
 }

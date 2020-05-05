@@ -27,6 +27,11 @@ static void		delete_old_carriages(t_vm *vm)
 		if (vm->data->cycles_to_die <= 0 ||
 		vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
 		{
+			if (vm->mods->verbosity_level & VERB_L4)
+				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+				curr->num,
+				vm->data->cycles - curr->last_cycle_alive,
+				CYCLE_TO_DIE);
 			t_carriages_remove_node(vm->carr, temp);			
 		}		
 	}

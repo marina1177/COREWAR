@@ -34,29 +34,12 @@ void		print_introduction(t_players *players)
 
 void		print_final_result(t_vm *vm)
 {
-	t_player *winner;
-	t_player *temp;
-	
-	temp = vm->players->first_player;
-	winner = vm->players->first_player;
-	while (temp)
-	{
-		if (winner->last_live < temp->last_live)
-			winner = temp;
-		temp = temp->next;
-	}	
-	ft_printf("Contestant %d, \"%s\", has won !\n",
-		winner->num, winner->name);
-	exit(0);
-}
+	t_player	*winner;
 
-void	print_last_alive(t_vm *vm)
-{
-	t_player *last;
-
-	last = get_player_by_number(vm->players, vm->players->last_alive_num);
+	winner = get_player_by_number(vm->players, vm->players->last_alive_num);
 	ft_printf("Contestant %d, \"%s\", has won !\n",
-				last->num, last->name);
+		winner->num,
+		winner->name);
 	exit(0);
 }
 

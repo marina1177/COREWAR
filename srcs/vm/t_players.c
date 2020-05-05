@@ -81,7 +81,7 @@ static void		t_players_set_num(t_players *players)
 **	Create and insert new player in first position of Players` list
 **	Return new player
 */
-t_player *t_players_add_new_player(t_players *players, int number, t_vm *vm)
+t_player *t_players_add(t_players *players, int number, t_vm *vm)
 {
 	t_player	*new;
 

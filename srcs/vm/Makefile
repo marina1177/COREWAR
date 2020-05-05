@@ -48,7 +48,8 @@ ALL_C_CW = main.c \
 			actions_4.c \
 			actions_handlers.c \
 			check_operation.c \
-			print_bits.c
+			print_bits.c \
+			print_ops.c
 
 
 			

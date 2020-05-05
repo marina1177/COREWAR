@@ -10,7 +10,6 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	p = vm->players->first_player;
 	i = 0;
 	position = carriage->pos;
-	
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 1);
 	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);
@@ -20,26 +19,21 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 		{
 	 		if (num == p->num)
 	 		{
-	 			p->last_live = vm->data->cycles; //мы эту переменную увеличиваем?
+	 			p->last_live = vm->data->cycles;
 				vm->players->last_alive_num = num;			
 	 			break ;
 	 		}
 	 		p = p->next;
 	 	}		
 	}
-	
 	if (vm->mods->verbosity_level & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" %d\n", -num);
-		//ft_printf("\n");
 	}
 	if (num > 0 && num <= vm->players->qty && vm->mods->verbosity_level & VERB_L1)
-		print_is_alive(num, get_player_by_number(vm->players, num)->name);		
-	
-	
-		
+		print_is_alive(num, get_player_by_number(vm->players, num)->name);
 	carriage->pos = position;
 	vm->data->lives_counter++;	
 }
