@@ -54,17 +54,17 @@ int		get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_ty
 	int result;	
 	
 	result = 0;
-	if (arg_type == REG_CODE)
+	if (arg_type == T_REG)
 	{
 		result = car->regs[arena[*pos]];
 		change_position(pos, 1);
 	}
-	else if (arg_type == DIR_CODE)
+	else if (arg_type == T_DIR)
 	{
 		result = get_num_from_char(arena, *pos, g_op_tab[(int)car->op_code].t_dir_size);
 		change_position(pos, g_op_tab[(int)car->op_code].t_dir_size);
 	}
-	else if (arg_type == IND_CODE)
+	else if (arg_type == T_IND)
 	{
 		
 		temp = car->pos;

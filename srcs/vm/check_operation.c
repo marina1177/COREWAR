@@ -10,11 +10,11 @@ void	make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments)
 
 int		get_arg_size(int op, unsigned char arg)
 {
-	if (arg == REG_CODE)
+	if (arg == T_REG)
 		return (1);
-	else if (arg == IND_CODE)
+	else if (arg == T_IND)
 		return (2);
-	else if (arg == DIR_CODE)
+	else if (arg == T_DIR)
 		return (g_op_tab[op].t_dir_size);
 	return 0;
 }
@@ -24,7 +24,7 @@ void	change_position(int *position, int change)
 	*position += change;
 	if (*position >= MEM_SIZE)
 		*position %= MEM_SIZE;
-	else if (*position < 0)  //?
+	else if (*position < 0)
 		*position += MEM_SIZE;
 }
 
@@ -52,7 +52,6 @@ static void	skip_args(t_carriage *carriage, unsigned char *arguments)
 static int	valid_register(t_carriage *carriage, unsigned char *arena, int position, unsigned char *arguments)
 {
 	int i;
-
 	i = 0;
 	
 	while (i < g_op_tab[(int)carriage->op_code].args_num)
@@ -80,9 +79,10 @@ static int		valid_args_types(t_carriage *carriage, unsigned char *types, unsigne
 	// print_byte(*types);
 	// print_memory(types, 4);
 	code.types = *types;
-	arguments[0] = code.bit.first;
-	arguments[1] = code.bit.second;
-	arguments[2] = code.bit.third;
+	arguments[0] = code.bit.first == IND_CODE ? T_IND : code.bit.first;
+	arguments[1] = code.bit.second == IND_CODE ? T_IND : code.bit.second;
+	arguments[2] = code.bit.third  == IND_CODE ? T_IND : code.bit.third;
+	//ft_printf("arguments %d %d %d\n", arguments[0], arguments[1], arguments[2]);
 	while (i < g_op_tab[(int)carriage->op_code].args_num)
 	{
 		if (!(arguments[i] & g_op_tab[(int)carriage->op_code].arr[i]))
