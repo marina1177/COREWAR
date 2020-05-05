@@ -152,13 +152,13 @@ void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	{		
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
-		(arguments[0] == DIR_CODE) ?
+		(arguments[0] == T_DIR) ?
 			ft_printf(" %hd", values[0]) : ft_printf(" %d", values[0]);
-		(arguments[1] == DIR_CODE) ?	
+		(arguments[1] == T_DIR) ?	
 			ft_printf(" %hd", values[1]) : ft_printf(" %d", values[1]);
 		ft_printf(" r%d", values[2]);
 		ft_printf("\n");
-		if (arguments[0] == DIR_CODE && arguments[1] == DIR_CODE)
+		if (arguments[0] == T_DIR && arguments[1] == T_DIR)
 			ft_printf("       | -> load from %hd + %hd = %d (with pc and mod %d)",
 			values[0], values[1], (short)values[0] + (short)values[1],
 			temp_pos + ((short)values[0] + (short)values[1]) % IDX_MOD);
