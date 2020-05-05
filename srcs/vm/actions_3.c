@@ -50,12 +50,16 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
 	int position;
+	int temp;
 
+	
 	position = carriage->pos;
+	temp = position;
 	//write(1, "fork\n", 5);
 	//print_memory(&vm->data->arena[position], 6);
 	//printf("fork position=%d\n", position);
 	change_position(&position, 1);
+	
 	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
 	//printf("value=%d position=%d\n", value, position);
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
@@ -65,8 +69,8 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);		
-		ft_printf(" %hd (%hd)", carriage->pos,
-			vm->carr->head->pos);
+		ft_printf(" %hd (%hd)", value,
+			temp + value);
 		ft_printf("\n");
 	}
 }
@@ -109,9 +113,15 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int values[3];
 	int position;
 	int temp;
+	int temp_pos;
 
+	
 	position = carriage->pos;
+	temp_pos = position;
+	
 	change_position(&position, 2);
+	
+	
 	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
@@ -120,6 +130,7 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = get_num_from_char(vm->data->arena, temp, 4);
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
+	
 	if (vm->mods->verbosity_level & VERB_L3)	
 	{
 		ft_printf("P %4d | ", carriage->num);
@@ -133,19 +144,19 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 		if (arguments[0] == DIR_CODE && values[1] == DIR_CODE)
 			ft_printf("       | -> load from %hd + %hd = %d (with pc %d)",
 			values[0], values[1], (short)values[0] + (short)values[1],
-			(carriage->pos + ((short)values[0] + (short)values[1])));
+			(temp_pos + ((short)values[0] + (short)values[1])));
 		else if (arguments[0] == DIR_CODE)
 			ft_printf("       | -> load from %hd + %d = %d (with pc %d)",
 			values[0], values[1], (short)values[0] + values[1],
-			(carriage->pos + ((short)values[0] + values[1])));
+			(temp_pos + ((short)values[0] + values[1])));
 		else if (values[1] == DIR_CODE)
 			ft_printf("       | -> load from %d + %hd = %d (with pc %d)",
 			values[0], values[1], values[0] + (short)values[1],
-			(carriage->pos + (values[0] + (short)values[1])));
+			(temp_pos + (values[0] + (short)values[1])));
 		else
 			ft_printf("       | -> load from %d + %d = %d (with pc %d)",
 			values[0], values[1], values[0] + values[1],
-			(carriage->pos + (values[0] + values[1])));
+			(temp_pos + (values[0] + values[1])));
 		ft_printf("\n");
 	}
 	//printf("lldi result reg[%d] = %d stay at %d\n",values[2], carriage->regs[values[2]], carriage->pos);
@@ -155,9 +166,11 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 {
 	int value;
 	int position;
+	int temp;
 	//t_carriage *new;
 	//int pos;
 
+	temp = carriage->pos;
 	position = carriage->pos;
 	change_position(&position, 1);
 	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
@@ -168,8 +181,8 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);		
-		ft_printf(" %hd (%hd)", carriage->pos,
-			vm->carr->head->pos);
+		ft_printf(" %hd (%hd)", value,
+			temp + value);
 		ft_printf("\n");
 	}
 	//printf("lfork\n");
