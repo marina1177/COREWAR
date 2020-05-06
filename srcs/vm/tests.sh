@@ -6,7 +6,7 @@ norm='\033[0m'
 red='\033[0;31m'
 
 make;
-for filename in ./tests/*/*.cor; do	
+for filename in ./tests/ocp/*.cor; do	
 	args="'$filename' '$filename' '$filename' '$filename'";	
 	eval ./corewar_linux $args > 1origin.txt;
 	eval ./corewar $args > 1177.txt;

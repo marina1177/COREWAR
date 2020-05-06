@@ -26,11 +26,13 @@ int			get_num_from_char(unsigned char *arena, int position, int size)
 
 	i = size;
 	ft_bzero(arguments, 5);
+	
 	while (--i >= 0)
 	{
 		arguments[i] = arena[position];
 		change_position(&position, 1);
 	}
+	
 	//print_memory(arguments, size);
 	if (arguments[size - 1] & 0b10000000)
 		return (get_negative_number((unsigned int *)arguments, size));

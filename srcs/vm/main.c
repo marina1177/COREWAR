@@ -24,16 +24,22 @@ static void		delete_old_carriages(t_vm *vm)
 	{
 		temp = curr;
 		curr = curr->next;
+
+		/*
+		if (vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
+		*/
 		if (vm->data->cycles_to_die <= 0 ||
 		vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
 		{
 			if (vm->mods->verbosity_level & VERB_L4)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
-				curr->num,
-				vm->data->cycles - curr->last_cycle_alive,
-				CYCLE_TO_DIE);
-			t_carriages_remove_node(vm->carr, temp);			
-		}		
+				temp->num,
+				vm->data->cycles - temp->last_cycle_alive,
+				vm->data->cycles_to_die);			
+			t_carriages_remove_node(vm->carr, temp);
+//			ft_printf("here\n");
+			//print_t_carriages(vm->carr);
+		}
 	}
 }
 
@@ -41,6 +47,7 @@ static void	check_carriages(t_vm *vm)
 {
 	delete_old_carriages(vm);	
 	vm->data->checks_counter++;
+	//ft_printf("%d live_counter, %d check_counter, %d cycle_to_die\n", vm->data->lives_counter, vm->data->checks_counter,vm->data->cycles_to_die);
 	if (vm->data->lives_counter >= NBR_LIVE ||
 		vm->data->checks_counter == MAX_CHECKS)
 	{

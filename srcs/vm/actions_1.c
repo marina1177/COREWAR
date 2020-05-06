@@ -12,20 +12,20 @@ void	do_live(t_carriage *carriage, t_vm *vm)
 	position = carriage->pos;
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 1);
-	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);
+	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);	
 	if (num > 0 && num <= vm->players->qty)
 	{
 		while (++i <= vm->players->qty)
 		{
 	 		if (num == p->num)
-	 		{
+	 		{				
 	 			p->last_live = vm->data->cycles;
 				vm->players->last_alive_num = num;			
 	 			break ;
 	 		}
 	 		p = p->next;
 	 	}		
-	}
+	}	
 	if (vm->mods->verbosity_level & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
