@@ -12,22 +12,16 @@
 
 #include "../../includes/vm.h"
 
-
-
 static void		delete_old_carriages(t_vm *vm)
 {
-	t_carriage *curr;
-	t_carriage *temp;
+	t_carriage	*curr;
+	t_carriage	*temp;
 
 	curr = vm->carr->head;
 	while (curr)
 	{
 		temp = curr;
 		curr = curr->next;
-
-		/*
-		if (vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
-		*/
 		if (vm->data->cycles_to_die <= 0 ||
 		vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
 		{
@@ -37,17 +31,14 @@ static void		delete_old_carriages(t_vm *vm)
 				vm->data->cycles - temp->last_cycle_alive,
 				vm->data->cycles_to_die);			
 			t_carriages_remove_node(vm->carr, temp);
-//			ft_printf("here\n");
-			//print_t_carriages(vm->carr);
 		}
 	}
 }
 
-static void	check_carriages(t_vm *vm)
+static void		check_carriages(t_vm *vm)
 {
 	delete_old_carriages(vm);	
 	vm->data->checks_counter++;
-	//ft_printf("%d live_counter, %d check_counter, %d cycle_to_die\n", vm->data->lives_counter, vm->data->checks_counter,vm->data->cycles_to_die);
 	if (vm->data->lives_counter >= NBR_LIVE ||
 		vm->data->checks_counter == MAX_CHECKS)
 	{
@@ -59,9 +50,9 @@ static void	check_carriages(t_vm *vm)
 	vm->data->lives_counter = 0;
 }
 
-void	corewar(t_vm *vm)
+void			corewar(t_vm *vm)
 {
-	int	cycles;
+	int			cycles;
 
 	cycles = 0;		
 	while (vm->carr->qty)
@@ -81,7 +72,7 @@ void	corewar(t_vm *vm)
 	}	
 }
 
-void	create_arena(t_vm *vm)
+void			create_arena(t_vm *vm)
 {
 	t_player	*player;
 	int			diff;
@@ -92,7 +83,7 @@ void	create_arena(t_vm *vm)
 	i = 0;
 	while (player)
 	{
-		ft_memcpy((char *)((vm->data->arena) + i), 
+		ft_memcpy((char *)((vm->data->arena) + i),
 				player->code, player->code_size);
 		t_carriages_push(vm->carr, t_carriage_new(vm->carr, i));
 		i += diff;
@@ -100,10 +91,10 @@ void	create_arena(t_vm *vm)
 	}	
 }
 
-int     main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	
-	t_vm	*vm;
+	t_vm		*vm;
 
 	ac < 2 ? print_usage() : 0;		
 	vm = t_vm_create();

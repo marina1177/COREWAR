@@ -1,21 +1,21 @@
 #include "../../includes/vm.h"
 
-int		handle_error(char *s)
+int			handle_error(char *s)
 {	
 	ft_dprintf(2, "ERROR: %s\n", s);
 	exit(1);
 }
 
-int		handle_error_vm(char *error_message, t_vm *vm)
+int			handle_error_vm(char *error_message, t_vm *vm)
 {	
 	ft_dprintf(2, "ERROR: %s\n", error_message);
 	vm->players->qty++;
 	exit(1);
 }
 
-int		handle_error_str_arg(char *error_message, char *arg, t_vm *vm)
+int			handle_error_str_arg(char *error_message, char *arg, t_vm *vm)
 {
-	char *s;
+	char	*s;
 
 	ft_asprintf(&s, error_message, arg);
 	ft_dprintf(2, "ERROR: %s\n", s);
@@ -23,9 +23,9 @@ int		handle_error_str_arg(char *error_message, char *arg, t_vm *vm)
 	exit(1);
 }
 
-int		handle_error_int_arg(char *error_message, int arg, t_vm *vm)
+int			handle_error_int_arg(char *error_message, int arg, t_vm *vm)
 {
-	char *s;
+	char	*s;
 
 	ft_asprintf(&s, error_message, arg);	
 	ft_dprintf(2, "ERROR: %s\n", s);
@@ -33,7 +33,7 @@ int		handle_error_int_arg(char *error_message, int arg, t_vm *vm)
 	exit(1);
 }
 
-int		print_usage(void)
+int			print_usage(void)
 {
 	ft_printf("Usage: ./corewar [-d N -s N -v N] [-a] <champion.cor> <...>\n");
 	ft_printf("    %-11s : Print output from \"aff\" (Default is off)\n", "-a");

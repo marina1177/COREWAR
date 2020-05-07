@@ -2,9 +2,9 @@
 
 void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
-	int values[3];
-	int position;
-	int temp;
+	int	values[3];
+	int	position;
+	int	temp;
 	int	reg;
 
 	position = carriage->pos;
@@ -17,16 +17,14 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	write_reg(vm->data->arena, values[0], carriage->pos, (values[1] + values[2]) % IDX_MOD);
 	carriage->pos = position;
 	if (vm->mods->verbosity_level & VERB_L3)
-	{
 		print_sti(arguments, temp, values, carriage, reg);
-	}
 }
 
 void	do_fork(t_carriage *carriage, t_vm *vm)
 {
-	int value;
-	int position;
-	int temp;
+	int	value;
+	int	position;
+	int	temp;
 
 	position = carriage->pos;
 	temp = position;
@@ -46,9 +44,9 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 
 void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
-	int values[2];
-	int position;
-	int temp;
+	int	values[2];
+	int	position;
+	int	temp;
 
 	position = carriage->pos;
 	change_position(&position, 2);
@@ -66,21 +64,15 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->carry = values[0] == 0 ? 1 : 0;
 	carriage->pos = position;
 	if (vm->mods->verbosity_level & VERB_L3)
-	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);
-		(arguments[0] == T_IND) ?
-		ft_printf(" %hd", values[0]) : ft_printf(" %d", values[0]);
-		ft_printf(" r%d\n", values[1]);
-	}
+		print_lld(carriage, arguments, values);
 }
 
 void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
-	int values[3];
-	int position;
-	int temp;
-	int temp_pos;
+	int	values[3];
+	int	position;
+	int	temp;
+	int	temp_pos;
 
 	
 	position = carriage->pos;
@@ -91,45 +83,18 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	values[2] = get_reg_value(vm->data->arena, &position);
 	temp = carriage->pos;
 	change_position(&temp, values[0] + values[1]);
-	
 	carriage->regs[values[2]] = get_num_from_char(vm->data->arena, temp, 4);
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)	
-	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);
-		(arguments[0] == T_DIR) ?
-		ft_printf(" %hd", values[0]) : ft_printf(" %d", values[0]);
-		(values[1] == T_DIR) ?
-		ft_printf(" %hd", values[1]) : ft_printf(" %d", values[1]);
-		ft_printf(" r%d", values[2]);
-		ft_printf("\n");
-		if (arguments[0] == T_DIR && values[1] == T_DIR)
-			ft_printf("       | -> load from %hd + %hd = %d (with pc %d)",
-			values[0], values[1], (short)values[0] + (short)values[1],
-			(temp_pos + ((short)values[0] + (short)values[1])));
-		else if (arguments[0] == DIR_CODE)
-			ft_printf("       | -> load from %hd + %d = %d (with pc %d)",
-			values[0], values[1], (short)values[0] + values[1],
-			(temp_pos + ((short)values[0] + values[1])));
-		else if (values[1] == DIR_CODE)
-			ft_printf("       | -> load from %d + %hd = %d (with pc %d)",
-			values[0], values[1], values[0] + (short)values[1],
-			(temp_pos + (values[0] + (short)values[1])));
-		else
-			ft_printf("       | -> load from %d + %d = %d (with pc %d)",
-			values[0], values[1], values[0] + values[1],
-			(temp_pos + (values[0] + values[1])));
-		ft_printf("\n");
-	}
+	if (vm->mods->verbosity_level & VERB_L3)
+		print_lldi(carriage, arguments, values, temp_pos);
 }
 
 void	do_lfork(t_carriage *carriage, t_vm *vm)
 {
-	int value;
-	int position;
-	int temp;
+	int	value;
+	int	position;
+	int	temp;
 
 	temp = carriage->pos;
 	position = carriage->pos;

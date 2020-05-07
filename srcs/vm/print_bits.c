@@ -1,9 +1,9 @@
 #include "../../includes/vm.h"
 
-void	print_byte(unsigned char c)
+void				print_byte(unsigned char c)
 {
-	unsigned char test;
-	int i;
+	unsigned char	test;
+	int				i;
 
 	i = 0;
 	test = 0b10000000;
@@ -20,16 +20,16 @@ void	print_byte(unsigned char c)
 	write(1, "\n", 1);
 }
 
-static void	ft_print_hex(unsigned char c)
+static void			ft_print_hex(unsigned char c)
 {
-	char *radix;
+	char			*radix;
 
 	radix = "0123456789abcdef";
 	write(1, &radix[c / 16], 1);
 	write(1, &radix[c % 16], 1);
 }
 
-static void	ft_print_char(unsigned char c)
+static void			ft_print_char(unsigned char c)
 {
 	if (c >= ' ' && c <= '~')
 		write(1, &c, 1);
@@ -37,7 +37,7 @@ static void	ft_print_char(unsigned char c)
 		write(1, ".", 1);
 }
 
-void	print_memory(const void *addr, size_t size)
+void				print_memory(const void *addr, size_t size)
 {
 	size_t i;
 	size_t j;

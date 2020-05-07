@@ -1,6 +1,6 @@
 Introducing contestants...
-* Player 1, weighing 34 bytes, "tester" ("test ocp 0xd4 lldi") !
-* Player 2, weighing 34 bytes, "tester" ("test ocp 0xd4 lldi") !
-* Player 3, weighing 34 bytes, "tester" ("test ocp 0xd4 lldi") !
-* Player 4, weighing 34 bytes, "tester" ("test ocp 0xd4 lldi") !
-Contestant 4, "tester", has won !
+* Player 1, weighing 679 bytes, "Candy" ("") !
+* Player 2, weighing 679 bytes, "Candy" ("") !
+* Player 3, weighing 679 bytes, "Candy" ("") !
+* Player 4, weighing 679 bytes, "Candy" ("") !
+Contestant 1, "Candy", has won !

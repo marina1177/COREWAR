@@ -19,9 +19,9 @@ static char		*valid_read(int fd, char *arg, int len, t_vm *vm)
 	return (s);
 }
 
-static char *terminated(char *s, int len)
+static char		*terminated(char *s, int len)
 {
-	char *terminated;
+	char		*terminated;
 
 	terminated = ft_strnew(len);
 	ft_memcpy(terminated, s, len);
@@ -29,10 +29,10 @@ static char *terminated(char *s, int len)
 	return (terminated);
 }
 
-int	get_integer(int fd, char *arg, t_vm *vm)
+int				get_integer(int fd, char *arg, t_vm *vm)
 {
-	int a;
-	char *buffer;
+	int			a;
+	char		*buffer;
 	
 	a = 0;
 	buffer = valid_read(fd, arg, INT_SIZE, vm);
@@ -47,23 +47,22 @@ int	get_integer(int fd, char *arg, t_vm *vm)
 	return (a);
 }
 
-int		is_dot_cor_name(char *name)
+int				is_dot_cor_name(char *name)
 {
-	int i;
+	int			i;
 	
 	i = ft_strlen(name) - 1;
-	//name[i] == 'r'
-	if (name[i] == 'r' && name[i - 1] == 'o' && 
+	if (name[i] == 'r' && name[i - 1] == 'o' &&
 		name[i - 2] == 'c' && name[i - 3] == '.')
 		return (1);
 	else
 		return (0);
 }
 
-int	parse_player(t_vm *vm, char *arg, t_player *player)
+int				parse_player(t_vm *vm, char *arg, t_player *player)
 {
-	char	*s;
-	int		fd;	
+	char		*s;
+	int			fd;
 
 	s = NULL;
 	if ((fd = open(arg, O_RDONLY)) == -1)
@@ -72,7 +71,6 @@ int	parse_player(t_vm *vm, char *arg, t_player *player)
 	!is_dot_cor_name(arg) ? handle_error_str_arg(ERR_FNAME, arg, vm) : 0;
 	if (get_integer(fd, arg, vm) != COREWAR_EXEC_MAGIC)
 		handle_error_str_arg(ERR_MAGIC, arg, vm);
-	//нулевое имя чемпиона?
 	player->name = terminated(valid_read(fd, arg, CH_NAME_SIZE, vm),
 							CH_NAME_SIZE);
 	get_integer(fd, arg, vm) ? handle_error_str_arg(ERR_NO_NULL, arg, vm) : 0;

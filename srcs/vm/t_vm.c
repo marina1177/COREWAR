@@ -38,10 +38,10 @@ static void	init_exec(t_vm *vm)
 	vm->exec[16] = do_aff;
 }
 
-static t_vm *t_vm_new(void)
+static t_vm	*t_vm_new(void)
 {
 	t_vm	*vm;
-	int 	i;
+	int		i;
 
 	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error("Malloc error") : 0;	
 	!(vm->data = t_vm_info_create(vm)) ? handle_error_vm("Malloc error", vm) : 0;
@@ -58,7 +58,7 @@ static t_vm *t_vm_new(void)
 	return	(vm);
 }
 
-t_vm *t_vm_create(void)
+t_vm		*t_vm_create(void)
 {
 	t_vm	*new;
 

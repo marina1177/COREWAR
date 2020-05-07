@@ -12,7 +12,7 @@
 
 #include "../../includes/vm.h"
 
-t_mods *t_mods_new(void)
+t_mods		*t_mods_new(void)
 {
 	t_mods	*new;
 
@@ -28,7 +28,7 @@ t_mods *t_mods_new(void)
 	return (new);
 }
 
-t_mods *t_mods_create(t_vm *vm)
+t_mods		*t_mods_create(t_vm *vm)
 {
 	t_mods	*new;
 

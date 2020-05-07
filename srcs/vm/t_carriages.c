@@ -24,7 +24,7 @@ t_carriages			*t_carriages_new(void)
 	return (new);
 }
 
-t_carriage	*t_carriages_pop(t_carriages *list, t_carriage *node)
+t_carriage			*t_carriages_pop(t_carriages *list, t_carriage *node)
 {		
 	if (node->prev == NULL)
 	{		
@@ -60,9 +60,9 @@ t_carriages			*t_carriages_remove_node(t_carriages *list, t_carriage *node)
 }
 
 /*
-** add to front of the list
+** add to the front of the list
 */
-t_carriage		*t_carriages_push(t_carriages *list, t_carriage *new)
+t_carriage			*t_carriages_push(t_carriages *list, t_carriage *new)
 {
 	if (!list->head)
 	{
@@ -79,9 +79,9 @@ t_carriage		*t_carriages_push(t_carriages *list, t_carriage *new)
 }
 
 /*
-** add to end of the list
+** add to the end of the list
 */
-t_carriage		*t_carriages_append(t_carriages *list, t_carriage *new)
+t_carriage			*t_carriages_append(t_carriages *list, t_carriage *new)
 {
 	if (!list->tail)
 		t_carriages_push(list, new);
@@ -90,10 +90,10 @@ t_carriage		*t_carriages_append(t_carriages *list, t_carriage *new)
 	return (new);
 }
 
-int				t_carriages_len(t_carriages *list)
+int					t_carriages_len(t_carriages *list)
 {
-	t_carriage	*temp;
-	int 		len;
+	t_carriage		*temp;
+	int				len;
 
 	len = 0;
 	temp = list->head;

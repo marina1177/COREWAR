@@ -41,6 +41,7 @@ ALL_C_CW = main.c \
 			parse_args.c \
 			print.c \
 			handle_carriages.c \
+			handle_players.c \
 			op.c \
 			actions_1.c \
 			actions_2.c \
@@ -48,8 +49,10 @@ ALL_C_CW = main.c \
 			actions_4.c \
 			actions_handlers.c \
 			check_operation.c \
+			check_operation2.c \
 			print_bits.c \
-			print_ops.c
+			print_ops.c \
+			print_ops2.c
 
 
 			
@@ -101,14 +104,12 @@ lib:
 	make -C ../../libft_clala/
 
 clean:
-	@/bin/rm -rf $(OBJDIR_ASM) $(OBJDIR_CW)
+	@/bin/rm -rf $(OBJDIR_CW)
 	@$(COMP_LIB) clean
-	@$(COMP_PRINTF) clean
 
 fclean: clean
-	@/bin/rm -rf $(NAME_ASM) $(NAME_CW)
+	@/bin/rm -rf $(NAME_CW)
 	@$(COMP_LIB) fclean
-	@$(COMP_PRINTF) fclean
 
 re: fclean all
 

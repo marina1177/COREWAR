@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-void	t_player_delete(t_player *prev, t_player *curr)
+void			t_player_delete(t_player *prev, t_player *curr)
 {
 	prev ? prev->next = curr->next : 0;
 	curr->name ? ft_free("1", curr->name) : 0;
@@ -28,7 +28,7 @@ static t_player *t_player_new(void)
 	return (new);
 }
 
-t_player *t_player_create(int number, t_vm *vm)
+t_player		*t_player_create(int number, t_vm *vm)
 {
 	t_player	*new;
 
@@ -36,4 +36,18 @@ t_player *t_player_create(int number, t_vm *vm)
 		handle_error_vm("Malloc", vm);
 	new->num = number;
 	return (new);
+}
+
+t_player		*get_player_by_number(t_players *players, int num)
+{
+	t_player	*player;
+
+	player = players->first_player;
+	while (player)
+	{
+		if (player->num == num)
+			return (player);
+		player = player->next;
+	}
+	return (player);
 }

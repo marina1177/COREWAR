@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-t_vm_info *t_vm_info_new(void)
+t_vm_info		*t_vm_info_new(void)
 {
 	t_vm_info	*new;
 
@@ -17,7 +17,7 @@ t_vm_info *t_vm_info_new(void)
 	return (new);
 }
 
-t_vm_info *t_vm_info_create(t_vm *vm)
+t_vm_info		*t_vm_info_create(t_vm *vm)
 {
 	t_vm_info	*new;
 

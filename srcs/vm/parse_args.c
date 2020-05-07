@@ -68,10 +68,10 @@ static int	parse_flag_v(t_vm *vm, int ac, char **av, int i)
 	return (1);
 }
 
-void	parse_args(t_vm *vm, int ac, char **av)
+void		parse_args(t_vm *vm, int ac, char **av)
 {
-	int	i;
-	int number;
+	int		i;
+	int		number;
 
 	i = 0;
 	while (++i < ac)
