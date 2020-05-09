@@ -2,6 +2,8 @@
 # define VM_ERROR_H
 
 # define ERR_NOINT "number after -n (%s) is not integer"
+# define ERR_NONUM "-v / -d / -n flags must be followed by integer"
+# define ERR_NOPLR "integer after -n flag must be followed by player`s name"
 # define ERR_N_FLAG "-n argument (%s) must be in range [1 : MAX_PLAYERS]"
 # define ERR_D_FLAG "dump argument (%s) must be in range [0 : INT_MAX]"
 # define ERR_N_DUPL "Ambiguous player number: %d"
