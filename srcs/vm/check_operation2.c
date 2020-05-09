@@ -25,5 +25,8 @@ void	change_position(int *position, int change)
 	if (*position >= MEM_SIZE)
 		*position %= MEM_SIZE;
 	else if (*position < 0)
+	{
+		*position %= MEM_SIZE;
 		*position += MEM_SIZE;
+	}	
 }
