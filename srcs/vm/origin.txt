@@ -1,6 +1,6 @@
 Introducing contestants...
-* Player 1, weighing 679 bytes, "Candy" ("") !
-* Player 2, weighing 679 bytes, "Candy" ("") !
-* Player 3, weighing 679 bytes, "Candy" ("") !
-* Player 4, weighing 679 bytes, "Candy" ("") !
-Contestant 1, "Candy", has won !
+* Player 1, weighing 490 bytes, "fluttershy" ("oh, my, what a scary project") !
+* Player 2, weighing 316 bytes, "Gédéon le Cochon" ("Tout est bon dans Gédéon") !
+* Player 3, weighing 671 bytes, "skynet" ("j'aime les chats") !
+* Player 4, weighing 609 bytes, "Octobre Rouge V4.2" ("And the winner is ...") !
+Contestant 4, "Octobre Rouge V4.2", has won !

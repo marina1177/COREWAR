@@ -52,16 +52,14 @@ void				print_memory(const void *addr, size_t size)
 		while (j < 16 && i + j < size)
 		{
 			ft_print_hex(ptr[i + j]);
-			if (j % 2)
+			if (j++ % 2)
 				write(1, " ", 1);
-			j++;
 		}
 		while (j < 16)
 		{
 			write(1, "  ", 2);
-			if (j % 2)
+			if (j++ % 2)
 				write(1, " ", 1);
-			j++;
 		}
 		j = 0;
 		while (j < 16 && i + j < size)

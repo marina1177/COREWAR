@@ -29,8 +29,16 @@ t_player		*t_players_add(t_players *players, int number, t_vm *vm)
 	t_player	*new;
 
 	new = t_player_create(number, vm);
-	new->next = players->first_player;
-	players->first_player = new;
+	if (!players->first_player)
+	{
+		players->first_player = new;
+		players->last_player = new;
+	}
+	else
+	{
+		players->last_player->next = new;
+		players->last_player = new;
+	}
 	players->qty++;
 	return (new);
 }
@@ -44,6 +52,7 @@ t_players		*t_players_new(void)
 	{
 		new->qty = 0;
 		new->first_player = NULL;
+		new->last_player = NULL;
 		new->last_alive_num = 0;
 		new->lives_num = -1;
 	}

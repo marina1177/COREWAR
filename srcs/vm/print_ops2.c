@@ -41,3 +41,16 @@ void	print_lldi(t_carriage *carriage, unsigned char *arguments,
 		(temp_pos + (values[0] + values[1])));
 	ft_printf("\n");
 }
+
+void	print_bitwise_op(t_vm *vm, t_carriage *carriage, int *values)
+{
+	if (vm->mods->verbosity_level & VERB_L3)
+	{
+		ft_printf("P %4d | ", carriage->num);
+		ft_printf("%s", g_op_tab[carriage->op_code].name);
+		ft_printf(" %d", values[0]);
+		ft_printf(" %d", values[1]);
+		ft_printf(" r%d", values[2]);
+		ft_printf("\n");
+	}
+}

@@ -13,15 +13,7 @@ void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] & values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)
-	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);
-		ft_printf(" %d", values[0]);
-		ft_printf(" %d", values[1]);
-		ft_printf(" r%d", values[2]);
-		ft_printf("\n");
-	}
+	print_bitwise_op(vm, carriage, values);
 }
 
 void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -37,15 +29,7 @@ void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] | values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)
-	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);		
-		ft_printf(" %d", values[0]);
-		ft_printf(" %d", values[1]);		
-		ft_printf(" r%d", values[2]);
-		ft_printf("\n");
-	}
+	print_bitwise_op(vm, carriage, values);
 }
 
 void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -61,15 +45,7 @@ void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	carriage->regs[values[2]] = values[0] ^ values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)
-	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);
-		ft_printf(" %d", values[0]);
-		ft_printf(" %d", values[1]);
-		ft_printf(" r%d", values[2]);
-		ft_printf("\n");
-	}
+	print_bitwise_op(vm, carriage, values);	
 }
 
 void	do_zjmp(t_carriage *carriage, t_vm *vm)

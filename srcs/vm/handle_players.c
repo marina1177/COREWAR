@@ -7,7 +7,7 @@ static int		t_players_is_sorted_desc(t_players *players)
 	curr = players->first_player;
 	while (curr->next)
 	{
-		if (curr->next->num > curr->num)
+		if (curr->next->num < curr->num)
 			return (0);
 		curr = curr->next;		
 	}
@@ -22,7 +22,7 @@ static void		sort_desc_traverse_cycle(t_player *curr,
 		prev = players->first_player;
 		while (curr && curr->next)
 		{
-			if (curr->next->num > curr->num  && curr == players->first_player)
+			if (curr->next->num < curr->num  && curr == players->first_player)
 				{
 					players->first_player = curr->next;
 					curr->next = curr->next->next;
@@ -30,7 +30,7 @@ static void		sort_desc_traverse_cycle(t_player *curr,
 					prev = players->first_player;
 					continue ;
 				}
-			else if (curr->next->num > curr->num)
+			else if (curr->next->num < curr->num)
 			{
 				prev->next = curr->next;
 				curr->next = curr->next->next;
