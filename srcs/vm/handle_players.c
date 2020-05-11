@@ -1,6 +1,6 @@
 #include "../../includes/vm.h"
 
-static int		t_players_is_sorted_desc(t_players *players)
+static int		t_players_is_sorted(t_players *players)
 {
 	t_player	*curr;
 
@@ -14,10 +14,10 @@ static int		t_players_is_sorted_desc(t_players *players)
 	return (1);
 }
 
-static void		sort_desc_traverse_cycle(t_player *curr,
+static void		sort_traverse_cycle(t_player *curr,
 				t_player *prev, t_players *players)
 {
-	while (!t_players_is_sorted_desc(players) && (curr = players->first_player))
+	while (!t_players_is_sorted(players) && (curr = players->first_player))
 	{		
 		prev = players->first_player;
 		while (curr && curr->next)
@@ -42,14 +42,14 @@ static void		sort_desc_traverse_cycle(t_player *curr,
 	}
 }
 
-static void		t_players_sort_desc(t_players *players)
+static void		t_players_sort(t_players *players)
 {
 	t_player	*curr;
 	t_player	*prev;
 
 	curr = NULL;
 	prev = NULL;
-	sort_desc_traverse_cycle(curr, prev, players);	
+	sort_traverse_cycle(curr, prev, players);	
 }
 
 static void		t_players_set_num(t_players *players)
@@ -72,7 +72,7 @@ void			handle_players(t_vm *vm, t_players *players)
 	if (players->qty > MAX_PLAYERS)
 		handle_error_int_arg(ERR_MAX_PLAYERS, MAX_PLAYERS, vm);
 	t_players_set_num(players);
-	t_players_sort_desc(players);
+	t_players_sort(players);
 	temp = players->first_player;
 	while (temp)
 	{

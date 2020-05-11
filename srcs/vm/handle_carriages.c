@@ -37,8 +37,6 @@ void				increase_position(int *pos, int delta)
 static void			get_op_code(t_carriage *carriage, t_vm *vm)
 {
 	carriage->op_code = vm->data->arena[carriage->pos];
-	if (vm->data->arena[carriage->pos] & 0b10000000)
-		carriage->op_code = get_negative_number(&vm->data->arena[carriage->pos], 1);
 	carriage->cycles_countdown = 1;
 	if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
 		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;
@@ -48,20 +46,23 @@ void				handle_carriages(t_vm *vm)
 {
 	t_carriage		*carriage;
 	unsigned char	arguments[4];
+	int				temp_pos;
 
 	carriage = vm->carr->head;
 	while (carriage)
-	{
-		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;		
-		if (vm->data->cycles > 0 && carriage->cycles_countdown >= 0)
-		{
+	{		
+		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
+		if (vm->data->cycles > 0 && carriage->cycles_countdown > 0)
 			carriage->cycles_countdown--;
-			if (!carriage->cycles_countdown)
-			{
-				if (check_operation(vm->data->arena, carriage, arguments))
-					make_operation(vm, carriage, arguments);
-				carriage->cycles_countdown--;					
+		if (vm->data->cycles > 0 && carriage->cycles_countdown == 0)
+		{
+			temp_pos = carriage->pos;		
+			if (check_operation(vm->data->arena, carriage, arguments))				
+			{	
+				make_operation(vm, carriage, arguments);
+				carriage->cycles_countdown = -1;
 			}
+			print_move(vm, carriage, temp_pos);
 		}
 		carriage = carriage->next;
 	}

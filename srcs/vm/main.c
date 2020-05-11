@@ -100,7 +100,8 @@ int				main(int ac, char **av)
 	vm = t_vm_create();
 	parse_args(vm, ac, av);
 	print_introduction(vm->players);	
-	create_arena(vm);	
+	create_arena(vm);
+	vm->players->last_alive_num = vm->players->qty;
 	corewar(vm);	
 	print_final_result(vm);
 	return (0);

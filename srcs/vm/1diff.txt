@@ -1,4 +1,0 @@
-6c6
-< Contestant 1, "Varimathras", has won !
----
-> Contestant 2, "Sliders", has won !

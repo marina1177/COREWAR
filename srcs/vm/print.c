@@ -50,9 +50,6 @@ int		print_is_alive(int num, char *player_name)
 	return (1);
 }
 
-
-
-
 int		print_dump(t_vm *vm, int dump_size)
 {	
 	int		i;
@@ -77,29 +74,29 @@ int		print_dump(t_vm *vm, int dump_size)
 	return (1);	
 }
 
-/*
-static void	vm_print_v_16(t_process p)
+void	print_move(t_vm *vm, t_carriage *carriage, int temp_pos)
 {
 	int i;
 	int	size;
 
-	if (p.op.opcode != 0 && (p.op.opcode != 9 || !p.carry))
+	if (!(vm->mods->verbosity_level & VERB_L5))
+		return ;
+	if (carriage->op_code != 0 && (carriage->op_code != 9 || !carriage->carry))
 	{
 		ft_printf("ADV %d (0x%04x -> 0x%04x) ",
-			p.pc_next - p.pc,
-			p.offset + p.pc,
-			p.offset + p.pc_next);
-		i = p.offset + p.pc;
+			carriage->pos - temp_pos,
+			temp_pos,
+			carriage->pos);
+		i = temp_pos;
 		size = 0;
-		while (size < p.pc_next - p.pc)
+		while (size < carriage->pos - temp_pos)
 		{
 			if (i == MEM_SIZE)
 				i = 0;
-			ft_printf("%02x ", g_memory[i]);
+			ft_printf("%02x ", vm->data->arena[i]);
 			i++;
 			size++;
 		}
 		ft_printf("\n");
 	}
 }
-*/

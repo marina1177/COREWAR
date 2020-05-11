@@ -12,10 +12,10 @@ for i in $(seq 1 $1); do
 	champ2=$(ls ./tests/champ/*.cor |sort -R |tail -n 1);
 	champ3=$(ls ./tests/champ/*.cor |sort -R |tail -n 1);
 	champ4=$(ls ./tests/champ/*.cor |sort -R |tail -n 1);
-	args="'$champ1' '$champ2' '$champ3' '$champ4' '-v' '0'";	
+	args="'$champ1' '$champ2' '$champ3' '$champ4'";	
 	eval ./corewar_linux $args > 1origin.txt;
-	eval ./corewar $args > 1177.txt;
-	diff 1177.txt 1origin.txt > 1diff.txt;
+	eval ./corewar_copy $args > 11177.txt;
+	diff 11177.txt 1origin.txt > 1diff.txt;
 	if [[ -s $ret ]]; then
     echo -ne $red"\nDIFFERENCE"$norm $filename
 	echo $champ1 $champ2 $champ3 $champ4
