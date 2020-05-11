@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_vm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/15 17:23:24 by clala            ###   ########.fr       */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,18 @@ static t_vm	*t_vm_new(void)
 	t_vm	*vm;
 	int		i;
 
-	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error(ERR_ALLOC) : 0;	
-	!(vm->data = t_vm_info_create(vm)) ? handle_error_vm(ERR_ALLOC, vm) : 0;
+	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error(ERR_ALLOC) : 0;
 	!(vm->players = t_players_new()) ? handle_error_vm(ERR_ALLOC, vm) : 0;
-	!(vm->carr = t_carriages_new()) ? handle_error_vm(ERR_ALLOC, vm) : 0;
-	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ? handle_error_vm(ERR_ALLOC, vm) : 0;
-	!(vm->mods = t_mods_create(vm)) ? handle_error_vm(ERR_ALLOC, vm) : 0;
+	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ?
+		handle_error_vm(ERR_ALLOC, vm) : 0;
+	vm->data = t_vm_info_create(vm);
+	vm->carr = t_carriages_create(vm);
+	vm->mods = t_mods_create(vm);
 	i = -1;
 	while (++i < REG_NUMBER + 1)
 		vm->op_tab[i] = g_op_tab[i];
 	init_exec(vm);
-	g_el = 0;
-
-	return	(vm);
+	return (vm);
 }
 
 t_vm		*t_vm_create(void)
@@ -65,10 +64,7 @@ t_vm		*t_vm_create(void)
 	new = NULL;
 	if (is_valid_op_h())
 	{
-		new = t_vm_new();		
+		new = t_vm_new();
 	}
 	return (new);
 }
-
-
-

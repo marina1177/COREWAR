@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_players.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 int				t_players_get_next_number(t_players *players)
@@ -15,15 +27,11 @@ int				t_players_get_next_number(t_players *players)
 			temp = players->first_player;
 		}
 		else
-			temp = temp->next;		
+			temp = temp->next;
 	}
 	return (i);
 }
 
-/*
-**	Create and insert new player in first position of Players` list
-**	Return new player
-*/
 t_player		*t_players_add(t_players *players, int number, t_vm *vm)
 {
 	t_player	*new;
@@ -58,4 +66,3 @@ t_players		*t_players_new(void)
 	}
 	return (new);
 }
-

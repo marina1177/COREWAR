@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions_2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:16:34 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:16:35 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -7,8 +19,10 @@ void	do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 
 	position = carriage->pos;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
 	carriage->regs[values[2]] = values[0] & values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
@@ -23,8 +37,10 @@ void	do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 
 	position = carriage->pos;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
 	carriage->regs[values[2]] = values[0] | values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
@@ -39,13 +55,15 @@ void	do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 
 	position = carriage->pos;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
 	carriage->regs[values[2]] = values[0] ^ values[1];
 	carriage->carry = carriage->regs[values[2]] == 0 ? 1 : 0;
 	carriage->pos = position;
-	print_bitwise_op(vm, carriage, values);	
+	print_bitwise_op(vm, carriage, values);
 }
 
 void	do_zjmp(t_carriage *carriage, t_vm *vm)
@@ -71,7 +89,7 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" %hd", value);
-		!carriage->carry ? ft_printf(" FAILED\n") :	ft_printf(" OK\n");
+		!carriage->carry ? ft_printf(" FAILED\n") : ft_printf(" OK\n");
 	}
 }
 
@@ -85,8 +103,10 @@ void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	position = carriage->pos;
 	temp_pos = carriage->pos;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
 	i = carriage->pos;
 	change_position(&i, (values[0] + values[1]) % IDX_MOD);

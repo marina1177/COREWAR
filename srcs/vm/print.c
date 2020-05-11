@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_vs.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/15 17:23:24 by clala            ###   ########.fr       */
+/*   Updated: 2020/05/11 21:56:46 by clala            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		print_is_alive(int num, char *player_name)
 }
 
 int		print_dump(t_vm *vm, int dump_size)
-{	
+{
 	int		i;
 	int		j;
 	uint8_t	*arena;
@@ -71,7 +71,7 @@ int		print_dump(t_vm *vm, int dump_size)
 		i += dump_size;
 	}
 	exit(0);
-	return (1);	
+	return (1);
 }
 
 void	print_move(t_vm *vm, t_carriage *carriage, int temp_pos)

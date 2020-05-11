@@ -1,12 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_player.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:17:40 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:17:42 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# define NULL_SIZE 4
-# define INT_SIZE 4
-# define CH_NAME_SIZE 128
-# define CH_COMM_SIZE 2048
+#define NULL_SIZE 4
+#define INT_SIZE 4
+#define CH_NAME_SIZE 128
+#define CH_COMM_SIZE 2048
 
 static char		*valid_read(int fd, char *arg, int len, t_vm *vm)
 {
@@ -33,7 +41,7 @@ int				get_integer(int fd, char *arg, t_vm *vm)
 {
 	int			a;
 	char		*buffer;
-	
+
 	a = 0;
 	buffer = valid_read(fd, arg, INT_SIZE, vm);
 	if (buffer)
@@ -50,7 +58,7 @@ int				get_integer(int fd, char *arg, t_vm *vm)
 int				is_dot_cor_name(char *name)
 {
 	int			i;
-	
+
 	i = ft_strlen(name) - 1;
 	if (name[i] == 'r' && name[i - 1] == 'o' &&
 		name[i - 2] == 'c' && name[i - 3] == '.')

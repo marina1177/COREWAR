@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_vs.c                                             :+:      :+:    :+:   */
+/*   print_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/15 17:23:24 by clala            ###   ########.fr       */
+/*   Updated: 2020/05/11 21:56:46 by clala            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
 void	print_sti(unsigned char *arguments, int temp,
-				int *values, t_carriage *carriage, int reg)
+				int *values, int reg)
 {
-	ft_printf("P %4d | ", carriage->num);
-	ft_printf("%s", g_op_tab[carriage->op_code].name);
 	ft_printf(" r%d", reg);
 	(arguments[1] == T_DIR) ?
 	ft_printf(" %hd", values[1]) : ft_printf(" %d", values[1]);
@@ -42,7 +40,7 @@ void	print_sti(unsigned char *arguments, int temp,
 }
 
 void	print_st(t_carriage *carriage, int reg, int *values, int temp_val)
-{	
+{
 	ft_printf("P %4d | ", carriage->num);
 	ft_printf("%s", g_op_tab[carriage->op_code].name);
 	ft_printf(" r%d", reg);
@@ -57,7 +55,8 @@ void	print_live(t_vm *vm, t_carriage *carriage, int num)
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" %d\n", -num);
 	}
-	if (num > 0 && num <= vm->players->qty && vm->mods->verbosity_level & VERB_L1)
+	if (num > 0 && num <= vm->players->qty &&
+		vm->mods->verbosity_level & VERB_L1)
 		print_is_alive(num, get_player_by_number(vm->players, num)->name);
 }
 
@@ -68,7 +67,7 @@ void	print_ldi(t_carriage *carriage, unsigned char *arguments,
 	ft_printf("%s", g_op_tab[carriage->op_code].name);
 	(arguments[0] == T_DIR) ?
 		ft_printf(" %hd", values[0]) : ft_printf(" %d", values[0]);
-	(arguments[1] == T_DIR) ?	
+	(arguments[1] == T_DIR) ?
 		ft_printf(" %hd", values[1]) : ft_printf(" %d", values[1]);
 	ft_printf(" r%d", values[2]);
 	ft_printf("\n");

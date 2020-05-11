@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions_handlers.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:16:53 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:16:54 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 int			get_negative_number(void *argument, int size)
@@ -46,7 +58,8 @@ int			get_reg_value(unsigned char *arena, int *pos)
 	return (result);
 }
 
-int			get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_type)
+int			get_arg_value(unsigned char *arena, t_carriage *car,
+			int *pos, char arg_type)
 {
 	int temp;
 	int result;
@@ -59,7 +72,8 @@ int			get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_t
 	}
 	else if (arg_type == T_DIR)
 	{
-		result = get_num_from_char(arena, *pos, g_op_tab[(int)car->op_code].t_dir_size);
+		result = get_num_from_char(arena, *pos,
+				g_op_tab[(int)car->op_code].t_dir_size);
 		change_position(pos, g_op_tab[(int)car->op_code].t_dir_size);
 	}
 	else if (arg_type == T_IND)
@@ -72,7 +86,8 @@ int			get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_t
 	return (result);
 }
 
-void		write_reg(unsigned char *arena, int reg,  int position, int change)
+void		write_reg(unsigned char *arena, int reg,
+			int position, int change)
 {
 	char			temp;
 

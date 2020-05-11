@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions_3.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:16:40 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:16:41 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -11,13 +23,21 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	temp = carriage->pos;
 	change_position(&position, 2);
 	reg = vm->data->arena[position];
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);	
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
-	values[2] = get_arg_value(vm->data->arena, carriage, &position, arguments[2]);
-	write_reg(vm->data->arena, values[0], carriage->pos, (values[1] + values[2]) % IDX_MOD);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
+	values[2] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[2]);
+	write_reg(vm->data->arena, values[0], carriage->pos,
+				(values[1] + values[2]) % IDX_MOD);
 	carriage->pos = position;
 	if (vm->mods->verbosity_level & VERB_L3)
-		print_sti(arguments, temp, values, carriage, reg);
+	{
+		ft_printf("P %4d | ", carriage->num);
+		ft_printf("%s", g_op_tab[carriage->op_code].name);
+		print_sti(arguments, temp, values, reg);
+	}
 }
 
 void	do_fork(t_carriage *carriage, t_vm *vm)
@@ -29,7 +49,7 @@ void	do_fork(t_carriage *carriage, t_vm *vm)
 	position = carriage->pos;
 	temp = position;
 	change_position(&position, 1);
-	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);	
+	value = get_arg_value(vm->data->arena, carriage, &position, T_DIR);
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
 	change_position(&vm->carr->head->pos, value % IDX_MOD);
 	carriage->pos = position;
@@ -51,7 +71,8 @@ void	do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	position = carriage->pos;
 	change_position(&position, 2);
 	if (arguments[0] == T_DIR)
-		values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
+		values[0] = get_arg_value(vm->data->arena,
+					carriage, &position, arguments[0]);
 	else
 	{
 		temp = carriage->pos;
@@ -74,12 +95,13 @@ void	do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	int	temp;
 	int	temp_pos;
 
-	
 	position = carriage->pos;
 	temp_pos = position;
 	change_position(&position, 2);
-	values[0] = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	values[1] = get_arg_value(vm->data->arena, carriage, &position, arguments[1]);
+	values[0] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[0]);
+	values[1] = get_arg_value(vm->data->arena,
+				carriage, &position, arguments[1]);
 	values[2] = get_reg_value(vm->data->arena, &position);
 	temp = carriage->pos;
 	change_position(&temp, values[0] + values[1]);
@@ -103,10 +125,10 @@ void	do_lfork(t_carriage *carriage, t_vm *vm)
 	t_carriages_push(vm->carr, t_carriage_copy(vm->carr, carriage));
 	change_position(&vm->carr->head->pos, value);
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)	
+	if (vm->mods->verbosity_level & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);		
+		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" %hd (%hd)", value,
 			temp + value);
 		ft_printf("\n");

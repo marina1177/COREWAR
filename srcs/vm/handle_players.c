@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_players.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:17:19 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:17:20 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 static int		t_players_is_sorted(t_players *players)
@@ -9,7 +21,7 @@ static int		t_players_is_sorted(t_players *players)
 	{
 		if (curr->next->num < curr->num)
 			return (0);
-		curr = curr->next;		
+		curr = curr->next;
 	}
 	return (1);
 }
@@ -18,18 +30,18 @@ static void		sort_traverse_cycle(t_player *curr,
 				t_player *prev, t_players *players)
 {
 	while (!t_players_is_sorted(players) && (curr = players->first_player))
-	{		
+	{
 		prev = players->first_player;
 		while (curr && curr->next)
 		{
-			if (curr->next->num < curr->num  && curr == players->first_player)
-				{
-					players->first_player = curr->next;
-					curr->next = curr->next->next;
-					players->first_player->next = curr;
-					prev = players->first_player;
-					continue ;
-				}
+			if (curr->next->num < curr->num && curr == players->first_player)
+			{
+				players->first_player = curr->next;
+				curr->next = curr->next->next;
+				players->first_player->next = curr;
+				prev = players->first_player;
+				continue ;
+			}
 			else if (curr->next->num < curr->num)
 			{
 				prev->next = curr->next;
@@ -49,7 +61,7 @@ static void		t_players_sort(t_players *players)
 
 	curr = NULL;
 	prev = NULL;
-	sort_traverse_cycle(curr, prev, players);	
+	sort_traverse_cycle(curr, prev, players);
 }
 
 static void		t_players_set_num(t_players *players)
@@ -61,8 +73,8 @@ static void		t_players_set_num(t_players *players)
 	{
 		if (!curr->num)
 			curr->num = t_players_get_next_number(players);
-		curr = curr->next;		
-	}	
+		curr = curr->next;
+	}
 }
 
 void			handle_players(t_vm *vm, t_players *players)

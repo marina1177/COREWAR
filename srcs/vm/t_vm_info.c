@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_vm_info.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
-t_vm_info		*t_vm_info_new(void)
+static t_vm_info	*t_vm_info_new(void)
 {
-	t_vm_info	*new;
+	t_vm_info		*new;
 
 	new = (t_vm_info *)malloc(sizeof(t_vm_info));
 	if (new)
@@ -17,9 +29,9 @@ t_vm_info		*t_vm_info_new(void)
 	return (new);
 }
 
-t_vm_info		*t_vm_info_create(t_vm *vm)
+t_vm_info			*t_vm_info_create(t_vm *vm)
 {
-	t_vm_info	*new;
+	t_vm_info		*new;
 
 	new = t_vm_info_new();
 	if (!new)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_mods.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/15 17:23:24 by clala            ###   ########.fr       */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,3 @@ t_mods		*t_mods_create(t_vm *vm)
 		handle_error_vm(ERR_ALLOC, vm);
 	return (new);
 }
-
-
-

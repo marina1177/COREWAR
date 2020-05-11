@@ -1,0 +1,1 @@
+make && cp corewar ../COREWAR_1177/srcs/vm/corewar_riz

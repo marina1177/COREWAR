@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:17:35 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:17:35 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 static int	is_number_unique(t_vm *vm, int number)
@@ -44,10 +56,8 @@ static int	parse_flag_dump(t_vm *vm, int ac, char **av, int i)
 		handle_error_str_arg(ERR_NOINT, num, vm);
 	number = ft_atoi(num);
 	if (number < 0)
-		handle_error_str_arg(ERR_D_FLAG, num, vm);	
+		handle_error_str_arg(ERR_D_FLAG, num, vm);
 	vm->mods->dump_size = !ft_strcmp(arg, "-d") ? 64 : 32;
-	if (g_el)
-		vm->mods->dump_size = vm->mods->dump_size == 32 ? 64 : 32;
 	vm->mods->dump_cycle = number;
 	return (1);
 }
@@ -56,15 +66,15 @@ static int	parse_flag_v(t_vm *vm, int ac, char **av, int i)
 {
 	int		number;
 	char	*num;
-	
+
 	++i == ac ? handle_error_vm(ERR_NONUM, vm) : 0;
 	num = av[i];
 	if (!is_integer(num))
 		handle_error_str_arg(ERR_NOINT, num, vm);
 	number = ft_atoi(num);
 	if (number < 0 || number > 31)
-		handle_error_str_arg(ERR_D_FLAG, num, vm);	
-	vm->mods->verbosity_level = number;	
+		handle_error_str_arg(ERR_V_FLAG, num, vm);
+	vm->mods->verbosity_level = number;
 	return (1);
 }
 
@@ -86,10 +96,8 @@ void		parse_args(t_vm *vm, int ac, char **av)
 			parse_flag_dump(vm, ac, av, i++);
 		else if (!ft_strcmp(av[i], "-v"))
 			parse_flag_v(vm, ac, av, i++);
-		else if (!ft_strcmp(av[i], "-el"))		
-			g_el = 1;
 		else if (!ft_strcmp(av[i], "-a"))
-			vm->mods->aff = 1;		
+			vm->mods->aff = 1;
 		else
 			parse_player(vm, av[i], t_players_add(vm->players, 0, vm));
 	}

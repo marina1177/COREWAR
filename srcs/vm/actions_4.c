@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions_4.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:16:47 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:16:48 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 void		do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
@@ -10,12 +22,12 @@ void		do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	{
 		change_position(&carriage->pos, 3);
 		return ;
-	}	
+	}
 	position = carriage->pos;
 	change_position(&position, 2);
 	value = get_arg_value(vm->data->arena, carriage, &position, arguments[0]);
-	reg = (char)value;	
+	reg = (char)value;
 	carriage->pos = position;
 	if (vm->mods->aff)
-		ft_printf("Aff: %c\n", reg);	
+		ft_printf("Aff: %c\n", reg);
 }

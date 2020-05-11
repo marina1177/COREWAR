@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   t_player.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 void			t_player_delete(t_player *prev, t_player *curr)
@@ -6,10 +18,10 @@ void			t_player_delete(t_player *prev, t_player *curr)
 	curr->name ? ft_free("1", curr->name) : 0;
 	curr->comment ? ft_free("1", curr->comment) : 0;
 	curr->code ? ft_free("1", curr->code) : 0;
-	free(curr);		
+	free(curr);
 }
 
-static t_player *t_player_new(void)
+static t_player	*t_player_new(void)
 {
 	t_player	*new;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_vs.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/03/15 17:23:24 by clala            ###   ########.fr       */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_vs	*t_vs_new(void)
 
 	if ((new = (t_vs *)malloc(sizeof(t_vs))))
 	{
-
+		;
 	}
 	return (new);
 }
@@ -29,7 +29,7 @@ t_vs		*t_vs_create(t_vm *vm)
 
 	new = NULL;
 	if (!vm->vs)
-	{	
+	{
 		new = t_vs_new();
 		if (!new)
 			handle_error_vm(ERR_ALLOC, vm);

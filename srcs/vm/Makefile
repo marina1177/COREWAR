@@ -25,34 +25,7 @@ ALL_C_ASM = asm.c add_args_code.c add_null_octets.c add_str_to_byte_code.c add_c
 		read_line.c read_operation.c wrong_end_of_line.c free_struct.c init_operations.c only_spaces.c add_arg.c op.c \
 		check_name_and_comment.c getter.c have_end_quote.c put_after_quote.c read_.c
 
-ALL_C_CW = main.c \
-			handle_error.c \
-			input_validation.c \
-			parse_player.c \
-			t_carriage.c \
-			t_carriages.c \
-			t_mods.c \
-			t_player.c \
-			t_players.c \
-			t_vm.c \
-			t_vm_info.c \
-			t_vs.c \
-			print_debug.c \
-			parse_args.c \
-			print.c \
-			handle_carriages.c \
-			handle_players.c \
-			op.c \
-			actions_1.c \
-			actions_2.c \
-			actions_3.c \
-			actions_4.c \
-			actions_handlers.c \
-			check_operation.c \
-			check_operation2.c \
-			print_bits.c \
-			print_ops.c \
-			print_ops2.c
+ALL_C_CW = $(wildcard *.c)
 
 
 			

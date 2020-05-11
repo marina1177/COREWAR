@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:15:54 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:15:54 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VM_H
 # define VM_H
 
@@ -15,7 +27,9 @@
 # define CYCLE_COORD		1993
 # define PROCESSES			2505
 # define PL_ONE_LIVE		3529
-
+/*
+**
+*/
 # define LIVE_CODE	0x01
 # define LD_CODE 	0x02
 # define ST_CODE	0x03
@@ -32,7 +46,9 @@
 # define LLDI_CODE	0x0e
 # define LFORK_CODE	0x0f
 # define AFF_CODE	0x10
-
+/*
+**
+*/
 # define LIVE_CYCLE_CD	10
 # define LD_CYCLE_CD	5
 # define ST_CYCLE_CD	5
@@ -49,7 +65,6 @@
 # define LLDI_CYCLE_CD	50
 # define LFORK_CYCLE_CD	1000
 # define AFF_CYCLE_CD	2
-
 # define CYCLES_BEFORE_DUMP 1000
 # define VERB_L0 0
 # define VERB_L1 1
@@ -57,8 +72,6 @@
 # define VERB_L3 4
 # define VERB_L4 8
 # define VERB_L5 16
-
-int g_el;
 
 typedef struct			s_op
 {
@@ -186,11 +199,9 @@ int						get_arg_size(int op, unsigned char arg);
 void					write_reg(unsigned char *arena, int reg,  int position, int change);
 int						get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_type);
 int						get_reg_value(unsigned char *arena, int *pos);
-
 t_carriage				*make_new_carriage(unsigned int position);
 void					add_carriage(t_carriage **head, t_carriage *new);
 void					del_carriage(t_carriage **head, t_carriage *carriage);
-
 void					(*actions[17])();
 void					do_live(t_carriage *carriage, t_vm *vm);
 void					do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
@@ -256,10 +267,6 @@ int						handle_error_str_arg(char *error_message, char *arg, t_vm *vm);
 int						handle_error_int_arg(char *error_message, int arg, t_vm *vm);
 int						print_usage(void);
 
-/*
-** t_vm_info
-*/
-t_vm_info				*t_vm_info_new(void);
 
 /*
 ** t_carriage and t_carriages
@@ -270,13 +277,11 @@ t_carriage				*t_carriages_insert_after(t_carriages *list,
 t_carriage				*t_carriages_insert_before(t_carriages *list,
 							t_carriage *node, t_carriage *new);
 t_carriage				*t_carriages_push(t_carriages *list, t_carriage *new);
-t_carriage				*t_carriages_append(t_carriages *list, t_carriage *new);
-t_carriages				*t_carriages_new();
+t_carriages				*t_carriages_create(t_vm *vm);
 t_carriage				*t_carriages_pop(t_carriages *list, t_carriage *node);
 t_carriages				*t_carriages_remove_node(t_carriages *list, t_carriage *node);
 int						*get_nums(t_carriages *carrs);
 t_carriage				*t_carriage_copy(t_carriages *carr, t_carriage *src);
-int						t_carriages_len(t_carriages *list);
 
 /*
 ** Validation
@@ -305,7 +310,7 @@ int						print_is_alive(int num, char *player_name);
 int						print_dump(t_vm *vm, int dump_size);
 void					print_final_result(t_vm *vm);
 void					print_sti(unsigned char *arguments, int temp,
-							int *values, t_carriage *carriage, int reg);
+							int *values, int reg);
 void					print_st(t_carriage *carriage, int reg, int *values, int temp_val);
 void					print_live(t_vm *vm, t_carriage *carriage, int num);
 void					print_lld(t_carriage *carriage, unsigned char *arguments, int *values);
@@ -315,5 +320,6 @@ void					print_lldi(t_carriage *carriage, unsigned char *arguments,
 							int *values, int temp_pos);
 void					print_bitwise_op(t_vm *vm,
 							t_carriage *carriage, int *values);
+void					print_move(t_vm *vm, t_carriage *carriage, int temp_pos);
 
 #endif
