@@ -193,7 +193,6 @@ class MyGame(arcade.Window):
 					self.color_list[start_place + n] = COLOR_WRITE[data_cell[i]['id'] - 1]
 
 	def drop(self):
-
 		# State refresh
 		if self.data[self.json_indx]['state_refresh'] > 0:
 			if self.data[self.json_indx]['State']['error_code'] > 0:
