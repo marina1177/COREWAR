@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 10:53:25 by bcharity          #+#    #+#             */
-/*   Updated: 2020/02/02 12:14:13 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/03/27 21:44:18 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static int			check_valid(const char *s, int n)
 	{
 		error();
 	}
-	if ((*str < 48 || *str > 57) && *str != '\0')
+	/*if ((*str < 48 || *str > 57) && *str != '\0')
 	{
 		error();
-	}
+	}*/
 	return (1);
 }
 

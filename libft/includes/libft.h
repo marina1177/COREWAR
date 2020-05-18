@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 18:42:48 by bcharity          #+#    #+#             */
-/*   Updated: 2020/02/02 12:26:01 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/03/28 13:47:02 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# define EOC	"\033[0m"
+# define RED	"\033[1;31m"
+# define YELLOW	"\033[1;33m"
+# define WHITE	"\033[1;37m"
+# define BLACK	"\033[0;30m"
+# define GREEN	"\033[0;32m"
+# define BLUE	"\033[0;34m"
+# define PURPUL	"\033[0;35m"
+# define CYAN	"\033[0;36m"
 
 typedef struct s_list	t_list;
 
@@ -71,7 +81,7 @@ void			ft_stack_swap(t_stack *st);
 */
 
 # define MAX_FD 4096
-# define BUFF_SIZE 17
+# define BUFF_SIZE 1000
 
 int				get_next_line(const int fd, char **line);
 int				to_line(char **line, t_list *node, int ret, int fd);

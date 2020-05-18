@@ -1,21 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/02 02:16:26 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/04 01:58:15 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "../../includes/com.h"
+#include "com.h"
 
-char			*freesplit()
+void	freesplit(t_token *tmp)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (g_tkn_last->op_args[i] != NULL)
+	while (i < (tmp)->op->args_num)
 	{
-		free(g_tkn_last->op_args[i]);
-		i++;
+		free(tmp->args[i]->arg);
+		free(tmp->args[i]);
+		++i;
 	}
-	free(g_tkn_last->op_args);//???
-	return (NULL);
 }
 
-void	free_token()
+void	free_token(void)
 {
 	t_token	*tmp;
 
@@ -25,13 +35,12 @@ void	free_token()
 	{
 		tmp = g_tkn_first;
 		g_tkn_first = (g_tkn_first)->next;
-		if (tmp->op_args)
-			freesplit();
+		freesplit(tmp);
 		free(tmp);
 	}
 }
 
-void	free_label()
+void	free_label(void)
 {
 	t_lbl_lst	*temp;
 
@@ -40,21 +49,27 @@ void	free_label()
 	while (g_label_first != NULL)
 	{
 		temp = g_label_first;
+		free(temp->label);
 		g_label_first = g_label_first->next;
 		free(temp);
 	}
 }
 
-void		free_data(void)
+void	free_data(void)
 {
-	/*if (g_buf)
-		free(g_buf);*/
-	if (g_data)
+	if (g_mbuf != NULL)
+		free(g_mbuf);
+	if (g_mdata)
 	{
-		if (g_data->fd_s)
-			close(g_data->fd_s);
-		free(g_data->head);
-		free(g_data);
+		if (g_mdata->fd_s)
+		{
+			get_line(-1, NULL);
+			close(g_mdata->fd_s);
+		}
+		if (g_mdata->line)
+			free(g_mdata->line);
+		free(g_mdata->head);
+		free(g_mdata);
 	}
 	if (g_tkn_first)
 		free_token();

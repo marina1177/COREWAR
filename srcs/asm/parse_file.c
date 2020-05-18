@@ -1,43 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
+/*   Updated: 2020/04/04 02:00:39 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/com.h"
 
-void		parse_str(char **buf)
+void	tokenize(char **line)
 {
-	char	*pnt;
-
-	pnt = skip_comment(*buf);////CHECK NEWLINE
-	g_rnum = 0;
-	if (*pnt != '\0')
-	{
-		if (*pnt == '.' || g_data->name_f == 1 || g_data->comm_f == 1)
-		{
-			add_header(pnt);
-		}
-		else
-		{
-			pnt = skip_space(*buf);//
-			g_rnum += (pnt - *buf);///x++
-			printf("G_RNUM = %zu\n", g_rnum);
-			search_op(pnt);
-		}
-	}
-	else
-		return ;
+	check_label(*line);
+	skip_space(*line);
+	check_new_line(*line, 1);
+	check_op(*line);
+	skip_space(*line);
+	check_new_line(*line, 2);
 }
 
-void	parse_file(int fd_s)
+void	parse_str(char **line)
 {
-	char	*buf;
+	int	start;
+
+	start = g_mdata->x;
+	if ((*line)[g_mdata->x] != '\0')
+	{
+		if ((*line)[g_mdata->x] == '.'
+				&& (g_mdata->name_f == 0 || g_mdata->comm_f == 0)
+				&& (g_tkn_first == NULL && g_label_first == NULL))
+		{
+			if (g_mdata->x == start)
+				add_header(line);
+			else
+				error_event(ERR_NAMECOM);
+		}
+		else if ((*line)[g_mdata->x] == '\n' && ++g_mdata->x)
+			check_new_line(*line, 0);
+		else if (g_mdata->name_f == 1 && g_mdata->comm_f == 1)
+			tokenize(line);
+		else if ((g_mdata->name_f == 0 || g_mdata->comm_f == 0))
+			put_error("Lexical error: invalid instruction", 1);
+		if (!((*line)[g_mdata->x]) || (*line)[g_mdata->x] == '\0')
+			return ;
+/*		if ((*line)[g_mdata->x] == '\n')
+			g_mdata->x++;*/
+	}
+}
+
+void	parse_file(void)
+{
 	int		size;
 
-	g_snum = 0;
-
-	while ((size = get_next_line(fd_s, &buf)) > 0)
+	while ((size = get_line(g_mdata->fd_s, &g_mdata->line))
+							&& !(g_mdata->x = 0)
+							&& ++g_mdata->y)
 	{
-		printf("get_%s\n", buf);
-		parse_str(&buf);
-		g_snum++;
-		printf("NUM_STR = %ld\n", g_snum);
-		ft_strdel(&buf);
+		while (g_mdata->line[g_mdata->x])
+		{
+			skip_comment(g_mdata->line);
+			skip_space(g_mdata->line);
+			if (&(g_mdata->line[g_mdata->x]) && g_mdata->line[g_mdata->x])
+				parse_str(&g_mdata->line);
+		}
+		ft_strdel(&g_mdata->line);
 	}
 	if (size == -1)
 		error_event(ERR_READING);

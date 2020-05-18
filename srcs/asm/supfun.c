@@ -1,70 +1,5 @@
-#include "../../includes/com.h"
 
-void    bits_to_str(size_t size, void *ptr, char space)
-{
-    unsigned char    *b;
-    unsigned char    byte;
-    int                i;
-    int                j;
-
-    b = (unsigned char*)ptr;
-    i = size - 1;
-    j = 7;
-    while (i >= 0)
-    {
-        while (j >= 0)
-        {
-            byte = (b[i] >> j) & 1;
-            ft_putchar(byte + '0');
-            j--;
-        }
-        if (space == 1)
-            ft_putchar(' ');
-        j = 7;
-        i--;
-    }
-    ft_putchar('\n');
-}
-
-
-void    print_bits(size_t size, void *ptr, char space)
-{
-    unsigned char    *b;
-    unsigned char    byte;
-    int                i;
-    int                j;
-
-    b = (unsigned char*)ptr;
-    i = size - 1;
-    j = 7;
-    while (i >= 0)
-    {
-        while (j >= 0)
-        {
-            byte = (b[i] >> j) & 1;
-            ft_putchar(byte + '0');
-            j--;
-        }
-        if (space == 1)
-            ft_putchar(' ');
-        j = 7;
-        i--;
-    }
-    ft_putchar('\n');
-}
-
-/*dst = 0;
-    i = -1;
-    while (++i < 2)
-    {
-        if (i + start < MEM_SIZE)
-            position = i + start;
-        else
-            position = i + start - MEM_SIZE;
-        dst = dst << 8;
-        dst += (short)arena[position];
-    }
-    return ((int)dst);*/
+#include "com.h"
 
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {
@@ -85,34 +20,67 @@ int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 	{
 		num *= 10;
 		num += ((int)str[i] - 48);
-		//printf("num = %lld\n",num);
 		i++;
 	}
 	num = (neg == 1 ? -num : num);
-	//printf("%s_atoi_%lld\n", str,num);
 	size == 1 ? (num = (u_int8_t)num) : 1;
 	size == 2 ? (num = (int16_t)num) : 1;
 	size == 4 ? (num = (int32_t)num) : 1;
-	printf("ret_atoi_%ld\n", num);
 	return (num);
 }
 
-char *skip_space(char *s)
+int			is_lblchar(char c)
 {
-	while(*s == ' ' || *s == '	')
-		s++;
-	return(s);
+	char	*ptr;
+
+	ptr = LABEL_CHARS;
+	while (*ptr != '\0')
+	{
+		if (*ptr == c)
+			return (1);
+		ptr++;
+	}
+	return (0);
 }
 
-char *skip_comment(char *s)
+void		skip_space(char *s)
 {
-	char	*pnt;
+	if (!(&(s[g_mdata->x])) || s[g_mdata->x] == '\0')
+		return ;
+	while (s[g_mdata->x] == ' ' || s[g_mdata->x] == '	')
+		g_mdata->x++;
+}
 
-	pnt = ft_strstr(s, "#");
-	if (pnt != NULL)
-		*pnt = '\0';
-	pnt = ft_strstr(s, ";");
-	if (pnt != NULL)
-		*pnt = '\0';
-	return(s);
+void		skip_comment(char *line)
+{
+	while (*line && *line != COMMENT_CHAR && *line != COMMENT_CHAR_ALT)
+		++line;
+	*line = 0;
+}
+
+void		check_new_line(char *line, int f)
+{
+	if (!(&(line[g_mdata->x])) || line[g_mdata->x] == '\0')
+		return ;
+	if (line[g_mdata->x] == '\n')
+	{
+		if (f == 2)
+		{
+			if (g_tkn_last)
+				g_tkn_last->new_line += 1;
+		}
+		if (f == 1)
+		{
+			if (g_label_last)
+				g_label_last->new_line += 1;
+		}
+		if (f == 0)
+		{
+			if (g_tkn_last)
+				g_tkn_last->new_line += 1;
+			else if (g_label_last)
+				g_label_last->new_line += 1;
+		}
+		g_mdata->x++;
+	}
 }
