@@ -1,0 +1,6 @@
+srcs/vm/objs_vm
+libft_clala/*/*.o
+.idea
+.vscode
+cmake-*
+CMake*

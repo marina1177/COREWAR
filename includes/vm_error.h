@@ -1,13 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm_error.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/11 22:16:13 by clala             #+#    #+#             */
+/*   Updated: 2020/05/11 22:16:13 by clala            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef VM_ERROR_H
 # define VM_ERROR_H
 
 # define ERR_NOINT "number after -n (%s) is not integer"
+# define ERR_NONUM "-v / -d / -n flags must be followed by integer"
+# define ERR_NOPLR "integer after -n flag must be followed by player`s name"
 # define ERR_N_FLAG "-n argument (%s) must be in range [1 : MAX_PLAYERS]"
 # define ERR_D_FLAG "dump argument (%s) must be in range [0 : INT_MAX]"
+# define ERR_V_FLAG "verbosity argument (%s) must be in range [0 : 31]"
 # define ERR_N_DUPL "Ambiguous player number: %d"
 # define ERR_MAX_PLAYERS "Too many players: number must be in range [1 : %d]"
 # define ERR_INV_P_NUM "Player`s %s number out of order"
-//
+
+/*
+**
+*/
 # define ERR_NOFILE "./corewar recieves wrong number of arguments."
 # define ERR_FNAME "File %s doesn`t contain '.cor' extension"
 # define ERR_FOPEN "Can\'t open file %s."
@@ -21,6 +39,11 @@
 # define ERR_GET_TEXT "Can\'t read token."
 # define ERR_LABEL_DUB "One label name were used multiple times."
 
+/*
+**
+*/
+# define ERR_GET_TEXT "Can\'t read token."
+# define ERR_LABEL_DUB "One label name were used multiple times."
 # define ERR_NO_CHNAME "Champion\'s name doesn't exist."
 # define ERR_CHCOMM_LEN "Champion\'s comment is too large."
 # define ERR_NO_CHCOMM "Champion\'s comment doesn't exist."

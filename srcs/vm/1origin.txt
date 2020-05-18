@@ -1,0 +1,6 @@
+Introducing contestants...
+* Player 1, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
+* Player 2, weighing 20 bytes, "basic" ("this is a basic stuff") !
+* Player 3, weighing 609 bytes, "Octobre Rouge V4.2" ("And the winner is ...") !
+* Player 4, weighing 301 bytes, " maxidef " (" module de defense") !
+Contestant 2, "basic", has won !
