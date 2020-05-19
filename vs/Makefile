@@ -25,42 +25,7 @@ ALL_C_ASM = asm.c add_args_code.c add_null_octets.c add_str_to_byte_code.c add_c
 		read_line.c read_operation.c wrong_end_of_line.c free_struct.c init_operations.c only_spaces.c add_arg.c op.c \
 		check_name_and_comment.c getter.c have_end_quote.c put_after_quote.c read_.c
 
-ALL_C_CW = main.c \
-			handle_error.c \
-			input_validation.c \
-			parse_player.c \
-			t_carriage.c \
-			t_carriages.c \
-			t_mods.c \
-			t_player.c \
-			t_players.c \
-			t_vm.c \
-			t_vm_info.c \
-			print_debug.c \
-			parse_args.c \
-			print.c \
-			handle_carriages.c \
-			op.c \
-			actions_1.c \
-			actions_2.c \
-			actions_3.c \
-			actions_4.c \
-			actions_handlers.c \
-			carriages_actions.c \
-			check_operation.c \
-			handlers.c \
-			init.c \
-			print_bits.c \
-			test.c\
-			t_vs.c \
-			vs_package.c\
-			vs_utilites.c \
-			vs_itoa.c \
-			vs_put_change.c\
-			vs_refresh.c \
-			vs_add_cells.c
-
-
+ALL_C_CW = $(wildcard *.c)
 
 SRCDIR_ASM = ./srcs_asm
 OBJDIR_ASM = ./objs_asm
@@ -77,14 +42,14 @@ NAME_ASM = asm
 NAME_CW = corewar
 
 INCLUDES_ASM = ./includes/op.h ./includes/asm.h
-INCLUDES_DIR = ../../includes/
+INCLUDES_DIR = ../includes/
 INCLUDES_CW = $(INCLUDES_DIR)op.h $(INCLUDES_DIR)vm.h $(INCLUDES_DIR)vm_error.h
 
-COMP_LIB = make -C ../../libft_clala/
+COMP_LIB = make -C ../libft_clala/
 
 FLAGS = -Wall -Wextra -Werror
 
-LIBFT = ../../libft_clala/libft.a
+LIBFT = ../libft_clala/libft.a
 
 all: lib $(NAME_CW)
 
@@ -98,16 +63,16 @@ $(OBJDIR_ASM)/%.o: $(SRCDIR_ASM)/%.c $(INCLUDES_ASM) | $(OBJDIR_ASM)
 	gcc $(FLAGS) -I./includes -I./ft_printf/libft/includes -c $< -o $@
 
 $(NAME_CW): $(LIBFT) $(OBJS_CW)
-	clang $(FLAGS) $(OBJS_CW) -L ../../libft_clala -lft -o $@
+	clang $(FLAGS) $(OBJS_CW) -L ../libft_clala -lft -o $@
 
 $(OBJDIR_CW):
 	/bin/mkdir -p $(OBJDIR_CW)
 
 $(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
-	clang $(FLAGS) -I../../includes -I../../libft_clala/includes -c $< -o $@
+	clang $(FLAGS) -I../includes -I../libft_clala/includes -c $< -o $@
 
 lib:
-	make -C ../../libft_clala/
+	$(COMP_LIB)
 
 clean:
 	@/bin/rm -rf $(OBJDIR_ASM) $(OBJDIR_CW)

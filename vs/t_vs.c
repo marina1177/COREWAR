@@ -50,10 +50,10 @@ static void		init_refresh(t_vs	*vs)
 	vs->change_begin_len = 0;
 }
 
-static t_vs	*t_vs_new(void)
+static t_vs		*t_vs_new(t_vm *vm)
 {
-	t_vs	*vs;
-	int		i;
+	t_vs		*vs;
+	int			i;
 
 	if ((vs = (t_vs *)malloc(sizeof(t_vs))))
 	{
@@ -65,19 +65,19 @@ static t_vs	*t_vs_new(void)
 	}
 	else
 	{
-		handle_error(ERR_ALLOC);
+		handle_error_vm(ERR_ALLOC, vm);
 	}
 	return (vs);
 }
 
-t_vs		*t_vs_create(t_vm *vm)
+t_vs			*t_vs_create(t_vm *vm)
 {
-	t_vs	*new;
+	t_vs		*new;
 
 	new = NULL;
 	if (!vm->vs)
 	{
-		new = t_vs_new();
+		new = t_vs_new(vm);
 	}
 	return (vm->vs ? vm->vs : new);
 }

@@ -101,7 +101,10 @@ int				main(int ac, char **av)
 	print_introduction(vm->players);
 	create_arena(vm);
 	vm->players->last_alive_num = vm->players->qty;
+	if (vm->vs)
+		print_vsconst(vm, 0);
 	corewar(vm);
+	ft_printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
 	print_final_result(vm);
 	return (0);
 }

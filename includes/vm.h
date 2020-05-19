@@ -222,54 +222,52 @@ typedef	struct			s_bit
 
 typedef	union			s_arg_types
 {
-	unsigned char	types;
-	t_bit			bit;
+	unsigned char		types;
+	t_bit				bit;
 }						t_arg_types;
-
-//*********************VS******************************************************
 
 /*
 ** vs_refresh.c
 */
-void		state_refresh(t_vm *vm);
-void		players_refresh(t_vm *vm);
-void		carriages_refresh(t_vm *vm);
-void		cells_refresh(t_vm *vm);
+void					state_refresh(t_vm *vm);
+void					players_refresh(t_vm *vm);
+void					carriages_refresh(t_vm *vm);
+void					cells_refresh(t_vm *vm);
 
 /*
 ** vs_add_cells.c
 */
-t_cells		*new_cells(t_cells **head, int	id);
-t_cells		*find_id(t_cells **head, int id);
-void		push_cells(t_vm *vm, int player_id, int	cell_number);
+t_cells					*new_cells(t_cells **head, int	id, t_vm *vm);
+t_cells					*find_id(t_cells **head, int id, t_vm *vm);
+void					push_cells(t_vm *vm, int player_id, int	cell_number);
 
 /*
 ** vs_package.c
 */
-char	*put_atom_const(t_vm *vm, char **buf);
-char	*put_array_const(t_vm *vm, char **buf);
-void	put_buf(t_vm *vm, int type, char **buf);
-void	print_vs(t_vm	*vm, int type);
+char					*put_atom_const(t_vm *vm, char **buf);
+char					*put_array_const(t_vm *vm, char **buf);
+void					put_buf(t_vm *vm, int type, char **buf);
+void					print_vs(t_vm	*vm, int type);
 
 /*
 ** vs_put_change.c
 */
-char		*put_cells(t_vm *vm, char **buf);
-char		*put_carriages(t_vm *vm, char **buf);
-char		*put_players(t_vm *vm, char **buf);
-char		*put_state(t_vm *vm, char **buf);
+char					*put_cells(t_vm *vm, char **buf);
+char					*put_carriages(t_vm *vm, char **buf);
+char					*put_players(t_vm *vm, char **buf);
+char					*put_state(t_vm *vm, char **buf);
 
 /*
 ** vs_utilites.c
 */
-int			count_dig(size_t val);
-int			vs_putstr_fd(char const *s, int fd);
-int			vs_strcpy(char *dest, const char *src);
-uint64_t	calculate_buf(t_vm *vm, int type);
-
-int			vs_itoa(int n, char *s);
-//****************************************************************************
-
+int						count_dig(size_t val);
+int						vs_putstr_fd(char const *s, int fd);
+int						vs_strcpy(char *dest, const char *src);
+uint64_t				calculate_buf(t_vm *vm, int type);
+int						vs_itoa(int n, char *s);
+/*
+**
+*/
 void					init(t_vm *data, int quantity);
 void					init_arena(t_vm *data, int quantity);
 void					read_data(char *filename, t_player *player);
@@ -412,5 +410,8 @@ void					print_lldi(t_carriage *carriage, unsigned char *arguments,
 void					print_bitwise_op(t_vm *vm,
 							t_carriage *carriage, int *values);
 void					print_move(t_vm *vm, t_carriage *carriage, int temp_pos);
+
+
+void	print_vsconst(t_vm	*vm, int type);
 
 #endif

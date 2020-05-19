@@ -92,10 +92,9 @@ int		main(int ac, char **av)
 	print_introduction(vm->players);
 	create_arena(vm);
 	if (vm->vs)
-		print_vsconst(vm, 0);//start
+		print_vsconst(vm, 0);
 	corewar(vm);
 	printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
-
 	print_final_result(vm);
 	return (0);
 }

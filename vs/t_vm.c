@@ -38,26 +38,26 @@ static void	init_exec(t_vm *vm)
 	vm->exec[16] = do_aff;
 }
 
-static t_vm *t_vm_new(void)
+static t_vm	*t_vm_new(void)
 {
 	t_vm	*vm;
-	int 	i;
+	int		i;
 
-	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error("Malloc error") : 0;
-	!(vm->data = t_vm_info_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->players = t_players_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->carr = t_carriages_new()) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->vs = t_vs_create(vm)) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->cells = (t_cells *)malloc(sizeof(t_cells))) ? handle_error_vm("Malloc error", vm) : 0;
-	!(vm->mods = t_mods_create(vm)) ? handle_error_vm("Malloc error", vm) : 0;
+	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error(ERR_ALLOC) : 0;
+	!(vm->players = t_players_new()) ? handle_error_vm(ERR_ALLOC, vm) : 0;
+	!(vm->vs = (t_vs *)malloc(sizeof(t_vs))) ?
+		handle_error_vm(ERR_ALLOC, vm) : 0;
+	vm->data = t_vm_info_create(vm);
+	vm->carr = t_carriages_create(vm);
+	vm->mods = t_mods_create(vm);
 	i = -1;
-	while (++i < 17)
+	while (++i < REG_NUMBER + 1)
 		vm->op_tab[i] = g_op_tab[i];
 	init_exec(vm);
-	return	(vm);
+	return (vm);
 }
 
-t_vm *t_vm_create(void)
+t_vm		*t_vm_create(void)
 {
 	t_vm	*new;
 
