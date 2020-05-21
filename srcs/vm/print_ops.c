@@ -39,24 +39,25 @@ void	print_sti(unsigned char *arguments, int temp,
 	ft_printf("\n");
 }
 
-void	print_st(t_carriage *carriage, int reg, int *values, int temp_val)
+int		print_st(t_carriage *carriage, int reg, int *values, int temp_val)
 {
 	ft_printf("P %4d | ", carriage->num);
 	ft_printf("%s", g_op_tab[carriage->op_code].name);
 	ft_printf(" r%d", reg);
 	ft_printf(" %hd\n", values[1] < temp_val ? temp_val : values[1]);
+	return (1);
 }
 
 void	print_live(t_vm *vm, t_carriage *carriage, int num)
 {
-	if (vm->mods->verbosity_level & VERB_L3)
+	if (vm->mods->verb_lvl & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
 		ft_printf(" %d\n", -num);
 	}
 	if (num > 0 && num <= vm->players->qty &&
-		vm->mods->verbosity_level & VERB_L1)
+		vm->mods->verb_lvl & VERB_L1)
 		print_is_alive(num, get_player_by_number(vm->players, num)->name);
 }
 

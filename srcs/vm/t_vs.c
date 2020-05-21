@@ -73,9 +73,6 @@ t_vs			*t_vs_create(t_vm *vm)
 	t_vs		*new;
 
 	new = NULL;
-	if (!vm->vs)
-	{
-		new = t_vs_new(vm);
-	}
-	return (vm->vs ? vm->vs : new);
+	new = t_vs_new(vm);	
+	return (new);
 }

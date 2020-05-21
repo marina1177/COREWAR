@@ -70,7 +70,7 @@ void	put_buf(t_vm *vm, int type, char **buf)
 	p = put_carriages(vm, &p);
 	p = put_cells(vm, &p);
 	p += vs_strcpy(p,"\n}]");
-	printf("VS_COMM:(%ld[ch])\n", (p-*buf));
+	printf("VS_COMM:(%ld[ch])\n", (long)(p-*buf));
 }
 
 void	print_vsconst(t_vm	*vm, int type)

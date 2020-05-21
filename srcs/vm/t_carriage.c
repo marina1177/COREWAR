@@ -21,7 +21,7 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 	new->prev = NULL;
 	new->next = NULL;
 	new->carry = 0;
-	new->pos = pos;
+	new->pos = pos;	
 	new->op_code = 0;
 	new->cycles_countdown = -1;
 	new->last_cycle_alive = -1;
@@ -75,7 +75,7 @@ t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src)
 
 	copy = t_carriage_new(carr, src->pos);
 	copy->carry = src->carry;
-	copy->op_code = src->op_code;
+	copy->op_code = src->op_code;	
 	copy->pos = src->pos;
 	copy->last_cycle_alive = src->last_cycle_alive;
 	i = -1;

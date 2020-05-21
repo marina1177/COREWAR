@@ -54,14 +54,15 @@ void	put_buf(t_vm *vm, int type, char **buf)
 	char	*p;
 
 	p = *buf;
-	p += vs_strcpy(p,"[{");
+	p += (type == 0 ? vs_strcpy(p,"[{") : vs_strcpy(p,",{"));
+	//p += vs_strcpy(p,"[{");
 	if (type == 0)
 	{
 		p = put_atom_const(vm, &p);
 		p = put_array_const(vm, &p);
 	}
 	p += vs_strcpy(p, A_CYCLE);
-	p += vs_itoa(vm->data->cycles, p);
+	p += vs_itoa(vm->data->cycles, p);	
 	if((p = put_state(vm, &p)) == NULL)
 	{
 		return ;
@@ -69,15 +70,18 @@ void	put_buf(t_vm *vm, int type, char **buf)
 	p = put_players(vm, &p);
 	p = put_carriages(vm, &p);
 	p = put_cells(vm, &p);
-	p += vs_strcpy(p,"\n}]");
-	printf("VS_COMM:(%ld[ch])\n", (p-*buf));
+	p += (type == 2 ? vs_strcpy(p,"\n}]") : vs_strcpy(p,"\n}"));
+	
+	//printf("VS_COMM:(%ld[ch])\n", (long)(p-*buf));
 }
 
-void	print_vsconst(t_vm	*vm, int type)
+int		print_vsconst(t_vm	*vm, int type)
 {
 	char	*buf;
 	int		buf_size;
 
+	if (!vm->mods->vs)
+		return (0);
 	buf_size = calculate_buf(vm, type);
 	if ((buf = (char *)malloc(buf_size)))
 	{
@@ -88,6 +92,7 @@ void	print_vsconst(t_vm	*vm, int type)
 	}
 	else
 		handle_error_vm(ERR_ALLOC, vm);
-
+	vs_reset_refresh(vm);
+	return (1);
 }
 

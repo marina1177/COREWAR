@@ -66,3 +66,15 @@ t_players		*t_players_new(void)
 	}
 	return (new);
 }
+
+void			t_players_reset_lives_in_period(t_players *players)
+{
+	t_player	*temp;
+
+	temp = players->first_player;
+	while (temp)
+	{
+		temp->lives_in_period = 0;
+		temp = temp->next;
+	}
+}

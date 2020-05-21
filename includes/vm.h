@@ -118,10 +118,11 @@ typedef struct 			s_mods
 {	
 	int					dump_cycle;
 	int					dump_size;
-	int					verbosity_level;
+	int					verb_lvl;
 	int					show_cycle;
 	int					show_print_mode;
-	int					aff;	
+	int					aff;
+	int					vs;
 }						t_mods;
 
 typedef struct			s_vm_info
@@ -170,7 +171,7 @@ typedef struct			s_cells
 {
 	int					players_id;
 	int					num_addr;
-	int					cells_address[1000];
+	int					cells_address[MEM_SIZE];
 	struct s_cells		*last;
 	struct s_cells		*next;
 }						t_cells;
@@ -183,10 +184,9 @@ typedef struct			s_carriage
 	struct s_carriage	*prev;
 	int					num;
 	int					carry;
-	int					regs[REG_NUMBER];
+	int					regs[REG_NUMBER + 1];
 	int					pos;
 	int					op_code;
-	int					live_cycle;
 	int					cycles_countdown;
 	int					last_cycle_alive;
 }						t_carriage;
@@ -229,10 +229,11 @@ typedef	union			s_arg_types
 /*
 ** vs_refresh.c
 */
-void					state_refresh(t_vm *vm);
-void					players_refresh(t_vm *vm);
-void					carriages_refresh(t_vm *vm);
-void					cells_refresh(t_vm *vm);
+int						vs_state_refresh(t_vm *vm);
+int						vs_players_refresh(t_vm *vm);
+int						vs_carriages_refresh(t_vm *vm);
+int						vs_cells_refresh(t_vm *vm);
+int						vs_reset_refresh(t_vm *vm);
 
 /*
 ** vs_add_cells.c
@@ -400,7 +401,7 @@ int						print_dump(t_vm *vm, int dump_size);
 void					print_final_result(t_vm *vm);
 void					print_sti(unsigned char *arguments, int temp,
 							int *values, int reg);
-void					print_st(t_carriage *carriage, int reg, int *values, int temp_val);
+int						print_st(t_carriage *carriage, int reg, int *values, int temp_val);
 void					print_live(t_vm *vm, t_carriage *carriage, int num);
 void					print_lld(t_carriage *carriage, unsigned char *arguments, int *values);
 void					print_ldi(t_carriage *carriage,
@@ -412,6 +413,11 @@ void					print_bitwise_op(t_vm *vm,
 void					print_move(t_vm *vm, t_carriage *carriage, int temp_pos);
 
 
-void	print_vsconst(t_vm	*vm, int type);
+int						print_vsconst(t_vm	*vm, int type);
+void					t_players_reset_lives_in_period(t_players *players);
+void					t_players_check_is_alive(t_vm *vm, t_players *players);
+void					vs_check_and_push_cells(t_vm *vm,
+							int cell_number, t_carriage *carriage);
+
 
 #endif

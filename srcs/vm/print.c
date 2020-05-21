@@ -79,7 +79,7 @@ void	print_move(t_vm *vm, t_carriage *carriage, int temp_pos)
 	int i;
 	int	size;
 
-	if (!(vm->mods->verbosity_level & VERB_L5))
+	if (!(vm->mods->verb_lvl & VERB_L5))
 		return ;
 	if (carriage->op_code != 0 && (carriage->op_code != 9 || !carriage->carry))
 	{

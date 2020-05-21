@@ -23,7 +23,8 @@ t_mods		*t_mods_new(void)
 		new->show_cycle = 0;
 		new->show_print_mode = 0;
 		new->aff = 0;
-		new->verbosity_level = 0;
+		new->verb_lvl = 0;
+		new->vs = 0;
 	}
 	return (new);
 }

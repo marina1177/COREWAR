@@ -1,17 +1,9 @@
 #include "../../includes/vm.h"
 
-
-char	*put_cells(t_vm *vm, char **buf)
+static char *put_cells_refresh(t_vm *vm, char **buf,
+		char *p, t_cells *tmp)
 {
-	char	*p;
-	t_cells *tmp;
-
-	p = *buf;
-	p += vs_strcpy(p, A_CELLS_REF);
-	p += vs_itoa(vm->vs->cells_refresh, p);
-	if (vm->vs->cells_refresh > 0)
-	{
-		p += vs_strcpy(p,",\n\t\"Cells\": [");
+	p += vs_strcpy(p,",\n\t\"Cells\": [");
 		tmp = vm->cells;
 		while(tmp)
 		{
@@ -31,7 +23,18 @@ char	*put_cells(t_vm *vm, char **buf)
 			tmp != NULL ? *p++ = ',' : 1;
 		}
 		p += vs_strcpy(p, "],");
-	}
+}
+
+char	*put_cells(t_vm *vm, char **buf)
+{
+	char	*p;
+	t_cells *tmp;
+
+	p = *buf;
+	p += vs_strcpy(p, A_CELLS_REF);
+	p += vs_itoa(vm->vs->cells_refresh, p);
+	if (vm->vs->cells_refresh > 0)
+		put_cells_refresh(vm, buf, p, tmp);
 	return (p);
 }
 
@@ -124,3 +127,4 @@ char	*put_state(t_vm *vm, char **buf)
 	}
 	return (p);
 }
+

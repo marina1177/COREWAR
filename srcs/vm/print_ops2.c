@@ -44,7 +44,7 @@ void	print_lldi(t_carriage *carriage, unsigned char *arguments,
 
 void	print_bitwise_op(t_vm *vm, t_carriage *carriage, int *values)
 {
-	if (vm->mods->verbosity_level & VERB_L3)
+	if (vm->mods->verb_lvl & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);

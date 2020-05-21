@@ -16,7 +16,7 @@ int		count_dig(size_t val)
 		n /= 10;
 		i++;
 	}
-	printf("count_dig: val = %zu  i = %d\n", val, i);
+	ft_printf("count_dig: val = %llu  i = %d\n", val, i);
 	return (i);
 }
 
@@ -70,6 +70,6 @@ uint64_t	calculate_buf(t_vm *vm, int type)
 		buff_size += tmp->num_addr * 15 + 15 + 20;
 		tmp = tmp->next;
 	}
-	printf("buff_size = %lu\n", buff_size);
+	//ft_printf("buff_size = %llu\n", buff_size);
 	return (buff_size);
 }

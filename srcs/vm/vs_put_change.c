@@ -14,7 +14,7 @@ char	*put_cells(t_vm *vm, char **buf)
 		p += vs_strcpy(p,",\n\t\"Cells\": [");
 		tmp = vm->cells;
 		while(tmp)
-		{
+		{			
 			p += vs_strcpy(p, "\n\t\t{");
 			p += vs_strcpy(p, A_ID);
 			p += vs_itoa(tmp->players_id, p);
@@ -24,13 +24,13 @@ char	*put_cells(t_vm *vm, char **buf)
 			while (num-- > 0)
 			{
 				p += vs_itoa(tmp->cells_address[num], p);
-				num != 1 ? *p++ = ',' : 1;
+				num != 0 ? *p++ = ',' : 1;
 			}
 			p += vs_strcpy(p, "]\n\t}");
 			tmp = tmp->next;
 			tmp != NULL ? *p++ = ',' : 1;
 		}
-		p += vs_strcpy(p, "],");
+		p += vs_strcpy(p, "]");
 	}
 	return (p);
 }
@@ -44,9 +44,10 @@ char	*put_carriages(t_vm *vm, char **buf)
 	p = *buf;
 	p += vs_strcpy(p, A_CAR_REF);
 	p += vs_itoa(vm->vs->carriages_refresh, p);
+	p += vs_strcpy(p, ",");
 	if (vm->vs->carriages_refresh > 0)
 	{
-		p += vs_strcpy(p,",\n\t\"Carriages\": [");
+		p += vs_strcpy(p,"\n\t\"Carriages\": [");
 		tmp = vm->carr->head;
 		while(tmp)
 		{
@@ -74,9 +75,10 @@ char	*put_players(t_vm *vm, char **buf)
 	p = *buf;
 	p += vs_strcpy(p, A_PLAYERS_REF);
 	p += vs_itoa(vm->vs->players_refresh, p);
+	p += vs_strcpy(p, ",");
 	if (vm->vs->players_refresh > 0)
 	{
-		p += vs_strcpy(p,",\n\t\"Players\": [");
+		p += vs_strcpy(p,"\n\t\"Players\": [");
 		tmp = vm->players->first_player;
 		while(tmp)
 		{
@@ -105,8 +107,9 @@ char	*put_state(t_vm *vm, char **buf)
 	p = *buf;
 	p += vs_strcpy(p, A_STATE_REF);
 	p += vs_itoa(vm->vs->state_refresh, p);
+	p += vs_strcpy(p, ",");
 	if (vm->vs->state_refresh > 0)
-	{
+	{		
 		p += vs_strcpy(p,"\n\t\"State\": {\n\t\t\"error_code\": ");
 		p += vs_itoa(vm->vs->error_code, p);
 		if (vm->vs->error_code > 0)

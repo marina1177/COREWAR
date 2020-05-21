@@ -84,7 +84,7 @@ void	do_zjmp(t_carriage *carriage, t_vm *vm)
 	}
 	else
 		change_position(&carriage->pos, value % IDX_MOD);
-	if (vm->mods->verbosity_level & VERB_L3)
+	if (vm->mods->verb_lvl & VERB_L3)
 	{
 		ft_printf("P %4d | ", carriage->num);
 		ft_printf("%s", g_op_tab[carriage->op_code].name);
@@ -112,6 +112,6 @@ void	do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 	change_position(&i, (values[0] + values[1]) % IDX_MOD);
 	carriage->regs[values[2]] = get_num_from_char(vm->data->arena, i, 4);
 	carriage->pos = position;
-	if (vm->mods->verbosity_level & VERB_L3)
+	if (vm->mods->verb_lvl & VERB_L3)
 		print_ldi(carriage, arguments, values, temp_pos);
 }

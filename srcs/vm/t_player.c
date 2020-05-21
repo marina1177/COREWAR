@@ -36,6 +36,8 @@ static t_player	*t_player_new(void)
 		new->next = NULL;
 		new->last_live = 0;
 		new->is_alive = 1;
+		new->start_code = -1;
+		new->lives_in_period = 0;
 	}
 	return (new);
 }

@@ -12,7 +12,7 @@
 
 #include "../../includes/vm.h"
 
-void	ft_exit(char *line)
+void		ft_exit(char *line)
 {
 	ft_printf("%s", line);
 	exit(0);
@@ -30,4 +30,21 @@ int			is_integer(char *s)
 	if (s[0] == '-' && len == 1)
 		return (0);
 	return (1);
+}
+
+void		t_players_check_is_alive(t_vm *vm, t_players *players)
+{
+	t_player	*temp;
+
+	temp = players->first_player;
+	while (temp)
+	{
+		if (vm->data->cycles_to_die <= 0 ||
+		vm->data->cycles - temp->last_live >= vm->data->cycles_to_die)
+		{
+			temp->is_alive = 0;
+			vs_players_refresh(vm);
+		}
+		temp = temp->next;
+	}
 }

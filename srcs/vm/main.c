@@ -25,12 +25,13 @@ static void		delete_old_carriages(t_vm *vm)
 		if (vm->data->cycles_to_die <= 0 ||
 		vm->data->cycles - temp->last_cycle_alive >= vm->data->cycles_to_die)
 		{
-			if (vm->mods->verbosity_level & VERB_L4)
+			if (vm->mods->verb_lvl & VERB_L4)
 				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
 				temp->num,
 				vm->data->cycles - temp->last_cycle_alive,
 				vm->data->cycles_to_die);
 			t_carriages_remove_node(vm->carr, temp);
+			vs_state_refresh(vm);
 		}
 	}
 }
@@ -38,16 +39,19 @@ static void		delete_old_carriages(t_vm *vm)
 static void		check_carriages(t_vm *vm)
 {
 	delete_old_carriages(vm);
+	t_players_check_is_alive(vm, vm->players);
 	vm->data->checks_counter++;
 	if (vm->data->lives_counter >= NBR_LIVE ||
 		vm->data->checks_counter == MAX_CHECKS)
 	{
 		vm->data->cycles_to_die -= CYCLE_DELTA;
-		vm->data->checks_counter = 0;
-		if (vm->mods->verbosity_level & VERB_L2)
+		vm->data->checks_counter = 0;		
+		if (vm->mods->verb_lvl & VERB_L2)
 			ft_printf("Cycle to die is now %d\n", vm->data->cycles_to_die);
+		t_players_reset_lives_in_period(vm->players);
 	}
 	vm->data->lives_counter = 0;
+	vs_state_refresh(vm);
 }
 
 void			corewar(t_vm *vm)
@@ -57,7 +61,7 @@ void			corewar(t_vm *vm)
 	cycles = 0;
 	while (vm->carr->qty)
 	{
-		if (vm->data->cycles && (vm->mods->verbosity_level & VERB_L2))
+		if (vm->data->cycles && (vm->mods->verb_lvl & VERB_L2))
 			ft_printf("It is now cycle %d\n", vm->data->cycles);
 		handle_carriages(vm);
 		if (vm->mods->dump_cycle == vm->data->cycles)
@@ -69,6 +73,7 @@ void			corewar(t_vm *vm)
 		}
 		vm->data->cycles++;
 		cycles++;
+		print_vsconst(vm, 1);
 	}
 }
 
@@ -77,18 +82,25 @@ void			create_arena(t_vm *vm)
 	t_player	*player;
 	int			diff;
 	int			i;
+	int			j;
 
 	diff = MEM_SIZE / vm->players->qty;
 	player = vm->players->first_player;
 	i = 0;
 	while (player)
-	{
+	{		
 		ft_memcpy((char *)((vm->data->arena) + i),
 				player->code, player->code_size);
+		player->start_code = i;
 		t_carriages_push(vm->carr, t_carriage_new(vm->carr, i));
+		new_cells(&(vm->cells), player->num, vm);		
+		j = i - 1;
+		while (++j < i + player->code_size)
+			push_cells(vm, player->num, j);
 		i += diff;
 		player = player->next;
 	}
+	vm->players->last_alive_num = vm->players->qty;	
 }
 
 int				main(int ac, char **av)
@@ -97,12 +109,11 @@ int				main(int ac, char **av)
 
 	ac < 2 ? print_usage() : 0;
 	vm = t_vm_create();
+	
 	parse_args(vm, ac, av);
 	print_introduction(vm->players);
 	create_arena(vm);
-	vm->players->last_alive_num = vm->players->qty;
-	if (vm->vs)
-		print_vsconst(vm, 0);
+	print_vsconst(vm, 0);
 	corewar(vm);
 	ft_printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
 	print_final_result(vm);

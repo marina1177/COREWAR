@@ -45,4 +45,18 @@ void	push_cells(t_vm *vm, int player_id, int	cell_number)
 	cells = find_id(&(vm->cells), player_id, vm);
 	cells->num_addr++;
 	cells->cells_address[cells->num_addr] = cell_number;
+	vs_cells_refresh(vm);
+}
+
+void	vs_check_and_push_cells(t_vm *vm,
+			int cell_number, t_carriage *carriage)
+{
+	int	num;
+
+	if (vm->mods->vs)
+	{
+		num = carriage->regs[1] * -1;
+		if (num > 0 && num <= vm->players->qty)
+			push_cells(vm, num, cell_number);
+	}			
 }
