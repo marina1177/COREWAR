@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 int	is_reg(char *line, int len)
 {

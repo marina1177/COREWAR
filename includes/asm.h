@@ -13,14 +13,40 @@
 #ifndef ASM_H
 # define ASM_H
 
-# include "com.h"
-# include "asm_op.h"
+# include "../libft_clala/includes/libft.h"
+# include "../libft_clala/includes/ft_printf.h"
+
+# include "op.h"
 # include "asm_error.h"
+
+# include <errno.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+
+# include <stdio.h>
+
+# define EOC	"\033[0m"
+# define RED	"\033[1;31m"
+# define YELLOW	"\033[1;33m"
+# define WHITE	"\033[1;37m"
+# define BLACK	"\033[0;30m"
+# define GREEN	"\033[0;32m"
+# define BLUE	"\033[0;34m"
+# define PURPUL	"\033[0;35m"
+# define CYAN	"\033[0;36m"
+# define GRAY	"\033[1;30m"
 
 typedef unsigned char		t_1b;
 typedef unsigned short		t_2b;
 typedef unsigned int		t_4b;
 typedef unsigned long		t_8b;
+
+# define TRUE 1
+# define FALSE 0
 
 # define REGISTER			(t_2b)0b10000000000000
 # define DIRECT				(t_2b)0b01000000000000
@@ -44,7 +70,21 @@ typedef struct s_opargs		t_opargs;
 typedef struct s_lbl_lst	t_lbl_lst;
 typedef struct s_token		t_token;
 typedef struct s_mdata		t_mdata;
+typedef struct s_op			t_op;
 
+struct					s_op
+{
+	char				*name;
+	int					args_num;
+	unsigned int		args_types[3];
+	int					code;
+	int					loop;
+	char				*description;
+	int					args_types_code;
+	int					t_dir_size;
+};
+
+extern t_op				g_op_tab[16];
 
 struct						s_opargs
 {

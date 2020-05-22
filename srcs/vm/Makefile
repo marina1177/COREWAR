@@ -1,18 +1,6 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sscottie <sscottie@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/14 14:32:21 by sscottie          #+#    #+#              #
-#    Updated: 2020/03/14 16:31:12 by sscottie         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 
 # COLORS
-
 GREEN = \033[0;32m
 RED = \033[0;31m
 RED_B = \033[1;31m
@@ -44,37 +32,38 @@ NAME_ASM = asm
 NAME_CW = corewar
 
 INCLUDES_ASM = ./includes/op.h ./includes/asm.h
-INCLUDES_DIR = ../../includes/
-INCLUDES_CW = $(INCLUDES_DIR)op.h $(INCLUDES_DIR)vm.h $(INCLUDES_DIR)vm_error.h
+INCLUDES_DIR = ../../includes
+INCLUDES_CW = $(INCLUDES_DIR)/op.h $(INCLUDES_DIR)/vm.h $(INCLUDES_DIR)/vm_error.h
 
-COMP_LIB = make -C ../../libft_clala/
 
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
-
-LIBFT = ../../libft_clala/libft.a
+LIBFT_DIR = ../../libft_clala
+LIBFT = $(LIBFT_DIR)/libft.a
+COMP_LIB = make -C $(LIBFT_DIR)
 
 all: lib $(NAME_CW)
 
 $(NAME_ASM): ./ft_printf/libft/libft.a $(OBJS_ASM)
-	gcc $(FLAGS) $(OBJS_ASM) -L./ft_printf/libft -lft -o $@
+	$(CC) $(FLAGS) $(OBJS_ASM) -L./ft_printf/libft -lft -o $@
 
 $(OBJDIR_ASM):
 	/bin/mkdir -p $(OBJDIR_ASM)
 
 $(OBJDIR_ASM)/%.o: $(SRCDIR_ASM)/%.c $(INCLUDES_ASM) | $(OBJDIR_ASM)
-	gcc $(FLAGS) -I./includes -I./ft_printf/libft/includes -c $< -o $@
+	$(CC) $(FLAGS) -I./includes -I./ft_printf/libft/includes -c $< -o $@
 
 $(NAME_CW): $(LIBFT) $(OBJS_CW)
-	gcc $(FLAGS) $(OBJS_CW) -L ../../libft_clala -lft -o $@
+	$(CC) $(FLAGS) $(OBJS_CW) -L $(LIBFT_DIR) -lft -o $@
 
 $(OBJDIR_CW):
 	/bin/mkdir -p $(OBJDIR_CW)
 
 $(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
-	gcc $(FLAGS) -I../../includes -I../../libft_clala/includes -c $< -o $@
+	@$(CC) $(FLAGS) -I$(INCLUDES_DIR) -I$(LIBFT_DIR)/includes -c $< -o $@
 
 lib:
-	make -C ../../libft_clala/
+	$(COMP_LIB)
 
 clean:
 	@/bin/rm -rf $(OBJDIR_CW)

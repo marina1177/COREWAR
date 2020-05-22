@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 static char			*new_filename(char *filename)
 {

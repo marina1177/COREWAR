@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "com.h"
+#include "asm.h"
 
 void	valid_headlen(t_2b type_h, int len)
 {

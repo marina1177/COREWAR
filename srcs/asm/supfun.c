@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 int32_t		ft_atoi_cor(const char *str, u_int8_t size)
 {

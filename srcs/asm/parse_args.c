@@ -42,9 +42,7 @@ static size_t		count_word(char const *s, char c)
 t_opargs			*parse_parameter(char *line)
 {
 	t_opargs	*param;
-	int			i;
 
-	i = 0;
 	param = NULL;
 	if (line[g_mdata->x])
 	{
@@ -59,8 +57,8 @@ t_opargs			*parse_parameter(char *line)
 
 void				parse_args(char *line)
 {
-	size_t		i;
-	size_t		cw;
+	int				i;
+	int				cw;
 
 	i = 0;
 	cw = count_word(&(line[g_mdata->x]), SEPARATOR_CHAR);

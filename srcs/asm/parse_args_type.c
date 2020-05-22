@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 static int		is_emptyline(char *line)
 {

@@ -2,7 +2,8 @@
 #ifndef ASM_OP_H
 # define ASM_OP_H
 
-# include "com.h"
+# define TRUE 1
+# define FALSE 0
 
 typedef struct s_op	t_op;
 struct				s_op
@@ -15,7 +16,8 @@ struct				s_op
 	unsigned int	t_dir_size;
 };
 
-static t_op			g_op_tab[16] = {
+
+t_op			g_op_tab[16] = {
 	{
 			.name = "live",
 			.code = 0x01,

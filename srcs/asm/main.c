@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 void	valid_filename(char *fname)
 {

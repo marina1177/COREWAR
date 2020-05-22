@@ -1,8 +1,6 @@
 #ifndef ASM_ERROR_H
 # define ASM_ERROR_H
 
-# include "com.h"
-
 # define ERR_NOFILE "./asm recieves wrong number of arguments."
 # define ERR_FNAME "Given file has wrong name format."
 # define ERR_FOPEN "Can\'t open file."

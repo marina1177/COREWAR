@@ -1,5 +1,5 @@
 
-#include "com.h"
+#include "asm.h"
 
 void	int_to_hex(int32_t dec, int dir_size, u_int32_t *place)
 {

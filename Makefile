@@ -1,125 +1,65 @@
+SRCDIR_ASM = srcs/asm
+OBJDIR_ASM = objs/asm
 
-ASM_NAME = asm
-VM_NAME = corewar
+SRCDIR_CW = srcs/vm
+OBJDIR_CW = objs/vm
 
-CC = clang
+ALL_C_ASM = $(wildcard $(SRCDIR_ASM)/*.c)
+ALL_C_CW = $(wildcard $(SRCDIR_CW)/*.c)
+
+GENERATED_OBJS = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
+
+OBJS_ASM = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
+OBJS_CW = $(patsubst $(SRCDIR_CW)/%.c,$(OBJDIR_CW)/%.o,$(ALL_C_CW))
+
+NAME_ASM = asm
+NAME_CW = corewar
+
+INCLUDES_ASM = ./includes/op.h ./includes/asm.h	./includes/asm_error.h
+INCLUDES_CW = ./includes/op.h ./includes/vm.h ./includes/vm_error.h ./includes/vs_consts.h
+
+LIBFT_DIR = ./libft_clala
+LIBFT = $(LIBFT_DIR)/libft.a
+COMP_LIB = make -C $(LIBFT_DIR)
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
-################# LIB #################
-LIB_DIR = ./libft_clala/
-LIB_NAME = libft.a
-LIB_FILE = $(LIB_DIR)$(LIB_NAME)
-LIB = -L $(LIB_DIR) -lft
-#######################################
+all: $(LIBFT) $(NAME_ASM) $(NAME_CW)
 
-################# INC #################
+$(NAME_ASM): $(LIBFT) $(OBJS_ASM)
+	$(CC) $(FLAGS) $(OBJS_ASM) -L$(LIBFT_DIR) -lft -o $@
 
-INC_LIB_DIR = $(LIB_DIR)includes/
-INC_LIST =	com.h
+$(OBJDIR_ASM):
+	/bin/mkdir -p $(OBJDIR_ASM)
 
-INC_DIR = ./includes/
-INC = -I$(INC_DIR) -I$(INC_LIB_DIR)
-HEADERS = $(addprefix $(INC_DIR), $(INC_LIST))
-#######################################
+$(OBJDIR_ASM)/%.o: $(SRCDIR_ASM)/%.c $(INCLUDES_ASM) | $(OBJDIR_ASM)
+	$(CC) $(FLAGS) -I./includes -I.$(LIBFT_DIR)/includes -c $< -o $@
 
-OBJ_DIR = obj/
-################# ASM #################
-SRC_ASM_DIR = ./srcs/asm/
-SRC_ASM_LIST =	main.c \
-				error.c \
-				supfun.c \
-				supfun_2.c \
-				free_data.c \
-				translate.c \
-				parse_file.c \
-				add_header.c \
-				print_bits.c \
-				get_line.c \
-				check_label.c \
-				check_op.c \
-				parse_args.c \
-				parse_args_type.c \
-				write_to_file.c\
-				add_label.c \
-				check_type_arg.c \
-				my_atoi.c \
-				is_type.c
+$(NAME_CW): $(LIBFT) $(OBJS_CW)
+	$(CC) $(FLAGS) $(OBJS_CW) -L $(LIBFT_DIR) -lft -o $@
 
-SRC_ASM = $(addprefix $(SRC_ASM_DIR), $(SRC_ASM_LIST))
+$(OBJDIR_CW):
+	/bin/mkdir -p $(OBJDIR_CW)
 
-OBJ_ASM_DIR = $(OBJ_DIR)asm/
-OBJ_ASM_LIST = $(patsubst %.c, %.o, $(SRC_ASM_LIST))
-OBJ_ASM	= $(addprefix $(OBJ_ASM_DIR), $(OBJ_ASM_LIST))
-##################################################
+$(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
+	$(CC) $(FLAGS) -I./includes -I.$(LIBFT_DIR)/includes -c $< -o $@
 
-################## VM #################
-SRC_VM_DIR = ./srcs/vm/
-SRC_VM_LIST =	main.c
+$(LIBFT): lib
 
-SRC_VM = $(addprefix $(SRC_VM_DIR), $(SRC_VM_LIST))
+echo:
+	echo $(GENERATED_OBJS)
 
-OBJ_VM_DIR = $(OBJ_DIR)vm/
-OBJ_VM_LIST = $(patsubst %.c, %.o, $(SRC_VM_LIST))
-OBJ_VM	= $(addprefix $(OBJ_VM_DIR), $(OBJ_VM_LIST))
-OBJ_SUBDIRS = commands/ game/ initialisation/ parser/ printing/ visual/
-OBJ_VM_SUBDIR = $(addprefix $(OBJ_VM_DIR), $(OBJ_SUBDIRS))
-#######################################
-
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
-
-.PHONY: all clean fclean re
-
-all: $(LIB_FILE) $(ASM_NAME) $(VM_NAME)
-
-################ ASM COMPILE #################
-$(ASM_NAME): $(OBJ_ASM_DIR) $(OBJ_ASM)
-	@echo "\n$(ASM_NAME): $(GREEN)Object files were created$(RESET)"
-	@$(CC) $(LIB_FILE) $(FLAGS) $(INC) $(OBJ_ASM) $(LIB) -o $(ASM_NAME)
-	@echo "$(ASM_NAME): $(GREEN)$(ASM_NAME) binary was created!$(RESET)"
-
-$(OBJ_ASM_DIR):
-	@mkdir -p $(OBJ_ASM_DIR)
-	@echo "$(ASM_NAME): $(GREEN)$(OBJ_ASM_DIR) folder was created!$(RESET)"
-
-$(OBJ_ASM_DIR)%.o : $(SRC_ASM_DIR)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INC) $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
-##############################################
-
-################# VM COMPILE #################
-$(VM_NAME): $(OBJ_VM_DIR) $(OBJ_VM)
-	@echo "\n$(VM_NAME): $(GREEN)Object files were created$(RESET)"
-	@$(CC) $(LIB_FILE)  $(FLAGS) -lm $(INC) $(OBJ_VM) $(LIB) -o $(VM_NAME)
-	@echo "$(VM_NAME): $(GREEN)$(VM_NAME) binary was created$(RESET)"
-
-$(OBJ_VM_DIR):
-	@mkdir -p $(OBJ_VM_SUBDIR)
-	@echo "$(VM_NAME): $(GREEN)$(OBJ_VM_DIR) folder was created$(RESET)"
-
-$(OBJ_VM_DIR)%.o : $(SRC_VM_DIR)%.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(INC) $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
-##############################################
-$(LIB_FILE):
-	@echo "$(LIB_DIR)$(LIB_NAME): $(GREEN)Creating $()...$(RESET)"
-	#@$(MAKE) -sC $(LIB_DIR)
-	@echo "$(LIB_DIR)$(LIB_NAME): $(GREEN)Library $(LIB_NAME) was created!$(RESET)"
-
+lib:
+	@$(COMP_LIB)
 
 clean:
-	#@$(MAKE) -sC $(LIB_DIR) clean
-	@rm -rf $(OBJ_DIR)
-	@echo "$(ASM_NAME) & $(VM_NAME): $(RED)$(OBJ_DIR) folder was deleted$(RESET)"
+	@/bin/rm -rf $(OBJDIR_ASM) $(OBJDIR_CW)
+	@$(COMP_LIB) clean
 
 fclean: clean
-	#@$(MAKE) -sC $(LIB_DIR) fclean
-	@rm -f $(ASM_NAME)
-	@echo "$(ASM_NAME): $(RED)$(ASM_NAME) binary was deleted$(RESET)"
-	@rm -f $(VM_NAME)
-	@echo "$(VM_NAME): $(RED)$(VM_NAME) binary was deleted$(RESET)"
+	@/bin/rm -rf $(NAME_ASM) $(NAME_CW)
+	@$(COMP_LIB) fclean
 
 re: fclean all
 
-
+.PHONY: lib clean fclean all re

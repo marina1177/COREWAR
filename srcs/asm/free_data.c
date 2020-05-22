@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "com.h"
+#include "asm.h"
 
 void	freesplit(t_token *tmp)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (i < (tmp)->op->args_num)
