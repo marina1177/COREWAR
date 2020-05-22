@@ -1,4 +1,5 @@
 srcs/vm/objs_vm
+objs/*/*.o
 libft_clala/*/*.o
 .idea
 .vscode

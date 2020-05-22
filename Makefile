@@ -7,8 +7,6 @@ OBJDIR_CW = objs/vm
 ALL_C_ASM = $(wildcard $(SRCDIR_ASM)/*.c)
 ALL_C_CW = $(wildcard $(SRCDIR_CW)/*.c)
 
-GENERATED_OBJS = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
-
 OBJS_ASM = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
 OBJS_CW = $(patsubst $(SRCDIR_CW)/%.c,$(OBJDIR_CW)/%.o,$(ALL_C_CW))
 
@@ -45,9 +43,6 @@ $(OBJDIR_CW)/%.o: $(SRCDIR_CW)/%.c $(INCLUDES_CW) | $(OBJDIR_CW)
 	$(CC) $(FLAGS) -I./includes -I.$(LIBFT_DIR)/includes -c $< -o $@
 
 $(LIBFT): lib
-
-echo:
-	echo $(GENERATED_OBJS)
 
 lib:
 	@$(COMP_LIB)
