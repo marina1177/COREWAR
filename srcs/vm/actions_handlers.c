@@ -12,30 +12,14 @@
 
 #include "../../includes/vm.h"
 
-int			get_negative_number(void *argument, int size)
-{
-	char	num[5];
-	int		i;
-
-	i = 0;
-	ft_bzero(num, 5);
-	while (i < size)
-	{
-		num[i] = ((char*)argument)[i];
-		if (i == 0)
-			num[i] -= 1;
-		num[i] ^= 0xFF;
-		i++;
-	}
-	return (*(int *)num * (-1));
-}
-
 int			get_num_from_char(unsigned char *arena, int position, int size)
 {
 	int		*num;
 	int		i;
 	char	arguments[5];
+	short int *q;
 
+	q = NULL;
 	i = size;
 	ft_bzero(arguments, 5);
 	while (--i >= 0)
@@ -43,8 +27,11 @@ int			get_num_from_char(unsigned char *arena, int position, int size)
 		arguments[i] = arena[position];
 		change_position(&position, 1);
 	}
-	if (arguments[size - 1] & 0b10000000)
-		return (get_negative_number((unsigned int *)arguments, size));
+	if (size == 2)
+	{
+		q = (short int *)arguments;
+		return(*q);
+	}
 	num = (int *)arguments;
 	return (*num);
 }
