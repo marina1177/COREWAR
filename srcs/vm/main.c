@@ -61,7 +61,6 @@ void			corewar(t_vm *vm)
 	cycles = 0;
 	while (vm->carr->qty)
 	{
-		ft_printf("%d\n", vm->vs->cells_refresh);
 		if (vm->data->cycles && (vm->mods->verb_lvl & VERB_L2))
 			ft_printf("It is now cycle %d\n", vm->data->cycles);
 		handle_carriages(vm);
