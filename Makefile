@@ -5,6 +5,9 @@ SRCDIR_CW = srcs/vm
 OBJDIR_CW = objs/vm
 
 # WE RESPECT NORM! FFFFFF
+# 'ALL SOURCE FILES YOU NEED TO COMPILE YOUR PROJECT
+#  MUST BE EXPLICITLY NAMED IN YOUR MAKEFILE'
+#
 #ALL_C_ASM = $(wildcard $(SRCDIR_ASM)/*.c)
 #ALL_C_CW = $(wildcard $(SRCDIR_CW)/*.c)
 
@@ -69,7 +72,6 @@ ALL_OBJ_ASM = $(ALL_C_ASM:%.c=%.o)
 ALL_OBJ_CW = $(ALL_C_CW:%.c=%.o)
 OBJS_ASM = $(addprefix $(OBJDIR_ASM)/, $(ALL_OBJ_ASM))
 OBJS_CW = $(addprefix $(OBJDIR_CW)/, $(ALL_OBJ_CW))
-
 
 NAME_ASM = asm
 NAME_CW = corewar
