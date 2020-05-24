@@ -75,29 +75,29 @@ void			do_st(t_carriage *carriage,
 			t_vm *vm, unsigned char *arguments)
 {
 	int			values[2];
-	int			position;
+	int			pos;
 	int			reg;
-	int			temp;
+	int			arg_2;
 
-	position = carriage->pos;
-	change_position(&position, 2);
-	reg = vm->data->arena[position];
-	values[0] = get_arg_value(vm->data->arena,
-				carriage, &position, arguments[0]);
+	pos = carriage->pos;
+	change_position(&pos, 2);
+	reg = vm->data->arena[pos];
+	values[0] = get_arg_value(vm->data->arena, carriage, &pos, arguments[0]);
 	if (arguments[1] == T_REG)
 	{
-		values[1] = get_reg_value(vm->data->arena, &position);
+		values[1] = get_reg_value(vm->data->arena, &pos);
+		arg_2 = values[1];
 		carriage->regs[values[1]] = values[0];
 	}
 	else
 	{
-		temp = get_num_from_char(vm->data->arena, position, 2);
-		values[1] = temp % IDX_MOD;
-		change_position(&position, 2);
+		arg_2 = get_num_from_char(vm->data->arena, pos, 2);
+		values[1] = arg_2 % IDX_MOD;
+		change_position(&pos, 2);
 		vs_check_and_push_cells(vm, carriage->pos, carriage);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]);
 	}
-	vm->mods->verb_lvl & VERB_L3 ? print_st(carriage, reg, values, temp) : 0;
-	carriage->pos = position;
+	vm->mods->verb_lvl & VERB_L3 ? print_st(carriage, reg, values, arg_2) : 0;
+	carriage->pos = pos;
 }
 

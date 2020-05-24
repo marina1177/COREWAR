@@ -4,11 +4,72 @@ OBJDIR_ASM = objs/asm
 SRCDIR_CW = srcs/vm
 OBJDIR_CW = objs/vm
 
-ALL_C_ASM = $(wildcard $(SRCDIR_ASM)/*.c)
-ALL_C_CW = $(wildcard $(SRCDIR_CW)/*.c)
+# WE RESPECT NORM! FFFFFF
+#ALL_C_ASM = $(wildcard $(SRCDIR_ASM)/*.c)
+#ALL_C_CW = $(wildcard $(SRCDIR_CW)/*.c)
 
-OBJS_ASM = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
-OBJS_CW = $(patsubst $(SRCDIR_CW)/%.c,$(OBJDIR_CW)/%.o,$(ALL_C_CW))
+#printf '        %s \\\n' *.c
+ALL_C_ASM = add_header.c \
+        add_label.c \
+        check_label.c \
+        check_op.c \
+        check_type_arg.c \
+        error.c \
+        free_data.c \
+        get_line.c \
+        is_type.c \
+        main.c \
+        my_atoi.c \
+        op.c \
+        parse_args.c \
+        parse_args_type.c \
+        parse_file.c \
+        print_bits.c \
+        supfun.c \
+        supfun_2.c \
+        translate.c \
+        write_to_file.c
+
+ALL_C_CW =  actions_1.c \
+        actions_2.c \
+        actions_3.c \
+        actions_4.c \
+        actions_handlers.c \
+        check_operation.c \
+        check_operation2.c \
+        handle_carriages.c \
+        handle_error.c \
+        handle_players.c \
+        handlers.c \
+        main.c \
+        op.c \
+        parse_args.c \
+        parse_player.c \
+        print.c \
+        print_bits.c \
+        print_debug.c \
+        print_ops.c \
+        print_ops2.c \
+        t_carriage.c \
+        t_carriages.c \
+        t_mods.c \
+        t_player.c \
+        t_players.c \
+        t_vm.c \
+        t_vm_info.c \
+        t_vs.c \
+        vs_add_cells.c \
+        vs_itoa.c \
+        vs_package.c \
+        vs_put_change.c \
+        vs_refresh.c \
+        vs_utilites.c
+
+ALL_OBJ_ASM = $(ALL_C_ASM:%.c=%.o)
+ALL_OBJ_CW = $(ALL_C_CW:%.c=%.o)
+OBJS_ASM = $(addprefix $(OBJDIR_ASM)/, $(ALL_OBJ_ASM))
+OBJS_CW = $(addprefix $(OBJDIR_CW)/, $(ALL_OBJ_CW))
+
 
 NAME_ASM = asm
 NAME_CW = corewar

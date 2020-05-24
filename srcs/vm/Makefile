@@ -35,6 +35,8 @@ INCLUDES_ASM = ./includes/op.h ./includes/asm.h
 INCLUDES_DIR = ../../includes
 INCLUDES_CW = $(INCLUDES_DIR)/op.h $(INCLUDES_DIR)/vm.h $(INCLUDES_DIR)/vm_error.h
 
+#OBJS_ASM = $(patsubst $(SRCDIR_ASM)/%.c,$(OBJDIR_ASM)/%.o,$(ALL_C_ASM))
+#OBJS_CW = $(patsubst $(SRCDIR_CW)/%.c,$(OBJDIR_CW)/%.o,$(ALL_C_CW))
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
