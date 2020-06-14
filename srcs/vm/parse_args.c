@@ -34,7 +34,7 @@ static int	is_valid_flag_n(t_vm *vm, int ac, char **av, int i)
 	ac == i ? handle_error_vm(ERR_NONUM, vm) : 0;
 	num = av[i];
 	if (!is_integer(num))
-		handle_error_str_arg(ERR_NOINT, num, vm);
+		handle_error_str_arg(ERR_NOINT_N, num, vm);
 	number = ft_atoi(num);
 	if (number < 1 || number > MAX_PLAYERS)
 		handle_error_str_arg(ERR_N_FLAG, num, vm);
@@ -53,7 +53,7 @@ static int	parse_flag_dump(t_vm *vm, int ac, char **av, int i)
 	i == ac ? handle_error_vm(ERR_NONUM, vm) : 0;
 	num = av[i];
 	if (!is_integer(num))
-		handle_error_str_arg(ERR_NOINT, num, vm);
+		handle_error_str_arg(ERR_NOINT_D, num, vm);
 	number = ft_atoi(num);
 	if (number < 0)
 		handle_error_str_arg(ERR_D_FLAG, num, vm);
@@ -70,7 +70,7 @@ static int	parse_flag_v(t_vm *vm, int ac, char **av, int i)
 	++i == ac ? handle_error_vm(ERR_NONUM, vm) : 0;
 	num = av[i];
 	if (!is_integer(num))
-		handle_error_str_arg(ERR_NOINT, num, vm);
+		handle_error_str_arg(ERR_NOINT_V, num, vm);
 	number = ft_atoi(num);
 	if (number < 0 || number > 31)
 		handle_error_str_arg(ERR_V_FLAG, num, vm);
