@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 23:10:00 by bcharity          #+#    #+#             */
-/*   Updated: 2020/02/27 23:10:01 by bcharity         ###   ########.fr       */
+/*   Created: 2020/06/28 17:20:12 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/28 17:20:12 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef unsigned long		t_8b;
 # define NAME				(t_2b)0b00000000000010
 # define COMMENT			(t_2b)0b00000000000001
 
-# define F_OPRINT				(t_1b)0b00000010
-# define F_DISASM				(t_1b)0b00000001
+# define F_OPRINT			(t_1b)0b00000010
+# define F_DISASM			(t_1b)0b00000001
 
 typedef struct s_opargs		t_opargs;
 typedef struct s_lbl_lst	t_lbl_lst;
@@ -74,14 +74,14 @@ typedef struct s_op			t_op;
 
 struct					s_op
 {
-	char				*name;
-	int					args_num;
-	unsigned int		args_types[3];
-	int					code;
-	int					loop;
-	char				*description;
-	int					args_types_code;
-	int					t_dir_size;
+	char					*name;
+	int						args_num;
+	unsigned int			args_types[3];
+	int						code;
+	int						loop;
+	char					*description;
+	int						args_types_code;
+	int						t_dir_size;
 };
 
 extern t_op				g_op_tab[16];
@@ -103,6 +103,7 @@ struct						s_token
 	t_2b					new_line;
 	t_op					*op;
 	t_opargs				*args[3];
+	int						cnt_args;
 	int32_t					offset;
 	int32_t					num_byte_op;
 	t_token					*next;
@@ -131,38 +132,41 @@ struct						s_lbl_lst
 	t_lbl_lst				*next;
 };
 
-void			print_bits(size_t size, void *ptr, char space);
-void			print_memory(const void *addr, size_t size);
+void						print_bits(size_t size, void *ptr, char space);
+void						print_memory(const void *addr, size_t size);
 
 
 
 /*
 ** error.c
 */
-void			put_error(char *err, int type);
-void			print_error(char *message);
-void			error_line(char *event, char *line, int x);
-void			error_event(char *event);
 
-void				error(void);
-
+void						put_error(char *err, int type);
+void						print_error(char *message);
+void						error_line(char *event, char *line, int x);
+void						error_event(char *event);
+void						error(void);
 
 
 /*
 ** my_atoi.c
 */
+
 int							my_atoi(const char *str);
 
 /*
 ** supfun_2.c
 */
-void						int_to_hex(int32_t dec, int dir_size, u_int32_t *place);
+
+void						int_to_hex(int32_t dec, int dir_size,
+							u_int32_t *place);
 int							ft_findchar(char *str, int c);
 int							ft_strmerge(char **dest, char **srcs);
 
 /*
 ** supfun.c
 */
+
 int32_t						ft_atoi_cor(const char *str, u_int8_t size);
 int							is_lblchar(char c);
 void						skip_space(char *line);
@@ -172,6 +176,7 @@ void						check_new_line(char *line, int f);
 /*
 ** free_data.c
 */
+
 void						freesplit(t_token *tmp);
 void						free_token(void);
 void						free_label(void);
@@ -180,11 +185,13 @@ void						free_data(void);
 /*
 ** write_to_file.c
 */
+
 void						write_to_file(void);
 
 /*
 ** translate.c
 */
+
 int32_t						process_label(t_token **tkn, char *label);
 void						print_args(t_token **tkn, u_int32_t *cursor);
 void						print_args_types_code(t_token *tkn, u_int32_t *cursor);
@@ -194,6 +201,7 @@ void						translate(void);
 /*
 ** is_type.c
 */
+
 int							is_reg(char *line, int len);
 int							is_direct(char *line, int len);
 int							is_dir_label(char *line, int len);
@@ -203,6 +211,7 @@ int							is_ind_label(char *line, int len);
 /*
 ** check_type_arg.c
 */
+
 int							check_reg(char *line, int size, u_int16_t i);
 int							check_dir(char *line, int size, u_int16_t i);
 int							check_ind(char *line, int size, u_int16_t i);
@@ -210,11 +219,13 @@ int							check_ind(char *line, int size, u_int16_t i);
 /*
 ** parse_args_type.c
 */
+
 void						parse_args_type(u_int16_t i, char *line);
 
 /*
 ** parse_args.c
 */
+
 t_opargs					*parse_parameter(char *line);
 void						parse_args(char *line);
 
@@ -267,18 +278,18 @@ void						valid_filename(char *fname);
 void						data_init(void);
 void						compilation(void);
 void						read_file(char *filename);
-t_1b	put_flg(char *av);
-void	usage(void);
+t_1b						put_flg(char *av);
+void						usage(void);
 
 
 
-t_mdata					*g_mdata;
-t_token					*g_tkn_first;
-t_token					*g_tkn_last;
-t_lbl_lst				*g_label_first;
-t_lbl_lst				*g_label_last;
-char					*g_mbuf;
-t_1b					g_flg;
+t_mdata						*g_mdata;
+t_token						*g_tkn_first;
+t_token						*g_tkn_last;
+t_lbl_lst					*g_label_first;
+t_lbl_lst					*g_label_last;
+char						*g_mbuf;
+t_1b						g_flg;
 
 
 #endif

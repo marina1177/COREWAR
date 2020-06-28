@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 02:16:26 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/04 01:58:15 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/28 15:41:22 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	freesplit(t_token *tmp)
 	i = 0;
 	while (i < (tmp)->op->args_num)
 	{
+		if ((tmp)->cnt_args < (tmp)->op->args_num
+			&& i == tmp->cnt_args)
+		{
+			break ;
+		}
 		free(tmp->args[i]->arg);
 		free(tmp->args[i]);
 		++i;

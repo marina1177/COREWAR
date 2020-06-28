@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:15 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:20:32 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/27 19:33:27 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	add_token(int indx_op)
 	new->new_line = 0;
 	new->y = g_mdata->y;
 	new->x = g_mdata->x;
+	new->cnt_args = 0;
 }
 
 void	check_op(char *line)

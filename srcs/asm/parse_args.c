@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:50:23 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:30:22 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/28 16:05:49 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void				parse_args(char *line)
 		skip_space(line);
 		if ((g_tkn_last->args[i] = parse_parameter(line)))
 		{
+			g_tkn_last->cnt_args++;
 			parse_args_type(i, line);
 			skip_to_separator(line);
 			skip_space(line);

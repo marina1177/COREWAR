@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2020/02/27 22:45:43 by bcharity         ###   ########.fr       */
+/*   Created: 2020/06/28 17:25:06 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/28 17:25:06 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
 
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
-
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
@@ -47,12 +45,10 @@
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
 
-
 #define T_REG					1
 #define T_DIR					2
 #define T_IND					4
 #define T_LAB					8
-
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
@@ -72,6 +68,5 @@ struct				s_header
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 };
-
 
 #endif

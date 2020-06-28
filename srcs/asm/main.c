@@ -1,19 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/28 16:10:55 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/28 16:15:39 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "asm.h"
-
-void	valid_filename(char *fname)
-{
-	int			i;
-
-	i = 0;
-	while (fname[i])
-		i++;
-	while (fname[--i])
-		if (fname[i] == '.')
-			break ;
-	if (ft_strcmp(&fname[i], ".s"))
-		error_event(ERR_FNAME);
-}
 
 void	data_init(void)
 {
@@ -48,24 +45,6 @@ void	compilation(void)
 	check_empty_file();
 	translate();
 	write_to_file();
-}
-
-void	read_file(char *filename)
-{
-	int	fd_s;
-
-	/*if (g_flg & F_DISASM)
-		disassemble();*/
-	valid_filename(filename);
-	if ((fd_s = open(filename, O_RDONLY, 0)) < 0)
-		error_event(ERR_FOPEN);
-	data_init();
-	g_mdata->filename = filename;
-	g_mdata->fd_s = fd_s;
-	parse_file(fd_s);
-	close(fd_s);
-	compilation();
-	free_data();
 }
 
 t_1b	put_flg(char *av)

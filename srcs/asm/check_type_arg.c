@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_type_arg.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:07 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/03 20:21:00 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/28 16:04:58 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

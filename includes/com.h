@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   com.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 17:41:56 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/01 17:41:56 by bcharity         ###   ########.fr       */
+/*   Created: 2020/06/28 17:26:11 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/28 17:26:11 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # define TRUE 1
 # define FALSE 0
-
-//# include "../libft/includes/libft.h"
 
 # include "../libft_clala/includes/libft.h"
 # include "../libft_clala/includes/ft_printf.h"

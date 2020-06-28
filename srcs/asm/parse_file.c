@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/04 02:00:39 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/27 21:41:31 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	parse_str(char **line)
 			put_error("Lexical error: invalid instruction", 1);
 		if (!((*line)[g_mdata->x]) || (*line)[g_mdata->x] == '\0')
 			return ;
-/*		if ((*line)[g_mdata->x] == '\n')
-			g_mdata->x++;*/
 	}
 }
 

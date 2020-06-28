@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_header.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 01:32:42 by bcharity          #+#    #+#             */
-/*   Updated: 2020/04/11 13:08:04 by bcharity         ###   ########.fr       */
+/*   Created: 2020/06/28 15:40:13 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/28 15:40:15 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
