@@ -115,7 +115,7 @@ typedef struct 			s_players
 }						t_players;
 
 typedef struct 			s_mods
-{	
+{
 	int					dump_cycle;
 	int					dump_size;
 	int					verb_lvl;
@@ -126,7 +126,7 @@ typedef struct 			s_mods
 }						t_mods;
 
 typedef struct			s_vm_info
-{	
+{
 	uint8_t				arena[MEM_SIZE];
 	ssize_t				cycles;
 	ssize_t				cycles_to_die;
@@ -160,9 +160,7 @@ typedef struct			s_vs
 	uint8_t				players_refresh;
 	uint8_t				carriages_refresh;
 	uint8_t				cells_refresh;
-
-	uint64_t			const_begin_len;
-	uint64_t			change_begin_len;
+	int					fd;
 	struct s_json_item	vs_const[7];
 	struct s_json_item	vs_change[9];
 }						t_vs;
@@ -245,18 +243,18 @@ void					push_cells(t_vm *vm, int player_id, int	cell_number);
 /*
 ** vs_package.c
 */
-char					*put_atom_const(t_vm *vm, char **buf);
-char					*put_array_const(t_vm *vm, char **buf);
-void					put_buf(t_vm *vm, int type, char **buf);
+void					put_atom_const(t_vm *vm);
+void					put_array_const(t_vm *vm);
+void					put_file(t_vm *vm, int type);
 void					print_vs(t_vm	*vm, int type);
 
 /*
 ** vs_put_change.c
 */
-char					*put_cells(t_vm *vm, char **buf);
-char					*put_carriages(t_vm *vm, char **buf);
-char					*put_players(t_vm *vm, char **buf);
-char					*put_state(t_vm *vm, char **buf);
+void					put_cells(t_vm *vm);
+void					put_carriages(t_vm *vm);
+void					put_players(t_vm *vm);
+int						put_state(t_vm *vm);
 
 /*
 ** vs_utilites.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/06/29 09:17:24 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		check_carriages(t_vm *vm)
 		vm->data->checks_counter == MAX_CHECKS)
 	{
 		vm->data->cycles_to_die -= CYCLE_DELTA;
-		vm->data->checks_counter = 0;		
+		vm->data->checks_counter = 0;
 		if (vm->mods->verb_lvl & VERB_L2)
 			ft_printf("Cycle to die is now %d\n", vm->data->cycles_to_die);
 		t_players_reset_lives_in_period(vm->players);
@@ -88,19 +88,19 @@ void			create_arena(t_vm *vm)
 	player = vm->players->first_player;
 	i = 0;
 	while (player)
-	{		
+	{
 		ft_memcpy((char *)((vm->data->arena) + i),
 				player->code, player->code_size);
 		player->start_code = i;
 		t_carriages_push(vm->carr, t_carriage_new(vm->carr, i));
-		new_cells(&(vm->cells), player->num, vm);		
+		new_cells(&(vm->cells), player->num, vm);
 		j = i - 1;
 		while (++j < i + player->code_size)
 			push_cells(vm, player->num, j);
 		i += diff;
 		player = player->next;
 	}
-	vm->players->last_alive_num = vm->players->qty;	
+	vm->players->last_alive_num = vm->players->qty;
 }
 
 int				main(int ac, char **av)
@@ -109,7 +109,6 @@ int				main(int ac, char **av)
 
 	ac < 2 ? print_usage() : 0;
 	vm = t_vm_create();
-	
 	parse_args(vm, ac, av);
 	print_introduction(vm->players);
 	create_arena(vm);
@@ -117,5 +116,6 @@ int				main(int ac, char **av)
 	corewar(vm);
 	//ft_printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
 	print_final_result(vm);
+	
 	return (0);
 }

@@ -112,6 +112,7 @@
 	"state_refresh": 0,
 	"players_refresh": 0,
 	"carriage_refresh": 1,
+	"delete_old_carriages":1,
 	"Carriages": [
 		{
 		"id": 4,
@@ -133,6 +134,11 @@
 		"op_code": 3,
 		"place": 0
 		}],
+	"Del_carr":[
+		{
+			"place": 2048
+		}
+	],
 	"cells_refresh": 0
 }
 ,{

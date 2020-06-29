@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/05/11 21:56:46 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/06/29 09:18:40 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void		print_final_result(t_vm *vm)
 	ft_printf("Contestant %d, \"%s\", has won !\n",
 		winner->num,
 		winner->name);
+	print_vsconst(vm, 2);
 	exit(0);
 }
 

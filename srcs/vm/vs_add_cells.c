@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vs_add_cells.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/29 15:00:53 by bcharity          #+#    #+#             */
+/*   Updated: 2020/06/29 15:00:54 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 t_cells			*new_cells(t_cells **head, int	id, t_vm *vm)
@@ -58,5 +70,5 @@ void	vs_check_and_push_cells(t_vm *vm,
 		num = carriage->regs[1] * -1;
 		if (num > 0 && num <= vm->players->qty)
 			push_cells(vm, num, cell_number);
-	}			
+	}
 }

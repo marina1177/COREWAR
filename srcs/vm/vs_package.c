@@ -1,78 +1,67 @@
 #include "../../includes/vm.h"
 
-char	*put_atom_const(t_vm *vm, char **buf)
+void	put_atom_const(t_vm *vm)
 {
-	char	*p;
-
-	p = *buf;
-	p += vs_strcpy(p,"\n\t\"Consts\": {\n\t\t\"mem_size\": ");
-	p += vs_itoa(MEM_SIZE, p);
-	p += vs_strcpy(p, A_CYCLEDELTA);
-	p += vs_itoa(CYCLE_DELTA, p);
-	p += vs_strcpy(p, A_PLAYERS_NUM);
-	p += vs_itoa(vm->players->qty, p);
-	p += vs_strcpy(p, A_MAXCHECKS);
-	p += vs_itoa(MAX_CHECKS, p);
-	p += vs_strcpy(p, A_C_NBR_LIVE);
-	p += vs_itoa(NBR_LIVE, p);
-	p += vs_strcpy(p, A_C_CYCLE_TO_DIE);
-	p += vs_itoa(CYCLE_TO_DIE, p);
-	return (p);
+	vs_putstr_fd(vm->vs->fd, "\n\t\"Consts\": {\n\t\t\"mem_size\": ");
+	vs_itoa_fd(vm->vs->fd, MEM_SIZE);
+	vs_putstr_fd(vm->vs->fd, A_CYCLEDELTA);
+	vs_itoa_fd(vm->vs->fd, CYCLE_DELTA);
+	vs_putstr_fd(vm->vs->fd, A_PLAYERS_NUM);
+	vs_itoa_fd(vm->vs->fd, vm->players->qty);
+	vs_putstr_fd(vm->vs->fd, A_MAXCHECKS);
+	vs_itoa_fd(vm->vs->fd, MAX_CHECKS);
+	vs_putstr_fd(vm->vs->fd, A_C_NBR_LIVE);
+	vs_itoa_fd(vm->vs->fd,NBR_LIVE);
+	vs_putstr_fd(vm->vs->fd, A_C_CYCLE_TO_DIE);
+	vs_itoa_fd(vm->vs->fd, CYCLE_TO_DIE);
 }
 
-char	*put_array_const(t_vm *vm, char **buf)
+void	put_array_const(t_vm *vm)
 {
-	char	*p;
 	t_player *tmp;
 
-	p = *buf;
-	p += vs_strcpy(p,",\n\t\t\"Players\": [");
+	vs_putstr_fd(vm->vs->fd, ",\n\t\t\"Players\": [");
 	tmp = vm->players->first_player;
 	while(tmp)
 	{
-		p += vs_strcpy(p, "\n\t\t{");
-		p += vs_strcpy(p, A_C_ID);
-		p += vs_itoa(tmp->num, p);
-		p += vs_strcpy(p, A_NAME);
-		*p++ = '\"';
-		p += vs_strcpy(p, tmp->name);
-		*p++ = '\"';
-		p += vs_strcpy(p, A_START_CODE);
-		p += vs_itoa(tmp->start_code, p);
-		p += vs_strcpy(p, A_CODE_SIZE);
-		p += vs_itoa(tmp->code_size, p);
-		p += vs_strcpy(p, "\n\t\t}");
+		vs_putstr_fd(vm->vs->fd, "\n\t\t{");
+		vs_putstr_fd(vm->vs->fd, A_C_ID);
+		vs_itoa_fd(vm->vs->fd, tmp->num);
+		vs_putstr_fd(vm->vs->fd, A_NAME);
+		vs_putstr_fd(vm->vs->fd, "\"");
+		vs_putstr_fd(vm->vs->fd, tmp->name);
+		vs_putstr_fd(vm->vs->fd, "\"");
+		vs_putstr_fd(vm->vs->fd, A_START_CODE);
+		vs_itoa_fd(vm->vs->fd, tmp->start_code);
+		vs_putstr_fd(vm->vs->fd, A_CODE_SIZE);
+		vs_itoa_fd(vm->vs->fd, tmp->code_size);
+		vs_putstr_fd(vm->vs->fd, "\n\t\t}");
 		tmp = tmp->next;
-		tmp != NULL ? *p++ = ',' : 1;
+		tmp != NULL ? vs_putstr_fd(vm->vs->fd, ",") : 1;
 	}
-	p += vs_strcpy(p, "]\n\t},");
-	return (p);
+	vs_putstr_fd(vm->vs->fd, "]\n\t},");
 }
 
-void	put_buf(t_vm *vm, int type, char **buf)
+void	put_file(t_vm *vm, int type)
 {
-	char	*p;
-
-	p = *buf;
-	p += (type == 0 ? vs_strcpy(p,"[{") : vs_strcpy(p,",{"));
-	//p += vs_strcpy(p,"[{");
+	type == 0 ? vs_putstr_fd(vm->vs->fd, "[{") :
+	vs_putstr_fd(vm->vs->fd, ",{");
 	if (type == 0)
 	{
-		p = put_atom_const(vm, &p);
-		p = put_array_const(vm, &p);
+		put_atom_const(vm);
+		put_array_const(vm);
 	}
-	p += vs_strcpy(p, A_CYCLE);
-	p += vs_itoa(vm->data->cycles, p);	
-	if((p = put_state(vm, &p)) == NULL)
+	vs_putstr_fd(vm->vs->fd, A_CYCLE);
+	vs_itoa_fd(vm->vs->fd, vm->data->cycles);
+	if(put_state(vm) == 0)
 	{
 		return ;
 	}
-	p = put_players(vm, &p);
-	p = put_carriages(vm, &p);
-	p = put_cells(vm, &p);
-	p += (type == 2 ? vs_strcpy(p,"\n}]") : vs_strcpy(p,"\n}"));
-	
-	//printf("VS_COMM:(%ld[ch])\n", (long)(p-*buf));
+	put_players(vm);
+	put_carriages(vm);
+	put_cells(vm);
+	type == 2 ? vs_putstr_fd(vm->vs->fd, "\n}]")
+	: vs_putstr_fd(vm->vs->fd, "\n}");
 }
 
 int		print_vsconst(t_vm	*vm, int type)
@@ -82,17 +71,21 @@ int		print_vsconst(t_vm	*vm, int type)
 
 	if (!vm->mods->vs)
 		return (0);
-	buf_size = calculate_buf(vm, type);
-	if ((buf = (char *)malloc(buf_size)))
+	if (type == 0 &&
+	(vm->vs->fd = open("vis.json", O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 	{
-		ft_bzero(buf, buf_size);
-		put_buf(vm, type, &buf);
-		ft_dprintf(1, "%s\n", buf);
-		free(buf);
+		ft_dprintf(vm->vs->fd, "%s\n", "vis.json file error\n");
+		return (0);
 	}
-	else
-		handle_error_vm(ERR_ALLOC, vm);
-	vs_reset_refresh(vm);
+	if (vm->vs->fd > 0)
+	{
+		put_file(vm, type);
+		if (type == 2)
+		{
+			write(vm->vs->fd, "]", 1);
+			close(vm->vs->fd);
+			return (1);
+		}
+	}
 	return (1);
 }
-
