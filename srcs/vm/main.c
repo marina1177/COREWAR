@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/06/29 09:17:24 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:45:26 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,5 @@ int				main(int ac, char **av)
 	corewar(vm);
 	//ft_printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
 	print_final_result(vm);
-	
 	return (0);
 }

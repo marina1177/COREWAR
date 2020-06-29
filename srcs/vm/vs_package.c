@@ -64,6 +64,26 @@ void	put_file(t_vm *vm, int type)
 	: vs_putstr_fd(vm->vs->fd, "\n}");
 }
 
+void	clean_refresh(t_vm *vm)
+{
+	vm->vs->state_refresh = 0;
+	vm->vs->players_refresh = 0;
+	vm->vs->carriages_refresh = 0;
+	vm->vs->cells_refresh = 0;
+}
+
+void	clean_cells(t_vm *vm)
+{
+	t_cells	*tmp;
+
+	tmp = vm->cells;
+	while (tmp)
+	{
+		tmp->num_addr = -1;
+		tmp = tmp->next;
+	}
+}
+
 int		print_vsconst(t_vm	*vm, int type)
 {
 	if (!vm->mods->vs)
@@ -77,6 +97,8 @@ int		print_vsconst(t_vm	*vm, int type)
 	if (vm->vs->fd > 0)
 	{
 		put_file(vm, type);
+		clean_refresh(vm);
+		clean_cells(vm);
 		if (type == 2)
 		{
 			write(vm->vs->fd, "]", 1);
