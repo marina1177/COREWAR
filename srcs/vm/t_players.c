@@ -12,10 +12,10 @@
 
 #include "../../includes/vm.h"
 
-int				t_players_get_next_number(t_players *players)
+int					t_players_get_next_number(t_players *players)
 {
-	t_player	*temp;
-	int			i;
+	t_player		*temp;
+	int				i;
 
 	i = 1;
 	temp = players->first_player;
@@ -32,9 +32,9 @@ int				t_players_get_next_number(t_players *players)
 	return (i);
 }
 
-t_player		*t_players_add(t_players *players, int number, t_vm *vm)
+t_player			*t_players_add(t_players *players, int number, t_vm *vm)
 {
-	t_player	*new;
+	t_player		*new;
 
 	new = t_player_create(number, vm);
 	if (!players->first_player)
@@ -51,9 +51,9 @@ t_player		*t_players_add(t_players *players, int number, t_vm *vm)
 	return (new);
 }
 
-t_players		*t_players_new(void)
+static t_players	*t_players_new(void)
 {
-	t_players	*new;
+	t_players		*new;
 
 	new = (t_players *)malloc(sizeof(t_players));
 	if (new)
@@ -67,9 +67,20 @@ t_players		*t_players_new(void)
 	return (new);
 }
 
-void			t_players_reset_lives_in_period(t_players *players)
+t_players			*t_players_create(t_vm *vm)
 {
-	t_player	*temp;
+	t_players		*new;
+
+	new = t_players_new();
+	if (!new)
+		handle_error_vm(ERR_ALLOC, vm);
+	vm->allocated += ALLOCATED_PLAYERS;
+	return (new);
+}
+
+void				t_players_reset_lives_in_period(t_players *players)
+{
+	t_player		*temp;
 
 	temp = players->first_player;
 	while (temp)

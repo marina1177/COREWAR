@@ -24,7 +24,9 @@
 # include "vm_error.h"
 # include <stdio.h>
 
-
+/*
+**
+*/
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
 # define CYCLE_COORD		1993
@@ -75,6 +77,14 @@
 # define VERB_L3 4
 # define VERB_L4 8
 # define VERB_L5 16
+
+# define ALLOCATED_PLAYERS 1
+# define ALLOCATED_DATA 2
+# define ALLOCATED_CARR 4
+# define ALLOCATED_MODS 8
+# define ALLOCATED_VS 16
+# define ALLOCATED_CELLS 32
+
 
 typedef struct			s_op
 {
@@ -207,6 +217,7 @@ typedef struct			s_vm
 	struct s_mods		*mods;
 	t_op				op_tab[17];
 	void				(*exec[17])();
+	int					allocated;
 	//void				(*exec[17])(t_carriage *curr, struct s_vm *vm);
 }						t_vm;
 
@@ -336,12 +347,14 @@ void					test_display(char*arena);
 void					delete_old_carriage(t_vm *vm);
 void					display_arena(t_vm *vm);
 
-// END OP_CODE
+/*
+** end op_code fucntions
+*/
 
 /*
 ** t_players functions
 */
-t_players				*t_players_new(void);
+t_players				*t_players_create(t_vm *vm);
 t_player				*t_players_add(t_players *players, int number, t_vm *vm);
 void					handle_players(t_vm *vm, t_players *players);
 t_player				*get_player_by_number(t_players *players, int num);

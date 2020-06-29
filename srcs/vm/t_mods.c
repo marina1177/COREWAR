@@ -36,5 +36,6 @@ t_mods		*t_mods_create(t_vm *vm)
 	new = t_mods_new();
 	if (!new)
 		handle_error_vm(ERR_ALLOC, vm);
+	vm->allocated += ALLOCATED_MODS;
 	return (new);
 }

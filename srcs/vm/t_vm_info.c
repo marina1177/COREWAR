@@ -36,6 +36,7 @@ t_vm_info			*t_vm_info_create(t_vm *vm)
 	new = t_vm_info_new();
 	if (!new)
 		handle_error_vm(ERR_ALLOC, vm);
+	vm->allocated += ALLOCATED_DATA;
 	ft_memset(new->arena, 0, MEM_SIZE);
 	return (new);
 }

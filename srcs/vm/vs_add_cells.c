@@ -19,6 +19,8 @@ t_cells			*new_cells(t_cells **head, int	id, t_vm *vm)
 
 	if (!(new = (t_cells*)malloc(sizeof(t_cells))))
 		handle_error_vm(ERR_ALLOC, vm);
+	if (!(vm->allocated & ALLOCATED_CELLS))
+		vm->allocated += ALLOCATED_CELLS;
 	new->next = NULL;
 	new->num_addr = -1;
 	new->players_id = id;

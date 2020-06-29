@@ -20,7 +20,7 @@ static void		init_refresh(t_vs	*vs)
 	vs->cells_refresh = 1;
 }
 
-static t_vs		*t_vs_new(t_vm *vm)
+static t_vs		*t_vs_new(void)
 {
 	t_vs		*vs;
 
@@ -28,11 +28,7 @@ static t_vs		*t_vs_new(t_vm *vm)
 	{
 		init_refresh(vs);
 		vs->error_code = 0;
-	}
-	else
-	{
-		handle_error_vm(ERR_ALLOC, vm);
-	}
+	}	
 	return (vs);
 }
 
@@ -41,6 +37,9 @@ t_vs			*t_vs_create(t_vm *vm)
 	t_vs		*new;
 
 	new = NULL;
-	new = t_vs_new(vm);
+	new = t_vs_new();
+	if (!new)	
+		handle_error_vm(ERR_ALLOC, vm);
+	vm->allocated += ALLOCATED_VS;
 	return (new);
 }

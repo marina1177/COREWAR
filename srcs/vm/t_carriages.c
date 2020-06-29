@@ -68,6 +68,7 @@ t_carriages		*t_carriages_create(t_vm *vm)
 	new = (t_carriages *)malloc(sizeof(t_carriages));
 	if (!new)
 		handle_error_vm(ERR_ALLOC, vm);
+	vm->allocated += ALLOCATED_CARR;
 	new->qty = 0;
 	new->nums = 0;
 	new->head = NULL;

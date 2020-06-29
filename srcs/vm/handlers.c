@@ -48,3 +48,70 @@ void		t_players_check_is_alive(t_vm *vm, t_players *players)
 		temp = temp->next;
 	}
 }
+
+static void	t_player_free(t_player **player)
+{
+	if (*player)
+	{
+		free((*player)->name);
+		free((*player)->comment);
+		free((*player)->code);
+		free(*player);
+	}	
+}
+
+static int	t_players_free(t_vm *vm)
+{
+	t_player	*player;
+	t_player	*temp;
+	
+	temp = vm->players->first_player;
+	while (temp)
+	{
+		player = temp;
+		temp = temp->next;
+		t_player_free(&player);		
+	}
+	free(vm->players);
+	return (1);
+}
+
+static int	t_carriages_free(t_vm *vm)
+{
+	t_carriage	*carr;
+	t_carriage	*temp;
+	
+	temp = vm->carr->head;
+	while (temp)
+	{
+		carr = temp;
+		temp = temp->next;
+		free(carr);		
+	}
+	free(vm->carr);
+	return (1);
+}
+
+static int	t_cells_free(t_vm *vm)
+{
+	t_cells	*cell;
+	t_cells	*temp;
+	
+	temp = vm->cells;
+	while (temp)
+	{
+		cell = temp;
+		temp = temp->next;
+		free(cell);		
+	}	
+	return (1);
+}
+
+void		t_vm_free(t_vm *vm)
+{
+	vm->allocated & ALLOCATED_PLAYERS ? t_players_free(vm) : 0;
+	vm->allocated & ALLOCATED_DATA ? ft_free(vm->data) : 0;
+	vm->allocated & ALLOCATED_CARR ? t_carriages_free(vm) : 0;
+	vm->allocated & ALLOCATED_MODS ? ft_free(vm->mods) : 0;
+	vm->allocated & ALLOCATED_CELLS ? t_cells_free(vm->mods) : 0;
+}
