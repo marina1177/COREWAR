@@ -260,10 +260,16 @@ int						put_state(t_vm *vm);
 ** vs_utilites.c
 */
 int						count_dig(size_t val);
-int						vs_putstr_fd(char const *s, int fd);
+int						vs_putstr_fd(int fd, const char *s);
 int						vs_strcpy(char *dest, const char *src);
-uint64_t				calculate_buf(t_vm *vm, int type);
 int						vs_itoa(int n, char *s);
+
+/*
+** vs_itoa_fd.c
+*/
+int						vs_itoa_fd(int fd, int n);
+
+
 /*
 **
 */

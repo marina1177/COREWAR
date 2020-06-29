@@ -18,10 +18,12 @@ ALL_C_ASM = add_header.c \
         check_op.c \
         check_type_arg.c \
         error.c \
+        error_2.c \
         free_data.c \
         get_line.c \
         is_type.c \
         main.c \
+        file_process.c \
         my_atoi.c \
         op.c \
         parse_args.c \
@@ -31,7 +33,8 @@ ALL_C_ASM = add_header.c \
         supfun.c \
         supfun_2.c \
         translate.c \
-        write_to_file.c
+        write_to_file.c\
+        print_memory.c
 
 ALL_C_CW =  actions_1.c \
         actions_2.c \
@@ -63,6 +66,7 @@ ALL_C_CW =  actions_1.c \
         t_vs.c \
         vs_add_cells.c \
         vs_itoa.c \
+        vs_itoa_fd.c \
         vs_package.c \
         vs_put_change.c \
         vs_refresh.c \
@@ -83,7 +87,7 @@ LIBFT_DIR = ./libft_clala
 LIBFT = $(LIBFT_DIR)/libft.a
 COMP_LIB = make -C $(LIBFT_DIR)
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 
 all: $(LIBFT) $(NAME_ASM) $(NAME_CW)
 

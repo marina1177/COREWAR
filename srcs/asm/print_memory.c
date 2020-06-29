@@ -6,15 +6,15 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:59:04 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 16:59:06 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:11:41 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-static void	part_1(int i, int *add_j, size_t size, char *ptr)
+static void	part_1(size_t i, size_t *add_j, size_t size, unsigned char *ptr)
 {
-	int	j;
+	size_t	j;
 
 	j = *add_j;
 	while (j < 16 && i + j < size)

@@ -66,9 +66,6 @@ void	put_file(t_vm *vm, int type)
 
 int		print_vsconst(t_vm	*vm, int type)
 {
-	char	*buf;
-	int		buf_size;
-
 	if (!vm->mods->vs)
 		return (0);
 	if (type == 0 &&

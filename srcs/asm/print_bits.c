@@ -6,13 +6,13 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:57:30 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:01:17 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:08:27 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/com.h"
 
-static char	*get_color(size_t num_byte)
+char	*get_color(size_t num_byte)
 {
 	if (num_byte >= 4 && num_byte < 132)
 		return (C_YEL);
@@ -28,7 +28,7 @@ static char	*get_color(size_t num_byte)
 	return (PURPUL);
 }
 
-static void	ft_print_hex(unsigned char c, char *color)
+void	ft_print_hex(unsigned char c, char *color)
 {
 	char *radix;
 
@@ -39,7 +39,7 @@ static void	ft_print_hex(unsigned char c, char *color)
 	ft_putstr_fd(EOC, 1);
 }
 
-static void	ft_print_char(unsigned char c, char *color)
+void	ft_print_char(unsigned char c, char *color)
 {
 	ft_putstr_fd(color, 1);
 	if (c >= ' ' && c <= '~')

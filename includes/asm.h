@@ -132,7 +132,18 @@ struct						s_lbl_lst
 	t_lbl_lst				*next;
 };
 
+/*
+** print_bits.c
+*/
+char						*get_color(size_t num_byte);
+void						ft_print_hex(unsigned char c, char *color);
+void						ft_print_char(unsigned char c, char *color);
+void						bits_to_str(size_t size, void *ptr, char space);
 void						print_bits(size_t size, void *ptr, char space);
+
+/*
+** print_memory.c
+*/
 void						print_memory(const void *addr, size_t size);
 
 
