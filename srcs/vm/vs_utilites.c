@@ -7,8 +7,8 @@ int		count_dig(size_t val)
 
 	i = 0;
 	n = val;
-	if (n < 0)
-		i++;
+	//if (n < 0)
+	//	i++;
 	while (n)
 	{
 		n /= 10;

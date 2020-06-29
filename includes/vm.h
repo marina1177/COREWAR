@@ -373,6 +373,7 @@ int						handle_error_vm(char *error_message, t_vm *vm);
 int						handle_error_str_arg(char *error_message, char *arg, t_vm *vm);
 int						handle_error_int_arg(char *error_message, int arg, t_vm *vm);
 int						print_usage(void);
+void					t_vm_free(t_vm *vm);
 
 
 /*
