@@ -94,7 +94,7 @@ void			do_st(t_carriage *carriage,
 		arg_2 = get_num_from_char(vm->data->arena, pos, 2);
 		values[1] = arg_2 % IDX_MOD;
 		change_position(&pos, 2);
-		vs_check_and_push_cells(vm, carriage->pos + values[1], carriage);
+		vs_check_and_push_cells(vm, norm_pos(carriage->pos + values[1]), carriage);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]);
 	}
 	vm->mods->verb_lvl & VERB_L3 ? print_st(carriage, reg, values, arg_2) : 0;

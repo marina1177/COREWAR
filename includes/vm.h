@@ -347,6 +347,7 @@ void					increase_position(int *pos, int delta);
 void					test_display(char*arena);
 void					delete_old_carriage(t_vm *vm);
 void					display_arena(t_vm *vm);
+int						norm_pos(int pos);
 
 /*
 ** end op_code fucntions

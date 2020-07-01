@@ -115,3 +115,12 @@ void		t_vm_free(t_vm *vm)
 	vm->allocated & ALLOCATED_MODS ? ft_free("1", vm->mods) : 0;
 	vm->allocated & ALLOCATED_CELLS ? t_cells_free(vm) : 0;
 }
+
+int			norm_pos(int pos)
+{
+	if (pos < 0)
+		pos += MEM_SIZE;
+	else if (pos >= MEM_SIZE)
+		pos %= MEM_SIZE;
+	return (pos);
+}

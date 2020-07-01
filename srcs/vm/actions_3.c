@@ -29,7 +29,7 @@ void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 				carriage, &position, arguments[1]);
 	values[2] = get_arg_value(vm->data->arena,
 				carriage, &position, arguments[2]);
-	vs_check_and_push_cells(vm, carriage->pos + (values[1] + values[2]) % IDX_MOD, carriage);
+	vs_check_and_push_cells(vm, norm_pos(carriage->pos + (values[1] + values[2]) % IDX_MOD), carriage);
 	write_reg(vm->data->arena, values[0], carriage->pos,
 				(values[1] + values[2]) % IDX_MOD);
 	carriage->pos = position;
