@@ -64,13 +64,9 @@ void	push_cells(t_vm *vm, int player_id, int	cell_number)
 
 void	vs_check_and_push_cells(t_vm *vm,
 			int cell_number, t_carriage *carriage)
-{
-	int	num;
-
+{	
 	if (vm->mods->vs)
 	{
-		num = carriage->regs[1] * -1;
-		if (num > 0 && num <= vm->players->qty)
-			push_cells(vm, num, cell_number);
+		push_cells(vm, carriage->init_player, cell_number);
 	}
 }

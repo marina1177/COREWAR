@@ -112,7 +112,7 @@ int				main(int ac, char **av)
 	parse_args(vm, ac, av);
 	print_introduction(vm->players);
 	create_arena(vm);
-	print_vsconst(vm, 0);
+	print_vsconst(vm, 0);	
 	corewar(vm);
 	//ft_printf("main_ERROR_CODE = %d\n", vm->vs->error_code);
 	print_final_result(vm);

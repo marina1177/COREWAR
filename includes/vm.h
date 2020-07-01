@@ -197,6 +197,7 @@ typedef struct			s_carriage
 	int					op_code;
 	int					cycles_countdown;
 	int					last_cycle_alive;
+	int					init_player;
 }						t_carriage;
 
 typedef struct			s_carriages

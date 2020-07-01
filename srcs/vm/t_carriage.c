@@ -18,6 +18,7 @@ t_carriage		*t_carriage_new(t_carriages *carr, int pos)
 
 	new = (t_carriage *)malloc(sizeof(t_carriage));
 	new->num = carr->nums + 1;
+	new->init_player = new->num;
 	new->prev = NULL;
 	new->next = NULL;
 	new->carry = 0;
@@ -78,6 +79,7 @@ t_carriage		*t_carriage_copy(t_carriages *carr, t_carriage *src)
 	copy->op_code = src->op_code;	
 	copy->pos = src->pos;
 	copy->last_cycle_alive = src->last_cycle_alive;
+	copy->init_player = src->init_player;
 	i = -1;
 	while (++i < REG_NUMBER + 1)
 		copy->regs[i] = src->regs[i];
