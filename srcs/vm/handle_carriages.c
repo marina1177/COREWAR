@@ -36,7 +36,7 @@ void				increase_position(int *pos, int delta)
 
 static void			get_op_code(t_carriage *carriage, t_vm *vm)
 {
-	carriage->op_code = vm->data->arena[carriage->pos];
+	carriage->op_code = (int)vm->data->arena[carriage->pos];
 	carriage->cycles_countdown = 1;
 	if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
 		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;
@@ -51,6 +51,13 @@ void				handle_carriages(t_vm *vm)
 	int				temp_vs_pos;
 
 	carriage = vm->carr->head;
+	/*
+	if (vm->data->cycles > 3827)
+	{
+		printf("302 val %d\n", vm->data->arena[302]);
+		print_t_carriages(vm->carr);
+	}
+	*/
 	while (carriage)
 	{
 		temp_vs_pos = carriage->pos;
@@ -59,13 +66,13 @@ void				handle_carriages(t_vm *vm)
 			carriage->cycles_countdown--;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown == 0)
 		{
-			temp_print_pos = carriage->pos;
-			if (check_operation(vm->data->arena, carriage, arguments))
-			{
+			temp_print_pos = carriage->pos;			
+			if (check_operation(vm, vm->data->arena, carriage, arguments))
+			{							
 				make_operation(vm, carriage, arguments);
 				carriage->cycles_countdown = -1;
+				print_move(vm, carriage, temp_print_pos);	
 			}
-			print_move(vm, carriage, temp_print_pos);
 		}
 		carriage->pos == temp_vs_pos ? 0 : vs_carriages_refresh(vm);
 		carriage = carriage->next;

@@ -65,7 +65,9 @@ void			corewar(t_vm *vm)
 			ft_printf("It is now cycle %d\n", vm->data->cycles);
 		handle_carriages(vm);
 		if (vm->mods->dump_cycle == vm->data->cycles)
+		{
 			print_dump(vm, vm->mods->dump_size);
+		}
 		if (cycles == vm->data->cycles_to_die || vm->data->cycles_to_die <= 0)
 		{
 			check_carriages(vm);

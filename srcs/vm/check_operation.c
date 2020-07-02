@@ -88,21 +88,25 @@ int				valid_operation_code(t_carriage *carriage)
 	return (1);
 }
 
-int				check_operation(unsigned char *arena, t_carriage *carriage,
+int				check_operation(t_vm *vm, unsigned char *arena, t_carriage *carriage,
 						unsigned char *arguments)
 {
 	int			position;
 
 	position = carriage->pos;
 	ft_bzero(arguments, 4);
+	
+	printf("here %d cycle %d position %d opcode\n", vm->data->cycles, carriage->pos, carriage->op_code);
 	if (!valid_operation_code(carriage))
 		return (0);
 	change_position(&position, 1);
+	
 	if (g_op_tab[(int)carriage->op_code].arg_type)
-	{
+	{		
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))
 		{
+			
 			skip_args(carriage, arguments);
 			return (0);
 		}

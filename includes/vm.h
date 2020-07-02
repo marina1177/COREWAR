@@ -138,9 +138,9 @@ typedef struct 			s_mods
 typedef struct			s_vm_info
 {
 	uint8_t				arena[MEM_SIZE];
-	ssize_t				cycles;
-	ssize_t				cycles_to_die;
-	ssize_t				cycles_after_check;
+	int					cycles;
+	int					cycles_to_die;
+	int					cycles_after_check;
 	size_t				checks_num;
 	int					checks_counter;
 	int					lives_counter;
@@ -293,7 +293,7 @@ void					clean_data(t_vm *data);
 void					test(int op, unsigned char *arena);
 void					print_byte(unsigned char c);
 void					print_memory(const void *addr, size_t size);
-int						check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
+int						check_operation(t_vm *vm, unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
 int						valid_operation_code(t_carriage *carriage);
 void					make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments);
 void					change_position(int *position, int change);
