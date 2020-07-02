@@ -79,18 +79,19 @@ void	print_move(t_vm *vm, t_carriage *carriage, int temp_pos)
 {
 	int i;
 	int	size;
+	int	diff;	
 
 	if (!(vm->mods->verb_lvl & VERB_L5))
-		return ;
+		return ;	
 	if (carriage->op_code != 0 && (carriage->op_code != 9 || !carriage->carry))
 	{
-		ft_printf("ADV %d (0x%04x -> 0x%04x) ",
-			carriage->pos - temp_pos,
-			temp_pos,
-			carriage->pos);
+		if ((diff = norm_pos(carriage->pos - temp_pos)) <= 1)
+			return ;				
+		ft_printf("ADV %d (0x%04x -> 0x%04x) ", diff, temp_pos, 
+			temp_pos + diff);
 		i = temp_pos;
 		size = 0;
-		while (size < carriage->pos - temp_pos)
+		while (size < norm_pos(carriage->pos - temp_pos))
 		{
 			if (i == MEM_SIZE)
 				i = 0;

@@ -38,7 +38,7 @@ static void			get_op_code(t_carriage *carriage, t_vm *vm)
 {
 	carriage->op_code = (int)vm->data->arena[carriage->pos];
 	carriage->cycles_countdown = 1;
-	if (carriage->op_code >= 0x01 && carriage->op_code <= 0x10)
+	if (carriage->op_code >= 1 && carriage->op_code <= 16)
 		carriage->cycles_countdown = (vm->op_tab)[carriage->op_code].loop;
 	vs_carriages_refresh(vm);
 }
@@ -59,22 +59,25 @@ void				handle_carriages(t_vm *vm)
 	}
 	*/
 	while (carriage)
-	{
+	{		
 		temp_vs_pos = carriage->pos;
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
+		//if (carriage->num == 24)
+		//	print_t_carriage(carriage);
 		if (vm->data->cycles > 0 && carriage->cycles_countdown > 0)
 			carriage->cycles_countdown--;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown == 0)
 		{
 			temp_print_pos = carriage->pos;			
-			if (check_operation(vm, vm->data->arena, carriage, arguments))
+			if (check_operation(vm->data->arena, carriage, arguments))
 			{							
-				make_operation(vm, carriage, arguments);
-				carriage->cycles_countdown = -1;
-				print_move(vm, carriage, temp_print_pos);	
+				make_operation(vm, carriage, arguments);									
 			}
+			print_move(vm, carriage, temp_print_pos);
+			carriage->cycles_countdown = -1;
 		}
 		carriage->pos == temp_vs_pos ? 0 : vs_carriages_refresh(vm);
 		carriage = carriage->next;
 	}
+	
 }

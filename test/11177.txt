@@ -1,6 +1,12 @@
 Introducing contestants...
-* Player 1, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
-* Player 2, weighing 20 bytes, "basic" ("this is a basic stuff") !
-* Player 3, weighing 609 bytes, "Octobre Rouge V4.2" ("And the winner is ...") !
-* Player 4, weighing 301 bytes, " maxidef " (" module de defense") !
-Contestant 2, "basic", has won !
+* Player 1, weighing 5 bytes, "zork" ("I'M ]ALIIIIVE") !
+* Player 2, weighing 605 bytes, "Explosive Kitty" ("Jan-ken-pon (じゃんけんぽん)
+Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
+Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
+Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
+Pas la pour etre ici. - Silicon Val[list]
+Dieu est la plus belle invention.
+Tapis dans l'ombre je veille. - Minou") !
+* Player 3, weighing 264 bytes, "Xx_DaRk_SaSuKe_93_xX" ("The Dirty Hamster") !
+* Player 4, weighing 671 bytes, "skynet" ("j'aime les chats") !
+Contestant 4, "skynet", has won !

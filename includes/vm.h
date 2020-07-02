@@ -293,7 +293,7 @@ void					clean_data(t_vm *data);
 void					test(int op, unsigned char *arena);
 void					print_byte(unsigned char c);
 void					print_memory(const void *addr, size_t size);
-int						check_operation(t_vm *vm, unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
+int						check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
 int						valid_operation_code(t_carriage *carriage);
 void					make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments);
 void					change_position(int *position, int change);
