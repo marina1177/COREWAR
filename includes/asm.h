@@ -146,8 +146,6 @@ void						print_bits(size_t size, void *ptr, char space);
 */
 void						print_memory(const void *addr, size_t size);
 
-
-
 /*
 ** error.c
 */
@@ -157,7 +155,6 @@ void						print_error(char *message);
 void						error_line(char *event, char *line, int x);
 void						error_event(char *event);
 void						error(void);
-
 
 /*
 ** my_atoi.c

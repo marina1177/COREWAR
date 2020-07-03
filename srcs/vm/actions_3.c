@@ -6,37 +6,37 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:16:40 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:16:41 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/07/03 15:09:18 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-void	do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
+void	do_sti(t_carriage *carr, t_vm *vm, unsigned char *arguments)
 {
 	int	values[3];
 	int	position;
 	int	temp;
 	int	reg;
 
-	position = carriage->pos;
-	temp = carriage->pos;
+	position = carr->pos;
+	temp = carr->pos;
 	change_position(&position, 2);
 	reg = vm->data->arena[position];
 	values[0] = get_arg_value(vm->data->arena,
-				carriage, &position, arguments[0]);
+				carr, &position, arguments[0]);
 	values[1] = get_arg_value(vm->data->arena,
-				carriage, &position, arguments[1]);
+				carr, &position, arguments[1]);
 	values[2] = get_arg_value(vm->data->arena,
-				carriage, &position, arguments[2]);
-	vs_check_and_push_cells(vm, norm_pos(carriage->pos + (values[1] + values[2]) % IDX_MOD), carriage);
-	write_reg(vm->data->arena, values[0], carriage->pos,
+				carr, &position, arguments[2]);
+	vs_push_cells(vm, norm_pos(carr->pos + (values[1] + values[2]) % IDX_MOD),
+				carr);
+	write_reg(vm->data->arena, values[0], carr->pos,
 				(values[1] + values[2]) % IDX_MOD);
-	carriage->pos = position;
+	carr->pos = position;
 	if (vm->mods->verb_lvl & VERB_L3)
 	{
-		ft_printf("P %4d | ", carriage->num);
-		ft_printf("%s", g_op_tab[carriage->op_code].name);
+		ft_printf("P %4d | %s", carr->num, g_op_tab[carr->op_code].name);
 		print_sti(arguments, temp, values, reg);
 	}
 }

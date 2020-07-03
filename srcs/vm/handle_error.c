@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 22:17:13 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:17:14 by clala            ###   ########lyon.fr   */
+/*   Created: 2020/07/03 15:13:26 by clala             #+#    #+#             */
+/*   Updated: 2020/07/03 15:59:33 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int			handle_error(char *s)
 int			handle_error_vm(char *error_message, t_vm *vm)
 {
 	ft_dprintf(2, "ERROR: %s\n", error_message);
+	vs_print_error(vm, error_message);
 	vm->players->qty++;
 	t_vm_free(vm);
-	exit(1);
+	exit(1);	
 }
 
 int			handle_error_str_arg(char *error_message, char *arg, t_vm *vm)
@@ -31,10 +32,8 @@ int			handle_error_str_arg(char *error_message, char *arg, t_vm *vm)
 	char	*s;
 
 	ft_asprintf(&s, error_message, arg);
-	ft_dprintf(2, "ERROR: %s\n", s);
-	vm->players->qty++;
-	t_vm_free(vm);
-	exit(1);
+	handle_error_vm(error_message, vm);
+	return (1);
 }
 
 int			handle_error_int_arg(char *error_message, int arg, t_vm *vm)
@@ -42,10 +41,8 @@ int			handle_error_int_arg(char *error_message, int arg, t_vm *vm)
 	char	*s;
 
 	ft_asprintf(&s, error_message, arg);
-	ft_dprintf(2, "ERROR: %s\n", s);
-	vm->players->qty++;
-	t_vm_free(vm);
-	exit(1);
+	handle_error_vm(error_message, vm);
+	return (1);
 }
 
 int			print_usage(void)

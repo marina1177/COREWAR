@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 20:30:53 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 21:56:46 by clala            ###   ########lyon.fr   */
+/*   Created: 2020/07/03 15:04:16 by clala             #+#    #+#             */
+/*   Updated: 2020/07/03 15:05:14 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		set_live_vars(t_vm *vm, int num)
 {
-	t_player	*p;	
+	t_player	*p;
 	int			i;
 
 	i = 0;
@@ -36,13 +36,13 @@ static void		set_live_vars(t_vm *vm, int num)
 void			do_live(t_carriage *carriage, t_vm *vm)
 {
 	int			position;
-	int			num;	
-	
+	int			num;
+
 	position = carriage->pos;
 	carriage->last_cycle_alive = vm->data->cycles;
 	change_position(&position, 1);
 	num = -1 * get_arg_value(vm->data->arena, carriage, &position, T_DIR);
-	set_live_vars(vm, num);	
+	set_live_vars(vm, num);
 	print_live(vm, carriage, num);
 	carriage->pos = position;
 	vm->data->lives_counter++;
@@ -94,10 +94,9 @@ void			do_st(t_carriage *carriage,
 		arg_2 = get_num_from_char(vm->data->arena, pos, 2);
 		values[1] = arg_2 % IDX_MOD;
 		change_position(&pos, 2);
-		vs_check_and_push_cells(vm, norm_pos(carriage->pos + values[1]), carriage);
+		vs_push_cells(vm, norm_pos(carriage->pos + values[1]), carriage);
 		write_reg(vm->data->arena, values[0], carriage->pos, values[1]);
 	}
 	vm->mods->verb_lvl & VERB_L3 ? print_st(carriage, reg, values, arg_2) : 0;
 	carriage->pos = pos;
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_carriages.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/07/03 15:14:36 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,10 @@ void				handle_carriages(t_vm *vm)
 	int				temp_vs_pos;
 
 	carriage = vm->carr->head;
-	/*
-	if (vm->data->cycles > 3827)
-	{
-		printf("302 val %d\n", vm->data->arena[302]);
-		print_t_carriages(vm->carr);
-	}
-	*/
 	while (carriage)
 	{		
 		temp_vs_pos = carriage->pos;
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
-		//if (carriage->num == 24)
-		//	print_t_carriage(carriage);
 		if (vm->data->cycles > 0 && carriage->cycles_countdown > 0)
 			carriage->cycles_countdown--;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown == 0)

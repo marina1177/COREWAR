@@ -62,7 +62,7 @@ void	push_cells(t_vm *vm, int player_id, int	cell_number)
 	vs_cells_refresh(vm);
 }
 
-void	vs_check_and_push_cells(t_vm *vm,
+void	vs_push_cells(t_vm *vm,
 			int cell_number, t_carriage *carriage)
 {	
 	if (vm->mods->vs)

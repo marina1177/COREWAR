@@ -6,18 +6,18 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:16:53 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:16:54 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/07/03 16:41:29 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-int			get_num_from_char(unsigned char *arena, int position, int size)
+int				get_num_from_char(unsigned char *arena, int position, int size)
 {
-	int		*num;
-	int		i;
-	char	arguments[5];
-	short int *q;
+	int			*num;
+	int			i;
+	char		arguments[5];
+	short int	*q;
 
 	q = NULL;
 	i = size;
@@ -36,20 +36,20 @@ int			get_num_from_char(unsigned char *arena, int position, int size)
 	return (*num);
 }
 
-int			get_reg_value(unsigned char *arena, int *pos)
+int				get_reg_value(unsigned char *arena, int *pos)
 {
-	int		result;
+	int			result;
 
 	result = arena[*pos];
 	change_position(pos, 1);
 	return (result);
 }
 
-int			get_arg_value(unsigned char *arena, t_carriage *car,
-			int *pos, char arg_type)
+int				get_arg_value(unsigned char *arena, t_carriage *car,
+				int *pos, char arg_type)
 {
-	int temp;
-	int result;
+	int 		temp;
+	int 		result;
 
 	result = 0;
 	if (arg_type == T_REG)
@@ -73,10 +73,10 @@ int			get_arg_value(unsigned char *arena, t_carriage *car,
 	return (result);
 }
 
-void		write_reg(unsigned char *arena, int reg,
-			int position, int change)
+void			write_reg(unsigned char *arena, int reg,
+				int position, int change)				
 {
-	char			temp;
+	char		temp;
 
 	change_position(&position, change);
 	temp = (reg & 0xff000000) >> 24;

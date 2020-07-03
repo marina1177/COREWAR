@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vs_utilites.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/03 16:12:17 by clala             #+#    #+#             */
+/*   Updated: 2020/07/03 16:12:46 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 int		count_dig(size_t val)
@@ -7,8 +19,6 @@ int		count_dig(size_t val)
 
 	i = 0;
 	n = val;
-	//if (n < 0)
-	//	i++;
 	while (n)
 	{
 		n /= 10;
@@ -44,4 +54,8 @@ int		vs_strcpy(char *dest, const char *src)
 	return (i);
 }
 
-
+void	vs_print_error(t_vm *vm, char *error_msg)
+{
+	if (vm->mods->vs && vm->vs->fd)
+		dprintf(vm->vs->fd, "%s\n", error_msg);
+}

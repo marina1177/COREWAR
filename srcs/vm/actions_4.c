@@ -6,17 +6,17 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:16:47 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:16:48 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/07/03 15:09:52 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-void		do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
+void			do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments)
 {
-	char	reg;
-	int		position;
-	int		value;
+	char		reg;
+	int			position;
+	int			value;
 
 	if (!vm->mods->aff)
 	{

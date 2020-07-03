@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:15:54 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:15:54 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 22:15:54 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,6 +275,7 @@ int						count_dig(size_t val);
 int						vs_putstr_fd(int fd, const char *s);
 int						vs_strcpy(char *dest, const char *src);
 int						vs_itoa(int n, char *s);
+void					vs_print_error(t_vm *vm, char *error_msg);
 
 /*
 ** vs_itoa_fd.c
@@ -436,8 +437,9 @@ void					print_move(t_vm *vm, t_carriage *carriage, int temp_pos);
 int						print_vsconst(t_vm	*vm, int type);
 void					t_players_reset_lives_in_period(t_players *players);
 void					t_players_check_is_alive(t_vm *vm, t_players *players);
-void					vs_check_and_push_cells(t_vm *vm,
+void					vs_push_cells(t_vm *vm,
 							int cell_number, t_carriage *carriage);
+
 
 
 #endif

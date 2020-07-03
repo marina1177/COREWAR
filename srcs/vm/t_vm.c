@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_vm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 21:56:47 by clala            ###   ########lyon.fr   */
+/*   Updated: 2020/07/03 15:51:51 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@ static t_vm	*t_vm_new(void)
 
 	!(vm = (t_vm *)malloc(sizeof(t_vm))) ? handle_error(ERR_ALLOC) : 0;
 	vm->allocated = 0;
-	vm->players = t_players_create(vm);	
+	vm->players = t_players_create(vm);
 	vm->data = t_vm_info_create(vm);
 	vm->carr = t_carriages_create(vm);
 	vm->mods = t_mods_create(vm);
 	vm->vs = t_vs_create(vm);
 	vm->cells = NULL;
-	
 	init_op_tab(vm);
 	init_exec(vm);
 	return (vm);

@@ -18,11 +18,12 @@ void	put_cells(t_vm *vm)
 			vs_putstr_fd(vm->vs->fd, A_ID);
 			vs_itoa_fd(vm->vs->fd, tmp->players_id);
 			vs_putstr_fd(vm->vs->fd, ",\n\t\t\"cells_address\": [");
-			num = tmp->num_addr;			
-			while (num-- > 0)
+			num = tmp->num_addr;
+			while (num >= 0)
 			{
 				vs_itoa_fd(vm->vs->fd, tmp->cells_address[num]);
 				num != 0 ? vs_putstr_fd(vm->vs->fd, ",") : 1;
+				num--;
 			}
 			vs_putstr_fd(vm->vs->fd, "]\n\t}");
 			tmp = tmp->next;

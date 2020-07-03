@@ -1,7 +1,5 @@
 #include "../../includes/vm.h"
 
-//??? ¯\_(ツ)_/¯????
-
 int		vs_state_refresh(t_vm *vm)
 {
 	if (vm->mods->vs)
