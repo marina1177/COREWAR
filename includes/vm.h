@@ -86,6 +86,23 @@
 # define ALLOCATED_CELLS 32
 
 
+# define STD_IND_SIZE 2
+# define STD_REG_SIZE 4
+# define STD_DIR_SIZE 4
+# define STD_REG_CODE 1
+# define STD_DIR_CODE 2
+# define STD_IND_CODE 3
+# define STD_MAX_ARGS_NUMBER 4
+# define STD_MAX_PLAYERS 4
+# define STD_MEM_SIZE_MAX 0xffff
+# define STD_MEM_SIZE_MIN 1024
+# define STD_REG_NUMBER 16
+# define STD_CYCLE_DELTA 50
+# define STD_NBR_LIVE 21
+# define STD_MAX_CHECKS 10
+# define STD_PROG_NAME_LENGTH 128
+# define STD_COMMENT_LENGTH 2048
+
 typedef struct			s_op
 {
 	char				*name;
@@ -377,6 +394,10 @@ int						handle_error_str_arg(char *error_message, char *arg, t_vm *vm);
 int						handle_error_int_arg(char *error_message, int arg, t_vm *vm);
 int						print_usage(void);
 void					t_vm_free(t_vm *vm);
+int						error_op_h(char *def_name, int prop_val);
+int						error_range_op_h(char *def_name, int min_val, int max_val);
+
+
 
 
 /*

@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:13:26 by clala             #+#    #+#             */
-/*   Updated: 2020/07/03 15:59:33 by clala            ###   ########.fr       */
+/*   Updated: 2020/07/04 23:27:49 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 int			handle_error(char *s)
 {
 	ft_dprintf(2, "ERROR: %s\n", s);	
+	exit(1);
+}
+
+int			error_op_h(char *def_name, int prop_val)
+{
+	ft_dprintf(2,
+			"ERROR: Invalid %s size. The value must be equal to %d\n",
+			def_name, prop_val);	
+	exit(1);
+}
+
+int			error_range_op_h(char *def_name, int min_val, int max_val)
+{
+	ft_dprintf(2,
+			"ERROR: Invalid %s size. The value must be in range [%d, %d]\n",
+			def_name, min_val, max_val);	
 	exit(1);
 }
 
