@@ -1,14 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 22:15:54 by clala             #+#    #+#             */
-/*   Updated: 2020/05/11 22:15:54 by clala            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* *********************************************************************** */
+/*                                                                         */
+/*                                                     :::      ::::::::   */
+/*   vm.h                                            :+:      :+:    :+:   */
+/*                                                 +:+ +:+         +:+     */
+/*   By: clala <clala@student.42lyon.fr>         +#+  +:+       +#+        */
+/*                                             +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/05 15:06:54 by clala          #+#    #+#             */
+/*   Updated: 2020/07/05 15:06:54 by clala         ###   ########.fr       */
+/*                                                                         */
+/* *********************************************************************** */
 
 #ifndef VM_H
 # define VM_H
@@ -298,8 +298,6 @@ void					vs_print_error(t_vm *vm, char *error_msg);
 ** vs_itoa_fd.c
 */
 int						vs_itoa_fd(int fd, int n);
-
-
 /*
 **
 */
@@ -311,36 +309,49 @@ void					clean_data(t_vm *data);
 void					test(int op, unsigned char *arena);
 void					print_byte(unsigned char c);
 void					print_memory(const void *addr, size_t size);
-int						check_operation(unsigned char *arena, t_carriage *carriage, unsigned char *arguments);
+int						check_operation(unsigned char *arena,
+							t_carriage *carriage, unsigned char *arguments);
 int						valid_operation_code(t_carriage *carriage);
-void					make_operation(t_vm *vm, t_carriage *carriage, unsigned char *arguments);
+void					make_operation(t_vm *vm,
+							t_carriage *carriage, unsigned char *arguments);
 void					change_position(int *position, int change);
-int						get_num_from_char(unsigned char *arena,  int position, int size);
+int						get_num_from_char(unsigned char *arena,
+							int position, int size);
 int						get_negative_number(void *argument, int size);
 int						get_arg_size(int op, unsigned char arg);
-void					write_reg(unsigned char *arena, int reg,  int position, int change);
-int						get_arg_value(unsigned char *arena, t_carriage *car,  int *pos, char arg_type);
+void					write_reg(unsigned char *arena,
+							int reg, int position, int change);
+int						get_arg_value(unsigned char *arena,
+							t_carriage *car,  int *pos, char arg_type);
 int						get_reg_value(unsigned char *arena, int *pos);
-t_carriage				*make_new_carriage(unsigned int position);
-void					add_carriage(t_carriage **head, t_carriage *new);
-void					del_carriage(t_carriage **head, t_carriage *carriage);
-void					(*actions[17])();
 void					do_live(t_carriage *carriage, t_vm *vm);
-void					do_ld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_st(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_add(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_sub(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_and(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_or(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_xor(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void					do_ld(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_st(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_add(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_sub(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_and(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_or(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_xor(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
 void					do_zjmp(t_carriage *carriage, t_vm *vm);
-void					do_ldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_sti(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void					do_ldi(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_sti(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
 void					do_fork(t_carriage *carriage, t_vm *vm);
-void					do_lld(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
-void					do_lldi(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void					do_lld(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
+void					do_lldi(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
 void					do_lfork(t_carriage *carriage, t_vm *vm);
-void					do_aff(t_carriage *carriage, t_vm *vm, unsigned char *arguments);
+void					do_aff(t_carriage *carriage, t_vm *vm,
+							unsigned char *arguments);
 
 /*
 **	op_code fucntions
@@ -351,16 +362,16 @@ void					display_memory(char *arena);
 int						exec_op(t_carriage *carriage, t_vm *vm);
 
 unsigned char			*get_args(char arg_code, unsigned char arr[4]);
-int						check_args(int *step, unsigned char *args, t_carriage *curr,
-								t_vm *vm);
+int						check_args(int *step, unsigned char *args,
+							t_carriage *curr, t_vm *vm);
 int						get_int(int *pos, t_carriage *curr,
-								t_vm *vm, int size);
+							t_vm *vm, int size);
 void					set_int(int *pos, int num, t_vm *vm);
 void					check_position(int *pos, t_vm *vm);
 int						get_one_arg(int *temp, unsigned char code,
-									t_carriage *curr, t_vm *vm);
+							t_carriage *curr, t_vm *vm);
 int						get_one_arg_no_md(int *temp, unsigned char code,
-									t_carriage *curr, t_vm *vm);
+							t_carriage *curr, t_vm *vm);
 void					increase_position(int *pos, int delta);
 void					test_display(char*arena);
 void					delete_old_carriage(t_vm *vm);
@@ -375,7 +386,8 @@ int						norm_pos(int pos);
 ** t_players functions
 */
 t_players				*t_players_create(t_vm *vm);
-t_player				*t_players_add(t_players *players, int number, t_vm *vm);
+t_player				*t_players_add(t_players *players, int number,
+							t_vm *vm);
 void					handle_players(t_vm *vm, t_players *players);
 t_player				*get_player_by_number(t_players *players, int num);
 int						t_players_get_next_number(t_players *players);
@@ -383,23 +395,22 @@ int						t_players_get_next_number(t_players *players);
 /*
 ** t_players functions
 */
-t_player				*t_player_create(int number, t_vm *vm);
 
+t_player				*t_player_create(int number, t_vm *vm);
 /*
 ** errors handling
 */
 int						handle_error(char *s);
 int						handle_error_vm(char *error_message, t_vm *vm);
-int						handle_error_str_arg(char *error_message, char *arg, t_vm *vm);
-int						handle_error_int_arg(char *error_message, int arg, t_vm *vm);
+int						handle_error_str_arg(char *error_message,
+							char *arg, t_vm *vm);
+int						handle_error_int_arg(char *error_message, int arg,
+							t_vm *vm);
 int						print_usage(void);
 void					t_vm_free(t_vm *vm);
 int						error_op_h(char *def_name, int prop_val);
-int						error_range_op_h(char *def_name, int min_val, int max_val);
-
-
-
-
+int						error_range_op_h(char *def_name, int min_val,
+							int max_val);
 /*
 ** t_carriage and t_carriages
 */
@@ -411,7 +422,8 @@ t_carriage				*t_carriages_insert_before(t_carriages *list,
 t_carriage				*t_carriages_push(t_carriages *list, t_carriage *new);
 t_carriages				*t_carriages_create(t_vm *vm);
 t_carriage				*t_carriages_pop(t_carriages *list, t_carriage *node);
-t_carriages				*t_carriages_remove_node(t_carriages *list, t_carriage *node);
+t_carriages				*t_carriages_remove_node(t_carriages *list,
+							t_carriage *node);
 int						*get_nums(t_carriages *carrs);
 t_carriage				*t_carriage_copy(t_carriages *carr, t_carriage *src);
 
@@ -429,7 +441,6 @@ t_vm					*t_vm_create(void);
 t_vs					*t_vs_create(t_vm *vm);
 t_mods					*t_mods_create(t_vm *vm);
 t_vm_info				*t_vm_info_create(t_vm *vm);
-
 /*
 ** print functions
 */
@@ -443,24 +454,24 @@ int						print_dump(t_vm *vm, int dump_size);
 void					print_final_result(t_vm *vm);
 void					print_sti(unsigned char *arguments, int temp,
 							int *values, int reg);
-int						print_st(t_carriage *carriage, int reg, int *values, int temp_val);
+int						print_st(t_carriage *carriage, int reg,
+							int *values, int temp_val);
 void					print_live(t_vm *vm, t_carriage *carriage, int num);
-void					print_lld(t_carriage *carriage, unsigned char *arguments, int *values);
+void					print_lld(t_carriage *carriage,
+							unsigned char *arguments, int *values);
 void					print_ldi(t_carriage *carriage,
-							unsigned char *arguments, int *values, int temp_pos);
-void					print_lldi(t_carriage *carriage, unsigned char *arguments,
+							unsigned char *arguments, int *values,
+							int temp_pos);
+void					print_lldi(t_carriage *carriage,
+							unsigned char *arguments,
 							int *values, int temp_pos);
 void					print_bitwise_op(t_vm *vm,
 							t_carriage *carriage, int *values);
-void					print_move(t_vm *vm, t_carriage *carriage, int temp_pos);
-
-
+void					print_move(t_vm *vm, t_carriage *carriage,
+							int temp_pos);
 int						print_vsconst(t_vm	*vm, int type);
 void					t_players_reset_lives_in_period(t_players *players);
 void					t_players_check_is_alive(t_vm *vm, t_players *players);
 void					vs_push_cells(t_vm *vm,
 							int cell_number, t_carriage *carriage);
-
-
-
 #endif
