@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 02:16:26 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 15:41:22 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/16 14:09:26 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ void	free_data(void)
 			get_line(-1, NULL);
 			close(g_mdata->fd_s);
 		}
-		if (g_mdata->line)
+		if (g_mdata->line != NULL)
+		{
+			//printf("line = |%s|\n", g_mdata->line);
 			free(g_mdata->line);
+		}
 		free(g_mdata->head);
 		free(g_mdata);
 	}

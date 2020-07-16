@@ -152,7 +152,7 @@ void						print_memory(const void *addr, size_t size);
 
 void						put_error(char *err, int type);
 void						print_error(char *message);
-void						error_line(char *event, char *line, int x);
+void						error_line(char *event, char *line, int start_line);
 void						error_event(char *event);
 void						error(void);
 

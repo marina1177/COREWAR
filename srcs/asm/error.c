@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 17:03:23 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:12:07 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/16 15:36:45 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,9 @@ void		print_error(char *message)
 	exit(1);
 }
 
-void		error_line(char *event, char *line, int x)
+void		error_line(char *event, char *line, int start_line)
 {
-	ft_printf("event_%s_x_%d\n", event, x);
-	ft_strdel(&line);
+	ft_printf("%s%s\nline: %d\n%s", YELLOW, event, start_line, EOC);
 	free_data();
 	exit(1);
 }
