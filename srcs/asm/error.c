@@ -39,7 +39,7 @@ void		print_error(char *message)
 	exit(1);
 }
 
-void		error_line(char *event, char *line, int start_line)
+void		error_line(char *event, int start_line)
 {
 	ft_printf("%s%s\nline: %d\n%s", YELLOW, event, start_line, EOC);
 	free_data();

@@ -96,12 +96,12 @@ void		parse_args(t_vm *vm, int ac, char **av)
 			parse_flag_dump(vm, ac, av, i++);
 		else if (!ft_strcmp(av[i], "-v"))
 			parse_flag_v(vm, ac, av, i++);
-		else if (!ft_strcmp(av[i], "-a"))
-			vm->mods->aff = 1;
-		else if (!ft_strcmp(av[i], "-vs"))
-			vm->mods->vs = 1;
-		else
+		else if (ft_strcmp(av[i], "-a") && ft_strcmp(av[i], "-vs")
+		&& ft_strcmp(av[i], "-pc"))
 			parse_player(vm, av[i], t_players_add(vm->players, 0, vm));
+		vm->mods->aff = !ft_strcmp(av[i], "-a") ? 1 : vm->mods->aff;
+		vm->mods->vs =  !ft_strcmp(av[i], "-vs") ? 1 : vm->mods->vs;
+		vm->mods->pc = !ft_strcmp(av[i], "-pc") ? 1 : vm->mods->pc;
 	}
 	handle_players(vm, vm->players);
 }

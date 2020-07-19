@@ -64,6 +64,7 @@ void			corewar(t_vm *vm)
 		if (vm->data->cycles && (vm->mods->verb_lvl & VERB_L2))
 			ft_printf("It is now cycle %d\n", vm->data->cycles);
 		handle_carriages(vm);
+		print_t_carriages(vm);
 		if (vm->mods->dump_cycle == vm->data->cycles)
 		{
 			print_dump(vm, vm->mods->dump_size);

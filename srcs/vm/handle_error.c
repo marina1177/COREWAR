@@ -69,9 +69,11 @@ int			handle_error_int_arg(char *error_message, int arg, t_vm *vm)
 
 int			print_usage(void)
 {
-	ft_printf("Usage: ./corewar [-d N -s N -v N] [-a] <champion.cor> <...>\n");
+	ft_printf("Usage: ./corewar [-d N -v N] [-a] <champion.cor> <...>\n");
 	ft_printf("    %-11s : Python visualization\n", "-vs");
 	ft_printf("    %-11s : Print output from \"aff\" (Default is off)\n", "-a");
+	ft_printf("    %-11s : Print carriages info every cycle. ", "-pc");
+	ft_printf("With -d / -dump flags prints carriages only at dump cycle\n");
 	ft_printf("    %-11s : Dump memory (32 octets per line)"\
 							" after <num> cycles and exit\n", "-dump <num>");
 	ft_printf("    %-11s : Dump memory (64 octets per line)"\

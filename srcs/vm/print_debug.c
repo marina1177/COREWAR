@@ -50,16 +50,22 @@ void			print_t_carriage(t_carriage *carriage)
 	ft_putchar('\n');
 }
 
-void			print_t_carriages(t_carriages *carriages)
+void			print_t_carriages(t_vm *vm)
 {
-	t_carriage	*carr;
+	t_carriage	*carriage;
 
-	carr = carriages->head;
-	ft_printf("======== t_carriages_print ========\n");
-	while (carr)
+	if (!vm->mods->pc)
+		return ;
+	if (vm->mods->dump_cycle > -1 && vm->mods->dump_cycle != vm->data->cycles)
+		return ;
+	carriage = vm->carr->head;
+	ft_printf("%s== START t_carriages_print. CYCLE: %7d ==\n%s",
+	C_GRN, vm->data->cycles, C_NRM);
+	while (carriage)
 	{
-		print_t_carriage(carr);
-		carr = carr->next;
+		print_t_carriage(carriage);
+		carriage = carriage->next;
 	}
-	ft_printf("======== END t_carriages_print ====\n");
+	ft_printf("%s== END t_carriages_print ==\n%s", C_GRN, C_NRM);
+	ft_printf("=============================================\n");
 }

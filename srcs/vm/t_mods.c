@@ -25,6 +25,7 @@ t_mods		*t_mods_new(void)
 		new->aff = 0;
 		new->verb_lvl = 0;
 		new->vs = 0;
+		new->pc = 0;
 	}
 	return (new);
 }

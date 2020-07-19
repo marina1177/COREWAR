@@ -150,6 +150,7 @@ typedef struct 			s_mods
 	int					show_print_mode;
 	int					aff;
 	int					vs;
+	int					pc;
 }						t_mods;
 
 typedef struct			s_vm_info
@@ -447,7 +448,7 @@ t_vm_info				*t_vm_info_create(t_vm *vm);
 void					print_t_player(t_player *player);
 void					print_t_players(t_players *players);
 void					print_t_carriage(t_carriage *carriage);
-void					print_t_carriages(t_carriages *carriages);
+void					print_t_carriages(t_vm *vm);
 void					print_introduction(t_players *players);
 int						print_is_alive(int num, char *player_name);
 int						print_dump(t_vm *vm, int dump_size);

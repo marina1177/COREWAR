@@ -70,5 +70,4 @@ void				handle_carriages(t_vm *vm)
 		carriage->pos == temp_vs_pos ? 0 : vs_carriages_refresh(vm);
 		carriage = carriage->next;
 	}
-	
 }

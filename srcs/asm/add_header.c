@@ -41,7 +41,6 @@ void	process_header(char **line, t_2b type_h)
 	int		len;
 	char	*str;
 	char	*temp;
-	char	*msg;
 
 	temp = 0;
 	str = *line;
@@ -51,7 +50,7 @@ void	process_header(char **line, t_2b type_h)
 		ft_strmerge(&str, &temp);
 	*line = str;
 	if (!len)
-		error_line(ERR_STR_STOP, *line, start_line);
+		error_line(ERR_STR_STOP, start_line);
 	valid_headlen(type_h, len);
 	put_header(str, len, type_h);
 	*line = str;
