@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 17:17:02 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:17:03 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:42:40 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@
 # define ERR_WRFHEX "Can\'t write to machine-code file."
 # define ERR_STR_STOP "Can\'t find ending of the string."
 # define ERR_NLEOF "There should be new line of EOF"
+# define FOGOT_NL "Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)"
 
 # endif

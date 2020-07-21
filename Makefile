@@ -87,7 +87,7 @@ LIBFT_DIR = ./libft_clala
 LIBFT = $(LIBFT_DIR)/libft.a
 COMP_LIB = make -C $(LIBFT_DIR)
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = #-Wall -Wextra -Werror
 
 all: $(LIBFT) $(NAME_ASM) $(NAME_CW)
 

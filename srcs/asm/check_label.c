@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:39 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 15:41:02 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:52:14 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,33 @@ void			check_empty_file(void)
 		g_mdata->y += 1;
 		put_error("Syntax error at token:", 1);
 	}
+	/*else if (g_tkn_last != NULL && g_tkn_last->new_line == 0)
+	{
+		error_event(FOGOT_NL);
+	}*/
 	else if (g_label_last != NULL && g_label_last->new_line)
 		return ;
+}
+
+void			del_dubl(t_lbl_lst *ptr2)
+{
+	t_lbl_lst	*tmp;
+
+	tmp = ptr2->next;
+	if (tmp->next != NULL)
+	{
+		ptr2->next = tmp->next;
+	}
+	else
+	{
+		ptr2->next = NULL;
+		if (tmp->new_line == 0)
+		{
+
+		}
+	}
+	free(tmp->label);
+	free(tmp);
 }
 
 void			check_dup_label(void)
@@ -38,7 +63,8 @@ void			check_dup_label(void)
 		{
 			if (!ft_strcmp(ptr1->label, ptr2->next->label))
 			{
-				error_event(ERR_LABEL_DUB);
+				del_dubl(ptr2);
+				ptr2 = ptr2->next;
 			}
 			else
 				ptr2 = ptr2->next;

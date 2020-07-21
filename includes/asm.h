@@ -253,6 +253,7 @@ void						add_lbl(char *s, size_t size);
 /*
 ** check_label.c
 */
+void						del_dubl(t_lbl_lst *ptr2);
 void						check_empty_file(void);
 void						check_dup_label(void);
 void						check_new_line(char *line, int f);
