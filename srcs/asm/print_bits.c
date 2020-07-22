@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:57:30 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/29 17:08:27 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 22:11:04 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_print_char(unsigned char c, char *color)
 	ft_putstr_fd(EOC, 1);
 }
 
-void		bits_to_str(size_t size, void *ptr, char space)
+void	bits_to_str(size_t size, void *ptr, char space)
 {
 	unsigned char	*b;
 	unsigned char	byte;
@@ -75,7 +75,7 @@ void		bits_to_str(size_t size, void *ptr, char space)
 	ft_putchar('\n');
 }
 
-void		print_bits(size_t size, void *ptr, char space)
+void	print_bits(size_t size, void *ptr, char space)
 {
 	unsigned char	*b;
 	unsigned char	byte;

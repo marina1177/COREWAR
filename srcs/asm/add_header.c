@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 15:40:13 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/16 15:39:12 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 22:05:33 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ void	process_header(char **line, t_2b type_h)
 	int		len;
 	char	*str;
 	char	*temp;
+	int		start_line;
 
 	temp = 0;
 	str = *line;
-	int start_line = g_mdata->y;
+	start_line = g_mdata->y;
 	while (!(len = ft_findchar(str + g_mdata->x, '\"'))
 			&& get_line(g_mdata->fd_s, &temp) && ++g_mdata->y)
 		ft_strmerge(&str, &temp);

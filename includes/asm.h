@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/28 17:20:12 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:20:12 by bcharity         ###   ########.fr       */
+/*   Created: 2020/07/22 22:48:05 by bcharity          #+#    #+#             */
+/*   Updated: 2020/07/22 22:54:55 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 # include "../libft_clala/includes/libft.h"
 # include "../libft_clala/includes/ft_printf.h"
-
 # include "op.h"
 # include "asm_error.h"
-
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -26,28 +24,20 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-
 # include <stdio.h>
 
-# define EOC	"\033[0m"
-# define RED	"\033[1;31m"
-# define YELLOW	"\033[1;33m"
-# define WHITE	"\033[1;37m"
-# define BLACK	"\033[0;30m"
-# define GREEN	"\033[0;32m"
-# define BLUE	"\033[0;34m"
-# define PURPUL	"\033[0;35m"
-# define CYAN	"\033[0;36m"
-# define GRAY	"\033[1;30m"
-
-typedef unsigned char		t_1b;
-typedef unsigned short		t_2b;
-typedef unsigned int		t_4b;
-typedef unsigned long		t_8b;
-
-# define TRUE 1
-# define FALSE 0
-
+# define EOC				"\033[0m"
+# define RED				"\033[1;31m"
+# define YELLOW				"\033[1;33m"
+# define WHITE				"\033[1;37m"
+# define BLACK				"\033[0;30m"
+# define GREEN				"\033[0;32m"
+# define BLUE				"\033[0;34m"
+# define PURPUL				"\033[0;35m"
+# define CYAN				"\033[0;36m"
+# define GRAY				"\033[1;30m"
+# define TRUE				1
+# define FALSE				0
 # define REGISTER			(t_2b)0b10000000000000
 # define DIRECT				(t_2b)0b01000000000000
 # define DIRECT_LABEL		(t_2b)0b00100000000000
@@ -62,17 +52,22 @@ typedef unsigned long		t_8b;
 # define END				(t_2b)0b00000000000100
 # define NAME				(t_2b)0b00000000000010
 # define COMMENT			(t_2b)0b00000000000001
-
 # define F_OPRINT			(t_1b)0b00000010
 # define F_DISASM			(t_1b)0b00000001
 
+typedef unsigned char		t_1b;
+typedef unsigned short		t_2b;
+typedef unsigned int		t_4b;
+typedef unsigned long		t_8b;
 typedef struct s_opargs		t_opargs;
 typedef struct s_lbl_lst	t_lbl_lst;
 typedef struct s_token		t_token;
 typedef struct s_mdata		t_mdata;
 typedef struct s_op			t_op;
 
-struct					s_op
+extern t_op					g_op_tab[16];
+
+struct						s_op
 {
 	char					*name;
 	int						args_num;
@@ -83,8 +78,6 @@ struct					s_op
 	int						args_types_code;
 	int						t_dir_size;
 };
-
-extern t_op				g_op_tab[16];
 
 struct						s_opargs
 {
@@ -150,7 +143,6 @@ void						print_memory(const void *addr, size_t size);
 /*
 ** error.c
 */
-
 void						put_error(char *err, int type);
 void						print_error(char *message);
 void						error_line(char *event, int start_line);
@@ -160,13 +152,11 @@ void						error(void);
 /*
 ** my_atoi.c
 */
-
 int							my_atoi(const char *str);
 
 /*
 ** supfun_2.c
 */
-
 void						int_to_hex(int32_t dec, int dir_size,
 							u_int32_t *place);
 int							ft_findchar(char *str, int c);
@@ -175,7 +165,6 @@ int							ft_strmerge(char **dest, char **srcs);
 /*
 ** supfun.c
 */
-
 int32_t						ft_atoi_cor(const char *str, u_int8_t size);
 int							is_lblchar(char c);
 void						skip_space(char *line);
@@ -185,7 +174,6 @@ void						check_new_line(char *line, int f);
 /*
 ** free_data.c
 */
-
 void						freesplit(t_token *tmp);
 void						free_token(void);
 void						free_label(void);
@@ -194,23 +182,21 @@ void						free_data(void);
 /*
 ** write_to_file.c
 */
-
 void						write_to_file(void);
 
 /*
 ** translate.c
 */
-
 int32_t						process_label(t_token **tkn, char *label);
 void						print_args(t_token **tkn, u_int32_t *cursor);
-void						print_args_types_code(t_token *tkn, u_int32_t *cursor);
+void						print_args_types_code(t_token *tkn,
+							u_int32_t *cursor);
 void						print_champion_info(void);
 void						translate(void);
 
 /*
 ** is_type.c
 */
-
 int							is_reg(char *line, int len);
 int							is_direct(char *line, int len);
 int							is_dir_label(char *line, int len);
@@ -220,7 +206,6 @@ int							is_ind_label(char *line, int len);
 /*
 ** check_type_arg.c
 */
-
 int							check_reg(char *line, int size, u_int16_t i);
 int							check_dir(char *line, int size, u_int16_t i);
 int							check_ind(char *line, int size, u_int16_t i);
@@ -228,13 +213,11 @@ int							check_ind(char *line, int size, u_int16_t i);
 /*
 ** parse_args_type.c
 */
-
 void						parse_args_type(u_int16_t i, char *line);
 
 /*
 ** parse_args.c
 */
-
 t_opargs					*parse_parameter(char *line);
 void						parse_args(char *line);
 
@@ -291,8 +274,6 @@ void						read_file(char *filename);
 t_1b						put_flg(char *av);
 void						usage(void);
 
-
-
 t_mdata						*g_mdata;
 t_token						*g_tkn_first;
 t_token						*g_tkn_last;
@@ -301,6 +282,4 @@ t_lbl_lst					*g_label_last;
 char						*g_mbuf;
 t_1b						g_flg;
 
-
 #endif
-

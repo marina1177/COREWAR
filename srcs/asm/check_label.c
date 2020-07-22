@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:39 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/22 12:12:53 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 21:57:27 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ void			del_dubl(t_lbl_lst *ptr2)
 	else
 	{
 		ptr2->next = NULL;
-		if (tmp->new_line == 0)
-		{
-
-		}
 	}
 	free(tmp->label);
 	free(tmp);
