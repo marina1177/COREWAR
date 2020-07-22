@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 12:09:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/27 21:41:31 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:32:36 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	parse_file(void)
 	{
 		while (g_mdata->line[g_mdata->x])
 		{
+			//printf("line=|%s|\n", g_mdata->line);
 			skip_comment(g_mdata->line);
 			skip_space(g_mdata->line);
 			if (&(g_mdata->line[g_mdata->x]) && g_mdata->line[g_mdata->x])

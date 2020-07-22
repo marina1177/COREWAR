@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 14:11:15 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/27 19:33:27 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:28:54 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	check_op(char *line)
 		return ;
 	skip_space(line);
 	add_token(search_op(line));
+	if (g_mdata->exist_nl !=0)
+	{
+		g_tkn_last->new_line = 1;
+		g_mdata->exist_nl = 0;
+	}
 	g_tkn_last->num_byte_op = 1;
 	if (g_tkn_last->op->args_types_code)
 	{

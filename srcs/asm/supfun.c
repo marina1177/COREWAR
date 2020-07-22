@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:22:00 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 16:22:02 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:33:08 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,14 @@ void		skip_space(char *s)
 
 void		skip_comment(char *line)
 {
+	char *p = NULL;
+
 	while (*line && *line != COMMENT_CHAR && *line != COMMENT_CHAR_ALT)
 		++line;
+
+	p = ft_strchr(g_mdata->line, '\n');
+	if (p != NULL && *p == '\n')
+		g_mdata->exist_nl = 1;
 	*line = 0;
 }
 
@@ -78,7 +84,9 @@ void		check_new_line(char *line, int f)
 		if (f == 2)
 		{
 			if (g_tkn_last)
+			{
 				g_tkn_last->new_line += 1;
+			}
 		}
 		if (f == 1)
 		{

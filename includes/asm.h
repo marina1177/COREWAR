@@ -122,6 +122,7 @@ struct						s_mdata
 	t_4b					name_f;
 	t_4b					comm_f;
 	int64_t					exec_bytes;
+	t_2b					exist_nl;
 };
 
 struct						s_lbl_lst

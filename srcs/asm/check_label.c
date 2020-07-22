@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:55:39 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/21 13:52:14 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:12:53 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void			check_empty_file(void)
 		g_mdata->y += 1;
 		put_error("Syntax error at token:", 1);
 	}
-	/*else if (g_tkn_last != NULL && g_tkn_last->new_line == 0)
+	else if (g_tkn_last && g_tkn_last->new_line == 0)
 	{
 		error_event(FOGOT_NL);
-	}*/
+	}
 	else if (g_label_last != NULL && g_label_last->new_line)
 		return ;
 }

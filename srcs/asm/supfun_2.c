@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:21:50 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/16 14:22:28 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:26:44 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_findchar(char *str, int c)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (str[i] == (char)c)
 			return (i + 1);

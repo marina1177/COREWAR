@@ -6,7 +6,7 @@
 /*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:10:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 16:15:39 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/07/22 00:06:18 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	data_init(void)
 	g_mdata->comm_f = 0;
 	g_mdata->exec_bytes = 0;
 	g_mdata->line = NULL;
+	g_mdata->exist_nl = 0;
 }
 
 void	compilation(void)
