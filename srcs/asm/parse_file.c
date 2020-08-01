@@ -20,6 +20,7 @@ void	tokenize(char **line)
 	check_op(*line);
 	skip_space(*line);
 	check_new_line(*line, 2);
+	g_mdata->exist_nl = 0;
 }
 
 void	parse_str(char **line)
@@ -53,7 +54,7 @@ void	parse_file(void)
 {
 	int		size;
 
-	while ((size = get_line(g_mdata->fd_s, &g_mdata->line))
+	while ((size = get_line(g_mdata->fd_s, &g_mdata->line) > 0)
 							&& !(g_mdata->x = 0)
 							&& ++g_mdata->y)
 	{

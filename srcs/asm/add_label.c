@@ -52,4 +52,5 @@ void			add_lbl(char *s, size_t size)
 		add_tail_list(&new);
 	g_label_last = new;
 	g_label_last->label = ft_strsub(s, 0, size);
+	g_label_last->new_line = 0;
 }

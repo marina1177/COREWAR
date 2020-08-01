@@ -31,8 +31,10 @@ void	read_file(char *filename)
 	int	fd_s;
 
 	valid_filename(filename);
-	if ((fd_s = open(filename, O_RDONLY, 0)) < 0)
+	if ((fd_s = open(filename, O_RDONLY, 0)) == -1)
+	{
 		error_event(ERR_FOPEN);
+	}
 	data_init();
 	g_mdata->filename = filename;
 	g_mdata->fd_s = fd_s;
