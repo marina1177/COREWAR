@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vs_add_cells.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:00:53 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/29 15:00:54 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/08/01 16:37:01 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-t_cells			*new_cells(t_cells **head, int	id, t_vm *vm)
+t_cells			*new_cells(t_cells **head, int id, t_vm *vm)
 {
 	t_cells	*new;
 	t_cells	*p;
@@ -49,10 +49,10 @@ t_cells			*find_id(t_cells **head, int id, t_vm *vm)
 		}
 		tmp = tmp->next;
 	}
-	return(new_cells(head, id, vm));
+	return (new_cells(head, id, vm));
 }
 
-void	push_cells(t_vm *vm, int player_id, int	cell_number)
+void			push_cells(t_vm *vm, int player_id, int cell_number)
 {
 	t_cells		*cells;
 
@@ -62,9 +62,9 @@ void	push_cells(t_vm *vm, int player_id, int	cell_number)
 	vs_cells_refresh(vm);
 }
 
-void	vs_push_cells(t_vm *vm,
+void			vs_push_cells(t_vm *vm,
 			int cell_number, t_carriage *carriage)
-{	
+{
 	if (vm->mods->vs)
 	{
 		push_cells(vm, carriage->init_player, cell_number);

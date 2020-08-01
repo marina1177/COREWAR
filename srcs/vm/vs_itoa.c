@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vs_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/01 16:21:50 by bcharity          #+#    #+#             */
+/*   Updated: 2020/08/01 16:31:39 by bcharity         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/vm.h"
 
 static int			count(int n)
@@ -23,10 +35,8 @@ static int			count(int n)
 static char			*to_str(int n, int num, short ui, char *s)
 {
 	int		i;
-//	char	*s;
 
 	i = 0;
-//	s = ft_strnew((num) * sizeof(char));
 	if (s)
 	{
 		while (i < num)
