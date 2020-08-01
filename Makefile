@@ -13,67 +13,69 @@ OBJDIR_CW = objs/vm
 
 #printf '        %s \\\n' *.c
 ALL_C_ASM = add_header.c \
-        add_label.c \
-        check_label.c \
-        check_op.c \
-        check_type_arg.c \
-        error.c \
-        error_2.c \
-        free_data.c \
-        get_line.c \
-        is_type.c \
-        main.c \
-        file_process.c \
-        my_atoi.c \
-        op.c \
-        parse_args.c \
-        parse_args_type.c \
-        parse_file.c \
-        print_bits.c \
-        supfun.c \
-        supfun_2.c \
-        translate.c \
-        write_to_file.c\
-        print_memory.c
+		add_label.c \
+		check_label.c \
+		check_op.c \
+		check_type_arg.c \
+		error.c \
+		error_2.c \
+		free_data.c \
+		get_line.c \
+		is_type.c \
+		main.c \
+		file_process.c \
+		my_atoi.c \
+		op.c \
+		parse_args.c \
+		parse_args_type.c \
+		parse_file.c \
+		print_bits.c \
+		supfun.c \
+		supfun_2.c \
+		translate.c \
+		write_to_file.c\
+		print_memory.c
 
 ALL_C_CW =  actions_1.c \
-        actions_2.c \
-        actions_3.c \
-        actions_4.c \
-        actions_handlers.c \
-        check_operation.c \
-        check_operation2.c \
-        handle_carriages.c \
-        handle_error.c \
-        handle_players.c \
-        handlers.c \
-        main.c \
-        op.c \
-        parse_args.c \
-        parse_player.c \
-        print.c \
-        print_bits.c \
-        print_debug.c \
-        print_ops.c \
-        print_ops2.c \
-        t_carriage.c \
-        t_carriages.c \
-        t_mods.c \
-        t_player.c \
-        t_players.c \
-        t_vm.c \
-        t_vm_info.c \
-        t_vs.c \
-        vs_add_cells.c \
-        vs_itoa.c \
-        vs_itoa_fd.c \
-        vs_package.c \
-        vs_put_change.c \
-        vs_refresh.c \
-        vs_utilites.c \
-        usage.c \
-        free.c \
-        is_valid_op_h.c
+		actions_2.c \
+		actions_3.c \
+		actions_4.c \
+		actions_handlers.c \
+		check_operation.c \
+		check_operation2.c \
+		handle_carriages.c \
+		handle_error.c \
+		handle_players.c \
+		handlers.c \
+		main.c \
+		op.c \
+		parse_args.c \
+		parse_player.c \
+		print.c \
+		print_bits.c \
+		print_debug.c \
+		print_ops.c \
+		print_ops2.c \
+		t_carriage.c \
+		t_carriages.c \
+		t_mods.c \
+		t_player.c \
+		t_players.c \
+		t_vm.c \
+		t_vm_info.c \
+		t_vs.c \
+		vs_add_cells.c \
+		vs_itoa.c \
+		vs_itoa_fd.c \
+		vs_package.c \
+		vs_put_const.c \
+		vs_put_change.c \
+		vs_refresh.c \
+		vs_refresh_2.c \
+		vs_utilites.c \
+		usage.c \
+		free.c \
+		is_valid_op_h.c
 
 ALL_OBJ_ASM = $(ALL_C_ASM:%.c=%.o)
 ALL_OBJ_CW = $(ALL_C_CW:%.c=%.o)
