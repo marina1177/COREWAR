@@ -70,7 +70,10 @@ ALL_C_CW =  actions_1.c \
         vs_package.c \
         vs_put_change.c \
         vs_refresh.c \
-        vs_utilites.c
+        vs_utilites.c \
+        usage.c \
+        free.c \
+        is_valid_op_h.c
 
 ALL_OBJ_ASM = $(ALL_C_ASM:%.c=%.o)
 ALL_OBJ_CW = $(ALL_C_CW:%.c=%.o)

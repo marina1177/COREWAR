@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/07/03 16:46:51 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/01 12:43:14 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,10 @@ int				main(int ac, char **av)
 	ac < 2 ? print_usage() : 0;
 	vm = t_vm_create();
 	parse_args(vm, ac, av);
-	print_introduction(vm->players);	
+	print_introduction(vm->players);
 	create_arena(vm);
-	print_vsconst(vm, 0);	
-	corewar(vm);	
+	print_vsconst(vm, 0);
+	corewar(vm);
 	print_final_result(vm);
 	return (0);
 }

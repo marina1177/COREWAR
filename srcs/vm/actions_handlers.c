@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/11 22:16:53 by clala             #+#    #+#             */
-/*   Updated: 2020/07/03 16:41:29 by clala            ###   ########.fr       */
+/*   Created: 2020/05/11 22:17:04 by clala             #+#    #+#             */
+/*   Updated: 2020/08/01 11:15:01 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				get_num_from_char(unsigned char *arena, int position, int size)
 	if (size == 2)
 	{
 		q = (short int *)arguments;
-		return(*q);
+		return (*q);
 	}
 	num = (int *)arguments;
 	return (*num);
@@ -48,8 +48,8 @@ int				get_reg_value(unsigned char *arena, int *pos)
 int				get_arg_value(unsigned char *arena, t_carriage *car,
 				int *pos, char arg_type)
 {
-	int 		temp;
-	int 		result;
+	int			temp;
+	int			result;
 
 	result = 0;
 	if (arg_type == T_REG)
@@ -74,7 +74,7 @@ int				get_arg_value(unsigned char *arena, t_carriage *car,
 }
 
 void			write_reg(unsigned char *arena, int reg,
-				int position, int change)				
+				int position, int change)
 {
 	char		temp;
 

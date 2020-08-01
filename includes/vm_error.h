@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/28 17:27:05 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:27:05 by bcharity         ###   ########.fr       */
+/*   Created: 2020/08/01 12:31:41 by clala             #+#    #+#             */
+/*   Updated: 2020/08/01 12:36:44 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define VM_ERROR_H
 
 # define ERROR_WORD "Error:"
+
 /*
-**
+** Flag errors
 */
 # define ERR_NOINT_N "number after -n (%s) is not integer"
 # define ERR_NOINT_D "number after -d / -dump (%s) is not integer"
@@ -30,7 +31,7 @@
 # define ERR_INV_P_NUM "Player`s %s number out of order"
 
 /*
-**
+** Argument errors
 */
 # define ERR_NOFILE "./corewar recieves wrong number of arguments"
 # define ERR_FNAME "File %s doesn`t contain '.cor' extension"
@@ -43,8 +44,9 @@
 # define ERR_NO_NULL "Invalid NULL separator in %s"
 # define ERR_GET_TEXT "Can\'t read token"
 # define ERR_LABEL_DUB "One label name were used multiple times"
+
 /*
-**
+** Champion errors
 */
 # define ERR_GET_TEXT "Can\'t read token"
 # define ERR_LABEL_DUB "One label name were used multiple times"
@@ -67,4 +69,4 @@
 # define ERR_ZERO_REG "Register r0 (r00) is used, but it doesn\'t exist"
 # define ERR_BIGEX "Executable code has size bigger than a limit"
 
-# endif
+#endif

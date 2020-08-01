@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/07/03 15:14:36 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/01 12:50:15 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			print_int_arr_in_row(int *arr, int size)
 }
 
 void			print_t_carriage(t_carriage *carriage)
-{	
+{
 	ft_printf("Number %-4d, position 0x%04x\n", carriage->num, carriage->pos);
 	ft_printf("opcode %-4d, countdown %-8d\n", carriage->op_code,
 			carriage->cycles_countdown);

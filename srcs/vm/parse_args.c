@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:17:35 by clala             #+#    #+#             */
-/*   Updated: 2020/07/03 15:14:36 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/01 12:49:45 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		parse_args(t_vm *vm, int ac, char **av)
 		&& ft_strcmp(av[i], "-pc"))
 			parse_player(vm, av[i], t_players_add(vm->players, 0, vm));
 		vm->mods->aff = !ft_strcmp(av[i], "-a") ? 1 : vm->mods->aff;
-		vm->mods->vs =  !ft_strcmp(av[i], "-vs") ? 1 : vm->mods->vs;
+		vm->mods->vs = !ft_strcmp(av[i], "-vs") ? 1 : vm->mods->vs;
 		vm->mods->pc = !ft_strcmp(av[i], "-pc") ? 1 : vm->mods->pc;
 	}
 	handle_players(vm, vm->players);

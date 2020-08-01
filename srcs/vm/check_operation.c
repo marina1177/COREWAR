@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 22:16:59 by clala             #+#    #+#             */
-/*   Updated: 2020/07/03 15:14:36 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/01 11:18:13 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,14 @@ int				check_operation(unsigned char *arena, t_carriage *carriage,
 
 	position = carriage->pos;
 	ft_bzero(arguments, 4);
-	
 	if (!valid_operation_code(carriage))
 		return (0);
 	change_position(&position, 1);
-	
 	if (g_op_tab[(int)carriage->op_code].arg_type)
-	{		
+	{
 		if (!valid_args_types(carriage, &arena[position], arguments) || \
 			!valid_register(carriage, arena, position, arguments))
 		{
-			
 			skip_args(carriage, arguments);
 			return (0);
 		}

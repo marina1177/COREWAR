@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 22:48:05 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/22 22:54:55 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/08/01 11:41:32 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ typedef struct s_opargs		t_opargs;
 typedef struct s_lbl_lst	t_lbl_lst;
 typedef struct s_token		t_token;
 typedef struct s_mdata		t_mdata;
-typedef struct s_op			t_op;
-
-extern t_op					g_op_tab[16];
 
 struct						s_op
 {
@@ -78,6 +75,9 @@ struct						s_op
 	int						args_types_code;
 	int						t_dir_size;
 };
+
+typedef struct s_op			t_op;
+extern t_op					g_op_tab[16];
 
 struct						s_opargs
 {

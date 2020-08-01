@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   com.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/28 17:26:11 by bcharity          #+#    #+#             */
-/*   Updated: 2020/06/28 17:26:11 by bcharity         ###   ########.fr       */
+/*   Created: 2020/08/01 12:29:30 by clala             #+#    #+#             */
+/*   Updated: 2020/08/01 12:30:41 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 ** open read lseek write close malloc
 ** realloc free perror strerror exit
 */
-
 # define EOC	"\033[0m"
 # define RED	"\033[1;31m"
 # define YELLOW	"\033[1;33m"

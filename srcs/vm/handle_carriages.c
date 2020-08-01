@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/07/03 15:14:36 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/01 11:15:47 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ void				handle_carriages(t_vm *vm)
 
 	carriage = vm->carr->head;
 	while (carriage)
-	{		
+	{
 		temp_vs_pos = carriage->pos;
 		carriage->cycles_countdown < 0 ? get_op_code(carriage, vm) : 0;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown > 0)
 			carriage->cycles_countdown--;
 		if (vm->data->cycles > 0 && carriage->cycles_countdown == 0)
 		{
-			temp_print_pos = carriage->pos;			
+			temp_print_pos = carriage->pos;
 			if (check_operation(vm->data->arena, carriage, arguments))
-			{							
-				make_operation(vm, carriage, arguments);									
+			{
+				make_operation(vm, carriage, arguments);
 			}
 			print_move(vm, carriage, temp_print_pos);
 			carriage->cycles_countdown = -1;

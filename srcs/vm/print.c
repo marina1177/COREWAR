@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 14:25:04 by sscottie          #+#    #+#             */
-/*   Updated: 2020/06/29 09:18:40 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/08/01 11:17:28 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/vm.h"
 
-void		print_introduction(t_players *players)
+void			print_introduction(t_players *players)
 {
 	int			i;
 	t_player	*temp;
@@ -32,7 +32,7 @@ void		print_introduction(t_players *players)
 	}
 }
 
-void		print_final_result(t_vm *vm)
+void			print_final_result(t_vm *vm)
 {
 	t_player	*winner;
 
@@ -44,18 +44,18 @@ void		print_final_result(t_vm *vm)
 	exit(0);
 }
 
-int		print_is_alive(int num, char *player_name)
+int				print_is_alive(int num, char *player_name)
 {
 	ft_printf("Player %d (%s) is said to be alive\n",
 		num, player_name);
 	return (1);
 }
 
-int		print_dump(t_vm *vm, int dump_size)
+int				print_dump(t_vm *vm, int dump_size)
 {
-	int		i;
-	int		j;
-	uint8_t	*arena;
+	int			i;
+	int			j;
+	uint8_t		*arena;
 
 	arena = vm->data->arena;
 	i = 0;
@@ -75,19 +75,19 @@ int		print_dump(t_vm *vm, int dump_size)
 	return (1);
 }
 
-void	print_move(t_vm *vm, t_carriage *carriage, int temp_pos)
+void			print_move(t_vm *vm, t_carriage *carriage, int temp_pos)
 {
-	int i;
-	int	size;
-	int	diff;	
+	int			i;
+	int			size;
+	int			diff;
 
 	if (!(vm->mods->verb_lvl & VERB_L5))
-		return ;	
+		return ;
 	if (carriage->op_code != 0 && (carriage->op_code != 9 || !carriage->carry))
 	{
 		if ((diff = norm_pos(carriage->pos - temp_pos)) <= 1)
-			return ;				
-		ft_printf("ADV %d (0x%04x -> 0x%04x) ", diff, temp_pos, 
+			return ;
+		ft_printf("ADV %d (0x%04x -> 0x%04x) ", diff, temp_pos,
 			temp_pos + diff);
 		i = temp_pos;
 		size = 0;

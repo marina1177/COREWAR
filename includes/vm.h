@@ -1,14 +1,14 @@
-/* *********************************************************************** */
-/*                                                                         */
-/*                                                     :::      ::::::::   */
-/*   vm.h                                            :+:      :+:    :+:   */
-/*                                                 +:+ +:+         +:+     */
-/*   By: clala <clala@student.42lyon.fr>         +#+  +:+       +#+        */
-/*                                             +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/05 15:06:54 by clala          #+#    #+#             */
-/*   Updated: 2020/07/05 15:06:54 by clala         ###   ########.fr       */
-/*                                                                         */
-/* *********************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vm.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/01 12:09:21 by clala             #+#    #+#             */
+/*   Updated: 2020/08/01 12:55:28 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
@@ -25,15 +25,16 @@
 # include <stdio.h>
 
 /*
-**
+** ncurses consts, deprecated
 */
 # define RUNNING 			713
 # define CYCLE_PER_SEC		1225
 # define CYCLE_COORD		1993
 # define PROCESSES			2505
 # define PL_ONE_LIVE		3529
+
 /*
-**
+** op codes
 */
 # define LIVE_CODE	0x01
 # define LD_CODE 	0x02
@@ -51,8 +52,9 @@
 # define LLDI_CODE	0x0e
 # define LFORK_CODE	0x0f
 # define AFF_CODE	0x10
+
 /*
-**
+** op consts
 */
 # define LIVE_CYCLE_CD	10
 # define LD_CYCLE_CD	5
@@ -78,6 +80,9 @@
 # define VERB_L4 8
 # define VERB_L5 16
 
+/*
+** free consts
+*/
 # define ALLOCATED_PLAYERS 1
 # define ALLOCATED_DATA 2
 # define ALLOCATED_CARR 4
@@ -85,7 +90,9 @@
 # define ALLOCATED_VS 16
 # define ALLOCATED_CELLS 32
 
-
+/*
+** op.h standart values
+*/
 # define STD_IND_SIZE 2
 # define STD_REG_SIZE 4
 # define STD_DIR_SIZE 4
@@ -117,7 +124,6 @@ typedef struct			s_op
 
 extern t_op				g_op_tab[17];
 
-
 typedef	struct			s_player
 {
 	int					num;
@@ -132,7 +138,7 @@ typedef	struct			s_player
 	int					lives_in_period;
 }						t_player;
 
-typedef struct 			s_players
+typedef struct			s_players
 {
 	int					qty;
 	struct s_player		*first_player;
@@ -141,7 +147,7 @@ typedef struct 			s_players
 	int					lives_num;
 }						t_players;
 
-typedef struct 			s_mods
+typedef struct			s_mods
 {
 	int					dump_cycle;
 	int					dump_size;
@@ -163,8 +169,10 @@ typedef struct			s_vm_info
 	int					checks_counter;
 	int					lives_counter;
 }						t_vm_info;
-//***************************************************************
 
+/*
+** vis structures
+*/
 typedef struct			s_content
 {
 	char				**words;
@@ -177,8 +185,6 @@ typedef struct			s_json_item
 	int					value;
 	char				title[128];
 	char				keys[9][128];
-	//t_content			*content;
-
 }						t_json_item;
 
 typedef struct			s_vs
@@ -202,8 +208,9 @@ typedef struct			s_cells
 	struct s_cells		*next;
 }						t_cells;
 
-
-//********************************************************************
+/*
+** core strusctures
+*/
 typedef struct			s_carriage
 {
 	struct s_carriage	*next;
@@ -237,7 +244,6 @@ typedef struct			s_vm
 	t_op				op_tab[17];
 	void				(*exec[17])();
 	int					allocated;
-	//void				(*exec[17])(t_carriage *curr, struct s_vm *vm);
 }						t_vm;
 
 typedef	struct			s_bit
@@ -248,7 +254,7 @@ typedef	struct			s_bit
 	unsigned			first : 2;
 }						t_bit;
 
-typedef	union			s_arg_types
+typedef	union			u_arg_types
 {
 	unsigned char		types;
 	t_bit				bit;
@@ -299,8 +305,9 @@ void					vs_print_error(t_vm *vm, char *error_msg);
 ** vs_itoa_fd.c
 */
 int						vs_itoa_fd(int fd, int n);
+
 /*
-**
+** core functions
 */
 void					init(t_vm *data, int quantity);
 void					init_arena(t_vm *data, int quantity);
@@ -323,7 +330,7 @@ int						get_arg_size(int op, unsigned char arg);
 void					write_reg(unsigned char *arena,
 							int reg, int position, int change);
 int						get_arg_value(unsigned char *arena,
-							t_carriage *car,  int *pos, char arg_type);
+							t_carriage *car, int *pos, char arg_type);
 int						get_reg_value(unsigned char *arena, int *pos);
 void					do_live(t_carriage *carriage, t_vm *vm);
 void					do_ld(t_carriage *carriage, t_vm *vm,
@@ -380,7 +387,7 @@ void					display_arena(t_vm *vm);
 int						norm_pos(int pos);
 
 /*
-** end op_code fucntions
+** end op_code functions
 */
 
 /*
@@ -396,8 +403,10 @@ int						t_players_get_next_number(t_players *players);
 /*
 ** t_players functions
 */
-
 t_player				*t_player_create(int number, t_vm *vm);
+void					t_players_reset_lives_in_period(t_players *players);
+void					t_players_check_is_alive(t_vm *vm, t_players *players);
+
 /*
 ** errors handling
 */
@@ -429,11 +438,12 @@ int						*get_nums(t_carriages *carrs);
 t_carriage				*t_carriage_copy(t_carriages *carr, t_carriage *src);
 
 /*
-** Validation
+**	Validation
 */
 void					parse_args(t_vm *vm, int ac, char **av);
 int						parse_player(t_vm *vm, char *arg, t_player *player);
 int						is_integer(char *s);
+int						is_valid_op_h(void);
 
 /*
 ** vm, vsm mods create
@@ -442,8 +452,9 @@ t_vm					*t_vm_create(void);
 t_vs					*t_vs_create(t_vm *vm);
 t_mods					*t_mods_create(t_vm *vm);
 t_vm_info				*t_vm_info_create(t_vm *vm);
+
 /*
-** print functions
+** print functions, misc
 */
 void					print_t_player(t_player *player);
 void					print_t_players(t_players *players);
@@ -471,8 +482,6 @@ void					print_bitwise_op(t_vm *vm,
 void					print_move(t_vm *vm, t_carriage *carriage,
 							int temp_pos);
 int						print_vsconst(t_vm	*vm, int type);
-void					t_players_reset_lives_in_period(t_players *players);
-void					t_players_check_is_alive(t_vm *vm, t_players *players);
 void					vs_push_cells(t_vm *vm,
 							int cell_number, t_carriage *carriage);
 #endif
