@@ -357,9 +357,9 @@ class MyGame(arcade.Window):
 				self.speed = -60
 
 def main():
-	pygame.init()
-	pygame.mixer.music.load('sound/Secret_of_Mana_Desert_Snowstorm_OC_ReMix.mp3')
-	pygame.mixer.music.play(- 1)
+	#pygame.init()
+	#pygame.mixer.music.load('sound/Secret_of_Mana_Desert_Snowstorm_OC_ReMix.mp3')
+	#pygame.mixer.music.play(- 1)
 	with open('vis.json') as f:
 		data = json.load(f)
 	const = Consts(data[0]['Consts']['mem_size'],

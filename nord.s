@@ -1,5 +1,5 @@
-.name		"Batman"
-.comment	"This city needs me"
+.name		"Nord"
+.comment	"uiiiiiiiii"
 
 loop:
         sti r1, %:live, %1
