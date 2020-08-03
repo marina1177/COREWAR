@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*   By: arz <arz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 22:48:05 by bcharity          #+#    #+#             */
-/*   Updated: 2020/08/01 11:41:32 by clala            ###   ########.fr       */
+/*   Updated: 2020/08/03 22:24:08 by arz              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft_clala/includes/ft_printf.h"
 # include "op.h"
 # include "asm_error.h"
+# include "dasm.h"
 # include <errno.h>
 # include <sys/types.h>
 # include <sys/stat.h>

@@ -34,7 +34,15 @@ ALL_C_ASM = add_header.c \
 		supfun_2.c \
 		translate.c \
 		write_to_file.c\
-		print_memory.c
+		print_memory.c \
+		main_dasm.c \
+		open_create.c \
+		read_byte_code.c \
+		read_name_comment.c \
+		validation_dasm.c \
+		write_code_1.c \
+		write_code_2.c \
+		write_2_file.c
 
 ALL_C_CW =  actions_1.c \
 		actions_2.c \

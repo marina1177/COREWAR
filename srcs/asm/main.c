@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <marvin@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: arz <arz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:10:55 by bcharity          #+#    #+#             */
-/*   Updated: 2020/07/22 00:06:18 by bcharity         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:47:45 by arz              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ int		main(int ac, char **av)
 		g_flg = av[i][0] == '-' ? put_flg(av[i++]) : 0;
 		if (i == ac)
 			error_event(ERR_NOFILE);
-		read_file(av[i]);
+		if (g_flg == 1)
+			main_dasm(av[i]);
+		else
+			read_file(av[i]);
 		++i;
 	}
 	return (0);
