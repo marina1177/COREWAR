@@ -45,7 +45,7 @@ int			write_2_file(t_dasm *ds, char *name)
 	{
 		error = write_name(new_fd, ds);
 		error = write_comment(new_fd, ds);
-		error = write(new_fd, "\n", 2);
+		error = write(new_fd, "\n", 1);
 		error = write(new_fd, ds->champ_code, ft_strlen(ds->champ_code));
 		close(new_fd);
 		if (error > 0)
