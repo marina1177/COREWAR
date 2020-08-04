@@ -42,9 +42,10 @@ int		errors_event(int x, int fd)
 	return (0);
 }
 
-int 	disasm(char *file_name, t_dasm *as)
+int		disasm(char *file_name, t_dasm *as)
 {
-	if ((as->fd = open_file(file_name)) > 0 && verification_magic_header(as->fd))
+	if ((as->fd = open_file(file_name)) > 0
+	&& verification_magic_header(as->fd))
 	{
 		if (!(read_champion_name(as, as->fd)))
 			return (errors_event(1, as->fd));

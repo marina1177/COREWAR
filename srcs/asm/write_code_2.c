@@ -12,7 +12,7 @@
 
 #include "../../includes/dasm.h"
 
-char 	*write_code(t_dasm *ds, char *str)
+char	*write_code(t_dasm *ds, char *str)
 {
 	char	*for_free;
 
@@ -30,10 +30,9 @@ char 	*write_code(t_dasm *ds, char *str)
 	}
 }
 
-
-int		 neg_numb_conversion(unsigned int value, int byte)
+int		neg_numb_conversion(unsigned int value, int byte)
 {
-	int 	ret;
+	int					ret;
 	unsigned short int	value3;
 
 	if (value > CHAMP_MAX_SIZE)

@@ -12,9 +12,9 @@
 
 #include "../../includes/dasm.h"
 
-int 	read_argument_without_types(t_dasm *ds, int opr)
+int		read_argument_without_types(t_dasm *ds, int opr)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (g_op_tab[opr].args_types[i] && i < 3)
@@ -30,14 +30,13 @@ int 	read_argument_without_types(t_dasm *ds, int opr)
 	return (1);
 }
 
-int 	read_operation_argument(int opr, t_dasm *ds)
+int		read_operation_argument(int opr, t_dasm *ds)
 {
 	unsigned char	type_arg;
 	unsigned char	type;
-	int 	i;
+	int				i;
 
 	i = 0;
-	type = 0;
 	if ((read(ds->fd, &type_arg, 1)) == 1)
 	{
 		ds->ccs++;
@@ -62,12 +61,13 @@ int 	read_operation_argument(int opr, t_dasm *ds)
 
 int		read_champ_code(t_dasm *ds)
 {
-	char 	operation;
-	int 	opr;
-	int 	error;
+	char	operation;
+	int		opr;
+	int		error;
 
 	error = 1;
-	while ((read(ds->fd, &operation, 1)) == 1 && operation >= 1 && operation <= 16)
+	while ((read(ds->fd, &operation, 1)) == 1
+	&& operation >= 1 && operation <= 16)
 	{
 		ds->ccs++;
 		opr = operation - 1;

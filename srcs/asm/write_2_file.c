@@ -12,7 +12,29 @@
 
 #include "../../includes/dasm.h"
 
-int 	write_2_file(t_dasm *ds, char *name)
+static int	write_name(int fd, t_dasm *ds)
+{
+	int		k;
+
+	k = 0;
+	k += write(fd, ".name \"", 7);
+	k += write(fd, ds->name, ft_strlen(ds->name));
+	k += write(fd, "\"\n", 2);
+	return (k);
+}
+
+static int	write_comment(int fd, t_dasm *ds)
+{
+	int		k;
+
+	k = 0;
+	k += write(fd, ".comment \"", 10);
+	k += write(fd, ds->comment, ft_strlen(ds->comment));
+	k += write(fd, "\"\n", 2);
+	return (k);
+}
+
+int			write_2_file(t_dasm *ds, char *name)
 {
 	int		new_fd;
 	int		error;
@@ -21,19 +43,15 @@ int 	write_2_file(t_dasm *ds, char *name)
 	error = 1;
 	if ((new_fd = create_file(name)) > 0)
 	{
-		error = write(new_fd, ds->name, ft_strlen(ds->name));
-		error = write(new_fd, "\n\n", 2);
-		error = write(new_fd, ds->comment, ft_strlen(ds->comment));
-		error = write(new_fd, "\n\n", 2);
+		error = write_name(new_fd, ds);
+		error = write_comment(new_fd, ds);
+		error = write(new_fd, "\n", 2);
 		error = write(new_fd, ds->champ_code, ft_strlen(ds->champ_code));
 		close(new_fd);
 		if (error > 0)
 			return (1);
 		else
-		{
-			char *error_buf = strerror(errno);
-			printf(" Error message -> %s", error_buf);
-		}
+			return (0);
 	}
 	return (0);
 }

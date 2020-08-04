@@ -23,12 +23,12 @@ int		write_tdir2(t_dasm *ds, int value)
 	return (1);
 }
 
-int 	write_tdir(t_dasm *ds, int opr)
+int		write_tdir(t_dasm *ds, int opr)
 {
 	unsigned short int	byte2;
 	unsigned int		byte4;
-	char 				*bt;
-	int 				k;
+	char				*bt;
+	int					k;
 
 	if (g_op_tab[opr].t_dir_size == 2)
 	{
@@ -69,7 +69,7 @@ int		write_treg(t_dasm *ds)
 	return (0);
 }
 
-int 	write_tind(t_dasm *ds)
+int		write_tind(t_dasm *ds)
 {
 	unsigned short int	h;
 	int					k;
@@ -87,7 +87,7 @@ int 	write_tind(t_dasm *ds)
 	return (0);
 }
 
-int		write_arg(t_dasm *ds, int opr, char type)
+void	write_arg(t_dasm *ds, int opr, char type)
 {
 	if (type == 1)
 	{

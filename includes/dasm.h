@@ -80,7 +80,7 @@ int		write_tdir2(t_dasm *ds, int value);
 int		write_tdir(t_dasm *ds, int opr);
 int		write_treg(t_dasm *ds);
 int		write_tind(t_dasm *ds);
-int		write_arg(t_dasm *ds, int opr, char type);
+void	write_arg(t_dasm *ds, int opr, char type);
 
 /*
 ** write_code_2.c
@@ -96,7 +96,7 @@ int		 neg_numb_conversion(unsigned int value, int byte);
 int		write_2_file(t_dasm *ds, char *name);
 
 /*
-** write_main_dasm.c
+** main_dasm.c
 */
 
 int		main_dasm(char *name_file);

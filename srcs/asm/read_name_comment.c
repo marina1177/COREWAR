@@ -16,7 +16,8 @@ int		read_byte(char *byte, int size, int fd)
 {
 	unsigned char	c;
 	int				i;
-	int			error;
+	int				error;
+
 	error = 1;
 	c = 0;
 	i = size - 1;
@@ -66,7 +67,7 @@ int		read_champion_name(t_dasm *as, int fd)
 int		champion_code_size(t_dasm *as, int fd)
 {
 	unsigned int	size;
-	char	*bt;
+	char			*bt;
 
 	bt = (char*)&size;
 	if (read_byte(bt, 4, fd) && size > 0)

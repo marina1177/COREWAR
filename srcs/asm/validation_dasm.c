@@ -18,7 +18,6 @@ int		verification_magic_header(int fd)
 	char				*lk;
 
 	lk = (char*)&m_header;
-
 	if (read_byte(lk, 4, fd) && m_header == COREWAR_EXEC_MAGIC)
 		return (1);
 	else

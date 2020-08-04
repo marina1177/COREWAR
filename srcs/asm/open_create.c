@@ -20,13 +20,13 @@ int		open_file(char *name)
 	{
 		return (fd);
 	}
-	return(-1);
+	return (-1);
 }
 
 char	*create_new_name(char *name)
 {
-	char 	*dot_in;
-	char 	*new_name;
+	char	*dot_in;
+	char	*new_name;
 
 	if ((dot_in = ft_strchr(name, '.')))
 	{
@@ -37,10 +37,10 @@ char	*create_new_name(char *name)
 	return (NULL);
 }
 
-int 	create_file(char *name)
+int		create_file(char *name)
 {
-	int 	new_fd;
-	char 	*new_name;
+	int		new_fd;
+	char	*new_name;
 
 	if ((new_name = create_new_name(name)))
 	{
@@ -48,10 +48,7 @@ int 	create_file(char *name)
 		if (new_fd > 0)
 			return (new_fd);
 		else
-		{
-			char *error_buf = strerror(errno);
-			printf(" Error message -> %s", error_buf);
-		}
+			return (0);
 	}
 	return (0);
 }
