@@ -34,11 +34,11 @@ int		errors_event(int x, int fd)
 	if (fd > 0)
 		close(fd);
 	if (x == 1)
-		ft_printf("Invalid file\n");
+		ft_printf("%sRead error or invalid file%s\n", RED, EOC);
 	else if (x == 2)
-		ft_printf("Invalid champion code\n");
+		ft_printf("%sInvalid champion code%s\n", RED, EOC);
 	else
-		ft_printf("Error writing the file\n");
+		ft_printf("%sError writing the file%s\n", RED, EOC);
 	return (0);
 }
 
@@ -89,6 +89,7 @@ int		main_dasm(char *name_file)
 			free_dasm(as);
 			return (0);
 		}
+		ft_printf("%sWriting output program to %s.s%s\n", GREEN, name_file, EOC);
 		free_dasm(as);
 		return (1);
 	}

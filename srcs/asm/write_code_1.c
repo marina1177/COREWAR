@@ -30,6 +30,7 @@ int		write_tdir(t_dasm *ds, int opr)
 	char				*bt;
 	int					k;
 
+	k = 0;
 	if (g_op_tab[opr].t_dir_size == 2)
 	{
 		bt = (char*)&byte2;

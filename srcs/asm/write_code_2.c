@@ -35,6 +35,7 @@ int		neg_numb_conversion(unsigned int value, int byte)
 	int					ret;
 	unsigned short int	value3;
 
+	ret = 0;
 	if (value > CHAMP_MAX_SIZE)
 	{
 		if (byte == 2)
