@@ -18,9 +18,9 @@
 /*
 ** Flag errors
 */
-# define ERR_NOINT_N "number after -n (%s) is not integer"
-# define ERR_NOINT_D "number after -d / -dump (%s) is not integer"
-# define ERR_NOINT_V "number after -v (%s) is not integer"
+# define ERR_NOINT_N "argument after -n (%s) is not integer"
+# define ERR_NOINT_D "argument after -d / -dump (%s) is not integer"
+# define ERR_NOINT_V "argument after -v (%s) is not integer"
 # define ERR_NONUM "-v / -d / -n flags must be followed by integer"
 # define ERR_NOPLR "integer after -n flag must be followed by player`s name"
 # define ERR_N_FLAG "-n argument (%s) must be in range [1 : MAX_PLAYERS]"
@@ -28,6 +28,7 @@
 # define ERR_V_FLAG "verbosity argument (%s) must be in range [0 : 31]"
 # define ERR_N_DUPL "Ambiguous player number: %d"
 # define ERR_MAX_PLAYERS "Too many players: number must be in range [1 : %d]"
+# define ERR_NO_PLAYERS "No players: must be at least 1 player"
 # define ERR_INV_P_NUM "Player`s %s number out of order"
 
 /*

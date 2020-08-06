@@ -76,5 +76,7 @@ void			t_vm_free(t_vm *vm)
 	vm->allocated & ALLOCATED_DATA ? ft_free("1", vm->data) : 0;
 	vm->allocated & ALLOCATED_CARR ? t_carriages_free(vm) : 0;
 	vm->allocated & ALLOCATED_MODS ? ft_free("1", vm->mods) : 0;
+	vm->allocated & ALLOCATED_VS ? ft_free("1", vm->vs) : 0;
 	vm->allocated & ALLOCATED_CELLS ? t_cells_free(vm) : 0;
+	free(vm);
 }

@@ -41,7 +41,6 @@ void			print_final_result(t_vm *vm)
 		winner->num,
 		winner->name);
 	print_vsconst(vm, 2);
-	exit(0);
 }
 
 int				print_is_alive(int num, char *player_name)
@@ -71,6 +70,7 @@ int				print_dump(t_vm *vm, int dump_size)
 		ft_printf("\n");
 		i += dump_size;
 	}
+	t_vm_free(vm);
 	exit(0);
 	return (1);
 }

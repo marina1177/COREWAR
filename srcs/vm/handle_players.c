@@ -83,6 +83,8 @@ void			handle_players(t_vm *vm, t_players *players)
 
 	if (players->qty > MAX_PLAYERS)
 		handle_error_int_arg(ERR_MAX_PLAYERS, MAX_PLAYERS, vm);
+	if (!players->qty)
+		handle_error_vm(ERR_NO_PLAYERS, vm);
 	t_players_set_num(players);
 	t_players_sort(players);
 	temp = players->first_player;
