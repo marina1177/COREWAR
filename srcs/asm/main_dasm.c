@@ -89,7 +89,8 @@ int		main_dasm(char *name_file)
 			free_dasm(as);
 			return (0);
 		}
-		ft_printf("%sWriting output program to %s.s%s\n", GREEN, name_file, EOC);
+		ft_printf("%sWriting output program to %s.s%s\n",
+		GREEN, name_file, EOC);
 		free_dasm(as);
 		return (1);
 	}
