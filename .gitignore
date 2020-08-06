@@ -6,4 +6,5 @@ libft_clala/*/*.o
 cmake-*
 CMake*
 corewar
+asm
 vis.json
