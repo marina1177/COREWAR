@@ -93,7 +93,7 @@ OBJS_CW = $(addprefix $(OBJDIR_CW)/, $(ALL_OBJ_CW))
 NAME_ASM = asm
 NAME_CW = corewar
 
-INCLUDES_ASM = ./includes/op.h ./includes/asm.h	./includes/asm_error.h
+INCLUDES_ASM = ./includes/op.h ./includes/asm.h	./includes/asm_error.h ./includes/dasm.h
 INCLUDES_CW = ./includes/op.h ./includes/vm.h ./includes/vm_error.h ./includes/vs_consts.h
 
 OBJDIR = ./objs
